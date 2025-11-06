@@ -1,0 +1,434 @@
+/* AI Quest - Retro Arcade Styling */
+
+:root {
+  --green: #0f0;
+  --dark-green: #0a0;
+  --amber: #ffb000;
+  --dark-amber: #cc8800;
+  --red: #f00;
+  --black: #000;
+  --gray: #333;
+  --white: #fff;
+}
+
+body {
+  background: var(--black);
+  color: var(--green);
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.retro-font {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+}
+
+/* Arcade Cabinet Frame */
+.arcade-cabinet {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #1a0a00 0%, #000 100%);
+  position: relative;
+}
+
+.arcade-cabinet::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 4px);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.screen-container {
+  width: 90%;
+  max-width: 800px;
+  height: 90vh;
+  max-height: 600px;
+  background: var(--black);
+  border: 8px solid #2a1a0a;
+  border-radius: 20px;
+  box-shadow: 
+    0 0 20px rgba(255, 176, 0, 0.3),
+    inset 0 0 50px rgba(0, 0, 0, 0.8);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.screen-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.05) 2px, rgba(0, 255, 0, 0.05) 4px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* CRT Screen Effect */
+.crt-screen {
+  width: 100%;
+  height: 100%;
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+
+.crt-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    transparent 50%, 
+    rgba(0, 0, 0, 0.3) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.crt-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 255, 0, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Game Screen */
+.game-screen {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  z-index: 4;
+  color: var(--green);
+  text-shadow: 0 0 10px var(--green);
+}
+
+/* Blinking Text */
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* Borders */
+.border-box {
+  border: 2px solid var(--green);
+  padding: 15px;
+  margin: 10px 0;
+  background: rgba(0, 255, 0, 0.05);
+}
+
+.border-box-amber {
+  border: 2px solid var(--amber);
+  color: var(--amber);
+  text-shadow: 0 0 10px var(--amber);
+}
+
+/* Buttons */
+.retro-button {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green);
+  padding: 12px 24px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  margin: 5px;
+  text-shadow: 0 0 10px var(--green);
+}
+
+.retro-button:hover {
+  background: var(--green);
+  color: var(--black);
+  box-shadow: 0 0 20px var(--green);
+  text-shadow: none;
+}
+
+.retro-button:active {
+  transform: scale(0.95);
+}
+
+.retro-button-amber {
+  border-color: var(--amber);
+  color: var(--amber);
+  text-shadow: 0 0 10px var(--amber);
+}
+
+.retro-button-amber:hover {
+  background: var(--amber);
+  color: var(--black);
+  box-shadow: 0 0 20px var(--amber);
+}
+
+.retro-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.retro-button-disabled:hover {
+  background: transparent;
+  color: var(--green);
+  box-shadow: none;
+}
+
+/* Input Fields */
+.retro-input {
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green);
+  padding: 10px;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  width: 100%;
+  margin: 10px 0;
+  text-shadow: 0 0 5px var(--green);
+}
+
+.retro-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px var(--green);
+}
+
+/* Text Styles */
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 24px;
+  text-align: center;
+  margin: 20px 0;
+  color: var(--amber);
+  text-shadow: 0 0 15px var(--amber);
+}
+
+.subtitle {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-amber {
+  color: var(--amber);
+  text-shadow: 0 0 10px var(--amber);
+}
+
+.text-red {
+  color: var(--red);
+  text-shadow: 0 0 10px var(--red);
+}
+
+/* Question Options */
+.option-list {
+  list-style: none;
+  padding: 0;
+}
+
+.option-item {
+  border: 2px solid var(--green);
+  padding: 15px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: rgba(0, 255, 0, 0.02);
+}
+
+.option-item:hover {
+  background: rgba(0, 255, 0, 0.15);
+  transform: translateX(10px);
+}
+
+.option-item.selected {
+  background: var(--green);
+  color: var(--black);
+  text-shadow: none;
+  font-weight: bold;
+}
+
+.option-item.correct {
+  border-color: var(--green);
+  background: rgba(0, 255, 0, 0.3);
+}
+
+.option-item.incorrect {
+  border-color: var(--red);
+  background: rgba(255, 0, 0, 0.3);
+}
+
+/* Leaderboard */
+.leaderboard {
+  font-family: 'VT323', monospace;
+  font-size: 22px;
+  text-align: center;
+}
+
+.leaderboard-entry {
+  display: grid;
+  grid-template-columns: 50px 150px 100px 100px;
+  gap: 20px;
+  padding: 8px;
+  border-bottom: 1px solid var(--dark-green);
+}
+
+.leaderboard-entry:hover {
+  background: rgba(0, 255, 0, 0.1);
+}
+
+.leaderboard-header {
+  font-weight: bold;
+  border-bottom: 2px solid var(--green);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+/* Character Sprite */
+.character {
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  background: var(--green);
+  clip-path: polygon(
+    30% 0%, 70% 0%, 70% 20%, 90% 20%, 90% 80%, 70% 80%, 70% 100%, 30% 100%, 30% 80%, 10% 80%, 10% 20%, 30% 20%
+  );
+  box-shadow: 0 0 20px var(--green);
+}
+
+/* Progress Bar */
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  border: 2px solid var(--green);
+  background: var(--black);
+  position: relative;
+  margin: 15px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--green);
+  transition: width 0.5s;
+  box-shadow: 0 0 15px var(--green);
+}
+
+/* Modal/Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: var(--black);
+  border: 4px solid var(--green);
+  padding: 30px;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 50px var(--green);
+}
+
+/* Loading Animation */
+@keyframes loading {
+  0% { content: 'LOADING.'; }
+  33% { content: 'LOADING..'; }
+  66% { content: 'LOADING...'; }
+}
+
+.loading::after {
+  content: 'LOADING';
+  animation: loading 1.5s infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+  border: 1px solid var(--dark-green);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-green);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .screen-container {
+    width: 100%;
+    height: 100vh;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+  }
+  
+  .title {
+    font-size: 18px;
+  }
+  
+  .retro-button {
+    font-size: 10px;
+    padding: 10px 20px;
+  }
+  
+  .leaderboard-entry {
+    grid-template-columns: 40px 100px 80px 80px;
+    gap: 10px;
+    font-size: 18px;
+  }
+}
+
+/* Utility Classes */
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.p-1 { padding: 10px; }
+.p-2 { padding: 20px; }
+.p-3 { padding: 30px; }

@@ -1,0 +1,98 @@
+import React, { useState } from 'react';
+
+function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
+  const [showLoad, setShowLoad] = useState(false);
+  const [email, setEmail] = useState('');
+  const [accessCode, setAccessCode] = useState('');
+
+  const handleLoad = (e) => {
+    e.preventDefault();
+    if (email && accessCode) {
+      onLoad(email, accessCode);
+    }
+  };
+
+  return (
+    <div className="text-center">
+      <div className="mt-3">
+        <pre className="text-amber" style={{ fontSize: '14px', lineHeight: '1.2' }}>
+{`████████████████████████████████
+█                              █
+█   ▄▀▀▀▄ ▀█▀  ▄▀▀▄ █  █ █▀▀  █
+█   █▄▄█▄  █   █  █ █  █ █▄▄  █
+█   █   █ ▄█▄  ▀▄▄█ ▀▄▄▀ █▄▄  █
+█                              █
+█      THE NEURAL NETWORK      █
+█         ADVENTURE             █
+█                              █
+████████████████████████████████`}
+        </pre>
+      </div>
+
+      <div className="border-box mt-3">
+        <p className="blink text-amber retro-font">INSERT COIN TO PLAY</p>
+        <p className="mt-2">CREDITS: ∞</p>
+      </div>
+
+      {!showLoad ? (
+        <div className="mt-3">
+          <button className="retro-button retro-button-amber" onClick={onStart}>
+            PRESS START
+          </button>
+          <br />
+          <button className="retro-button mt-2" onClick={() => setShowLoad(true)}>
+            CONTINUE QUEST
+          </button>
+          <br />
+          <button className="retro-button mt-2" onClick={onViewLeaderboard}>
+            HIGH SCORES
+          </button>
+        </div>
+      ) : (
+        <div className="mt-3">
+          <div className="border-box">
+            <p className="retro-font mb-2">LOAD YOUR QUEST</p>
+            <form onSubmit={handleLoad}>
+              <input
+                type="email"
+                placeholder="EMAIL ADDRESS"
+                className="retro-input"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <input
+                type="text"
+                placeholder="4-DIGIT CODE"
+                className="retro-input"
+                value={accessCode}
+                onChange={(e) => setAccessCode(e.target.value.toUpperCase())}
+                maxLength="4"
+                required
+              />
+              <button type="submit" className="retro-button mt-2">
+                LOAD GAME
+              </button>
+              <button 
+                type="button" 
+                className="retro-button mt-2" 
+                onClick={() => setShowLoad(false)}
+              >
+                BACK
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <div className="mt-3">
+        <p style={{ fontSize: '16px' }}>© 2024 SYNAPSE SYSTEMS INC.</p>
+        <p style={{ fontSize: '14px', marginTop: '10px' }}>
+          A NSW LOCAL GOVERNMENT PROJECT
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default StartScreen;
