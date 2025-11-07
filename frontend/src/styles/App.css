@@ -1,849 +1,232 @@
-/* AI Quest - Retro Arcade Styling */
-
-:root {
-  --green: #0f0;
-  --dark-green: #0a0;
-  --amber: #ffb000;
-  --dark-amber: #cc8800;
-  --red: #f00;
-  --black: #000;
-  --gray: #333;
-  --white: #fff;
-}
-
-body {
-  background: var(--black);
-  color: var(--green);
-  font-family: 'VT323', monospace;
-  font-size: 20px;
-  line-height: 1.4;
-}
-
-.retro-font {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 12px;
-}
-
-/* Arcade Cabinet Frame */
-.arcade-cabinet {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, #1a0a00 0%, #000 100%);
-  position: relative;
-}
-
-.arcade-cabinet::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 4px);
-  pointer-events: none;
-  z-index: 10;
-}
-
-.screen-container {
-  width: 90%;
-  max-width: 800px;
-  height: auto;
-  min-height: 400px;
-  max-height: 90vh;
-  background: var(--black);
-  border: 8px solid #2a1a0a;
-  border-radius: 20px;
-  box-shadow: 
-    0 0 20px rgba(255, 176, 0, 0.3),
-    inset 0 0 50px rgba(0, 0, 0, 0.8);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.screen-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 0, 0.05) 2px, rgba(0, 255, 0, 0.05) 4px);
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* CRT Screen Effect */
-.crt-screen {
-  width: 100%;
-  height: 100%;
-  background: var(--black);
-  position: relative;
-  overflow: hidden;
-}
-
-.crt-scanlines {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    transparent 50%, 
-    rgba(0, 0, 0, 0.3) 50%
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
-  z-index: 3;
-}
-
-.crt-glow {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    rgba(0, 255, 0, 0.1) 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Game Screen */
-.game-screen {
-  padding: 20px;
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-  z-index: 4;
-  color: var(--green);
-  text-shadow: 0 0 10px var(--green);
-  max-height: calc(90vh - 40px);
-}
-
-/* Blinking Text */
-@keyframes blink {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-
-.blink {
-  animation: blink 1s infinite;
-}
-
-/* Borders */
-.border-box {
-  border: 2px solid var(--green);
-  padding: 15px;
-  margin: 10px 0;
-  background: rgba(0, 255, 0, 0.05);
-}
-
-.border-box-amber {
-  border: 2px solid var(--amber);
-  color: var(--amber);
-  text-shadow: 0 0 10px var(--amber);
-}
-
-/* Buttons */
-.retro-button {
-  background: transparent;
-  border: 2px solid var(--green);
-  color: var(--green);
-  padding: 12px 24px;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 12px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  margin: 5px;
-  text-shadow: 0 0 10px var(--green);
-}
-
-.retro-button:hover {
-  background: var(--green);
-  color: var(--black);
-  box-shadow: 0 0 20px var(--green);
-  text-shadow: none;
-}
-
-.retro-button:active {
-  transform: scale(0.95);
-}
-
-.retro-button-amber {
-  border-color: var(--amber);
-  color: var(--amber);
-  text-shadow: 0 0 10px var(--amber);
-}
-
-.retro-button-amber:hover {
-  background: var(--amber);
-  color: var(--black);
-  box-shadow: 0 0 20px var(--amber);
-}
-
-.retro-button-disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.retro-button-disabled:hover {
-  background: transparent;
-  color: var(--green);
-  box-shadow: none;
-}
-
-/* Input Fields */
-.retro-input {
-  background: transparent;
-  border: 2px solid var(--green);
-  color: var(--green);
-  padding: 10px;
-  font-family: 'VT323', monospace;
-  font-size: 20px;
-  width: 100%;
-  margin: 10px 0;
-  text-shadow: 0 0 5px var(--green);
-}
-
-.retro-input:focus {
-  outline: none;
-  box-shadow: 0 0 15px var(--green);
-}
-
-/* Text Styles */
-.title {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 24px;
-  text-align: center;
-  margin: 20px 0;
-  color: var(--amber);
-  text-shadow: 0 0 15px var(--amber);
-}
-
-.subtitle {
-  font-family: 'Press Start 2P', cursive;
-  font-size: 14px;
-  text-align: center;
-  margin: 10px 0;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-amber {
-  color: var(--amber);
-  text-shadow: 0 0 10px var(--amber);
-}
-
-.text-red {
-  color: var(--red);
-  text-shadow: 0 0 10px var(--red);
-}
-
-/* Question Options */
-.option-list {
-  list-style: none;
-  padding: 0;
-}
-
-.option-item {
-  border: 2px solid var(--green);
-  padding: 15px;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: rgba(0, 255, 0, 0.02);
-}
-
-.option-item:hover {
-  background: rgba(0, 255, 0, 0.15);
-  transform: translateX(10px);
-}
-
-.option-item.selected {
-  background: var(--green);
-  color: var(--black);
-  text-shadow: none;
-  font-weight: bold;
-}
-
-.option-item.correct {
-  border-color: var(--green);
-  background: rgba(0, 255, 0, 0.3);
-}
-
-.option-item.incorrect {
-  border-color: var(--red);
-  background: rgba(255, 0, 0, 0.3);
-}
-
-/* Leaderboard */
-.leaderboard {
-  font-family: 'VT323', monospace;
-  font-size: 22px;
-  text-align: center;
-}
-
-.leaderboard-entry {
-  display: grid;
-  grid-template-columns: 50px 150px 100px 100px;
-  gap: 20px;
-  padding: 8px;
-  border-bottom: 1px solid var(--dark-green);
-}
-
-.leaderboard-entry:hover {
-  background: rgba(0, 255, 0, 0.1);
-}
-
-.leaderboard-header {
-  font-weight: bold;
-  border-bottom: 2px solid var(--green);
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-/* Character Sprite */
-.character {
-  width: 100px;
-  height: 100px;
-  margin: 20px auto;
-  background: var(--green);
-  clip-path: polygon(
-    30% 0%, 70% 0%, 70% 20%, 90% 20%, 90% 80%, 70% 80%, 70% 100%, 30% 100%, 30% 80%, 10% 80%, 10% 20%, 30% 20%
-  );
-  box-shadow: 0 0 20px var(--green);
-}
-
-/* Progress Bar */
-.progress-bar {
-  width: 100%;
-  height: 30px;
-  border: 2px solid var(--green);
-  background: var(--black);
-  position: relative;
-  margin: 15px 0;
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--green);
-  transition: width 0.5s;
-  box-shadow: 0 0 15px var(--green);
-}
-
-/* Modal/Overlay */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-.modal-content {
-  background: var(--black);
-  border: 4px solid var(--green);
-  padding: 30px;
-  max-width: 600px;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 0 50px var(--green);
-}
-
-/* Loading Animation */
-@keyframes loading {
-  0% { content: 'LOADING.'; }
-  33% { content: 'LOADING..'; }
-  66% { content: 'LOADING...'; }
-}
-
-.loading::after {
-  content: 'LOADING';
-  animation: loading 1.5s infinite;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--green);
-  border: 1px solid var(--dark-green);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--dark-green);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .screen-container {
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    max-height: none;
-    border-radius: 0;
-    border: none;
-  }
-  
-  .game-screen {
-    max-height: none;
-    padding: 15px;
-  }
-  
-  .title {
-    font-size: 18px;
-  }
-  
-  .retro-button {
-    font-size: 10px;
-    padding: 10px 20px;
-  }
-  
-  .leaderboard-entry {
-    grid-template-columns: 40px 100px 80px 80px;
-    gap: 10px;
-    font-size: 18px;
-  }
-}
-
-/* Utility Classes */
-.mt-1 { margin-top: 10px; }
-.mt-2 { margin-top: 20px; }
-.mt-3 { margin-top: 30px; }
-.mb-1 { margin-bottom: 10px; }
-.mb-2 { margin-bottom: 20px; }
-.mb-3 { margin-bottom: 30px; }
-.p-1 { padding: 10px; }
-.p-2 { padding: 20px; }
-.p-3 { padding: 30px; }
-
 /* ============================================
-   IMAGE QUESTION STYLING - CLEAN VERSION
-   Better readability while keeping retro aesthetic
+   NUCLEAR OPTION - REMOVE ALL DISTORTION
+   Add this to the VERY TOP of your App.css
+   This overrides everything with !important
    ============================================ */
 
-/* Main image container - clean retro look */
-.question-image-container {
-  margin: 20px auto;
-  padding: 15px;
-  background: #000000;
-  border: 3px solid #00ff00;
-  max-width: 600px;
-  box-shadow: 
-    0 0 15px rgba(0, 255, 0, 0.3),
-    inset 0 0 20px rgba(0, 255, 0, 0.05);
-  position: relative;
+/* ============================================
+   STEP 1: Remove ALL pseudo-element overlays
+   ============================================ */
+
+/* Remove scanlines and overlays from EVERYTHING */
+*::before,
+*::after {
+  background: none !important;
+  background-image: none !important;
 }
 
-/* Subtle outer glow - not too intense */
-.question-image-container::before {
-  content: '';
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: linear-gradient(45deg, #00ff00, #00aa00, #00ff00);
-  z-index: -1;
-  filter: blur(6px);
-  opacity: 0.3;
-}
-
-/* The image itself - CRISP AND CLEAR */
-.question-image {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border: 2px solid #00ff00;
-  
-  /* NO FILTERS - Keep image sharp and clear */
-  image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  
-  /* Ensure maximum clarity */
-  -webkit-backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* NO SCANLINES - Removed for clarity */
-/* The ::after pseudo-element has been removed */
-
-/* Error state when image fails to load */
-.image-error {
-  padding: 40px;
-  text-align: center;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1em;
-  background: #0a0a0a;
-  border: 2px dashed #00ff00;
-}
-
-/* Subtle hover effect - just a gentle pulse */
-@keyframes gentle-glow {
-  0%, 100% { 
-    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3),
-                inset 0 0 20px rgba(0, 255, 0, 0.05);
-  }
-  50% { 
-    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4),
-                inset 0 0 25px rgba(0, 255, 0, 0.08);
-  }
-}
-
-.question-image-container:hover {
-  animation: gentle-glow 2s infinite;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .question-image-container {
-    margin: 15px 5px;
-    padding: 10px;
-    max-width: 100%;
-  }
-  
-  .question-image {
-    max-width: 100%;
-  }
-}
-
-/* Tablet responsive */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .question-image-container {
-    max-width: 500px;
-  }
-}
-
-/* High contrast mode - extra clarity */
-@media (prefers-contrast: high) {
-  .question-image-container {
-    border-width: 4px;
-  }
-  
-  .question-image {
-    border-width: 3px;
-  }
-}
-
-/* Print styles - clean version */
-@media print {
-  .question-image-container {
-    border: 2px solid #000;
-    box-shadow: none;
-  }
-  
-  .question-image-container::before {
-    display: none;
-  }
+/* Specifically target common overlay classes */
+body::before,
+body::after,
+.App::before,
+.App::after,
+.game-container::before,
+.game-container::after,
+.border-box::before,
+.border-box::after,
+.question-image::before,
+.question-image::after,
+.question-image-container::before,
+.question-image-container::after {
+  display: none !important;
+  content: none !important;
+  opacity: 0 !important;
 }
 
 /* ============================================
-   OPTIONAL: If you want even MORE clarity
-   Uncomment the section below
+   STEP 2: Remove ALL filters and effects
    ============================================ */
 
-/*
+/* Remove all blur, contrast, brightness filters */
+* {
+  filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Specifically ensure images are crystal clear */
+img,
+.question-image,
+.question-image-container img {
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* ============================================
+   STEP 3: Remove ALL text shadows and glows
+   ============================================ */
+
+/* Remove text shadows that cause blur */
+* {
+  text-shadow: none !important;
+}
+
+p, span, div, h1, h2, h3, h4, h5, h6, button, li, a {
+  text-shadow: none !important;
+}
+
+/* ============================================
+   STEP 4: Ensure sharp text rendering
+   ============================================ */
+
+/* Force sharp, clear text */
+body,
+* {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  font-smooth: always !important;
+}
+
+/* ============================================
+   STEP 5: Clean image container styling
+   ============================================ */
+
+/* Image container - clean and simple */
 .question-image-container {
+  margin: 20px auto !important;
+  padding: 15px !important;
+  background: #000000 !important;
+  border: 3px solid #00ff00 !important;
+  max-width: 600px !important;
   box-shadow: none !important;
-  border: 3px solid #00ff00;
+  position: relative !important;
 }
 
-.question-image-container::before {
-  display: none;
+/* The image itself - MAXIMUM CLARITY */
+.question-image {
+  width: 100% !important;
+  max-width: 550px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border: 2px solid #00ff00 !important;
+  
+  /* Force sharp rendering */
+  filter: none !important;
+  backdrop-filter: none !important;
+  image-rendering: crisp-edges !important;
+  image-rendering: -webkit-optimize-contrast !important;
+  -webkit-backface-visibility: hidden !important;
+  transform: translateZ(0) !important;
 }
 
+/* ============================================
+   STEP 6: Remove ANY animation effects
+   ============================================ */
+
+/* Stop all animations that might cause distortion */
+.question-image-container,
+.question-image {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Remove hover effects */
 .question-image-container:hover {
-  animation: none;
+  animation: none !important;
+  box-shadow: none !important;
 }
+
+/* ============================================
+   STEP 7: Remove common scanline classes
+   ============================================ */
+
+/* If you have these classes, disable them */
+.scanlines,
+.scanline,
+.scanline-overlay,
+.crt-effect,
+.crt-overlay,
+.vhs-effect,
+.noise-overlay,
+.grain-effect,
+.retro-overlay {
+  display: none !important;
+  opacity: 0 !important;
+}
+
+/* ============================================
+   STEP 8: Clean text rendering site-wide
+   ============================================ */
+
+/* Ensure all text is readable */
+.border-box,
+.border-box *,
+.option-list,
+.option-list *,
+.retro-font,
+p, span, div {
+  filter: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ============================================
+   STEP 9: Remove opacity effects
+   ============================================ */
+
+/* Ensure nothing is semi-transparent causing blur */
+.question-text,
+.option-item,
+p {
+  opacity: 1 !important;
+}
+
+/* ============================================
+   STEP 10: Mobile responsive (clean version)
+   ============================================ */
+
+@media (max-width: 768px) {
+  .question-image-container {
+    margin: 15px 5px !important;
+    padding: 10px !important;
+    max-width: 100% !important;
+  }
+  
+  .question-image {
+    max-width: 100% !important;
+  }
+}
+
+/* ============================================
+   DEBUGGING HELP
+   ============================================ */
+
+/* 
+   If this STILL doesn't work, open browser DevTools (F12):
+   
+   1. Right-click on a distorted image
+   2. Click "Inspect"
+   3. Look in the "Computed" tab
+   4. Search for:
+      - filter
+      - backdrop-filter
+      - opacity
+      - text-shadow
+      - background (on ::before or ::after)
+   
+   5. Find which CSS rule is applying the effect
+   6. Tell me the class name and I'll override it specifically
 */
 
 /* ============================================
-
-/* Image hint text below image */
-.image-hint {
-  margin-top: 12px;
-  padding: 8px 12px;
-  background: rgba(255, 149, 0, 0.1);
-  border: 1px solid #ff9500;
-  border-radius: 4px;
-  color: #ff9500;
-  font-size: 0.9em;
-  text-align: center;
-  font-family: 'Courier New', monospace;
-}
-
-/* Small version for explanation screen */
-.question-image-container.mini {
-  max-width: 400px;
-  margin: 15px auto;
-  padding: 10px;
-}
-
-.question-image.small {
-  max-width: 350px;
-}
-
-/* Loading state */
-.question-image-container .loading {
-  width: 100%;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1a1a1a;
-  color: #ff9500;
-  font-family: 'Courier New', monospace;
-  font-size: 1.2em;
-}
-
-.loading::after {
-  content: '...';
-  animation: ellipsis 1.5s infinite;
-}
-
-@keyframes ellipsis {
-  0% { content: '.'; }
-  33% { content: '..'; }
-  66% { content: '...'; }
-}
-
-/* Error state when image fails to load */
-.image-error {
-  padding: 40px;
-  text-align: center;
-  color: #ff9500;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1em;
-  background: #1a1a1a;
-  border: 2px dashed #ff9500;
-}
-
-/* Retro pixel border animation */
-@keyframes pixel-border {
-  0%, 100% { box-shadow: 0 0 10px rgba(255, 149, 0, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(255, 149, 0, 0.8); }
-}
-
-.question-image-container:hover {
-  animation: pixel-border 2s infinite;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .question-image-container {
-    margin: 15px 10px;
-    padding: 10px;
-    max-width: 100%;
-  }
-  
-  .question-image {
-    max-width: 100%;
-  }
-  
-  .image-hint {
-    font-size: 0.8em;
-    padding: 6px 8px;
-  }
-}
-
-/* Accessibility - high contrast mode */
-@media (prefers-contrast: high) {
-  .question-image-container {
-    border-width: 4px;
-  }
-  
-  .question-image {
-    border-width: 3px;
-    filter: contrast(1.2);
-  }
-}
-
-/* Print styles - hide images in print */
-@media print {
-  .question-image-container {
-    display: none;
-  }
-}
-
-/* Optional: Click to zoom functionality */
-.question-image.zoomable {
-  cursor: zoom-in;
-  transition: transform 0.2s ease;
-}
-
-.question-image.zoomable:hover {
-  transform: scale(1.02);
-}
-
-.question-image.zoomed {
-  cursor: zoom-out;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.5);
-  z-index: 9999;
-  max-width: 90vw;
-  max-height: 90vh;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
-}
-
-/* Backdrop for zoomed image */
-.image-zoom-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  z-index: 9998;
-  cursor: zoom-out;
-}
-
-/* ============================================
-   INTEGRATION WITH YOUR EXISTING DIALOGUE BOX
-   ============================================ */
-
-/* If your dialogue box already has styling, 
-   the image container will inherit spacing from it.
-   Adjust margins/padding as needed to fit your design. */
-
-/* Example: if dialogue-box has padding, reduce image container margin */
-.dialogue-box .question-image-container {
-  margin: 10px 0;
-}
-
-/* ============================================
-   RETRO AESTHETIC ENHANCEMENTS (Optional)
-   ============================================ */
-
-/* VHS tracking lines effect */
-.question-image-container.vhs-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
-  animation: vhs-tracking 5s linear infinite;
-  z-index: 2;
-}
-
-@keyframes vhs-tracking {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(300px); }
-}
-
-/* Phosphor glow (like old monitors) */
-.question-image-container.phosphor-glow {
-  animation: phosphor-pulse 3s ease-in-out infinite;
-}
-
-@keyframes phosphor-pulse {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(255, 149, 0, 0.3),
-                inset 0 0 30px rgba(255, 149, 0, 0.1);
-  }
-  50% { 
-    box-shadow: 0 0 30px rgba(255, 149, 0, 0.5),
-                inset 0 0 40px rgba(255, 149, 0, 0.2);
-  }
-}
-/* Image Question Styling */
-.question-image-container {
-  margin: 20px auto;
-  padding: 15px;
-  background: #000000;
-  border: 3px solid #00ff00;
-  max-width: 600px;
-  box-shadow: 
-    0 0 20px rgba(0, 255, 0, 0.4),
-    inset 0 0 30px rgba(0, 255, 0, 0.1);
-}
-
-.question-image {
-  width: 100%;
-  max-width: 550px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border: 2px solid #00ff00;
-  filter: contrast(1.05) brightness(0.98);
-}
-
-.image-error {
-  padding: 40px;
-  text-align: center;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  font-size: 1.1em;
-}
-
-/* Mobile responsive */
-@media (max-width: 768px) {
-  .question-image-container {
-    margin: 15px 10px;
-    padding: 10px;
-  }
-  
-  .question-image {
-    max-width: 100%;
-  }
-}
-
-/* ============================================
-   USAGE NOTES
+   INSTRUCTIONS FOR USE
    ============================================ */
 
 /*
-1. Add these styles to your App.css
-2. They will automatically apply to any element with:
-   - class="question-image-container"
-   - class="question-image"
+   1. Copy ALL of this CSS
    
-3. For extra effects, add classes to your JSX:
-   <div className="question-image-container phosphor-glow">
+   2. Open your App.css file
    
-4. Adjust colors to match your game's aesthetic:
-   - #ff9500 = orange (your current theme)
-   - Change to any color you prefer
+   3. Paste this at the VERY TOP (before anything else)
    
-5. The styles are mobile-responsive automatically
-
-6. To enable zoom, add this JavaScript to GamePlay.jsx:
+   4. Save the file
    
-   const [zoomedImage, setZoomedImage] = useState(null);
+   5. Hard refresh your browser:
+      - Windows/Linux: Ctrl + Shift + R
+      - Mac: Cmd + Shift + R
    
-   <img 
-     onClick={() => setZoomedImage(imagePath)}
-     className="question-image zoomable"
-   />
+   6. If STILL distorted, we need to look at your actual App.css
+      to find what specific effect is being applied
 */
