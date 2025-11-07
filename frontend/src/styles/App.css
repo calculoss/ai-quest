@@ -443,24 +443,24 @@ body {
 .p-3 { padding: 30px; }
 
 /* ============================================
-   IMAGE QUESTION STYLING FOR AI QUEST
-   Add this to your App.css file
+   IMAGE QUESTION STYLING - CLEAN VERSION
+   Better readability while keeping retro aesthetic
    ============================================ */
 
-/* Main image container */
+/* Main image container - clean retro look */
 .question-image-container {
   margin: 20px auto;
   padding: 15px;
   background: #000000;
-  border: 3px solid #ff9500;
-  max-width: 700px;
+  border: 3px solid #00ff00;
+  max-width: 600px;
   box-shadow: 
-    0 0 20px rgba(255, 149, 0, 0.4),
-    inset 0 0 30px rgba(255, 149, 0, 0.1);
+    0 0 15px rgba(0, 255, 0, 0.3),
+    inset 0 0 20px rgba(0, 255, 0, 0.05);
   position: relative;
 }
 
-/* Retro glow effect */
+/* Subtle outer glow - not too intense */
 .question-image-container::before {
   content: '';
   position: absolute;
@@ -468,56 +468,124 @@ body {
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: linear-gradient(45deg, #ff9500, #ff6600, #ff9500);
+  background: linear-gradient(45deg, #00ff00, #00aa00, #00ff00);
   z-index: -1;
-  filter: blur(8px);
-  opacity: 0.5;
+  filter: blur(6px);
+  opacity: 0.3;
 }
 
-/* The image itself */
+/* The image itself - CRISP AND CLEAR */
 .question-image {
   width: 100%;
-  max-width: 650px;
+  max-width: 550px;
   height: auto;
   display: block;
   margin: 0 auto;
-  border: 2px solid #ff9500;
-  position: relative;
+  border: 2px solid #00ff00;
   
-  /* Retro monitor effect */
-  filter: contrast(1.05) brightness(0.98);
+  /* NO FILTERS - Keep image sharp and clear */
+  image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
+  
+  /* Ensure maximum clarity */
+  -webkit-backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Scanline effect overlay */
-.question-image::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0) 0px,
-    rgba(0, 0, 0, 0) 1px,
-    rgba(0, 0, 0, 0.15) 1px,
-    rgba(0, 0, 0, 0.15) 2px
-  );
-  pointer-events: none;
-  z-index: 1;
+/* NO SCANLINES - Removed for clarity */
+/* The ::after pseudo-element has been removed */
+
+/* Error state when image fails to load */
+.image-error {
+  padding: 40px;
+  text-align: center;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1em;
+  background: #0a0a0a;
+  border: 2px dashed #00ff00;
 }
 
-/* CRT screen curvature effect (subtle) */
-.question-image-container.crt-effect {
-  border-radius: 15px;
-  overflow: hidden;
+/* Subtle hover effect - just a gentle pulse */
+@keyframes gentle-glow {
+  0%, 100% { 
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3),
+                inset 0 0 20px rgba(0, 255, 0, 0.05);
+  }
+  50% { 
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.4),
+                inset 0 0 25px rgba(0, 255, 0, 0.08);
+  }
 }
 
-.question-image-container.crt-effect .question-image {
-  transform: perspective(500px) rotateY(0deg);
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+.question-image-container:hover {
+  animation: gentle-glow 2s infinite;
 }
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .question-image-container {
+    margin: 15px 5px;
+    padding: 10px;
+    max-width: 100%;
+  }
+  
+  .question-image {
+    max-width: 100%;
+  }
+}
+
+/* Tablet responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .question-image-container {
+    max-width: 500px;
+  }
+}
+
+/* High contrast mode - extra clarity */
+@media (prefers-contrast: high) {
+  .question-image-container {
+    border-width: 4px;
+  }
+  
+  .question-image {
+    border-width: 3px;
+  }
+}
+
+/* Print styles - clean version */
+@media print {
+  .question-image-container {
+    border: 2px solid #000;
+    box-shadow: none;
+  }
+  
+  .question-image-container::before {
+    display: none;
+  }
+}
+
+/* ============================================
+   OPTIONAL: If you want even MORE clarity
+   Uncomment the section below
+   ============================================ */
+
+/*
+.question-image-container {
+  box-shadow: none !important;
+  border: 3px solid #00ff00;
+}
+
+.question-image-container::before {
+  display: none;
+}
+
+.question-image-container:hover {
+  animation: none;
+}
+*/
+
+/* ============================================
 
 /* Image hint text below image */
 .image-hint {
