@@ -1,72 +1,76 @@
 // Game Content: Rooms, Characters, Questions, and Story
 
 const gameContent = {
+// Updated Game Content - 1980s Lake Macquarie City Council Theme
+// Replace the rooms array in your gameContent.js with this
+
   rooms: [
     {
       id: 1,
-      name: "LOBBY",
-      description: "You stand in the gleaming lobby of SYNAPSE SYSTEMS INC. Retro computer terminals line the walls, their green text flickering. RECEPTIONIST RITA sits behind a curved desk.",
+      name: "RECEPTION",
+      description: "You stand in the reception area of Lake Macquarie City Council. Wood-panelled walls display community notices. A bulky IBM terminal glows green on the curved desk. RECEPTIONIST RITA adjusts her headset, the switchboard blinking behind her.",
       background: "lobby",
       character: "RITA",
-      exits: ["BREAK ROOM", "R&D LAB"]
+      exits: ["CAFETERIA", "MAINFRAME ROOM"]
     },
     {
       id: 2,
-      name: "BREAK ROOM",
-      description: "The break room buzzes with chatter. A vintage coffee machine gurgles in the corner. Employees huddle around a newspaper discussing AI breakthroughs.",
+      name: "CAFETERIA",
+      description: "The staff cafeteria smells of instant coffee and lamingtons. A vintage pie warmer hums in the corner. COUNCIL STAFF huddle around a table discussing the new computer system over their smoko break. A Newcastle Herald lies open on the counter.",
       background: "breakroom",
       character: "EMPLOYEES",
-      exits: ["LOBBY", "R&D LAB"]
+      exits: ["RECEPTION", "MAINFRAME ROOM"]
     },
     {
       id: 3,
-      name: "R&D LAB",
-      description: "Beeping machines and blinking lights fill DR. NEURON's laboratory. Whiteboards covered in diagrams line every wall. A mainframe computer hums loudly.",
+      name: "MAINFRAME ROOM",
+      description: "The council's computing heart - a magnificent IBM System/36 mainframe fills half the room, tape drives whirring. THE SYSTEMS ADMIN monitors blinking lights and adjusts dials. The air conditioning battles against the heat. A sign warns: 'AUTHORISED PERSONNEL ONLY'.",
       background: "lab",
-      character: "DR. NEURON",
-      exits: ["LOBBY", "SERVER ROOM"]
+      character: "SYSTEMS ADMIN",
+      exits: ["RECEPTION", "MAP ROOM"]
     },
     {
       id: 4,
-      name: "SERVER ROOM",
-      description: "Rows of server racks stretch into darkness. HACKER HAL types furiously at a terminal, green code cascading down the screen. The room is ice cold.",
+      name: "MAP ROOM",
+      description: "Floor-to-ceiling cabinets hold yellowed planning maps and blueprints of Lake Macquarie. THE PLANNING OFFICER hunches over a drafting table, calculator and ruler in hand. A massive wall map shows every suburb from Swansea to Morisset. Microfiche readers line one wall.",
       background: "server",
-      character: "HACKER HAL",
-      exits: ["R&D LAB", "MARKETING DEPT"]
+      character: "PLANNING OFFICER",
+      exits: ["MAINFRAME ROOM", "COMMUNICATIONS"]
     },
     {
       id: 5,
-      name: "MARKETING DEPT",
-      description: "Colorful posters showcase AI applications. MARKETING MARY gestures enthusiastically at a presentation about AI's potential. Charts and graphs cover the walls.",
+      name: "COMMUNICATIONS",
+      description: "Posters promoting council services cover the walls - 'Rates Due March 31!' and 'Report Potholes Here'. THE COMMS OFFICER reviews draft press releases on a word processor. A Gestetner duplicator sits ready to run off copies for the local papers.",
       background: "marketing",
-      character: "MARKETING MARY",
-      exits: ["SERVER ROOM", "ETHICS OFFICE"]
+      character: "COMMS OFFICER",
+      exits: ["MAP ROOM", "GOVERNANCE"]
     },
     {
       id: 6,
-      name: "ETHICS OFFICE",
-      description: "A quiet, thoughtful space. ETHICS EDGAR sits surrounded by philosophy books and AI policy documents. A sign reads: 'With Great Power...'",
+      name: "GOVERNANCE",
+      description: "A quiet office lined with binders labelled 'Local Government Act 1919' and council policies. THE GOVERNANCE OFFICER reviews bylaws and regulations, ensuring everything follows proper procedure. A framed photo of the Premier hangs on the wall. 'Serving the Community with Integrity' reads a plaque.",
       background: "ethics",
-      character: "ETHICS EDGAR",
-      exits: ["MARKETING DEPT", "EXECUTIVE HALLWAY"]
+      character: "GOVERNANCE OFFICER",
+      exits: ["COMMUNICATIONS", "MAIL ROOM"]
     },
     {
       id: 7,
-      name: "EXECUTIVE HALLWAY",
-      description: "Plush carpet leads to impressive double doors. The CEO's nameplate gleams. Security cameras watch your every move. One final challenge awaits.",
+      name: "MAIL ROOM",
+      description: "The nerve centre of council communications. Pneumatic tubes connect to other departments. Pigeonholes overflow with inter-office memos. C.H.A.T. (Council's Helpful Automated Terminal) sits on a trolley, its green screen offering assistance. Mail stamps and date stampers line the bench.",
       background: "hallway",
       character: "C.H.A.T.",
-      exits: ["ETHICS OFFICE", "CEO'S SUITE"]
+      exits: ["GOVERNANCE", "GENERAL MANAGER"]
     },
     {
       id: 8,
-      name: "CEO'S SUITE",
-      description: "Floor-to-ceiling windows overlook the city. A massive desk holds a single computer terminal. CEO CYPHER's chair slowly turns to face you...",
+      name: "GENERAL MANAGER",
+      description: "The General Manager's office overlooks Lake Macquarie through venetian blinds. A polished jarrah desk holds neat stacks of reports and a heavy Bakelite telephone. THE GENERAL MANAGER's chair slowly turns to face you. Behind them, certificates and civic awards line the wall.",
       background: "ceo",
-      character: "CEO CYPHER",
+      character: "GENERAL MANAGER",
       exits: []
     }
   ],
+
 
   questions: {
     player1: [
