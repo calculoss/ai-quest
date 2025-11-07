@@ -384,7 +384,7 @@ const gameContent = {
         correct: 1,
         explanation: "🏆 Perfect! AI + humans = best results. AI handles scale, speed, and patterns. Humans provide judgment, ethics, context, and accountability. Together, we can do amazing things for our communities!",
         points: 250
-      }
+      },
 	  // ROOM 5 - MARKETING MARY
  // ============================================
 
@@ -1045,6 +1045,12 @@ const gameContent = {
         explanation: "🏆 Exactly! For government AI: humans make final decisions, explain how AI was used, maintain accountability, test for bias, protect privacy, and serve all citizens fairly. Technical excellence + ethical responsibility!",
         points: 250
       }
+    ],
+    
+    player2: [
+      // Player 2 (technical) questions
+      // Add your advanced/technical questions here
+      // For now, this is empty but properly structured
     ]
   },
 
