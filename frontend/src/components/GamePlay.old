@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import ChatModal from './ChatModal';
 
 const API_URL = process.env.REACT_APP_API_URL || '/api';
@@ -21,7 +21,21 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
          !progress.questionsAnswered.find(qa => qa.id === q.id)
   );
 
-  const saveProgress = useCallback(async () => {
+  useEffect(() => {
+    if (roomQuestions.length > 0 && !currentQuestion) {
+      setCurrentQuestion(roomQuestions[0]);
+    }
+  }, [roomQuestions, currentQuestion]);
+
+  // Auto-save progress every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      saveProgress();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [progress]);
+
+  const saveProgress = async () => {
     try {
       await fetch(`${API_URL}/save`, {
         method: 'POST',
@@ -37,21 +51,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     } catch (error) {
       console.error('Failed to save progress:', error);
     }
-  }, [progress, playerData.playerId]);
-
-  useEffect(() => {
-    if (roomQuestions.length > 0 && !currentQuestion) {
-      setCurrentQuestion(roomQuestions[0]);
-    }
-  }, [roomQuestions, currentQuestion]);
-
-  // Auto-save progress every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      saveProgress();
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [saveProgress]);
+  };
 
   const handleAnswerSelect = (index) => {
     if (!showResult) {
