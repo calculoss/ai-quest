@@ -62,7 +62,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .screen-container::after {
