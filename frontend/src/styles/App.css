@@ -441,3 +441,300 @@ body {
 .p-1 { padding: 10px; }
 .p-2 { padding: 20px; }
 .p-3 { padding: 30px; }
+
+/* ============================================
+   IMAGE QUESTION STYLING FOR AI QUEST
+   Add this to your App.css file
+   ============================================ */
+
+/* Main image container */
+.question-image-container {
+  margin: 20px auto;
+  padding: 15px;
+  background: #000000;
+  border: 3px solid #ff9500;
+  max-width: 700px;
+  box-shadow: 
+    0 0 20px rgba(255, 149, 0, 0.4),
+    inset 0 0 30px rgba(255, 149, 0, 0.1);
+  position: relative;
+}
+
+/* Retro glow effect */
+.question-image-container::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #ff9500, #ff6600, #ff9500);
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.5;
+}
+
+/* The image itself */
+.question-image {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #ff9500;
+  position: relative;
+  
+  /* Retro monitor effect */
+  filter: contrast(1.05) brightness(0.98);
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* Scanline effect overlay */
+.question-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0px,
+    rgba(0, 0, 0, 0) 1px,
+    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.15) 2px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* CRT screen curvature effect (subtle) */
+.question-image-container.crt-effect {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.question-image-container.crt-effect .question-image {
+  transform: perspective(500px) rotateY(0deg);
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Image hint text below image */
+.image-hint {
+  margin-top: 12px;
+  padding: 8px 12px;
+  background: rgba(255, 149, 0, 0.1);
+  border: 1px solid #ff9500;
+  border-radius: 4px;
+  color: #ff9500;
+  font-size: 0.9em;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+/* Small version for explanation screen */
+.question-image-container.mini {
+  max-width: 400px;
+  margin: 15px auto;
+  padding: 10px;
+}
+
+.question-image.small {
+  max-width: 350px;
+}
+
+/* Loading state */
+.question-image-container .loading {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1a1a;
+  color: #ff9500;
+  font-family: 'Courier New', monospace;
+  font-size: 1.2em;
+}
+
+.loading::after {
+  content: '...';
+  animation: ellipsis 1.5s infinite;
+}
+
+@keyframes ellipsis {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+/* Error state when image fails to load */
+.image-error {
+  padding: 40px;
+  text-align: center;
+  color: #ff9500;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1em;
+  background: #1a1a1a;
+  border: 2px dashed #ff9500;
+}
+
+/* Retro pixel border animation */
+@keyframes pixel-border {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 149, 0, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 149, 0, 0.8); }
+}
+
+.question-image-container:hover {
+  animation: pixel-border 2s infinite;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .question-image-container {
+    margin: 15px 10px;
+    padding: 10px;
+    max-width: 100%;
+  }
+  
+  .question-image {
+    max-width: 100%;
+  }
+  
+  .image-hint {
+    font-size: 0.8em;
+    padding: 6px 8px;
+  }
+}
+
+/* Accessibility - high contrast mode */
+@media (prefers-contrast: high) {
+  .question-image-container {
+    border-width: 4px;
+  }
+  
+  .question-image {
+    border-width: 3px;
+    filter: contrast(1.2);
+  }
+}
+
+/* Print styles - hide images in print */
+@media print {
+  .question-image-container {
+    display: none;
+  }
+}
+
+/* Optional: Click to zoom functionality */
+.question-image.zoomable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+.question-image.zoomable:hover {
+  transform: scale(1.02);
+}
+
+.question-image.zoomed {
+  cursor: zoom-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  z-index: 9999;
+  max-width: 90vw;
+  max-height: 90vh;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Backdrop for zoomed image */
+.image-zoom-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9998;
+  cursor: zoom-out;
+}
+
+/* ============================================
+   INTEGRATION WITH YOUR EXISTING DIALOGUE BOX
+   ============================================ */
+
+/* If your dialogue box already has styling, 
+   the image container will inherit spacing from it.
+   Adjust margins/padding as needed to fit your design. */
+
+/* Example: if dialogue-box has padding, reduce image container margin */
+.dialogue-box .question-image-container {
+  margin: 10px 0;
+}
+
+/* ============================================
+   RETRO AESTHETIC ENHANCEMENTS (Optional)
+   ============================================ */
+
+/* VHS tracking lines effect */
+.question-image-container.vhs-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: vhs-tracking 5s linear infinite;
+  z-index: 2;
+}
+
+@keyframes vhs-tracking {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(300px); }
+}
+
+/* Phosphor glow (like old monitors) */
+.question-image-container.phosphor-glow {
+  animation: phosphor-pulse 3s ease-in-out infinite;
+}
+
+@keyframes phosphor-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(255, 149, 0, 0.3),
+                inset 0 0 30px rgba(255, 149, 0, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(255, 149, 0, 0.5),
+                inset 0 0 40px rgba(255, 149, 0, 0.2);
+  }
+}
+
+/* ============================================
+   USAGE NOTES
+   ============================================ */
+
+/*
+1. Add these styles to your App.css
+2. They will automatically apply to any element with:
+   - class="question-image-container"
+   - class="question-image"
+   
+3. For extra effects, add classes to your JSX:
+   <div className="question-image-container phosphor-glow">
+   
+4. Adjust colors to match your game's aesthetic:
+   - #ff9500 = orange (your current theme)
+   - Change to any color you prefer
+   
+5. The styles are mobile-responsive automatically
+
+6. To enable zoom, add this JavaScript to GamePlay.jsx:
+   
+   const [zoomedImage, setZoomedImage] = useState(null);
+   
+   <img 
+     onClick={() => setZoomedImage(imagePath)}
+     className="question-image zoomable"
+   />
+*/

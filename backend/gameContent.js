@@ -385,6 +385,348 @@ const gameContent = {
         explanation: "🏆 Perfect! AI + humans = best results. AI handles scale, speed, and patterns. Humans provide judgment, ethics, context, and accountability. Together, we can do amazing things for our communities!",
         points: 250
       }
+	  // ROOM 5 - MARKETING MARY
+ // ============================================
+
+ {
+  id: 21,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1057.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Look closely at the hands - notice any extra or missing fingers? AI often struggles with hand anatomy.",
+  points: 150
+},
+
+ {
+  id: 22,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1044.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Check the background - see any repeated patterns or inconsistent details? Classic AI tells.",
+  points: 150
+},
+
+ {
+  id: 23,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1029.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Notice the unnatural smoothness and overly perfect features? AI creates an uncanny valley effect.",
+  points: 150
+},
+
+ {
+  id: 24,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1028.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Look at any text in the image - is it gibberish or distorted? AI can't handle text properly yet.",
+  points: 150
+},
+
+ {
+  id: 25,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image2030.webp",
+  isAiGenerated: false,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! The skin texture, natural lighting, and authentic details are consistent with camera capture.",
+  points: 150
+},
+
+ {
+  id: 26,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image2000.webp",
+  isAiGenerated: false,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Notice how all elements fit together naturally - real photos have authentic coherence.",
+  points: 150
+},
+
+ {
+  id: 27,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image2038.webp",
+  isAiGenerated: false,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! The imperfections and genuine moments captured show this is real photography, not AI.",
+  points: 150
+},
+
+ {
+  id: 28,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image2007.webp",
+  isAiGenerated: false,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Camera sensor characteristics and optical properties visible in the image prove authenticity.",
+  points: 150
+},
+
+ {
+  id: 29,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1049.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Check reflections and mirrors - do they make physical sense? AI struggles with accurate reflections.",
+  points: 150
+},
+
+ {
+  id: 30,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1024.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! For portraits, look at eyes and teeth - unnatural patterns reveal synthetic generation.",
+  points: 150
+},
+
+ {
+  id: 31,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1061.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Look closely at the hands - notice any extra or missing fingers? AI often struggles with hand anatomy.",
+  points: 150
+},
+
+{
+  id: 32,
+  room: 5,
+  character: "MARKETING MARY",
+  type: "image",
+  imagePath: "/images/image1015.webp",
+  isAiGenerated: true,
+  question: "Take a look at this image. Is it AI-generated or a real photograph?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Check the background - see any repeated patterns or inconsistent details? Classic AI tells.",
+  points: 150
+},
+
+ // ============================================
+ // ROOM 6 - ETHICS EDGAR
+ // ============================================
+
+ {
+  id: 33,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1031.webp",
+  isAiGenerated: true,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Notice asymmetrical features or impossible geometries? AI sometimes creates surreal inconsistencies.",
+  points: 150
+},
+
+ {
+  id: 34,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2011.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Notice how all elements fit together naturally - real photos have authentic coherence.",
+  points: 150
+},
+
+ {
+  id: 35,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2002.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! The imperfections and genuine moments captured show this is real photography, not AI.",
+  points: 150
+},
+
+ {
+  id: 36,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2005.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Camera sensor characteristics and optical properties visible in the image prove authenticity.",
+  points: 150
+},
+
+ {
+  id: 37,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2012.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Notice the natural imperfections, authentic lighting, and camera characteristics like grain and lens effects.",
+  points: 150
+},
+
+ {
+  id: 38,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1070.webp",
+  isAiGenerated: true,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Look closely at the hands - notice any extra or missing fingers? AI often struggles with hand anatomy.",
+  points: 150
+},
+
+ {
+  id: 39,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2025.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! Check the natural expressions and authentic context - everything makes physical sense.",
+  points: 150
+},
+
+ {
+  id: 40,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1032.webp",
+  isAiGenerated: true,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Notice the unnatural smoothness and overly perfect features? AI creates an uncanny valley effect.",
+  points: 150
+},
+
+ {
+  id: 41,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image2059.webp",
+  isAiGenerated: false,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 1,
+  explanation: "Real photograph! The skin texture, natural lighting, and authentic details are consistent with camera capture.",
+  points: 150
+},
+
+ {
+  id: 42,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1054.webp",
+  isAiGenerated: true,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Check the lighting and shadows - are they physically consistent? AI often gets physics wrong.",
+  points: 150
+},
+
+ {
+  id: 43,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1047.webp",
+  isAiGenerated: true,
+  question: "Another image to analyse. What do you think?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Notice asymmetrical features or impossible geometries? AI sometimes creates surreal inconsistencies.",
+  points: 150
+},
+
+ {
+  id: 44,
+  room: 6,
+  character: "ETHICS EDGAR",
+  type: "image",
+  imagePath: "/images/image1063.webp",
+  isAiGenerated: true,
+  question: "Final image challenge! Can you identify this one?",
+  options: ["AI Generated", "Real Photograph"],
+  correct: 0,
+  explanation: "AI-generated! Look for subtle artifacts around complex objects. AI blends and hallucinates details.",
+  points: 150
+},
     ],
 
     player2: [
