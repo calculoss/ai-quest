@@ -199,19 +199,19 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <div className="box-label border-box border-box-amber mt-2 mb-2">
               <p className="retro-font">DATA PROCESSING DEPT - 1989</p>
-              <p className="retro-font">TRAINING MATERIALS</p>
+              <p className="retro-font">STAFF QUIZ GAME</p>
             </div>
             
-            <p>Inside: Dot matrix printouts, a yellowed training manual, and three 5.25" floppy disks in paper sleeves.</p>
+            <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
             
             <p className="mt-2">The disk labels read:</p>
             
             <div className="disk-label border-box mt-2 mb-2">
               <p className="retro-font text-amber">LAKE MACQUARIE CITY COUNCIL</p>
-              <p>COMPUTER LITERACY TRAINING SYSTEM</p>
+              <p>AI KNOWLEDGE CHALLENGE</p>
               <p>Electronic Data Processing Dept</p>
               <p>Version 1.2 - September 1989</p>
-              <p className="mt-2">⚠️ DO NOT ERASE - TRAINING DATA</p>
+              <p className="mt-2">⚠️ DO NOT ERASE - GAME DATA</p>
             </div>
             
             <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
@@ -260,13 +260,13 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               <p className="retro-font text-amber mt-2">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</p>
               <p className="retro-font mt-2">LAKE MACQUARIE CITY COUNCIL</p>
               <p>Electronic Data Processing Department</p>
-              <p className="mt-2 retro-font">TRAINING PROGRAMME v1.2</p>
+              <p className="mt-2 retro-font">AI KNOWLEDGE CHALLENGE v1.2</p>
               <p>September 1989</p>
               <p className="retro-font mt-2">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</p>
               
-              <p className="mt-3">INITIALISING SYSTEM PROTOCOLS...</p>
-              <p>LOADING TRAINING MODULES...</p>
-              <p>PREPARING ASSESSMENT DATABASE...</p>
+              <p className="mt-3">INITIALISING GAME SYSTEM...</p>
+              <p>LOADING QUIZ MODULES...</p>
+              <p>PREPARING LEADERBOARD DATABASE...</p>
               
               <p className="text-amber mt-3 retro-font">READY.</p>
             </div>
@@ -308,30 +308,32 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <p className="mt-2">You're probably working with technology that would seem like science fiction to us - perhaps computers that fit in your pocket, or global networks connecting everyone instantly.</p>
             
-            <p className="mt-2">We're just beginning to experiment with something called "Expert Systems" - computers that can make decisions using programmed rules. Some call it "Artificial Intelligence," though I'm not sure about that name.</p>
+            <p className="mt-2">We created this AI Knowledge Challenge for our staff to learn about "Expert Systems" - computers that can make decisions using programmed rules. Some call it "Artificial Intelligence," though I'm not sure about that name.</p>
             
-            <p className="mt-2"><strong>But here's what I want you to understand:</strong></p>
+            <p className="mt-2"><strong>But here's what I hope you discover:</strong></p>
             
-            <p className="mt-2">The PRINCIPLES we're teaching in this training programme - logic, ethics, data integrity, transparency, human oversight, responsible use - these will never change.</p>
+            <p className="mt-2">The PRINCIPLES behind responsible computing - logic, ethics, data integrity, transparency, human oversight - these don't change.</p>
             
             <p className="mt-2">Whether you're working with our 1989 mainframe or your future AI systems, these fundamentals remain the same.</p>
             
-            <p className="mt-2">Complete this training to understand where your modern systems came from. Learn from our mistakes and our successes. The more things change, the more they stay the same.</p>
+            <p className="mt-2">This quiz was designed to help our staff think about these principles through practical scenarios. It seems to have worked - we got great feedback!</p>
             
-            <p className="mt-2">Throughout the programme, you'll see notes bridging our 1989 concepts to your 2025 reality. Pay attention to them. History repeats, and the lessons are timeless.</p>
+            <p className="mt-2">Take the challenge. Test your AI knowledge against what we knew in 1989. You might be surprised how relevant these questions still are.</p>
             
-            <p className="mt-2"><strong>Good luck on your quest!</strong></p>
+            <p className="mt-2">Throughout the quiz, you'll see notes connecting our 1989 thinking to your 2025 reality. Pay attention to them. History repeats, and the lessons are timeless.</p>
+            
+            <p className="mt-2"><strong>Good luck beating the leaderboard!</strong></p>
             
             <p className="mt-3">J. Thompson<br/>
             Systems Manager<br/>
             Electronic Data Processing Department<br/>
             Lake Macquarie City Council</p>
             
-            <p className="mt-2" style={{ fontSize: '14px' }}><em>P.S. - If our council's AI systems are running smoothly in your time, we did something right. If they're causing problems... well, hopefully this training helps you understand why.</em></p>
+            <p className="mt-2" style={{ fontSize: '14px' }}><em>P.S. - If you're playing this in 2025 and council's AI systems are running smoothly, we did something right. If they're causing problems... well, hopefully this quiz helps you understand why!</em></p>
           </div>
           
           <div className="border-box border-box-amber mt-3 text-center">
-            <p className="mt-2 mb-2">You are about to begin the 1989 Computer Services Cadet training programme.</p>
+            <p className="mt-2 mb-2">You are about to play the 1989 AI Knowledge Challenge.</p>
             <p className="mb-2">Your progress is being tracked with access code: <span className="text-amber retro-font">{playerData.accessCode}</span></p>
           </div>
           
@@ -340,7 +342,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('entering')}
             >
-              [Press ENTER to begin the 1989 training]
+              [Press ENTER to start the challenge]
             </button>
           </div>
         </div>
@@ -358,7 +360,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <div className="loading-checklist mt-3">
               <p>Initialising mainframe connection... <span className="text-amber">[ OK ]</span></p>
               <p>Loading building layout... <span className="text-amber">[ OK ]</span></p>
-              <p>Preparing staff interactions... <span className="text-amber">[ OK ]</span></p>
+              <p>Preparing quiz questions... <span className="text-amber">[ OK ]</span></p>
               <p>Setting date to 15 September 1989... <span className="text-amber">[ OK ]</span></p>
             </div>
             
@@ -373,23 +375,22 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               <p className="mt-3 retro-font text-amber">15 SEPTEMBER 1989</p>
               <p className="retro-font text-amber">0900 HOURS</p>
               
-              <p className="mt-3">You are a new <strong>Computer Services Cadet</strong>.</p>
+              <p className="mt-3">You're playing as a <strong>Computer Services Cadet</strong> on your first day.</p>
               
-              <p className="mt-2">Today is your first day in the Electronic Data Processing Department.</p>
+              <p className="mt-2">Your challenge: Navigate through council departments, meeting staff and answering questions about the new "Expert System" technology.</p>
               
-              <p className="mt-2">Your task: Complete the training programme, learning about the council's new computer systems and the "Expert System" pilot project.</p>
+              <p className="mt-2">Get questions right to score points. Move fast to beat the leaderboard!</p>
               
-              <p className="mt-3 text-amber">Report to RECEPTION for your security pass.</p>
+              <p className="mt-3 text-amber">Start at RECEPTION to begin your quest.</p>
             </div>
           </div>
           
           <div className="border-box mt-3 note-2025">
             <p className="retro-font text-amber">NOTE FROM 2025:</p>
             <hr className="mt-1 mb-1" style={{ borderColor: '#00ff00' }} />
-            <p>You're about to experience council computing from 1989.</p>
-            <p className="mt-2">Pay attention to the PRINCIPLES they teach, not just the specific technologies. These fundamentals evolved into the AI governance you work with today.</p>
-            <p className="mt-2">After each room, you'll see how 1989 concepts connect to 2025 AI applications. This isn't just history - it's understanding the foundation of modern AI systems.</p>
-            <p className="mt-2"><strong>Ready? Let's step back in time...</strong></p>
+            <p>This 1989 quiz asks about "Expert Systems" - the AI of that era.</p>
+            <p className="mt-2">After each question, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles haven't changed.</p>
+            <p className="mt-2"><strong>Ready to see how much (or how little) has changed? Let's go!</strong></p>
           </div>
           
           <div className="text-center mt-3">
@@ -397,7 +398,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('playing')}
             >
-              [Press ENTER to begin your 1989 training]
+              [Press ENTER to start the quiz]
             </button>
           </div>
         </div>
