@@ -216,23 +216,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
         <div className="mt-2">
           <div className="border-box">
             <p className="retro-font mb-2">{currentRoom.character} ASKS:</p>
-            
-            {/* Display image if this is an image question */}
-            {currentQuestion.type === 'image' && currentQuestion.imagePath && (
-              <div className="question-image-container">
-                <img 
-                  src={currentQuestion.imagePath}
-                  alt="Question image - Is it AI-generated or real?"
-                  className="question-image"
-                  onError={(e) => {
-                    console.error('Image failed to load:', currentQuestion.imagePath);
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="image-error">⚠️ Image not found - check console</div>';
-                  }}
-                />
-              </div>
-            )}
-            
             <p className="mb-2">{currentQuestion.question}</p>
             
             <ul className="option-list mt-2">

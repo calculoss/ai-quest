@@ -709,6 +709,47 @@ body {
                 inset 0 0 40px rgba(255, 149, 0, 0.2);
   }
 }
+/* Image Question Styling */
+.question-image-container {
+  margin: 20px auto;
+  padding: 15px;
+  background: #000000;
+  border: 3px solid #00ff00;
+  max-width: 600px;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 0, 0.4),
+    inset 0 0 30px rgba(0, 255, 0, 0.1);
+}
+
+.question-image {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #00ff00;
+  filter: contrast(1.05) brightness(0.98);
+}
+
+.image-error {
+  padding: 40px;
+  text-align: center;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 1.1em;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .question-image-container {
+    margin: 15px 10px;
+    padding: 10px;
+  }
+  
+  .question-image {
+    max-width: 100%;
+  }
+}
 
 /* ============================================
    USAGE NOTES
