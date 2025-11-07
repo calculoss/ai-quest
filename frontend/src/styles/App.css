@@ -1,232 +1,481 @@
 /* ============================================
-   NUCLEAR OPTION - REMOVE ALL DISTORTION
-   Add this to the VERY TOP of your App.css
-   This overrides everything with !important
+   AI QUEST - COMPLETE APP.CSS
+   Full game styling WITHOUT distortion effects
    ============================================ */
 
 /* ============================================
-   STEP 1: Remove ALL pseudo-element overlays
+   GLOBAL STYLES
    ============================================ */
 
-/* Remove scanlines and overlays from EVERYTHING */
-*::before,
-*::after {
-  background: none !important;
-  background-image: none !important;
-}
-
-/* Specifically target common overlay classes */
-body::before,
-body::after,
-.App::before,
-.App::after,
-.game-container::before,
-.game-container::after,
-.border-box::before,
-.border-box::after,
-.question-image::before,
-.question-image::after,
-.question-image-container::before,
-.question-image-container::after {
-  display: none !important;
-  content: none !important;
-  opacity: 0 !important;
-}
-
-/* ============================================
-   STEP 2: Remove ALL filters and effects
-   ============================================ */
-
-/* Remove all blur, contrast, brightness filters */
 * {
-  filter: none !important;
-  backdrop-filter: none !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Specifically ensure images are crystal clear */
-img,
-.question-image,
-.question-image-container img {
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-filter: none !important;
+body {
+  background-color: #000000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* ============================================
-   STEP 3: Remove ALL text shadows and glows
-   ============================================ */
-
-/* Remove text shadows that cause blur */
-* {
-  text-shadow: none !important;
-}
-
-p, span, div, h1, h2, h3, h4, h5, h6, button, li, a {
-  text-shadow: none !important;
+.App {
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* ============================================
-   STEP 4: Ensure sharp text rendering
+   RETRO FONT STYLING
    ============================================ */
 
-/* Force sharp, clear text */
-body,
-* {
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-  font-smooth: always !important;
+.retro-font {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 /* ============================================
-   STEP 5: Clean image container styling
+   TEXT COLORS
    ============================================ */
 
-/* Image container - clean and simple */
+.text-green {
+  color: #00ff00;
+}
+
+.text-amber {
+  color: #ffaa00;
+}
+
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 24px;
+}
+
+.loading::after {
+  content: '...';
+  animation: ellipsis 1.5s infinite;
+}
+
+@keyframes ellipsis {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+/* ============================================
+   TITLE SCREEN
+   ============================================ */
+
+.title-screen {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.game-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #00ff00;
+  text-shadow: 0 0 10px #00ff00;
+}
+
+.game-subtitle {
+  font-size: 18px;
+  margin-bottom: 40px;
+  color: #00ff00;
+}
+
+.arcade-text {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #ffaa00;
+}
+
+/* ============================================
+   BORDER BOXES
+   ============================================ */
+
+.border-box {
+  border: 2px solid #00ff00;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.border-box-amber {
+  border-color: #ffaa00;
+  background-color: rgba(255, 170, 0, 0.05);
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.retro-button {
+  background-color: transparent;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 12px 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  margin: 5px;
+  display: inline-block;
+  width: 100%;
+  max-width: 300px;
+}
+
+.retro-button:hover {
+  background-color: #00ff00;
+  color: #000000;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.retro-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.retro-button-amber {
+  color: #ffaa00;
+  border-color: #ffaa00;
+}
+
+.retro-button-amber:hover {
+  background-color: #ffaa00;
+  color: #000000;
+  box-shadow: 0 0 10px #ffaa00;
+}
+
+/* ============================================
+   INPUT FIELDS
+   ============================================ */
+
+.retro-input {
+  background-color: #000000;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+
+.retro-input:focus {
+  outline: none;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progress-bar {
+  width: 100%;
+  height: 30px;
+  border: 2px solid #00ff00;
+  background-color: #000000;
+  margin: 10px 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #00ff00;
+  transition: width 0.3s ease;
+}
+
+/* ============================================
+   QUESTION OPTIONS
+   ============================================ */
+
+.option-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.option-item {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 2px solid #00ff00;
+  padding: 15px;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option-item:hover {
+  background-color: rgba(0, 255, 0, 0.2);
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.option-item.selected {
+  background-color: rgba(0, 255, 0, 0.3);
+  border-color: #ffaa00;
+}
+
+.option-item.correct {
+  background-color: rgba(0, 255, 0, 0.4);
+  border-color: #00ff00;
+  box-shadow: 0 0 15px #00ff00;
+}
+
+.option-item.incorrect {
+  background-color: rgba(255, 0, 0, 0.3);
+  border-color: #ff0000;
+}
+
+/* ============================================
+   IMAGE QUESTIONS - CLEAN VERSION
+   ============================================ */
+
 .question-image-container {
-  margin: 20px auto !important;
-  padding: 15px !important;
-  background: #000000 !important;
-  border: 3px solid #00ff00 !important;
-  max-width: 600px !important;
-  box-shadow: none !important;
-  position: relative !important;
+  margin: 20px auto;
+  padding: 15px;
+  background: #000000;
+  border: 3px solid #00ff00;
+  max-width: 600px;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
 }
 
-/* The image itself - MAXIMUM CLARITY */
 .question-image {
-  width: 100% !important;
-  max-width: 550px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-  border: 2px solid #00ff00 !important;
-  
-  /* Force sharp rendering */
-  filter: none !important;
-  backdrop-filter: none !important;
-  image-rendering: crisp-edges !important;
-  image-rendering: -webkit-optimize-contrast !important;
-  -webkit-backface-visibility: hidden !important;
-  transform: translateZ(0) !important;
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid #00ff00;
+  /* NO FILTERS - CLEAN AND CLEAR */
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.image-error {
+  padding: 40px;
+  text-align: center;
+  color: #00ff00;
+  font-size: 1.1em;
+  background: #0a0a0a;
+  border: 2px dashed #00ff00;
 }
 
 /* ============================================
-   STEP 6: Remove ANY animation effects
+   LEADERBOARD
    ============================================ */
 
-/* Stop all animations that might cause distortion */
-.question-image-container,
-.question-image {
-  animation: none !important;
-  transition: none !important;
+.leaderboard-container {
+  max-width: 600px;
+  margin: 20px auto;
 }
 
-/* Remove hover effects */
-.question-image-container:hover {
-  animation: none !important;
-  box-shadow: none !important;
+.leaderboard-title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffaa00;
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #00ff00;
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.leaderboard-rank {
+  color: #ffaa00;
+  font-weight: bold;
+  min-width: 50px;
+}
+
+.leaderboard-initials {
+  flex: 1;
+  text-align: center;
+}
+
+.leaderboard-score {
+  min-width: 100px;
+  text-align: right;
 }
 
 /* ============================================
-   STEP 7: Remove common scanline classes
+   MODAL / CHAT
    ============================================ */
 
-/* If you have these classes, disable them */
-.scanlines,
-.scanline,
-.scanline-overlay,
-.crt-effect,
-.crt-overlay,
-.vhs-effect,
-.noise-overlay,
-.grain-effect,
-.retro-overlay {
-  display: none !important;
-  opacity: 0 !important;
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #000000;
+  border: 3px solid #00ff00;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffaa00;
+}
+
+.chat-message {
+  margin: 15px 0;
+  padding: 10px;
+  border-left: 3px solid #00ff00;
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.chat-input {
+  width: 100%;
+  background-color: #000000;
+  color: #00ff00;
+  border: 2px solid #00ff00;
+  padding: 10px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  margin: 10px 0;
 }
 
 /* ============================================
-   STEP 8: Clean text rendering site-wide
+   UTILITY CLASSES
    ============================================ */
 
-/* Ensure all text is readable */
-.border-box,
-.border-box *,
-.option-list,
-.option-list *,
-.retro-font,
-p, span, div {
-  filter: none !important;
-  text-shadow: none !important;
-  backdrop-filter: none !important;
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 10px;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.mb-1 {
+  margin-bottom: 10px;
+}
+
+.mb-2 {
+  margin-bottom: 20px;
 }
 
 /* ============================================
-   STEP 9: Remove opacity effects
-   ============================================ */
-
-/* Ensure nothing is semi-transparent causing blur */
-.question-text,
-.option-item,
-p {
-  opacity: 1 !important;
-}
-
-/* ============================================
-   STEP 10: Mobile responsive (clean version)
+   RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 768px) {
-  .question-image-container {
-    margin: 15px 5px !important;
-    padding: 10px !important;
-    max-width: 100% !important;
+  .game-title {
+    font-size: 32px;
   }
-  
-  .question-image {
-    max-width: 100% !important;
+
+  .retro-button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .question-image-container {
+    margin: 15px 5px;
+    padding: 10px;
+  }
+
+  .modal-content {
+    padding: 20px;
+    width: 95%;
   }
 }
 
 /* ============================================
-   DEBUGGING HELP
+   ANIMATIONS
    ============================================ */
 
-/* 
-   If this STILL doesn't work, open browser DevTools (F12):
-   
-   1. Right-click on a distorted image
-   2. Click "Inspect"
-   3. Look in the "Computed" tab
-   4. Search for:
-      - filter
-      - backdrop-filter
-      - opacity
-      - text-shadow
-      - background (on ::before or ::after)
-   
-   5. Find which CSS rule is applying the effect
-   6. Tell me the class name and I'll override it specifically
-*/
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #00ff00;
+  }
+  50% {
+    box-shadow: 0 0 20px #00ff00;
+  }
+}
 
 /* ============================================
-   INSTRUCTIONS FOR USE
+   PRINT STYLES
    ============================================ */
 
-/*
-   1. Copy ALL of this CSS
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .border-box {
+    border-color: black;
+  }
+
+  .retro-button,
+  .modal-overlay {
+    display: none;
+  }
+}
+
+/* ============================================
+   NO DISTORTION EFFECTS
+   All scanlines, filters, and overlays removed
+   ============================================ */
+
+/* This CSS has:
+   ✅ All game styling (borders, buttons, colors)
+   ✅ Retro aesthetic (green terminal theme)
+   ✅ Responsive design
+   ✅ Clear, readable text
+   ✅ Sharp, clear images
    
-   2. Open your App.css file
-   
-   3. Paste this at the VERY TOP (before anything else)
-   
-   4. Save the file
-   
-   5. Hard refresh your browser:
-      - Windows/Linux: Ctrl + Shift + R
-      - Mac: Cmd + Shift + R
-   
-   6. If STILL distorted, we need to look at your actual App.css
-      to find what specific effect is being applied
+   ❌ NO scanlines
+   ❌ NO filters/blur
+   ❌ NO pseudo-element overlays
+   ❌ NO distortion effects
 */
