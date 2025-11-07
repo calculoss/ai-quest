@@ -462,23 +462,25 @@ body {
   }
 }
 /* ============================================
-   TIME CAPSULE INTRO SEQUENCE STYLES
-   Add these to your existing App.css
+   TIME CAPSULE INTRO SEQUENCE STYLES - IMPROVED
+   Replace the previous intro CSS with this version
    ============================================ */
 
-/* Intro Sequence Container */
+/* Intro Sequence Container - Better screen usage */
 .intro-sequence {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
+  width: 100%;
+  padding: 2rem 1rem;
   background: #0a0a0a;
+  overflow-y: auto; /* Allow scrolling if needed */
+  display: block; /* Changed from flex to prevent centering issues */
 }
 
 .intro-content {
-  max-width: 800px;
-  width: 100%;
+  max-width: 1200px; /* Increased from 800px */
+  width: 95%; /* Use more of the screen */
+  margin: 0 auto;
+  padding-bottom: 2rem; /* Ensure bottom content is visible */
 }
 
 .intro-header {
@@ -489,6 +491,7 @@ body {
 .intro-header h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+  color: #ff9500; /* Amber color to match your theme */
 }
 
 .intro-header h2 {
@@ -506,6 +509,7 @@ body {
 .story-text {
   line-height: 1.8;
   font-size: 1.1rem;
+  max-width: 100%; /* Use full width */
 }
 
 .story-text p {
@@ -520,11 +524,14 @@ body {
 .box-label {
   padding: 1.5rem;
   text-align: center;
-  background: rgba(0, 255, 0, 0.1);
+  background: rgba(255, 149, 0, 0.1); /* Amber tint */
+  border: 2px solid #ff9500;
+  margin: 1rem 0;
 }
 
 .box-label p {
   margin: 0.3rem 0;
+  color: #ff9500;
 }
 
 /* Disk Label */
@@ -533,6 +540,7 @@ body {
   text-align: center;
   background: #1a1a1a;
   border: 2px solid #00ff00;
+  margin: 1rem 0;
 }
 
 .disk-label p {
@@ -552,6 +560,7 @@ body {
   background: #1a1a1a;
   border: 2px solid #00ff00;
   overflow: hidden;
+  position: relative;
 }
 
 .loading-progress .progress-fill {
@@ -567,6 +576,7 @@ body {
   font-family: 'Courier New', monospace;
   font-size: 1rem;
   line-height: 1.4;
+  margin: 1rem 0;
 }
 
 .dos-screen p {
@@ -588,6 +598,10 @@ body {
   padding: 2rem;
   line-height: 1.7;
   font-size: 1rem;
+  border: 2px solid #00ff00;
+  margin: 1rem 0;
+  max-height: none; /* Remove any height constraints */
+  overflow: visible; /* Ensure all content shows */
 }
 
 .memo p {
@@ -608,13 +622,15 @@ body {
 .loading-checklist {
   text-align: left;
   margin: 2rem auto;
-  max-width: 500px;
+  max-width: 600px;
+  width: 100%;
 }
 
 .loading-checklist p {
   margin: 0.5rem 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* Note from 2025 box */
@@ -622,16 +638,42 @@ body {
   background: rgba(0, 255, 0, 0.05);
   border: 2px dashed #00ff00;
   padding: 1.5rem;
+  margin: 1rem 0;
 }
 
 .note-2025 p {
   margin: 0.5rem 0;
 }
 
+/* Buttons in intro - make them more visible */
+.intro-sequence .retro-button {
+  min-width: 250px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  margin: 1rem auto;
+  display: block;
+}
+
+.intro-sequence .retro-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+/* Ensure buttons are always visible */
+.text-center {
+  text-align: center;
+  padding: 1rem 0;
+}
+
 /* Responsive adjustments for intro */
 @media (max-width: 768px) {
   .intro-sequence {
-    padding: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  
+  .intro-content {
+    width: 98%;
+    padding: 0.5rem;
   }
   
   .intro-header h1 {
@@ -640,6 +682,7 @@ body {
   
   .story-text {
     font-size: 1rem;
+    line-height: 1.6;
   }
   
   .memo {
@@ -651,6 +694,27 @@ body {
   .disk-label {
     padding: 1rem;
     font-size: 0.9rem;
+  }
+  
+  .intro-sequence .retro-button {
+    min-width: 200px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-header h1 {
+    font-size: 1.2rem;
+  }
+  
+  .story-text {
+    font-size: 0.9rem;
+  }
+  
+  .memo {
+    padding: 0.8rem;
+    font-size: 0.85rem;
   }
 }
 
@@ -668,7 +732,8 @@ body {
   }
 }
 
-/* Add a subtle CRT flicker effect to intro screens (optional) */
+/* Remove the CRT overlay if it's causing issues */
+/* Comment out or remove this if you want cleaner display
 .intro-sequence::before {
   content: '';
   position: absolute;
@@ -684,26 +749,53 @@ body {
   pointer-events: none;
   opacity: 0.1;
 }
+*/
 
-/* Make buttons more prominent in intro */
-.intro-sequence .retro-button {
-  min-width: 300px;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-}
-
-.intro-sequence .retro-button:hover {
-  transform: scale(1.05);
-  transition: transform 0.2s;
-}
-
-/* Ensure good spacing */
+/* Utility spacing classes - ensure these exist */
 .mt-1 { margin-top: 0.5rem; }
 .mt-2 { margin-top: 1rem; }
 .mt-3 { margin-top: 1.5rem; }
 .mb-1 { margin-bottom: 0.5rem; }
 .mb-2 { margin-bottom: 1rem; }
 .mb-3 { margin-bottom: 1.5rem; }
+
+/* Ensure text color is visible */
+.intro-sequence {
+  color: #00ff00;
+}
+
+.intro-sequence .text-amber {
+  color: #ff9500 !important;
+}
+
+/* Make sure border boxes work in intro */
+.intro-sequence .border-box {
+  border: 2px solid #00ff00;
+  padding: 1rem;
+  margin: 1rem 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.intro-sequence .border-box-amber {
+  border-color: #ff9500;
+}
+
+.intro-sequence .retro-font {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+/* Fix for very long content */
+.intro-sequence,
+.intro-content {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-y: auto; /* Allow vertical scroll */
+}
+
+/* Ensure everything is readable */
+.intro-sequence * {
+  box-sizing: border-box;
+}
 /* ============================================
    NO DISTORTION EFFECTS
    All scanlines, filters, and overlays removed
