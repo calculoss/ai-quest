@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ChatModal from './ChatModal';
 
 const API_URL = process.env.REACT_APP_API_URL || '/api';
@@ -21,21 +21,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
          !progress.questionsAnswered.find(qa => qa.id === q.id)
   );
 
-  useEffect(() => {
-    if (roomQuestions.length > 0 && !currentQuestion) {
-      setCurrentQuestion(roomQuestions[0]);
-    }
-  }, [roomQuestions, currentQuestion]);
-
-  // Auto-save progress every 30 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      saveProgress();
-    }, 30000);
-    return () => clearInterval(interval);
-  }, [progress]);
-
-  const saveProgress = async () => {
+  const saveProgress = useCallback(async () => {
     try {
       await fetch(`${API_URL}/save`, {
         method: 'POST',
@@ -51,7 +37,21 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     } catch (error) {
       console.error('Failed to save progress:', error);
     }
-  };
+  }, [progress, playerData.playerId]);
+
+  useEffect(() => {
+    if (roomQuestions.length > 0 && !currentQuestion) {
+      setCurrentQuestion(roomQuestions[0]);
+    }
+  }, [roomQuestions, currentQuestion]);
+
+  // Auto-save progress every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      saveProgress();
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [saveProgress]);
 
   const handleAnswerSelect = (index) => {
     if (!showResult) {
@@ -216,6 +216,23 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
         <div className="mt-2">
           <div className="border-box">
             <p className="retro-font mb-2">{currentRoom.character} ASKS:</p>
+            
+            {/* Display image if this is an image question */}
+            {currentQuestion.type === 'image' && currentQuestion.imagePath && (
+              <div className="question-image-container">
+                <img 
+                  src={currentQuestion.imagePath}
+                  alt="Question image - Is it AI-generated or real?"
+                  className="question-image"
+                  onError={(e) => {
+                    console.error('Image failed to load:', currentQuestion.imagePath);
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<div class="image-error">⚠️ Image not found - check console</div>';
+                  }}
+                />
+              </div>
+            )}
+            
             <p className="mb-2">{currentQuestion.question}</p>
             
             <ul className="option-list mt-2">
