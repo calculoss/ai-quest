@@ -122,7 +122,7 @@ Mail sorting racks line the walls. A computer terminal displays the C.H.A.T. sys
 The executive suite. A large mahogany desk. Windows overlook King Street Newcastle. Photos of council projects line the walls - the new library, road construction, community centres.`,
     exits: []
   }
-];
+],
 
 
   questions: {
