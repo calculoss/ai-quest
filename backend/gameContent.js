@@ -1410,7 +1410,7 @@ Welcome to the future of council operations."`,
 
 [Returning to 2025...]`
   }
-};
+}
 };
 
 module.exports = gameContent;
