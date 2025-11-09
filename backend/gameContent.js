@@ -4,72 +4,125 @@ const gameContent = {
 // Updated Game Content - 1980s Lake Macquarie City Council Theme
 // Replace the rooms array in your gameContent.js with this
 
-  rooms: [
-    {
-      id: 1,
-      name: "RECEPTION",
-      description: "You stand in the reception area of Lake Macquarie City Council. Wood-panelled walls display community notices. A bulky IBM terminal glows green on the curved desk. RECEPTIONIST RITA adjusts her headset, the switchboard blinking behind her.",
-      background: "lobby",
-      character: "RITA",
-      exits: ["CAFETERIA", "MAINFRAME ROOM"]
-    },
-    {
-      id: 2,
-      name: "CAFETERIA",
-      description: "The staff cafeteria smells of instant coffee and lamingtons. A vintage pie warmer hums in the corner. COUNCIL STAFF huddle around a table discussing the new computer system over their smoko break. A Newcastle Herald lies open on the counter.",
-      background: "breakroom",
-      character: "EMPLOYEES",
-      exits: ["RECEPTION", "MAINFRAME ROOM"]
-    },
-    {
-      id: 3,
-      name: "MAINFRAME ROOM",
-      description: "The council's computing heart - a magnificent IBM System/36 mainframe fills half the room, tape drives whirring. THE SYSTEMS ADMIN monitors blinking lights and adjusts dials. The air conditioning battles against the heat. A sign warns: 'AUTHORISED PERSONNEL ONLY'.",
-      background: "lab",
-      character: "SYSTEMS ADMIN",
-      exits: ["RECEPTION", "MAP ROOM"]
-    },
-    {
-      id: 4,
-      name: "MAP ROOM",
-      description: "Floor-to-ceiling cabinets hold yellowed planning maps and blueprints of Lake Macquarie. THE PLANNING OFFICER hunches over a drafting table, calculator and ruler in hand. A massive wall map shows every suburb from Swansea to Morisset. Microfiche readers line one wall.",
-      background: "server",
-      character: "PLANNING OFFICER",
-      exits: ["MAINFRAME ROOM", "COMMUNICATIONS"]
-    },
-    {
-      id: 5,
-      name: "COMMUNICATIONS",
-      description: "Posters promoting council services cover the walls - 'Rates Due March 31!' and 'Report Potholes Here'. THE COMMS OFFICER reviews draft press releases on a word processor. A Gestetner duplicator sits ready to run off copies for the local papers.",
-      background: "marketing",
-      character: "COMMS OFFICER",
-      exits: ["MAP ROOM", "GOVERNANCE"]
-    },
-    {
-      id: 6,
-      name: "GOVERNANCE",
-      description: "A quiet office lined with binders labelled 'Local Government Act 1919' and council policies. THE GOVERNANCE OFFICER reviews bylaws and regulations, ensuring everything follows proper procedure. A framed photo of the Premier hangs on the wall. 'Serving the Community with Integrity' reads a plaque.",
-      background: "ethics",
-      character: "GOVERNANCE OFFICER",
-      exits: ["COMMUNICATIONS", "MAIL ROOM"]
-    },
-    {
-      id: 7,
-      name: "MAIL ROOM",
-      description: "The nerve centre of council communications. Pneumatic tubes connect to other departments. Pigeonholes overflow with inter-office memos. C.H.A.T. (Council's Helpful Automated Terminal) sits on a trolley, its green screen offering assistance. Mail stamps and date stampers line the bench.",
-      background: "hallway",
-      character: "C.H.A.T.",
-      exits: ["GOVERNANCE", "GENERAL MANAGER"]
-    },
-    {
-      id: 8,
-      name: "GENERAL MANAGER",
-      description: "The General Manager's office overlooks Lake Macquarie through venetian blinds. A polished jarrah desk holds neat stacks of reports and a heavy Bakelite telephone. THE GENERAL MANAGER's chair slowly turns to face you. Behind them, certificates and civic awards line the wall.",
-      background: "ceo",
-      character: "GENERAL MANAGER",
-      exits: []
-    }
-  ],
+// ============================================
+// ROOM DESCRIPTIONS - Also update these
+// ============================================
+
+// In your rooms array, update the descriptions to include 1989 details:
+
+export const rooms = [
+  {
+    id: 1,
+    name: "Reception",
+    character: "Rita",
+    description: `╔════════════════════════════════════════════════════════╗
+║                    RECEPTION                           ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 0905                    ║
+╚════════════════════════════════════════════════════════╝
+
+Rita's desk is cluttered with manila folders and a daily planner. A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."`,
+    exits: ["Cafeteria", "Mainframe Room"]
+  },
+  
+  {
+    id: 2,
+    name: "Cafeteria",
+    character: "Council Staff",
+    description: `╔════════════════════════════════════════════════════════╗
+║                  STAFF CAFETERIA                       ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1015                    ║
+╚════════════════════════════════════════════════════════╝
+
+Morning tea is in full swing. The smell of Tim Tams and instant coffee fills the air. A radio in the corner plays 2GO.`,
+    exits: ["Reception", "Mainframe Room"]
+  },
+  
+  {
+    id: 3,
+    name: "Mainframe Room",
+    character: "Systems Manager",
+    description: `╔════════════════════════════════════════════════════════╗
+║                  MAINFRAME ROOM                        ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1045                    ║
+╚════════════════════════════════════════════════════════╝
+
+The IBM System/36 mainframe dominates the room. Red and green LEDs blink rhythmically. The temperature is noticeably cold - 18°C exactly.`,
+    exits: ["Cafeteria", "Map Room"]
+  },
+  
+  {
+    id: 4,
+    name: "Map Room",
+    character: "Planning Officer",
+    description: `╔════════════════════════════════════════════════════════╗
+║                    MAP ROOM                            ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1130                    ║
+╚════════════════════════════════════════════════════════╝
+
+Paper maps of Lake Macquarie cover the walls. A new computer sits in the corner running early GIS software - very cutting-edge for 1989.`,
+    exits: ["Mainframe Room", "Communications"]
+  },
+  
+  {
+    id: 5,
+    name: "Communications",
+    character: "Communications Officer",
+    description: `╔════════════════════════════════════════════════════════╗
+║              COMMUNICATIONS DEPARTMENT                 ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1400                    ║
+╚════════════════════════════════════════════════════════╝
+
+Macintosh computers hum quietly. PageMaker templates are open on screen. Draft newsletters are pinned to a corkboard.`,
+    exits: ["Map Room", "Governance"]
+  },
+  
+  {
+    id: 6,
+    name: "Governance",
+    character: "Governance Officer",
+    description: `╔════════════════════════════════════════════════════════╗
+║                 GOVERNANCE OFFICE                      ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1500                    ║
+╚════════════════════════════════════════════════════════╝
+
+Floor-to-ceiling shelves of policy manuals. A copy of the Local Government Act 1919 sits open on the desk. A typewriter clacks in the adjacent office.`,
+    exits: ["Communications", "Mail Room"]
+  },
+  
+  {
+    id: 7,
+    name: "Mail Room",
+    character: "C.H.A.T.",
+    description: `╔════════════════════════════════════════════════════════╗
+║                    MAIL ROOM                           ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1530                    ║
+╚════════════════════════════════════════════════════════╝
+
+Mail sorting racks line the walls. A computer terminal displays the C.H.A.T. system interface. A "BETA TEST IN PROGRESS" sign hangs on the door.`,
+    exits: ["Governance", "General Manager"]
+  },
+  
+  {
+    id: 8,
+    name: "General Manager",
+    character: "General Manager",
+    description: `╔════════════════════════════════════════════════════════╗
+║              GENERAL MANAGER'S OFFICE                  ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1600                    ║
+╚════════════════════════════════════════════════════════╝
+
+The executive suite. A large mahogany desk. Windows overlook King Street Newcastle. Photos of council projects line the walls - the new library, road construction, community centres.`,
+    exits: []
+  }
+];
 
 
   questions: {
@@ -78,7 +131,7 @@ const gameContent = {
       {
         id: 1,
         room: 1,
-        character: "RITA",
+        character: "Rita",
         question: "Welcome! Before we start, what does 'AI' stand for?",
         options: [
           "Automated Intelligence",
@@ -93,7 +146,7 @@ const gameContent = {
       {
         id: 2,
         room: 1,
-        character: "RITA",
+        character: "Rita",
         question: "True or False: AI can think and feel emotions exactly like humans do.",
         options: [
           "True - AI has feelings",
@@ -110,7 +163,7 @@ const gameContent = {
       {
         id: 3,
         room: 2,
-        character: "EMPLOYEES",
+        character: "Council Staff",
         question: "Which of these can AI tools like Copilot help you with at work?",
         options: [
           "Making final decisions on important matters",
@@ -125,7 +178,7 @@ const gameContent = {
       {
         id: 4,
         room: 2,
-        character: "EMPLOYEES",
+        character: "Council Staff",
         question: "What's the best way to get good results from AI?",
         options: [
           "Be vague so AI can be creative",
@@ -142,7 +195,7 @@ const gameContent = {
       {
         id: 5,
         room: 3,
-        character: "DR. NEURON",
+        character: "Systems Manager",
         question: "What's the best description of how AI 'learns'?",
         options: [
           "It downloads new information from the internet in real-time",
@@ -157,7 +210,7 @@ const gameContent = {
       {
         id: 6,
         room: 3,
-        character: "DR. NEURON",
+        character: "Systems Manager",
         question: "Roughly how much text data did large AI models like ChatGPT train on?",
         options: [
           "About 100 websites",
@@ -174,7 +227,7 @@ const gameContent = {
       {
         id: 7,
         room: 4,
-        character: "HACKER HAL",
+        character: "Planning Officer",
         question: "What information should you NEVER put into any AI tool?",
         options: [
           "Questions about your work projects",
@@ -189,7 +242,7 @@ const gameContent = {
       {
         id: 8,
         room: 4,
-        character: "HACKER HAL",
+        character: "Planning Officer",
         question: "What's 'prompt engineering'?",
         options: [
           "A new type of construction work",
@@ -206,7 +259,7 @@ const gameContent = {
       {
         id: 9,
         room: 5,
-        character: "MARKETING MARY",
+        character: "Communications Officer",
         question: "What's one way councils around Australia are using AI?",
         options: [
           "Analyzing community survey responses and feedback",
@@ -221,7 +274,7 @@ const gameContent = {
       {
         id: 10,
         room: 5,
-        character: "MARKETING MARY",
+        character: "Communications Officer",
         question: "In what year did AI first beat a human world champion at chess?",
         options: [
           "1985",
@@ -238,7 +291,7 @@ const gameContent = {
       {
         id: 11,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "What is 'AI bias' and why does it matter for councils?",
         options: [
           "AI's preference for certain computer brands",
@@ -253,7 +306,7 @@ const gameContent = {
       {
         id: 12,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "If AI gives you information, what should you always do?",
         options: [
           "Copy and paste it immediately",
@@ -268,7 +321,7 @@ const gameContent = {
       {
         id: 13,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "When should you mention that AI helped create something?",
         options: [
           "Never - keep it secret",
@@ -317,7 +370,7 @@ const gameContent = {
       {
         id: 16,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "Name one NEW job that exists because of AI:",
         options: [
           "Telephone operator",
@@ -332,7 +385,7 @@ const gameContent = {
       {
         id: 17,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "If AI gives you a wrong answer, whose responsibility is it?",
         options: [
           "Entirely the AI's - it failed",
@@ -347,7 +400,7 @@ const gameContent = {
       {
         id: 18,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "How might AI help council planners in 5 years?",
         options: [
           "Replace all human planners entirely",
@@ -362,7 +415,7 @@ const gameContent = {
       {
         id: 19,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "What's the key difference between AI and traditional automation?",
         options: [
           "There is no difference - same thing",
@@ -377,7 +430,7 @@ const gameContent = {
       {
         id: 20,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "Complete this: 'AI is a tool that works best when...'",
         options: [
           "Left alone to make all decisions independently",
@@ -395,7 +448,7 @@ const gameContent = {
  {
   id: 21,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1057.webp",
   isAiGenerated: true,
@@ -409,7 +462,7 @@ const gameContent = {
  {
   id: 22,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1044.webp",
   isAiGenerated: true,
@@ -423,7 +476,7 @@ const gameContent = {
  {
   id: 23,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1029.webp",
   isAiGenerated: true,
@@ -437,7 +490,7 @@ const gameContent = {
  {
   id: 24,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1028.webp",
   isAiGenerated: true,
@@ -451,7 +504,7 @@ const gameContent = {
  {
   id: 25,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image2030.webp",
   isAiGenerated: false,
@@ -465,7 +518,7 @@ const gameContent = {
  {
   id: 26,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image2000.webp",
   isAiGenerated: false,
@@ -479,7 +532,7 @@ const gameContent = {
  {
   id: 27,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image2038.webp",
   isAiGenerated: false,
@@ -493,7 +546,7 @@ const gameContent = {
  {
   id: 28,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image2007.webp",
   isAiGenerated: false,
@@ -507,7 +560,7 @@ const gameContent = {
  {
   id: 29,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1049.webp",
   isAiGenerated: true,
@@ -521,7 +574,7 @@ const gameContent = {
  {
   id: 30,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1024.webp",
   isAiGenerated: true,
@@ -535,7 +588,7 @@ const gameContent = {
  {
   id: 31,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1061.webp",
   isAiGenerated: true,
@@ -549,7 +602,7 @@ const gameContent = {
 {
   id: 32,
   room: 5,
-  character: "MARKETING MARY",
+  character: "Communications Officer",
   type: "image",
   imagePath: "/images/image1015.webp",
   isAiGenerated: true,
@@ -567,7 +620,7 @@ const gameContent = {
  {
   id: 33,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1031.webp",
   isAiGenerated: true,
@@ -581,7 +634,7 @@ const gameContent = {
  {
   id: 34,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2011.webp",
   isAiGenerated: false,
@@ -595,7 +648,7 @@ const gameContent = {
  {
   id: 35,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2002.webp",
   isAiGenerated: false,
@@ -609,7 +662,7 @@ const gameContent = {
  {
   id: 36,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2005.webp",
   isAiGenerated: false,
@@ -623,7 +676,7 @@ const gameContent = {
  {
   id: 37,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2012.webp",
   isAiGenerated: false,
@@ -637,7 +690,7 @@ const gameContent = {
  {
   id: 38,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1070.webp",
   isAiGenerated: true,
@@ -651,7 +704,7 @@ const gameContent = {
  {
   id: 39,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2025.webp",
   isAiGenerated: false,
@@ -665,7 +718,7 @@ const gameContent = {
  {
   id: 40,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1032.webp",
   isAiGenerated: true,
@@ -679,7 +732,7 @@ const gameContent = {
  {
   id: 41,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image2059.webp",
   isAiGenerated: false,
@@ -693,7 +746,7 @@ const gameContent = {
  {
   id: 42,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1054.webp",
   isAiGenerated: true,
@@ -707,7 +760,7 @@ const gameContent = {
  {
   id: 43,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1047.webp",
   isAiGenerated: true,
@@ -721,7 +774,7 @@ const gameContent = {
  {
   id: 44,
   room: 6,
-  character: "ETHICS EDGAR",
+  character: "Governance Officer",
   type: "image",
   imagePath: "/images/image1063.webp",
   isAiGenerated: true,
@@ -738,7 +791,7 @@ const gameContent = {
       {
         id: 101,
         room: 1,
-        character: "RITA",
+        character: "Rita",
         question: "Which model architecture powers most modern large language models?",
         options: [
           "Convolutional Neural Networks (CNN)",
@@ -753,7 +806,7 @@ const gameContent = {
       {
         id: 102,
         room: 1,
-        character: "RITA",
+        character: "Rita",
         question: "What's a key limitation of current LLMs?",
         options: [
           "They can't generate text longer than 100 words",
@@ -770,7 +823,7 @@ const gameContent = {
       {
         id: 103,
         room: 2,
-        character: "EMPLOYEES",
+        character: "Council Staff",
         question: "What's the primary security concern with prompt injection attacks?",
         options: [
           "Users can extract training data from the model",
@@ -785,7 +838,7 @@ const gameContent = {
       {
         id: 104,
         room: 2,
-        character: "EMPLOYEES",
+        character: "Council Staff",
         question: "Which statement about temperature parameters in LLM APIs is correct?",
         options: [
           "Higher temperature = more deterministic outputs",
@@ -802,7 +855,7 @@ const gameContent = {
       {
         id: 105,
         room: 3,
-        character: "DR. NEURON",
+        character: "Systems Manager",
         question: "In the context of machine learning, what does 'overfitting' mean?",
         options: [
           "Model performs too well on training data but poorly on new data",
@@ -817,7 +870,7 @@ const gameContent = {
       {
         id: 106,
         room: 3,
-        character: "DR. NEURON",
+        character: "Systems Manager",
         question: "What's the primary advantage of few-shot learning over fine-tuning?",
         options: [
           "Few-shot is always more accurate",
@@ -834,7 +887,7 @@ const gameContent = {
       {
         id: 107,
         room: 4,
-        character: "HACKER HAL",
+        character: "Planning Officer",
         question: "Which best describes PII handling when using LLM APIs?",
         options: [
           "All major providers automatically strip PII before processing",
@@ -849,7 +902,7 @@ const gameContent = {
       {
         id: 108,
         room: 4,
-        character: "HACKER HAL",
+        character: "Planning Officer",
         question: "What's a critical production consideration when deploying AI services?",
         options: [
           "Always use the largest model available",
@@ -866,7 +919,7 @@ const gameContent = {
       {
         id: 109,
         room: 5,
-        character: "MARKETING MARY",
+        character: "Communications Officer",
         question: "What's the primary limitation of RAG (Retrieval Augmented Generation)?",
         options: [
           "It can't work with unstructured text data",
@@ -881,7 +934,7 @@ const gameContent = {
       {
         id: 110,
         room: 5,
-        character: "MARKETING MARY",
+        character: "Communications Officer",
         question: "Which vector database consideration is most critical for production RAG systems?",
         options: [
           "Using the highest dimensional embeddings possible",
@@ -898,7 +951,7 @@ const gameContent = {
       {
         id: 111,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "What's a key technical challenge in detecting AI-generated content?",
         options: [
           "AI always leaves obvious artifacts",
@@ -913,7 +966,7 @@ const gameContent = {
       {
         id: 112,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "What's 'alignment' in the context of AI safety?",
         options: [
           "Ensuring GPU clusters are properly configured",
@@ -928,7 +981,7 @@ const gameContent = {
       {
         id: 113,
         room: 6,
-        character: "ETHICS EDGAR",
+        character: "Governance Officer",
         question: "Which statement about bias in AI training data is most accurate?",
         options: [
           "More data always reduces bias",
@@ -977,7 +1030,7 @@ const gameContent = {
       {
         id: 116,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "What's the primary difference between RLHF and supervised fine-tuning?",
         options: [
           "RLHF uses human feedback as a reward signal during training",
@@ -992,7 +1045,7 @@ const gameContent = {
       {
         id: 117,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "Why might smaller, specialized models outperform larger general models?",
         options: [
           "Smaller models are always better",
@@ -1007,7 +1060,7 @@ const gameContent = {
       {
         id: 118,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "What's a critical consideration for AI system observability in production?",
         options: [
           "Only log successful requests",
@@ -1022,7 +1075,7 @@ const gameContent = {
       {
         id: 119,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "What's the main trade-off when choosing context window size?",
         options: [
           "Larger contexts are always better with no downsides",
@@ -1037,7 +1090,7 @@ const gameContent = {
       {
         id: 120,
         room: 8,
-        character: "CEO CYPHER",
+        character: "General Manager",
         question: "What's the most important principle for responsible AI deployment in government?",
         options: [
           "Use the most advanced model available",
@@ -1058,48 +1111,306 @@ const gameContent = {
     ]
   },
 
-  dialogue: {
-    RITA: {
-      intro: "G'day! Welcome to SYNAPSE SYSTEMS INC. You must be the new recruit! Before you explore, I need to test your AI knowledge. Don't worry - if you get stuck, C.H.A.T. can help!",
-      correct: "Brilliant! You're a quick learner!",
-      wrong: "Not quite! Have another go, or ask C.H.A.T. for a hint!"
-    },
-    EMPLOYEES: {
-      intro: "Hey there! We were just discussing AI at work. Want to join the conversation? Answer a question or two!",
-      correct: "Exactly! You get it!",
-      wrong: "Hmm, not quite. Think it through or check with C.H.A.T.!"
-    },
-    "DR. NEURON": {
-      intro: "Ah! A curious mind enters my laboratory! Before you proceed, prove you understand the fundamentals of artificial intelligence!",
-      correct: "Excellent! Your neural pathways are firing correctly!",
-      wrong: "Interesting hypothesis, but incorrect! Recalibrate and try again!"
-    },
-    "HACKER HAL": {
-      intro: "Hold up! The server room isn't for amateurs. Answer this correctly and I'll grant you access.",
-      correct: "Not bad! You've earned passage.",
-      wrong: "Access denied! Try again or talk to C.H.A.T.!"
-    },
-    "MARKETING MARY": {
-      intro: "Perfect timing! I'm preparing a presentation about AI's real-world impact. Help me verify these facts!",
-      correct: "Yes! That's going straight into my presentation!",
-      wrong: "Oops, that won't work! Let me clarify..."
-    },
-    "ETHICS EDGAR": {
-      intro: "Welcome to the Ethics Office. Here we consider AI's impact on society. These questions matter for responsible use.",
-      correct: "Wise answer. You understand the responsibility.",
-      wrong: "Consider the implications more carefully. What does this mean for citizens?"
-    },
-    "C.H.A.T.": {
-      intro: "I am C.H.A.T. - the company's AI system. Ironic that you need to understand AI to reach the CEO who created me. One final test!",
-      correct: "Logical. You may proceed.",
-      wrong: "Error in reasoning. Recalculate."
-    },
-    "CEO CYPHER": {
-      intro: "You've made it to my office. Impressive. But can you truly understand what AI means for our future? These final questions will reveal the truth...",
-      correct: "Fascinating. You truly understand.",
-      wrong: "Interesting perspective, but reconsider..."
-    }
+  // ============================================
+// UPDATED CHARACTER DIALOGUES FOR gameContent.js
+// Copy these into your gameContent.js file
+// ============================================
+
+// Replace your existing "dialogue" object with this:
+
+export const dialogue = {
+  
+  // ROOM 1: RECEPTION - Rita (Data Entry Supervisor)
+  "Rita": {
+    intro: `Rita sits at the reception desk, surrounded by filing cabinets and a green-screen terminal. An IBM Selectric typewriter sits beside a new dot-matrix printer.
+
+Rita: "G'day! You must be the new Computer Services Cadet! Welcome to your first day in the Electronic Data Processing Department.
+
+I'm Rita, Data Entry Supervisor. I've been with council for 15 years - started with punch cards, if you can believe that!
+
+Before I give you your security pass, I need to make sure you understand the basics of our new computer systems. The Systems Manager is very particular about this.
+
+Don't worry - these are straightforward questions about how we use computers here at council."`,
+    
+    correct: "Rita: Excellent! That's exactly right. You've got a good understanding of the fundamentals.",
+    
+    wrong: "Rita: Not quite, love. Have another think about it. The Systems Manager will want you to get this right.",
+    
+    exit: `Rita: "Well done! Here's your security pass. You'll need this to access other departments.
+
+The Staff Cafeteria is just down the hall if you need a cuppa. But your schedule says you should visit the Mainframe Room next to meet the Systems Manager.
+
+Good luck!"
+
+[SECURITY PASS obtained]`
+  },
+
+  // ROOM 2: CAFETERIA - Council Staff
+  "Council Staff": {
+    intro: `The cafeteria smells like instant coffee and lamingtons. Several council workers sit at Formica tables during morning tea break. A Thermos jug and tin of Arnott's Assorted biscuits sit on the counter.
+
+DAVE (Planning): "Another new trainee? They're really pushing this computer thing, aren't they?"
+
+MARGARET (Rates): "I heard they're spending $50,000 on the new mainframe upgrade. That's ratepayers' money!"
+
+FRANK (Assets): "My nephew says these 'Expert Systems' can make decisions on their own. That doesn't sit right with me."
+
+MARGARET: "Exactly! What happens when the computer makes a mistake? Who takes responsibility?"
+
+They notice you listening.
+
+DAVE: "Since you're the computer trainee, maybe you can settle our debate. How are these systems supposed to help council, exactly?"`,
+    
+    correct: "MARGARET: That makes sense. So it's a tool, not a replacement. I suppose that's not so scary.\n\nDAVE: As long as humans are still in charge of the important decisions.",
+    
+    wrong: "FRANK: Hmm, I'm not sure about that. Have another go at explaining it.",
+    
+    exit: `MARGARET: "You know, you've made me feel better about these computers. Here, have a lamington."
+
+DAVE: "Good luck with your training. If these systems help us serve the community better, I'm all for it. Just don't let the machines take over!"
+
+[They all laugh]
+
+FRANK: "Oh, before you go - can you take this coffee to the Systems Manager? He's been in the Mainframe Room since 6 AM and probably hasn't eaten."
+
+[COFFEE obtained]
+[Understanding of AI/human partnership gained]`
+  },
+
+  // ROOM 3: MAINFRAME ROOM - Systems Manager
+  "Systems Manager": {
+    intro: `The room is ice cold - air conditioning necessary for the IBM System/36 mainframe. Tape drives click and whir. Banks of blinking lights. The smell of warm electronics.
+
+The SYSTEMS MANAGER hunches over a terminal, typing commands into a green-screen display. Empty Coke cans litter his desk.
+
+SYSTEMS MANAGER: "Bloody hell, who left the door open? This room needs to stay at 18 degrees or the mainframe overheats!"
+
+[He notices the coffee]
+
+SYSTEMS MANAGER: "Oh, is that for me? Champion. I've been debugging this database routine since dawn."
+
+[He takes a long sip]
+
+SYSTEMS MANAGER: "Right. You're the new cadet. I'm supposed to teach you about the technical side of our systems.
+
+Fair warning: this gets a bit complex. But if you want to understand how these 'Expert Systems' work, you need to understand the fundamentals.
+
+Ready?"`,
+    
+    correct: "SYSTEMS MANAGER: Spot on! You've got a good grasp of the technical concepts. Not bad for a first-day cadet.",
+    
+    wrong: "SYSTEMS MANAGER: Not quite. Think about the logic behind it. Computer systems are all about clear, logical thinking.",
+    
+    exit: `SYSTEMS MANAGER: "Not bad! You've got a decent grasp of the technical concepts. Here's the System Manual - you'll need it to understand the data structures in other departments.
+
+The Planning Officer in the Map Room has been asking for help understanding how our new GIS databases work. You might be able to help her now.
+
+And for god's sake, close the door on your way out!"
+
+[SYSTEM MANUAL obtained]
+[Map Room now accessible]`
+  },
+
+  // ROOM 4: MAP ROOM - Planning Officer
+  "Planning Officer": {
+    intro: `Large paper maps cover every wall. A new digitising tablet sits on a desk next to a computer monitor showing what appears to be a digital map - cutting-edge GIS technology for 1989.
+
+The PLANNING OFFICER looks up from a stack of development applications.
+
+PLANNING OFFICER: "Oh thank goodness! Are you from the EDP Department? I'm drowning in data and I don't understand half of what this new GIS system can do.
+
+We've got 847 development applications from last year alone. The idea is we can use spatial data and the Expert System to help assess them faster.
+
+But I'm worried about privacy. These systems store addresses, property values, personal information...
+
+How do we make sure this data is used responsibly?"`,
+    
+    correct: "PLANNING OFFICER: That's what I thought too. Transparency is important, but so is privacy. It's about finding the balance.",
+    
+    wrong: "PLANNING OFFICER: I don't think that's quite right. Think about the balance between public access and individual privacy.",
+    
+    exit: `PLANNING OFFICER: "You know, you've helped me understand this technology better. It's not about replacing good planning judgement - it's about having better information to support our decisions.
+
+Here, take this Planning Report. It shows how we're using data responsibly. The Communications team might find it useful for explaining this to the public.
+
+Good luck with the rest of your training!"
+
+[PLANNING REPORT obtained]
+[Communications Department now accessible]`
+  },
+
+  // ROOM 5: COMMUNICATIONS DEPARTMENT - Communications Officer
+  "Communications Officer": {
+    intro: `Desktop publishing equipment fills the room - early Mac computers with enormous CRT monitors. Layouts for the council newsletter are spread across desks.
+
+The COMMUNICATIONS OFFICER is working on a press release using MacWrite.
+
+COMMS OFFICER: "Hi! You're the computer trainee, right? Perfect timing. I need help explaining our new computer systems to the public.
+
+Ratepayers are asking questions:
+'Why is council spending money on computers?'
+'Will this affect services?'
+'Is our data safe?'
+
+We need to communicate clearly and honestly about what these systems do and don't do. No jargon, no overselling the technology.
+
+Can you help me fact-check some claims?"`,
+    
+    correct: "COMMS OFFICER: Exactly! Accurate, clear, and doesn't oversell the technology. The public deserves honesty about what these systems can and can't do.",
+    
+    wrong: "COMMS OFFICER: That's not quite right. We need to be more accurate and transparent about the technology's real capabilities.",
+    
+    exit: `COMMS OFFICER: "Brilliant! You understand how to communicate about technology honestly. Here's the Media Kit we're preparing - it includes all the key messages.
+
+You should visit the Governance Office next. They're developing the policy framework for how we use these systems.
+
+That's where the real important work happens!"
+
+[MEDIA KIT obtained]
+[Governance Office now accessible]`
+  },
+
+  // ROOM 6: GOVERNANCE OFFICE - Governance Officer
+  "Governance Officer": {
+    intro: `Shelves of policy manuals and NSW government regulations. A typewriter sits next to stacks of draft policies.
+
+The GOVERNANCE OFFICER looks up from a document titled "Computer Systems Usage Policy - DRAFT."
+
+GOVERNANCE OFFICER: "Ah, you must be the new cadet! Excellent timing. I'm finalising our policies for the Expert System.
+
+We need clear rules about:
+- Who can access what data
+- How decisions are reviewed
+- What happens when systems fail
+- Accountability and responsibility
+
+The technology is new, but good governance principles are timeless.
+
+Let's test your understanding of responsible system use."`,
+    
+    correct: "GOVERNANCE OFFICER: Perfect! Human judgement informed by system analysis. That's the right balance of technology and accountability.",
+    
+    wrong: "GOVERNANCE OFFICER: Not quite. Think about who's ultimately accountable when decisions affect citizens.",
+    
+    exit: `GOVERNANCE OFFICER: "Excellent work. You understand that good governance isn't about blocking innovation - it's about ensuring innovation serves the public good responsibly.
+
+Here's the final Policy Document. You'll need this for your meeting with the General Manager.
+
+But first, stop by the Mail Room. That's where C.H.A.T. is being tested - our experimental Expert System assistant."
+
+[POLICY DOCUMENT obtained]
+[Mail Room now accessible]`
+  },
+
+  // ROOM 7: MAIL ROOM - C.H.A.T. System
+  "C.H.A.T.": {
+    intro: `A computer terminal sits in the corner, connected to the mainframe. A sign reads:
+
+"C.H.A.T. PILOT PROGRAMME
+ Council Helper for Automated Tasks
+ 
+ BETA TEST - SUPERVISED USE ONLY"
+
+The screen displays:
+
+╔════════════════════════════════════════════════════════╗
+║  C.H.A.T. v0.9 Beta                                    ║
+║  Council Helper for Automated Tasks                    ║
+║                                                        ║
+║  This Expert System provides assistance with:          ║
+║  - Document retrieval                                  ║
+║  - Database queries                                    ║
+║  - Policy lookup                                       ║
+║  - Workflow guidance                                   ║
+║                                                        ║
+║  WARNING: This is experimental technology.             ║
+║  Always verify C.H.A.T.'s suggestions with humans.     ║
+╚════════════════════════════════════════════════════════╝
+
+As you approach, C.H.A.T. boots up:
+
+C.H.A.T.: "GREETINGS. I AM C.H.A.T.
+           COUNCIL HELPER FOR AUTOMATED TASKS.
+
+           YOU ARE: COMPUTER SERVICES CADET
+           STATUS: IN TRAINING
+
+           BEFORE YOU PROCEED TO THE GENERAL MANAGER,
+           YOU MUST DEMONSTRATE UNDERSTANDING OF
+           RESPONSIBLE AI IMPLEMENTATION.
+
+           I WILL ASK QUESTIONS. ANSWER CAREFULLY.
+
+           READY?"`,
+    
+    correct: "C.H.A.T.: CORRECT.\n\nAI SYSTEMS LIKE ME ARE TOOLS.\nUSE ME FOR EFFICIENCY.\nBUT VERIFY BEFORE CITIZEN IMPACT.\n\nPROCEEDING TO FINAL ASSESSMENT...",
+    
+    wrong: "C.H.A.T.: INCORRECT.\n\nREVIEW RESPONSIBLE AI PRINCIPLES.\nCONSIDER: ACCOUNTABILITY, TRANSPARENCY, HUMAN OVERSIGHT.\n\nTRY AGAIN.",
+    
+    exit: `C.H.A.T.: "ASSESSMENT COMPLETE.
+
+YOU HAVE DEMONSTRATED:
+✓ UNDERSTANDING OF DATA PROTECTION
+✓ KNOWLEDGE OF SYSTEM CAPABILITIES
+✓ AWARENESS OF PRIVACY CONCERNS
+✓ COMMITMENT TO TRANSPARENCY
+✓ RESPECT FOR HUMAN ACCOUNTABILITY
+✓ RESPONSIBLE AI IMPLEMENTATION
+
+CERTIFICATION: APPROVED
+
+PROCEED TO GENERAL MANAGER'S OFFICE FOR FINAL EVALUATION.
+
+GOOD LUCK, CADET."
+
+[C.H.A.T. CERTIFICATION obtained]
+[General Manager's Office now accessible]`
+  },
+
+  // ROOM 8: GENERAL MANAGER'S OFFICE - General Manager
+  "General Manager": {
+    intro: `The corner office. Large windows overlooking King Street. Framed certificates and photos of council projects on the walls.
+
+The GENERAL MANAGER sits behind a large desk covered with reports and budget documents.
+
+GENERAL MANAGER: "Come in, sit down. I've been following your progress through the departments today.
+
+I've got councillors asking tough questions about our computer spending. Ratepayers worried about privacy. Staff concerned about their jobs.
+
+The Systems Manager says this Expert System technology could revolutionise how we serve the community. The Governance Officer says we need careful controls.
+
+You've been through all the departments. You've learned the technical details and the governance principles.
+
+Now I need YOUR recommendation.
+
+Should Lake Macquarie Council proceed with full implementation of our Expert System programme?"`,
+    
+    correct: `GENERAL MANAGER: "That's exactly what I needed to hear.
+
+Innovation with responsibility.
+Technology in service of community.
+Human judgement supported by systems.
+
+That's how Lake Macquarie Council will approach this technology."
+
+[He signs your completion certificate]
+
+GENERAL MANAGER: "Congratulations, Cadet. You've successfully completed the AI Knowledge Challenge.
+
+The principles you've learned today will serve you well, no matter how technology evolves.
+
+Welcome to the future of council operations."`,
+    
+    wrong: "GENERAL MANAGER: Think more carefully about the balance between innovation and responsibility. What would serve the community best?",
+    
+    exit: `
+╔════════════════════════════════════════════════════════╗
+║          🎊 CHALLENGE COMPLETE - 1989 🎊               ║
+╚════════════════════════════════════════════════════════╝
+
+[Returning to 2025...]`
   }
+};
 };
 
 module.exports = gameContent;
