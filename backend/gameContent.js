@@ -10,7 +10,7 @@ const gameContent = {
 
 // In your rooms array, update the descriptions to include 1989 details:
 
-export const rooms = [
+rooms:[
   {
     id: 1,
     name: "Reception",
