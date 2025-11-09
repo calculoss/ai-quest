@@ -1,14 +1,7 @@
 // Game Content: Rooms, Characters, Questions, and Story
 
 const gameContent = {
-// Updated Game Content - 1980s Lake Macquarie City Council Theme
-// Replace the rooms array in your gameContent.js with this
-
-// ============================================
-// ROOM DESCRIPTIONS - Also update these
-// ============================================
-
-// In your rooms array, update the descriptions to include 1989 details:
+// FIXED ROOM DESCRIPTIONS - Copy these into your gameContent.js
 
 rooms:[
   {
@@ -16,13 +9,14 @@ rooms:[
     name: "Reception",
     character: "Rita",
     description: 
-	    `╔════════════════════════════════════════════════════════╗
-     ║                    RECEPTION                           ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 0905                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                    RECEPTION                           ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 0905                    ║
+╚════════════════════════════════════════════════════════╝
 
-Rita's desk is cluttered with manila folders and a daily planner. A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."`,
+Rita's desk is cluttered with manila folders and a daily planner. 
+A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."`,
     exits: ["Cafeteria", "Mainframe Room"]
   },
   
@@ -31,13 +25,14 @@ Rita's desk is cluttered with manila folders and a daily planner. A sign on the 
     name: "Cafeteria",
     character: "Council Staff",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║                  STAFF CAFETERIA                       ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 1015                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                  STAFF CAFETERIA                       ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1015                    ║
+╚════════════════════════════════════════════════════════╝
 
-Morning tea is in full swing. The smell of Tim Tams and instant coffee fills the air. A radio in the corner plays 2GO.`,
+Morning tea is in full swing. The smell of Tim Tams and instant 
+coffee fills the air. A radio in the corner plays 2GO.`,
     exits: ["Reception", "Mainframe Room"]
   },
   
@@ -46,13 +41,14 @@ Morning tea is in full swing. The smell of Tim Tams and instant coffee fills the
     name: "Mainframe Room",
     character: "Systems Manager",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-	 ║                  MAINFRAME ROOM                        ║
-	 ║              Lake Macquarie Council                    ║
-	 ║             15 September 1989, 1045                    ║
-	 ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                  MAINFRAME ROOM                        ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1045                    ║
+╚════════════════════════════════════════════════════════╝
 
-The IBM System/36 mainframe dominates the room. Red and green LEDs blink rhythmically. The temperature is noticeably cold - 18°C exactly.`,
+The IBM System/36 mainframe dominates the room. Red and green LEDs 
+blink rhythmically. The temperature is noticeably cold - 18°C exactly.`,
     exits: ["Cafeteria", "Map Room"]
   },
   
@@ -61,13 +57,14 @@ The IBM System/36 mainframe dominates the room. Red and green LEDs blink rhythmi
     name: "Map Room",
     character: "Planning Officer",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║                    MAP ROOM                            ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 1130                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                    MAP ROOM                            ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1130                    ║
+╚════════════════════════════════════════════════════════╝
 
-Paper maps of Lake Macquarie cover the walls. A new computer sits in the corner running early GIS software - very cutting-edge for 1989.`,
+Paper maps of Lake Macquarie cover the walls. A new computer sits 
+in the corner running early GIS software - very cutting-edge for 1989.`,
     exits: ["Mainframe Room", "Communications"]
   },
   
@@ -76,13 +73,14 @@ Paper maps of Lake Macquarie cover the walls. A new computer sits in the corner 
     name: "Communications",
     character: "Communications Officer",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║              COMMUNICATIONS DEPARTMENT                 ║
-     ║              Lake Macquarie Council                    ║
-	 ║             15 September 1989, 1400                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║              COMMUNICATIONS DEPARTMENT                 ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1400                    ║
+╚════════════════════════════════════════════════════════╝
 
-Macintosh computers hum quietly. PageMaker templates are open on screen. Draft newsletters are pinned to a corkboard.`,
+Macintosh computers hum quietly. PageMaker templates are open on 
+screen. Draft newsletters are pinned to a corkboard.`,
     exits: ["Map Room", "Governance"]
   },
   
@@ -91,13 +89,15 @@ Macintosh computers hum quietly. PageMaker templates are open on screen. Draft n
     name: "Governance",
     character: "Governance Officer",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║                 GOVERNANCE OFFICE                      ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 1500                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                 GOVERNANCE OFFICE                      ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1500                    ║
+╚════════════════════════════════════════════════════════╝
 
-Floor-to-ceiling shelves of policy manuals. A copy of the Local Government Act 1919 sits open on the desk. A typewriter clacks in the adjacent office.`,
+Floor-to-ceiling shelves of policy manuals. A copy of the Local 
+Government Act 1919 sits open on the desk. A typewriter clacks in 
+the adjacent office.`,
     exits: ["Communications", "Mail Room"]
   },
   
@@ -106,13 +106,15 @@ Floor-to-ceiling shelves of policy manuals. A copy of the Local Government Act 1
     name: "Mail Room",
     character: "C.H.A.T.",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║                    MAIL ROOM                           ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 1530                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║                    MAIL ROOM                           ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1530                    ║
+╚════════════════════════════════════════════════════════╝
 
-Mail sorting racks line the walls. A computer terminal displays the C.H.A.T. system interface. A "BETA TEST IN PROGRESS" sign hangs on the door.`,
+Mail sorting racks line the walls. A computer terminal displays the 
+C.H.A.T. system interface. A "BETA TEST IN PROGRESS" sign hangs on 
+the door.`,
     exits: ["Governance", "General Manager"]
   },
   
@@ -121,15 +123,18 @@ Mail sorting racks line the walls. A computer terminal displays the C.H.A.T. sys
     name: "General Manager",
     character: "General Manager",
     description: 
-	`╔════════════════════════════════════════════════════════╗
-     ║              GENERAL MANAGER'S OFFICE                  ║
-     ║              Lake Macquarie Council                    ║
-     ║             15 September 1989, 1600                    ║
-     ╚════════════════════════════════════════════════════════╝
+`╔════════════════════════════════════════════════════════╗
+║              GENERAL MANAGER'S OFFICE                  ║
+║              Lake Macquarie Council                    ║
+║             15 September 1989, 1600                    ║
+╚════════════════════════════════════════════════════════╝
 
-The executive suite. A large mahogany desk. Windows overlook King Street Newcastle. Photos of council projects line the walls - the new library, road construction, community centres.`,
+The executive suite. A large mahogany desk. Windows overlook King 
+Street Newcastle. Photos of council projects line the walls - the 
+new library, road construction, community centres.`,
     exits: []
   }
+
 ],
 
 

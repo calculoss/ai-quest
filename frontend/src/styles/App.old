@@ -1,232 +1,1135 @@
 /* ============================================
-   NUCLEAR OPTION - REMOVE ALL DISTORTION
-   Add this to the VERY TOP of your App.css
-   This overrides everything with !important
+   AI KNOWLEDGE CHALLENGE - FIXED SCROLLING VERSION
+   All content visible, proper scrolling, readable text
    ============================================ */
 
 /* ============================================
-   STEP 1: Remove ALL pseudo-element overlays
+   CRITICAL FIX: SCROLLING & LAYOUT
    ============================================ */
 
-/* Remove scanlines and overlays from EVERYTHING */
-*::before,
-*::after {
-  background: none !important;
-  background-image: none !important;
-}
-
-/* Specifically target common overlay classes */
-body::before,
-body::after,
-.App::before,
-.App::after,
-.game-container::before,
-.game-container::after,
-.border-box::before,
-.border-box::after,
-.question-image::before,
-.question-image::after,
-.question-image-container::before,
-.question-image-container::after {
-  display: none !important;
-  content: none !important;
-  opacity: 0 !important;
-}
-
-/* ============================================
-   STEP 2: Remove ALL filters and effects
-   ============================================ */
-
-/* Remove all blur, contrast, brightness filters */
 * {
-  filter: none !important;
-  backdrop-filter: none !important;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Specifically ensure images are crystal clear */
-img,
-.question-image,
-.question-image-container img {
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-filter: none !important;
+html {
+  /* Allow natural scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
 }
 
-/* ============================================
-   STEP 3: Remove ALL text shadows and glows
-   ============================================ */
-
-/* Remove text shadows that cause blur */
-* {
-  text-shadow: none !important;
+body {
+  background-color: #000000;
+  color: #00ff00;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px; /* Larger base size for readability */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* CRITICAL: Allow vertical scrolling, prevent horizontal */
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* NO fixed height - let content determine height */
+  min-height: 100vh;
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
-p, span, div, h1, h2, h3, h4, h5, h6, button, li, a {
-  text-shadow: none !important;
-}
-
-/* ============================================
-   STEP 4: Ensure sharp text rendering
-   ============================================ */
-
-/* Force sharp, clear text */
-body,
-* {
-  -webkit-font-smoothing: antialiased !important;
-  -moz-osx-font-smoothing: grayscale !important;
-  text-rendering: optimizeLegibility !important;
-  font-smooth: always !important;
-}
-
-/* ============================================
-   STEP 5: Clean image container styling
-   ============================================ */
-
-/* Image container - clean and simple */
-.question-image-container {
-  margin: 20px auto !important;
-  padding: 15px !important;
-  background: #000000 !important;
-  border: 3px solid #00ff00 !important;
-  max-width: 600px !important;
-  box-shadow: none !important;
-  position: relative !important;
-}
-
-/* The image itself - MAXIMUM CLARITY */
-.question-image {
-  width: 100% !important;
-  max-width: 550px !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-  border: 2px solid #00ff00 !important;
-  
-  /* Force sharp rendering */
-  filter: none !important;
-  backdrop-filter: none !important;
-  image-rendering: crisp-edges !important;
-  image-rendering: -webkit-optimize-contrast !important;
-  -webkit-backface-visibility: hidden !important;
-  transform: translateZ(0) !important;
+.App {
+  /* NO fixed height - critical for scrolling */
+  min-height: 100vh;
+  height: auto;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  /* Ensure content can expand */
+  display: block;
 }
 
 /* ============================================
-   STEP 6: Remove ANY animation effects
+   COLOR VARIABLES
    ============================================ */
 
-/* Stop all animations that might cause distortion */
-.question-image-container,
-.question-image {
-  animation: none !important;
-  transition: none !important;
-}
-
-/* Remove hover effects */
-.question-image-container:hover {
-  animation: none !important;
-  box-shadow: none !important;
+:root {
+  --terminal-green: #00ff00;
+  --terminal-amber: #ffaa00;
+  --terminal-purple: #ff00ff;
+  --terminal-cyan: #00ffff;
+  --terminal-bg: #000000;
+  --terminal-bg-light: #0a0a0a;
+  --terminal-bg-lighter: #1a1a1a;
 }
 
 /* ============================================
-   STEP 7: Remove common scanline classes
+   TYPOGRAPHY - LARGER & READABLE
    ============================================ */
 
-/* If you have these classes, disable them */
-.scanlines,
-.scanline,
-.scanline-overlay,
-.crt-effect,
-.crt-overlay,
-.vhs-effect,
-.noise-overlay,
-.grain-effect,
-.retro-overlay {
-  display: none !important;
-  opacity: 0 !important;
+.retro-font {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-/* ============================================
-   STEP 8: Clean text rendering site-wide
-   ============================================ */
-
-/* Ensure all text is readable */
-.border-box,
-.border-box *,
-.option-list,
-.option-list *,
-.retro-font,
-p, span, div {
-  filter: none !important;
-  text-shadow: none !important;
-  backdrop-filter: none !important;
+.text-green {
+  color: var(--terminal-green);
 }
 
-/* ============================================
-   STEP 9: Remove opacity effects
-   ============================================ */
+.text-amber {
+  color: var(--terminal-amber);
+}
 
-/* Ensure nothing is semi-transparent causing blur */
-.question-text,
-.option-item,
+.text-purple {
+  color: var(--terminal-purple);
+}
+
+.text-cyan {
+  color: var(--terminal-cyan);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
 p {
-  opacity: 1 !important;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* ============================================
-   STEP 10: Mobile responsive (clean version)
+   GAME ROOM & DESCRIPTION DISPLAY
+   Critical for ASCII box borders - AGGRESSIVE TARGETING
+   ============================================ */
+
+/* Target ANY element that might contain room descriptions */
+.room-header,
+.room-description,
+.game-description,
+.description,
+.room-info,
+.location-box,
+.room-display,
+.game-room,
+.room-text,
+.location-description,
+.area-description,
+.scene-description,
+[class*="room"],
+[class*="description"],
+[class*="location"] {
+  /* Preserve line breaks and spacing for ASCII art */
+  white-space: pre !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important; /* CRITICAL: no letter spacing for ASCII boxes */
+  overflow-x: auto;
+  overflow-y: visible;
+  font-size: 16px;
+}
+
+/* Ensure pre tags preserve formatting - CRITICAL for ASCII boxes */
+pre {
+  white-space: pre !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important; /* CRITICAL: removes letter spacing for box characters */
+  overflow-x: auto;
+  overflow-y: visible;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: var(--terminal-green);
+}
+
+/* Specific styling for room descriptions */
+pre.room-description {
+  white-space: pre !important;
+  font-family: 'Courier New', Courier, monospace !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0 !important;
+  font-size: 16px;
+  overflow-x: auto;
+  overflow-y: visible;
+  margin: 0;
+  padding: 0;
+}
+
+/* Room container styling */
+.room-container,
+.game-room-container,
+.location-container,
+[class*="room-container"],
+[class*="game-container"] {
+  background: var(--terminal-bg-light);
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+  overflow-x: auto;
+}
+
+/* Character dialogue boxes */
+.character-dialogue,
+.character-text,
+.npc-dialogue {
+  background: rgba(0, 255, 0, 0.05);
+  border-left: 4px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Question display area */
+.question-display,
+.question-text,
+.quest-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(0, 255, 0, 0.03);
+}
+
+/* Room title/header specific */
+.room-title,
+.location-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--terminal-amber);
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+}
+
+/* Progress/status display */
+.game-progress,
+.quest-progress,
+.score-display {
+  text-align: right;
+  color: var(--terminal-amber);
+  font-size: 16px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* ============================================
+   GAME STATUS & INFO DISPLAYS
+   ============================================ */
+
+/* Score and progress displays at top of screen */
+.score-display,
+.progress-display,
+.game-status,
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--terminal-bg-light);
+  border: 2px solid var(--terminal-green);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Inventory or items display */
+.inventory,
+.items-display,
+.collected-items {
+  background: rgba(0, 255, 0, 0.05);
+  border: 2px solid var(--terminal-green);
+  padding: 15px;
+  margin: 15px 0;
+}
+
+/* Navigation buttons/exits */
+.exits,
+.navigation,
+.room-exits {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 2px solid var(--terminal-green);
+}
+
+.exit-button,
+.nav-button {
+  background-color: transparent;
+  color: var(--terminal-cyan);
+  border: 2px solid var(--terminal-cyan);
+  padding: 12px 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exit-button:hover,
+.nav-button:hover {
+  background-color: var(--terminal-cyan);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 15px var(--terminal-cyan);
+}
+
+/* ============================================
+   LOADING SCREEN
+   ============================================ */
+
+.loading {
+  text-align: center;
+  padding: 50px 20px;
+  font-size: 24px;
+  color: var(--terminal-amber);
+}
+
+.loading::after {
+  content: '...';
+  animation: ellipsis 1.5s infinite;
+}
+
+@keyframes ellipsis {
+  0% { content: '.'; }
+  33% { content: '..'; }
+  66% { content: '...'; }
+}
+
+/* ============================================
+   TITLE SCREEN
+   ============================================ */
+
+.title-screen {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.game-title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--terminal-green);
+  text-shadow: 0 0 15px var(--terminal-green);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+.game-subtitle {
+  font-size: 20px;
+  margin-bottom: 40px;
+  color: var(--terminal-green);
+  line-height: 1.4;
+}
+
+.arcade-text {
+  font-size: 18px;
+  margin: 15px 0;
+  color: var(--terminal-amber);
+}
+
+/* ============================================
+   BORDER BOXES
+   ============================================ */
+
+.border-box {
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  background-color: rgba(0, 255, 0, 0.03);
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.border-box-amber {
+  border-color: var(--terminal-amber);
+  background-color: rgba(255, 170, 0, 0.03);
+  box-shadow: 0 0 10px rgba(255, 170, 0, 0.1);
+}
+
+/* ============================================
+   BUTTONS - LARGE & VISIBLE
+   ============================================ */
+
+.retro-button {
+  background-color: transparent;
+  color: var(--terminal-green);
+  border: 3px solid var(--terminal-green);
+  padding: 18px 32px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  margin: 15px 5px;
+  display: inline-block;
+  width: 100%;
+  max-width: 450px;
+  min-height: 70px;
+  position: relative;
+}
+
+.retro-button:hover:not(:disabled) {
+  background-color: var(--terminal-green);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-green);
+  transform: translateY(-2px);
+}
+
+.retro-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.retro-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.retro-button-amber {
+  color: var(--terminal-amber);
+  border-color: var(--terminal-amber);
+}
+
+.retro-button-amber:hover:not(:disabled) {
+  background-color: var(--terminal-amber);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-amber);
+}
+
+.retro-button-purple {
+  color: var(--terminal-purple);
+  border-color: var(--terminal-purple);
+}
+
+.retro-button-purple:hover:not(:disabled) {
+  background-color: var(--terminal-purple);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-purple);
+}
+
+.retro-button-cyan {
+  color: var(--terminal-cyan);
+  border-color: var(--terminal-cyan);
+}
+
+.retro-button-cyan:hover:not(:disabled) {
+  background-color: var(--terminal-cyan);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-cyan);
+}
+
+/* ============================================
+   INPUT FIELDS
+   ============================================ */
+
+.retro-input {
+  background-color: var(--terminal-bg);
+  color: var(--terminal-green);
+  border: 3px solid var(--terminal-green);
+  padding: 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  width: 100%;
+  max-width: 450px;
+  margin: 15px 0;
+  min-height: 60px;
+}
+
+.retro-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px var(--terminal-green);
+  background-color: var(--terminal-bg-light);
+}
+
+.retro-input::placeholder {
+  color: rgba(0, 255, 0, 0.5);
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+
+.progress-bar {
+  width: 100%;
+  height: 40px;
+  border: 3px solid var(--terminal-green);
+  background-color: var(--terminal-bg);
+  margin: 20px 0;
+  overflow: hidden;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--terminal-green);
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px var(--terminal-green);
+}
+
+/* ============================================
+   QUESTION OPTIONS
+   ============================================ */
+
+.option-list {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0;
+}
+
+.option-item {
+  background-color: rgba(0, 255, 0, 0.05);
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 15px 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+  line-height: 1.5;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.option-item:hover {
+  background-color: rgba(0, 255, 0, 0.15);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+  transform: translateX(5px);
+}
+
+.option-item.selected {
+  background-color: rgba(0, 255, 0, 0.2);
+  border-color: var(--terminal-amber);
+  box-shadow: 0 0 15px rgba(255, 170, 0, 0.3);
+}
+
+.option-item.correct {
+  background-color: rgba(0, 255, 0, 0.25);
+  border-color: var(--terminal-green);
+  box-shadow: 0 0 20px var(--terminal-green);
+  animation: correctPulse 0.5s ease;
+}
+
+.option-item.incorrect {
+  background-color: rgba(255, 0, 0, 0.2);
+  border-color: #ff0000;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+}
+
+@keyframes correctPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+/* ============================================
+   IMAGE QUESTIONS
+   ============================================ */
+
+.question-image-container {
+  margin: 30px auto;
+  padding: 20px;
+  background: var(--terminal-bg);
+  border: 4px solid var(--terminal-green);
+  max-width: 700px;
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+}
+
+.question-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid var(--terminal-green);
+  /* Crystal clear - no filters */
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.image-error {
+  padding: 40px;
+  text-align: center;
+  color: var(--terminal-green);
+  font-size: 20px;
+  background: var(--terminal-bg-light);
+  border: 3px dashed var(--terminal-green);
+}
+
+/* ============================================
+   LEADERBOARD
+   ============================================ */
+
+.leaderboard-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding-bottom: 40px;
+}
+
+.leaderboard-title {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: var(--terminal-amber);
+  text-shadow: 0 0 15px var(--terminal-amber);
+}
+
+.leaderboard-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin: 10px 0;
+  border: 2px solid var(--terminal-green);
+  background-color: rgba(0, 255, 0, 0.05);
+  font-size: 18px;
+  min-height: 70px;
+}
+
+.leaderboard-entry:nth-child(1) {
+  border-width: 3px;
+  box-shadow: 0 0 15px var(--terminal-amber);
+}
+
+.leaderboard-rank {
+  color: var(--terminal-amber);
+  font-weight: bold;
+  min-width: 70px;
+  font-size: 22px;
+}
+
+.leaderboard-initials {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+}
+
+.leaderboard-score {
+  min-width: 130px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* ============================================
+   MODAL / CHAT
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background-color: var(--terminal-bg);
+  border: 4px solid var(--terminal-green);
+  padding: 40px;
+  max-width: 700px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+  margin: auto;
+}
+
+.modal-title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: var(--terminal-amber);
+  text-align: center;
+}
+
+.chat-message {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 4px solid var(--terminal-green);
+  background-color: rgba(0, 255, 0, 0.05);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.chat-input {
+  width: 100%;
+  background-color: var(--terminal-bg);
+  color: var(--terminal-green);
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  margin: 15px 0;
+  min-height: 120px;
+  resize: vertical;
+}
+
+.chat-input:focus {
+  outline: none;
+  box-shadow: 0 0 15px var(--terminal-green);
+}
+
+/* ============================================
+   INTRO SEQUENCE - FIXED SCROLLING
+   ============================================ */
+
+.intro-sequence {
+  /* CRITICAL: No fixed heights */
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  padding: 30px 20px 60px 20px; /* Extra bottom padding */
+  background: var(--terminal-bg-light);
+  /* Allow natural scrolling */
+  overflow-y: visible;
+  overflow-x: hidden;
+  display: block;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.intro-content {
+  max-width: 1100px;
+  width: 95%;
+  margin: 0 auto;
+  /* CRITICAL: Extra padding at bottom for all buttons to show */
+  padding-bottom: 80px;
+  /* Allow content to expand */
+  min-height: auto;
+  height: auto;
+}
+
+.intro-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+.intro-header h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: var(--terminal-amber);
+  text-shadow: 0 0 15px var(--terminal-amber);
+  line-height: 1.2;
+}
+
+.intro-header h2 {
+  font-size: 24px;
+  color: var(--terminal-green);
+  margin-bottom: 15px;
+}
+
+.intro-header .date {
+  color: #888;
+  font-size: 18px;
+}
+
+/* Story Text */
+.story-text {
+  line-height: 1.8;
+  font-size: 18px;
+  max-width: 100%;
+  margin-bottom: 30px;
+}
+
+.story-text p {
+  margin-bottom: 20px;
+}
+
+.story-text strong {
+  color: var(--terminal-green);
+  font-weight: bold;
+}
+
+/* Box Label */
+.box-label {
+  padding: 30px;
+  text-align: center;
+  background: rgba(255, 149, 0, 0.08);
+  border: 3px solid var(--terminal-amber);
+  margin: 30px 0;
+  box-shadow: 0 0 15px rgba(255, 149, 0, 0.2);
+}
+
+.box-label p {
+  margin: 8px 0;
+  color: var(--terminal-amber);
+  font-size: 18px;
+}
+
+/* Disk Label */
+.disk-label {
+  padding: 20px;
+  text-align: center;
+  background: var(--terminal-bg-lighter);
+  border: 3px solid var(--terminal-green);
+  margin: 30px 0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.disk-label p {
+  margin: 8px 0;
+  font-size: 18px;
+}
+
+/* Loading Bar */
+.loading-bar {
+  width: 100%;
+  margin: 40px 0;
+}
+
+.loading-progress {
+  width: 100%;
+  height: 40px;
+  background: var(--terminal-bg-lighter);
+  border: 3px solid var(--terminal-green);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.loading-progress .progress-fill {
+  height: 100%;
+  background: var(--terminal-green);
+  transition: width 2s ease-in-out;
+  box-shadow: 0 0 15px var(--terminal-green);
+}
+
+/* DOS Screen */
+.dos-screen {
+  background: var(--terminal-bg);
+  padding: 30px;
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 30px 0;
+  border: 2px solid var(--terminal-green);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.dos-screen p {
+  margin: 8px 0;
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Memo */
+.memo {
+  background: var(--terminal-bg-light);
+  padding: 40px;
+  line-height: 1.8;
+  font-size: 18px;
+  border: 3px solid var(--terminal-green);
+  margin: 30px 0;
+  max-height: none;
+  overflow: visible;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+}
+
+.memo p {
+  margin-bottom: 20px;
+}
+
+.memo hr {
+  border: none;
+  border-top: 2px solid var(--terminal-green);
+  margin: 30px 0;
+  opacity: 0.5;
+}
+
+.memo strong {
+  color: var(--terminal-green);
+}
+
+/* Loading Checklist */
+.loading-checklist {
+  text-align: left;
+  margin: 40px auto;
+  max-width: 700px;
+  width: 100%;
+}
+
+.loading-checklist p {
+  margin: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  padding: 8px;
+}
+
+/* Note from 2025 */
+.note-2025 {
+  background: rgba(0, 255, 0, 0.05);
+  border: 3px dashed var(--terminal-green);
+  padding: 30px;
+  margin: 30px 0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.note-2025 p {
+  margin: 15px 0;
+  font-size: 18px;
+}
+
+/* CRITICAL: Buttons in intro - ensure they're visible */
+.intro-sequence .retro-button {
+  min-width: 350px;
+  padding: 20px 40px;
+  font-size: 20px;
+  margin: 20px auto;
+  display: block;
+  /* Ensure buttons have space and are visible */
+  clear: both;
+}
+
+.intro-sequence .retro-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-center {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Spacing utilities */
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.p-1 { padding: 10px; }
+.p-2 { padding: 20px; }
+.p-3 { padding: 30px; }
+
+/* Ensure text color */
+.intro-sequence {
+  color: var(--terminal-green);
+}
+
+.intro-sequence .text-amber {
+  color: var(--terminal-amber) !important;
+}
+
+.intro-sequence .border-box {
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.intro-sequence .border-box-amber {
+  border-color: var(--terminal-amber);
+}
+
+.intro-sequence .retro-font {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 768px) {
-  .question-image-container {
-    margin: 15px 5px !important;
-    padding: 10px !important;
-    max-width: 100% !important;
+  body {
+    font-size: 16px;
   }
   
-  .question-image {
-    max-width: 100% !important;
+  .App {
+    padding: 15px;
+  }
+  
+  .game-title {
+    font-size: 36px;
+  }
+  
+  .game-subtitle {
+    font-size: 18px;
+  }
+  
+  .retro-button {
+    font-size: 16px;
+    padding: 15px 25px;
+    max-width: 100%;
+    min-height: 60px;
+  }
+  
+  .question-image-container {
+    margin: 20px 0;
+    padding: 15px;
+  }
+  
+  .modal-content {
+    padding: 25px;
+    width: 95%;
+  }
+  
+  .intro-sequence {
+    padding: 20px 15px 80px 15px;
+  }
+  
+  .intro-content {
+    width: 98%;
+    padding: 15px 0 100px 0;
+  }
+  
+  .intro-header h1 {
+    font-size: 32px;
+  }
+  
+  .intro-header h2 {
+    font-size: 20px;
+  }
+  
+  .memo {
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  .box-label,
+  .disk-label {
+    padding: 20px;
+    font-size: 16px;
+  }
+  
+  .intro-sequence .retro-button {
+    min-width: 280px;
+    padding: 18px 30px;
+    font-size: 18px;
+  }
+  
+  p, .story-text {
+    font-size: 16px;
+  }
+  
+  .option-item {
+    font-size: 16px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-header h1 {
+    font-size: 28px;
+  }
+  
+  .game-title {
+    font-size: 32px;
+  }
+  
+  .memo {
+    padding: 15px;
+  }
+  
+  .retro-button {
+    min-height: 50px;
+    padding: 12px 20px;
+  }
+  
+  .intro-sequence .retro-button {
+    min-width: 240px;
+    padding: 15px 25px;
   }
 }
 
 /* ============================================
-   DEBUGGING HELP
+   ANIMATIONS
    ============================================ */
 
-/* 
-   If this STILL doesn't work, open browser DevTools (F12):
-   
-   1. Right-click on a distorted image
-   2. Click "Inspect"
-   3. Look in the "Computed" tab
-   4. Search for:
-      - filter
-      - backdrop-filter
-      - opacity
-      - text-shadow
-      - background (on ::before or ::after)
-   
-   5. Find which CSS rule is applying the effect
-   6. Tell me the class name and I'll override it specifically
-*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--terminal-green);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--terminal-green);
+  }
+}
 
 /* ============================================
-   INSTRUCTIONS FOR USE
+   ACCESSIBILITY
    ============================================ */
 
-/*
-   1. Copy ALL of this CSS
+*:focus-visible {
+  outline: 3px solid var(--terminal-amber);
+  outline-offset: 3px;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .border-box {
+    border-color: black;
+  }
+  
+  .retro-button,
+  .modal-overlay {
+    display: none;
+  }
+  
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* ============================================
+   FINAL NOTES
+   ============================================ */
+
+/* This CSS ensures:
+   ✅ ALL content is visible and scrollable
+   ✅ NO cut-off buttons or text
+   ✅ Larger, readable text (18px base)
+   ✅ Professional 80s adventure game look
+   ✅ Clear visual hierarchy
+   ✅ NO distortion effects
+   ✅ Proper mobile responsive design
+   ✅ Extra padding at bottom of containers
    
-   2. Open your App.css file
-   
-   3. Paste this at the VERY TOP (before anything else)
-   
-   4. Save the file
-   
-   5. Hard refresh your browser:
-      - Windows/Linux: Ctrl + Shift + R
-      - Mac: Cmd + Shift + R
-   
-   6. If STILL distorted, we need to look at your actual App.css
-      to find what specific effect is being applied
+   Critical fixes for scrolling:
+   - Removed all fixed heights
+   - Added overflow-y: auto on body and html
+   - Extra bottom padding on intro-content (80px)
+   - All containers use min-height, not height
+   - Natural content flow allowed
 */

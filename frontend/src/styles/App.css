@@ -126,19 +126,24 @@ p {
 [class*="location"] {
   /* Preserve line breaks and spacing for ASCII art */
   white-space: pre !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  line-height: 1.3 !important;
+  /* Better font stack for box-drawing characters */
+  font-family: 'Consolas', 'DejaVu Sans Mono', 'Courier New', Courier, monospace !important;
+  line-height: 1.2 !important;
   letter-spacing: 0 !important; /* CRITICAL: no letter spacing for ASCII boxes */
   overflow-x: auto;
   overflow-y: visible;
   font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Ensure pre tags preserve formatting - CRITICAL for ASCII boxes */
 pre {
   white-space: pre !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  line-height: 1.3 !important;
+  /* Better font stack for box-drawing characters */
+  font-family: 'Consolas', 'DejaVu Sans Mono', 'Courier New', Courier, monospace !important;
+  line-height: 1.2 !important;
   letter-spacing: 0 !important; /* CRITICAL: removes letter spacing for box characters */
   overflow-x: auto;
   overflow-y: visible;
@@ -146,19 +151,26 @@ pre {
   padding: 0;
   font-size: 16px;
   color: var(--terminal-green);
+  /* Better rendering for box characters */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Specific styling for room descriptions */
 pre.room-description {
   white-space: pre !important;
-  font-family: 'Courier New', Courier, monospace !important;
-  line-height: 1.3 !important;
+  font-family: 'Consolas', 'DejaVu Sans Mono', 'Courier New', Courier, monospace !important;
+  line-height: 1.2 !important;
   letter-spacing: 0 !important;
   font-size: 16px;
   overflow-x: auto;
   overflow-y: visible;
   margin: 0;
   padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Room container styling */
