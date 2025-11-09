@@ -1,11 +1,10 @@
 /* ============================================
-   AI KNOWLEDGE CHALLENGE - PROFESSIONAL 80s STYLE
-   Classic adventure game aesthetic with modern clarity
-   Inspired by Leisure Suit Larry & Neuromancer
+   AI KNOWLEDGE CHALLENGE - FIXED SCROLLING VERSION
+   All content visible, proper scrolling, readable text
    ============================================ */
 
 /* ============================================
-   GLOBAL STYLES & FOUNDATIONS
+   CRITICAL FIX: SCROLLING & LAYOUT
    ============================================ */
 
 * {
@@ -14,53 +13,59 @@
   padding: 0;
 }
 
-:root {
-  /* Color Palette - Classic Terminal */
-  --terminal-green: #00ff00;
-  --terminal-amber: #ffaa00;
-  --terminal-bg: #000000;
-  --terminal-bg-light: #0a0a0a;
-  --terminal-bg-lighter: #1a1a1a;
-  
-  /* Spacing System */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  
-  /* Typography Scale - Larger for readability */
-  --text-xs: 0.875rem;   /* 14px */
-  --text-sm: 1rem;       /* 16px */
-  --text-base: 1.125rem; /* 18px - NEW READABLE BASE */
-  --text-lg: 1.25rem;    /* 20px */
-  --text-xl: 1.5rem;     /* 24px */
-  --text-2xl: 2rem;      /* 32px */
-  --text-3xl: 2.5rem;    /* 40px */
-  --text-4xl: 3rem;      /* 48px */
+html {
+  /* Allow natural scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: auto;
+  min-height: 100%;
 }
 
 body {
-  background-color: var(--terminal-bg);
-  color: var(--terminal-green);
+  background-color: #000000;
+  color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
-  font-size: var(--text-base); /* Increased from 16px to 18px */
+  font-size: 18px; /* Larger base size for readability */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* CRITICAL: Allow vertical scrolling, prevent horizontal */
   overflow-x: hidden;
+  overflow-y: auto;
+  /* NO fixed height - let content determine height */
   min-height: 100vh;
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .App {
+  /* NO fixed height - critical for scrolling */
   min-height: 100vh;
-  padding: var(--space-lg);
-  max-width: 1000px; /* Slightly wider for better use of space */
+  height: auto;
+  padding: 20px;
+  max-width: 1000px;
   margin: 0 auto;
+  /* Ensure content can expand */
+  display: block;
 }
 
 /* ============================================
-   TYPOGRAPHY SYSTEM
+   COLOR VARIABLES
+   ============================================ */
+
+:root {
+  --terminal-green: #00ff00;
+  --terminal-amber: #ffaa00;
+  --terminal-purple: #ff00ff;
+  --terminal-cyan: #00ffff;
+  --terminal-bg: #000000;
+  --terminal-bg-light: #0a0a0a;
+  --terminal-bg-lighter: #1a1a1a;
+}
+
+/* ============================================
+   TYPOGRAPHY - LARGER & READABLE
    ============================================ */
 
 .retro-font {
@@ -78,16 +83,24 @@ body {
   color: var(--terminal-amber);
 }
 
-/* Better text hierarchy */
+.text-purple {
+  color: var(--terminal-purple);
+}
+
+.text-cyan {
+  color: var(--terminal-cyan);
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   line-height: 1.2;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 1rem;
 }
 
 p {
-  margin-bottom: var(--space-sm);
-  font-size: var(--text-base);
+  margin-bottom: 1rem;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* ============================================
@@ -96,8 +109,8 @@ p {
 
 .loading {
   text-align: center;
-  padding: var(--space-xl);
-  font-size: var(--text-xl);
+  padding: 50px 20px;
+  font-size: 24px;
   color: var(--terminal-amber);
 }
 
@@ -113,46 +126,46 @@ p {
 }
 
 /* ============================================
-   TITLE SCREEN - Enhanced
+   TITLE SCREEN
    ============================================ */
 
 .title-screen {
   text-align: center;
-  padding: var(--space-xl) var(--space-lg);
+  padding: 40px 20px;
   max-width: 800px;
   margin: 0 auto;
 }
 
 .game-title {
-  font-size: var(--text-4xl);
-  margin-bottom: var(--space-lg);
+  font-size: 48px;
+  margin-bottom: 20px;
   color: var(--terminal-green);
   text-shadow: 0 0 15px var(--terminal-green);
   letter-spacing: 0.05em;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .game-subtitle {
-  font-size: var(--text-lg);
-  margin-bottom: var(--space-xl);
+  font-size: 20px;
+  margin-bottom: 40px;
   color: var(--terminal-green);
   line-height: 1.4;
 }
 
 .arcade-text {
-  font-size: var(--text-base);
-  margin: var(--space-sm) 0;
+  font-size: 18px;
+  margin: 15px 0;
   color: var(--terminal-amber);
 }
 
 /* ============================================
-   BORDER BOXES - Classic Adventure Game Style
+   BORDER BOXES
    ============================================ */
 
 .border-box {
   border: 3px solid var(--terminal-green);
-  padding: var(--space-md);
-  margin: var(--space-md) 0;
+  padding: 20px;
+  margin: 20px 0;
   background-color: rgba(0, 255, 0, 0.03);
   box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
 }
@@ -164,44 +177,43 @@ p {
 }
 
 /* ============================================
-   BUTTONS - Professional Adventure Game Style
+   BUTTONS - LARGE & VISIBLE
    ============================================ */
 
 .retro-button {
   background-color: transparent;
   color: var(--terminal-green);
   border: 3px solid var(--terminal-green);
-  padding: 1rem 2rem;
+  padding: 18px 32px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: var(--text-base); /* Increased from 16px */
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   transition: all 0.2s ease;
-  margin: var(--space-sm);
+  margin: 15px 5px;
   display: inline-block;
   width: 100%;
-  max-width: 400px;
-  min-height: 60px; /* Ensure adequate touch target */
+  max-width: 450px;
+  min-height: 70px;
   position: relative;
 }
 
-.retro-button:hover {
+.retro-button:hover:not(:disabled) {
   background-color: var(--terminal-green);
   color: var(--terminal-bg);
   box-shadow: 0 0 20px var(--terminal-green);
   transform: translateY(-2px);
 }
 
-.retro-button:active {
+.retro-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
 .retro-button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
-  transform: none;
 }
 
 .retro-button-amber {
@@ -209,27 +221,49 @@ p {
   border-color: var(--terminal-amber);
 }
 
-.retro-button-amber:hover {
+.retro-button-amber:hover:not(:disabled) {
   background-color: var(--terminal-amber);
   color: var(--terminal-bg);
   box-shadow: 0 0 20px var(--terminal-amber);
 }
 
+.retro-button-purple {
+  color: var(--terminal-purple);
+  border-color: var(--terminal-purple);
+}
+
+.retro-button-purple:hover:not(:disabled) {
+  background-color: var(--terminal-purple);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-purple);
+}
+
+.retro-button-cyan {
+  color: var(--terminal-cyan);
+  border-color: var(--terminal-cyan);
+}
+
+.retro-button-cyan:hover:not(:disabled) {
+  background-color: var(--terminal-cyan);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 20px var(--terminal-cyan);
+}
+
 /* ============================================
-   INPUT FIELDS - Enhanced Readability
+   INPUT FIELDS
    ============================================ */
 
 .retro-input {
   background-color: var(--terminal-bg);
   color: var(--terminal-green);
   border: 3px solid var(--terminal-green);
-  padding: 1rem;
+  padding: 15px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: var(--text-base); /* Increased from 16px */
+  font-size: 18px;
   width: 100%;
-  max-width: 400px;
-  margin: var(--space-sm) 0;
-  min-height: 50px;
+  max-width: 450px;
+  margin: 15px 0;
+  min-height: 60px;
 }
 
 .retro-input:focus {
@@ -243,15 +277,15 @@ p {
 }
 
 /* ============================================
-   PROGRESS BAR - Enhanced
+   PROGRESS BAR
    ============================================ */
 
 .progress-bar {
   width: 100%;
-  height: 40px; /* Increased from 30px */
+  height: 40px;
   border: 3px solid var(--terminal-green);
   background-color: var(--terminal-bg);
-  margin: var(--space-md) 0;
+  margin: 20px 0;
   overflow: hidden;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
@@ -264,25 +298,25 @@ p {
 }
 
 /* ============================================
-   QUESTION OPTIONS - Improved Readability
+   QUESTION OPTIONS
    ============================================ */
 
 .option-list {
   list-style: none;
   padding: 0;
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
 }
 
 .option-item {
   background-color: rgba(0, 255, 0, 0.05);
   border: 3px solid var(--terminal-green);
-  padding: var(--space-md);
-  margin: var(--space-md) 0;
+  padding: 20px;
+  margin: 15px 0;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: var(--text-base);
+  font-size: 18px;
   line-height: 1.5;
-  min-height: 60px;
+  min-height: 70px;
   display: flex;
   align-items: center;
 }
@@ -318,12 +352,12 @@ p {
 }
 
 /* ============================================
-   IMAGE QUESTIONS - Professional Display
+   IMAGE QUESTIONS
    ============================================ */
 
 .question-image-container {
-  margin: var(--space-lg) auto;
-  padding: var(--space-md);
+  margin: 30px auto;
+  padding: 20px;
   background: var(--terminal-bg);
   border: 4px solid var(--terminal-green);
   max-width: 700px;
@@ -344,27 +378,28 @@ p {
 }
 
 .image-error {
-  padding: var(--space-xl);
+  padding: 40px;
   text-align: center;
   color: var(--terminal-green);
-  font-size: var(--text-lg);
+  font-size: 20px;
   background: var(--terminal-bg-light);
   border: 3px dashed var(--terminal-green);
 }
 
 /* ============================================
-   LEADERBOARD - Classic Arcade Style
+   LEADERBOARD
    ============================================ */
 
 .leaderboard-container {
   max-width: 700px;
-  margin: var(--space-lg) auto;
+  margin: 30px auto;
+  padding-bottom: 40px;
 }
 
 .leaderboard-title {
-  font-size: var(--text-2xl);
+  font-size: 36px;
   text-align: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: 30px;
   color: var(--terminal-amber);
   text-shadow: 0 0 15px var(--terminal-amber);
 }
@@ -373,12 +408,12 @@ p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-md);
-  margin: var(--space-sm) 0;
+  padding: 20px;
+  margin: 10px 0;
   border: 2px solid var(--terminal-green);
   background-color: rgba(0, 255, 0, 0.05);
-  font-size: var(--text-base);
-  min-height: 60px;
+  font-size: 18px;
+  min-height: 70px;
 }
 
 .leaderboard-entry:nth-child(1) {
@@ -389,25 +424,25 @@ p {
 .leaderboard-rank {
   color: var(--terminal-amber);
   font-weight: bold;
-  min-width: 60px;
-  font-size: var(--text-lg);
+  min-width: 70px;
+  font-size: 22px;
 }
 
 .leaderboard-initials {
   flex: 1;
   text-align: center;
-  font-size: var(--text-base);
+  font-size: 18px;
 }
 
 .leaderboard-score {
-  min-width: 120px;
+  min-width: 130px;
   text-align: right;
   font-weight: bold;
-  font-size: var(--text-base);
+  font-size: 18px;
 }
 
 /* ============================================
-   MODAL / CHAT - Professional Interface
+   MODAL / CHAT
    ============================================ */
 
 .modal-overlay {
@@ -421,33 +456,35 @@ p {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: var(--space-md);
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .modal-content {
   background-color: var(--terminal-bg);
   border: 4px solid var(--terminal-green);
-  padding: var(--space-xl);
+  padding: 40px;
   max-width: 700px;
   width: 95%;
-  max-height: 85vh;
+  max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+  margin: auto;
 }
 
 .modal-title {
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-lg);
+  font-size: 28px;
+  margin-bottom: 30px;
   color: var(--terminal-amber);
   text-align: center;
 }
 
 .chat-message {
-  margin: var(--space-md) 0;
-  padding: var(--space-md);
+  margin: 20px 0;
+  padding: 20px;
   border-left: 4px solid var(--terminal-green);
   background-color: rgba(0, 255, 0, 0.05);
-  font-size: var(--text-base);
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -456,11 +493,11 @@ p {
   background-color: var(--terminal-bg);
   color: var(--terminal-green);
   border: 3px solid var(--terminal-green);
-  padding: var(--space-md);
+  padding: 20px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: var(--text-base);
-  margin: var(--space-sm) 0;
-  min-height: 100px;
+  font-size: 18px;
+  margin: 15px 0;
+  min-height: 120px;
   resize: vertical;
 }
 
@@ -470,15 +507,19 @@ p {
 }
 
 /* ============================================
-   INTRO SEQUENCE - Professional 80s Style
+   INTRO SEQUENCE - FIXED SCROLLING
    ============================================ */
 
 .intro-sequence {
+  /* CRITICAL: No fixed heights */
   min-height: 100vh;
+  height: auto;
   width: 100%;
-  padding: var(--space-lg) var(--space-md);
+  padding: 30px 20px 60px 20px; /* Extra bottom padding */
   background: var(--terminal-bg-light);
-  overflow-y: auto;
+  /* Allow natural scrolling */
+  overflow-y: visible;
+  overflow-x: hidden;
   display: block;
   animation: fadeIn 0.5s ease-in;
 }
@@ -487,42 +528,48 @@ p {
   max-width: 1100px;
   width: 95%;
   margin: 0 auto;
-  padding-bottom: var(--space-xl);
+  /* CRITICAL: Extra padding at bottom for all buttons to show */
+  padding-bottom: 80px;
+  /* Allow content to expand */
+  min-height: auto;
+  height: auto;
 }
 
 .intro-header {
   text-align: center;
-  margin-bottom: var(--space-xl);
+  margin-bottom: 40px;
+  padding-top: 20px;
 }
 
 .intro-header h1 {
-  font-size: var(--text-3xl);
-  margin-bottom: var(--space-md);
+  font-size: 40px;
+  margin-bottom: 20px;
   color: var(--terminal-amber);
   text-shadow: 0 0 15px var(--terminal-amber);
   line-height: 1.2;
 }
 
 .intro-header h2 {
-  font-size: var(--text-xl);
+  font-size: 24px;
   color: var(--terminal-green);
-  margin-bottom: var(--space-sm);
+  margin-bottom: 15px;
 }
 
 .intro-header .date {
   color: #888;
-  font-size: var(--text-base);
+  font-size: 18px;
 }
 
-/* Story Text - Readable and Professional */
+/* Story Text */
 .story-text {
   line-height: 1.8;
-  font-size: var(--text-base);
+  font-size: 18px;
   max-width: 100%;
+  margin-bottom: 30px;
 }
 
 .story-text p {
-  margin-bottom: var(--space-md);
+  margin-bottom: 20px;
 }
 
 .story-text strong {
@@ -530,41 +577,41 @@ p {
   font-weight: bold;
 }
 
-/* Box Label - 1989 Artifact */
+/* Box Label */
 .box-label {
-  padding: var(--space-lg);
+  padding: 30px;
   text-align: center;
   background: rgba(255, 149, 0, 0.08);
   border: 3px solid var(--terminal-amber);
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
   box-shadow: 0 0 15px rgba(255, 149, 0, 0.2);
 }
 
 .box-label p {
-  margin: var(--space-xs) 0;
+  margin: 8px 0;
   color: var(--terminal-amber);
-  font-size: var(--text-base);
+  font-size: 18px;
 }
 
 /* Disk Label */
 .disk-label {
-  padding: var(--space-md);
+  padding: 20px;
   text-align: center;
   background: var(--terminal-bg-lighter);
   border: 3px solid var(--terminal-green);
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
 }
 
 .disk-label p {
-  margin: var(--space-xs) 0;
-  font-size: var(--text-base);
+  margin: 8px 0;
+  font-size: 18px;
 }
 
-/* Loading Progress Bar - Intro */
+/* Loading Bar */
 .loading-bar {
   width: 100%;
-  margin: var(--space-xl) 0;
+  margin: 40px 0;
 }
 
 .loading-progress {
@@ -584,20 +631,20 @@ p {
   box-shadow: 0 0 15px var(--terminal-green);
 }
 
-/* DOS Screen - Authentic Style */
+/* DOS Screen */
 .dos-screen {
   background: var(--terminal-bg);
-  padding: var(--space-lg);
+  padding: 30px;
   font-family: 'Courier New', monospace;
-  font-size: var(--text-base);
+  font-size: 18px;
   line-height: 1.6;
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
   border: 2px solid var(--terminal-green);
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
 }
 
 .dos-screen p {
-  margin: var(--space-xs) 0;
+  margin: 8px 0;
 }
 
 .cursor-blink {
@@ -609,27 +656,27 @@ p {
   51%, 100% { opacity: 0; }
 }
 
-/* Memo - 1989 Message */
+/* Memo */
 .memo {
   background: var(--terminal-bg-light);
-  padding: var(--space-xl);
+  padding: 40px;
   line-height: 1.8;
-  font-size: var(--text-base);
+  font-size: 18px;
   border: 3px solid var(--terminal-green);
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
   max-height: none;
   overflow: visible;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
 }
 
 .memo p {
-  margin-bottom: var(--space-md);
+  margin-bottom: 20px;
 }
 
 .memo hr {
   border: none;
   border-top: 2px solid var(--terminal-green);
-  margin: var(--space-lg) 0;
+  margin: 30px 0;
   opacity: 0.5;
 }
 
@@ -640,41 +687,43 @@ p {
 /* Loading Checklist */
 .loading-checklist {
   text-align: left;
-  margin: var(--space-xl) auto;
+  margin: 40px auto;
   max-width: 700px;
   width: 100%;
 }
 
 .loading-checklist p {
-  margin: var(--space-sm) 0;
+  margin: 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--text-base);
-  padding: var(--space-xs);
+  font-size: 18px;
+  padding: 8px;
 }
 
 /* Note from 2025 */
 .note-2025 {
   background: rgba(0, 255, 0, 0.05);
   border: 3px dashed var(--terminal-green);
-  padding: var(--space-lg);
-  margin: var(--space-lg) 0;
+  padding: 30px;
+  margin: 30px 0;
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
 }
 
 .note-2025 p {
-  margin: var(--space-sm) 0;
-  font-size: var(--text-base);
+  margin: 15px 0;
+  font-size: 18px;
 }
 
-/* Buttons in Intro - Enhanced */
+/* CRITICAL: Buttons in intro - ensure they're visible */
 .intro-sequence .retro-button {
-  min-width: 300px;
-  padding: 1.25rem 2.5rem;
-  font-size: var(--text-lg);
-  margin: var(--space-md) auto;
+  min-width: 350px;
+  padding: 20px 40px;
+  font-size: 20px;
+  margin: 20px auto;
   display: block;
+  /* Ensure buttons have space and are visible */
+  clear: both;
 }
 
 .intro-sequence .retro-button:hover {
@@ -688,102 +737,148 @@ p {
 
 .text-center {
   text-align: center;
-  padding: var(--space-md) 0;
+  padding: 20px 0;
 }
 
 /* Spacing utilities */
-.mt-1 { margin-top: var(--space-xs); }
-.mt-2 { margin-top: var(--space-sm); }
-.mt-3 { margin-top: var(--space-md); }
-.mb-1 { margin-bottom: var(--space-xs); }
-.mb-2 { margin-bottom: var(--space-sm); }
-.mb-3 { margin-bottom: var(--space-md); }
-.p-1 { padding: var(--space-xs); }
-.p-2 { padding: var(--space-sm); }
-.p-3 { padding: var(--space-md); }
+.mt-1 { margin-top: 10px; }
+.mt-2 { margin-top: 20px; }
+.mt-3 { margin-top: 30px; }
+.mb-1 { margin-bottom: 10px; }
+.mb-2 { margin-bottom: 20px; }
+.mb-3 { margin-bottom: 30px; }
+.p-1 { padding: 10px; }
+.p-2 { padding: 20px; }
+.p-3 { padding: 30px; }
+
+/* Ensure text color */
+.intro-sequence {
+  color: var(--terminal-green);
+}
+
+.intro-sequence .text-amber {
+  color: var(--terminal-amber) !important;
+}
+
+.intro-sequence .border-box {
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.intro-sequence .border-box-amber {
+  border-color: var(--terminal-amber);
+}
+
+.intro-sequence .retro-font {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
 
 /* ============================================
-   RESPONSIVE DESIGN - Mobile Optimized
+   RESPONSIVE DESIGN
    ============================================ */
 
 @media (max-width: 768px) {
-  :root {
-    --text-base: 1rem; /* 16px on mobile */
-    --text-lg: 1.125rem;
-    --text-xl: 1.375rem;
-    --text-2xl: 1.75rem;
-    --text-3xl: 2rem;
-    --text-4xl: 2.5rem;
+  body {
+    font-size: 16px;
   }
   
   .App {
-    padding: var(--space-md);
+    padding: 15px;
   }
   
   .game-title {
-    font-size: var(--text-3xl);
-    line-height: 1.1;
+    font-size: 36px;
+  }
+  
+  .game-subtitle {
+    font-size: 18px;
   }
   
   .retro-button {
-    font-size: var(--text-sm);
-    padding: 0.875rem 1.5rem;
+    font-size: 16px;
+    padding: 15px 25px;
     max-width: 100%;
+    min-height: 60px;
   }
   
   .question-image-container {
-    margin: var(--space-md) 0;
-    padding: var(--space-sm);
+    margin: 20px 0;
+    padding: 15px;
   }
   
   .modal-content {
-    padding: var(--space-lg);
+    padding: 25px;
     width: 95%;
   }
   
   .intro-sequence {
-    padding: var(--space-md) var(--space-sm);
+    padding: 20px 15px 80px 15px;
   }
   
   .intro-content {
     width: 98%;
-    padding: var(--space-sm);
+    padding: 15px 0 100px 0;
   }
   
   .intro-header h1 {
-    font-size: var(--text-2xl);
+    font-size: 32px;
+  }
+  
+  .intro-header h2 {
+    font-size: 20px;
   }
   
   .memo {
-    padding: var(--space-md);
+    padding: 20px;
+    font-size: 16px;
   }
   
   .box-label,
   .disk-label {
-    padding: var(--space-md);
+    padding: 20px;
+    font-size: 16px;
   }
   
   .intro-sequence .retro-button {
-    min-width: 250px;
-    padding: 1rem 2rem;
+    min-width: 280px;
+    padding: 18px 30px;
+    font-size: 18px;
+  }
+  
+  p, .story-text {
+    font-size: 16px;
+  }
+  
+  .option-item {
+    font-size: 16px;
+    padding: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .intro-header h1 {
-    font-size: var(--text-xl);
+    font-size: 28px;
   }
   
   .game-title {
-    font-size: var(--text-2xl);
+    font-size: 32px;
   }
   
   .memo {
-    padding: var(--space-sm);
+    padding: 15px;
   }
   
   .retro-button {
     min-height: 50px;
+    padding: 12px 20px;
+  }
+  
+  .intro-sequence .retro-button {
+    min-width: 240px;
+    padding: 15px 25px;
   }
 }
 
@@ -809,23 +904,13 @@ p {
   }
 }
 
-.glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
 /* ============================================
    ACCESSIBILITY
    ============================================ */
 
-/* Focus states for keyboard navigation */
 *:focus-visible {
   outline: 3px solid var(--terminal-amber);
   outline-offset: 3px;
-}
-
-/* Ensure adequate contrast */
-.text-muted {
-  color: rgba(0, 255, 0, 0.7);
 }
 
 /* ============================================
@@ -854,20 +939,23 @@ p {
 }
 
 /* ============================================
-   PROFESSIONAL 80s AESTHETIC
-   Classic adventure game look without distortion
-   
-   ✅ Larger, readable text (18px base, scales up)
-   ✅ Professional borders and spacing
-   ✅ Clear visual hierarchy
-   ✅ Authentic terminal colors
-   ✅ Sharp, clear images
-   ✅ Smooth animations
-   ✅ Mobile responsive
-   ✅ Accessibility features
-   
-   ❌ NO scanlines
-   ❌ NO blur/filters
-   ❌ NO distortion effects
-   ❌ NO tiny unreadable text
+   FINAL NOTES
    ============================================ */
+
+/* This CSS ensures:
+   ✅ ALL content is visible and scrollable
+   ✅ NO cut-off buttons or text
+   ✅ Larger, readable text (18px base)
+   ✅ Professional 80s adventure game look
+   ✅ Clear visual hierarchy
+   ✅ NO distortion effects
+   ✅ Proper mobile responsive design
+   ✅ Extra padding at bottom of containers
+   
+   Critical fixes for scrolling:
+   - Removed all fixed heights
+   - Added overflow-y: auto on body and html
+   - Extra bottom padding on intro-content (80px)
+   - All containers use min-height, not height
+   - Natural content flow allowed
+*/
