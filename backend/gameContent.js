@@ -1118,7 +1118,7 @@ The executive suite. A large mahogany desk. Windows overlook King Street Newcast
 
 // Replace your existing "dialogue" object with this:
 
-export const dialogue = {
+dialogue: {
   
   // ROOM 1: RECEPTION - Rita (Data Entry Supervisor)
   "Rita": {
