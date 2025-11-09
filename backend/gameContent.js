@@ -16,7 +16,7 @@ rooms:[
     name: "Reception",
     character: "Rita",
     description: 
-	`╔════════════════════════════════════════════════════════╗
+	    `╔════════════════════════════════════════════════════════╗
      ║                    RECEPTION                           ║
      ║              Lake Macquarie Council                    ║
      ║             15 September 1989, 0905                    ║
