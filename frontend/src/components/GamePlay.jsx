@@ -216,11 +216,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
             
-            <p><strong>You:</strong> "1980s terminology. Before IT became a thing."</p>
+            <p><strong>You:</strong> "1989? That's before most people even had computers at home."</p>
             
-            <p><strong>Sarah:</strong> "Think the old PC in the corner still boots?"</p>
-            
-            <p className="mt-2">You find the ancient beige tower unit covered in dust. Power button glows amber. The CRT monitor flickers...</p>
+            <p className="mt-2"><strong>Sarah:</strong> "Wonder what the quiz was about?"</p>
           </div>
           
           <div className="text-center mt-3">
@@ -228,7 +226,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('bootSequence')}
             >
-              [Press ENTER to continue]
+              [Boot the disk] →
             </button>
           </div>
         </div>
@@ -240,35 +238,35 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     return (
       <div className="intro-sequence boot">
         <div className="intro-content">
-          <div className="loading-bar mt-3 mb-3">
-            <div className="loading-progress">
-              <div className="progress-fill" style={{ width: '75%', transition: 'width 2s' }}></div>
+          <div className="story-text">
+            <p>You boot up the old disk reader...</p>
+            
+            <div className="dos-screen border-box mt-3 mb-3">
+              <p>IBM Personal Computer DOS</p>
+              <p>Version 3.30 (C) Copyright IBM Corp 1981-1987</p>
+              <p className="mt-2">A:\&gt;DIR</p>
+              <p className="mt-1">Volume in drive A is AIQUEST89</p>
+              <p>Directory of A:\</p>
+              <p className="mt-1">AIQUEST  EXE    43,288   15-09-89   3:45p</p>
+              <p>QUESTIONS DAT    12,044   15-09-89   3:45p</p>
+              <p>README   TXT     1,823   15-09-89   3:46p</p>
+              <p>         3 File(s)     57,155 bytes</p>
+              <p>                      302,592 bytes free</p>
+              <p className="mt-2">A:\&gt;AIQUEST</p>
+              <p className="mt-1">Loading AI Knowledge Challenge...</p>
             </div>
-            <p className="text-center mt-1">Loading... 75%</p>
-          </div>
-          
-          <div className="dos-screen border-box mt-3 mb-3">
-            <p>MS-DOS Version 3.30</p>
-            <p>Copyright 1981-1989 Microsoft Corp.</p>
-            <p className="mt-2">A:\&gt;<span className="cursor-blink">_</span></p>
-          </div>
-          
-          <p className="text-center">[Disk drive whirrs and clicks]</p>
-          
-          <div className="border-box border-box-amber mt-3">
-            <div className="text-center">
-              <p className="retro-font text-amber mt-2">▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄</p>
-              <p className="retro-font mt-2">LAKE MACQUARIE CITY COUNCIL</p>
-              <p>Electronic Data Processing Department</p>
-              <p className="mt-2 retro-font">AI KNOWLEDGE CHALLENGE v1.2</p>
-              <p>September 1989</p>
-              <p className="retro-font mt-2">▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀</p>
-              
-              <p className="mt-3">INITIALISING GAME SYSTEM...</p>
-              <p>LOADING QUIZ MODULES...</p>
-              <p>PREPARING LEADERBOARD DATABASE...</p>
-              
-              <p className="text-amber mt-3 retro-font">READY.</p>
+            
+            <div className="loading-bar">
+              <div className="loading-progress">
+                <div className="progress-fill" style={{ width: '100%' }}></div>
+              </div>
+            </div>
+            
+            <div className="loading-checklist mt-2">
+              <p><span>Initializing system</span> <span className="text-green">[OK]</span></p>
+              <p><span>Loading question database</span> <span className="text-green">[OK]</span></p>
+              <p><span>Checking integrity</span> <span className="text-green">[OK]</span></p>
+              <p><span>Ready to launch</span> <span className="text-green">[OK]</span></p>
             </div>
           </div>
           
@@ -277,7 +275,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('message')}
             >
-              [Press ENTER to begin]
+              [Continue] →
             </button>
           </div>
         </div>
@@ -289,52 +287,35 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     return (
       <div className="intro-sequence message">
         <div className="intro-content">
-          <div className="border-box border-box-amber">
-            <h2 className="retro-font text-amber text-center">A MESSAGE FROM THE PAST</h2>
+          <div className="intro-header">
+            <h1 className="retro-font text-amber">MESSAGE FROM 1989</h1>
           </div>
           
-          <div className="memo border-box mt-3">
-            <p><strong>TO:</strong> Future Council Employee</p>
-            <p><strong>FROM:</strong> J. Thompson, Systems Manager</p>
-            <p style={{ marginLeft: '3rem' }}>Electronic Data Processing Department</p>
+          <div className="memo border-box mt-2">
+            <p className="retro-font text-amber">INTERNAL MEMORANDUM</p>
+            <hr />
+            <p><strong>TO:</strong> All Council Staff</p>
+            <p><strong>FROM:</strong> Data Processing Manager</p>
             <p><strong>DATE:</strong> 15 September 1989</p>
-            <p><strong>RE:</strong> A Message to the Future</p>
+            <p><strong>RE:</strong> New Computer Quiz Challenge</p>
+            <hr />
             
-            <hr className="mt-2 mb-2" style={{ borderColor: '#00ff00' }} />
+            <p className="mt-2">Council has invested in new <strong>Expert System</strong> technology for our IBM System/36 mainframe. This represents the cutting edge of artificial intelligence.</p>
             
-            <p className="mt-2"><strong>Greetings from 1989!</strong></p>
+            <p className="mt-2">To help staff understand these systems, we've created an interactive quiz challenge. Navigate through council departments, answer questions, and learn about:</p>
             
-            <p className="mt-2">If you're reading this, computing has probably changed in ways we can only imagine. We're in the age of mainframes, floppy disks, and 2400 baud modems.</p>
+            <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
+              <li>Knowledge bases and inference engines</li>
+              <li>Rule-based decision making</li>
+              <li>Data accuracy and validation</li>
+              <li>Responsible technology implementation</li>
+            </ul>
             
-            <p className="mt-2">You're probably working with technology that would seem like science fiction to us - perhaps computers that fit in your pocket, or global networks connecting everyone instantly.</p>
+            <p className="mt-2">Top scores will be recognised at the quarterly staff meeting!</p>
             
-            <p className="mt-2">We created this AI Knowledge Challenge for our staff to learn about "Expert Systems" - computers that can make decisions using programmed rules. Some call it "Artificial Intelligence," though I'm not sure about that name.</p>
+            <p className="mt-3"><strong>Good luck!</strong></p>
             
-            <p className="mt-2"><strong>But here's what I hope you discover:</strong></p>
-            
-            <p className="mt-2">The PRINCIPLES behind responsible computing - logic, ethics, data integrity, transparency, human oversight - these don't change.</p>
-            
-            <p className="mt-2">Whether you're working with our 1989 mainframe or your future AI systems, these fundamentals remain the same.</p>
-            
-            <p className="mt-2">This quiz was designed to help our staff think about these principles through practical scenarios. It seems to have worked - we got great feedback!</p>
-            
-            <p className="mt-2">Take the challenge. Test your AI knowledge against what we knew in 1989. You might be surprised how relevant these questions still are.</p>
-            
-            <p className="mt-2">Throughout the quiz, you'll see notes connecting our 1989 thinking to your 2025 reality. Pay attention to them. History repeats, and the lessons are timeless.</p>
-            
-            <p className="mt-2"><strong>Good luck beating the leaderboard!</strong></p>
-            
-            <p className="mt-3">J. Thompson<br/>
-            Systems Manager<br/>
-            Electronic Data Processing Department<br/>
-            Lake Macquarie City Council</p>
-            
-            <p className="mt-2" style={{ fontSize: '14px' }}><em>P.S. - If you're playing this in 2025 and council's AI systems are running smoothly, we did something right. If they're causing problems... well, hopefully this quiz helps you understand why!</em></p>
-          </div>
-          
-          <div className="border-box border-box-amber mt-3 text-center">
-            <p className="mt-2 mb-2">You are about to play the 1989 AI Knowledge Challenge.</p>
-            <p className="mb-2">Your progress is being tracked with access code: <span className="text-amber retro-font">{playerData.accessCode}</span></p>
+            <p className="mt-2">— M. Stevens, Data Processing</p>
           </div>
           
           <div className="text-center mt-3">
@@ -342,7 +323,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('entering')}
             >
-              [Press ENTER to start the challenge]
+              [Load the quiz] →
             </button>
           </div>
         </div>
@@ -354,17 +335,8 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     return (
       <div className="intro-sequence entering">
         <div className="intro-content">
-          <div className="border-box border-box-amber text-center">
-            <h2 className="retro-font mt-2">LOADING 1989 ENVIRONMENT...</h2>
-            
-            <div className="loading-checklist mt-3">
-              <p>Initialising mainframe connection... <span className="text-amber">[ OK ]</span></p>
-              <p>Loading building layout... <span className="text-amber">[ OK ]</span></p>
-              <p>Preparing quiz questions... <span className="text-amber">[ OK ]</span></p>
-              <p>Setting date to 15 September 1989... <span className="text-amber">[ OK ]</span></p>
-            </div>
-            
-            <p className="retro-font text-amber mt-3 mb-2">READY TO BEGIN</p>
+          <div className="intro-header">
+            <h1 className="retro-font text-green">LOADING SIMULATION...</h1>
           </div>
           
           <div className="border-box mt-3">
@@ -459,10 +431,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           QUEST PROGRESS: {answeredQuestions}/{totalQuestions}
         </p>
 
-        {/* Room description */}
+        {/* Room description - CRITICAL FIX HERE */}
         <div className="border-box mt-2">
           <p className="retro-font text-amber mb-2">{currentRoom.name}</p>
-          <p>{currentRoom.description}</p>
+          <pre className="room-description">{currentRoom.description}</pre>
         </div>
 
         {/* Current question or navigation */}
