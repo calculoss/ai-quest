@@ -104,6 +104,142 @@ p {
 }
 
 /* ============================================
+   GAME ROOM & DESCRIPTION DISPLAY
+   Critical for ASCII box borders
+   ============================================ */
+
+.room-header,
+.room-description,
+.game-description,
+.description,
+.room-info,
+.location-box,
+.room-display,
+.game-room {
+  /* Preserve line breaks and spacing for ASCII art */
+  white-space: pre-wrap;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+/* Room container styling */
+.room-container,
+.game-room-container,
+.location-container {
+  background: var(--terminal-bg-light);
+  border: 3px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+  overflow-x: auto;
+}
+
+/* Character dialogue boxes */
+.character-dialogue,
+.character-text,
+.npc-dialogue {
+  background: rgba(0, 255, 0, 0.05);
+  border-left: 4px solid var(--terminal-green);
+  padding: 20px;
+  margin: 20px 0;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Question display area */
+.question-display,
+.question-text,
+.quest-text {
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(0, 255, 0, 0.03);
+}
+
+/* Room title/header specific */
+.room-title,
+.location-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--terminal-amber);
+  margin-bottom: 15px;
+  letter-spacing: 0.1em;
+}
+
+/* Progress/status display */
+.game-progress,
+.quest-progress,
+.score-display {
+  text-align: right;
+  color: var(--terminal-amber);
+  font-size: 16px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* ============================================
+   GAME STATUS & INFO DISPLAYS
+   ============================================ */
+
+/* Score and progress displays at top of screen */
+.score-display,
+.progress-display,
+.game-status,
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: var(--terminal-bg-light);
+  border: 2px solid var(--terminal-green);
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Inventory or items display */
+.inventory,
+.items-display,
+.collected-items {
+  background: rgba(0, 255, 0, 0.05);
+  border: 2px solid var(--terminal-green);
+  padding: 15px;
+  margin: 15px 0;
+}
+
+/* Navigation buttons/exits */
+.exits,
+.navigation,
+.room-exits {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 2px solid var(--terminal-green);
+}
+
+.exit-button,
+.nav-button {
+  background-color: transparent;
+  color: var(--terminal-cyan);
+  border: 2px solid var(--terminal-cyan);
+  padding: 12px 24px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.exit-button:hover,
+.nav-button:hover {
+  background-color: var(--terminal-cyan);
+  color: var(--terminal-bg);
+  box-shadow: 0 0 15px var(--terminal-cyan);
+}
+
+/* ============================================
    LOADING SCREEN
    ============================================ */
 
