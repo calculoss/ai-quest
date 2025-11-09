@@ -15,11 +15,12 @@ rooms:[
     id: 1,
     name: "Reception",
     character: "Rita",
-    description: `╔════════════════════════════════════════════════════════╗
-║                    RECEPTION                           ║
-║              Lake Macquarie Council                    ║
-║             15 September 1989, 0905                    ║
-╚════════════════════════════════════════════════════════╝
+    description: 
+	`╔════════════════════════════════════════════════════════╗
+     ║                    RECEPTION                           ║
+     ║              Lake Macquarie Council                    ║
+     ║             15 September 1989, 0905                    ║
+     ╚════════════════════════════════════════════════════════╝
 
 Rita's desk is cluttered with manila folders and a daily planner. A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."`,
     exits: ["Cafeteria", "Mainframe Room"]
@@ -29,11 +30,12 @@ Rita's desk is cluttered with manila folders and a daily planner. A sign on the 
     id: 2,
     name: "Cafeteria",
     character: "Council Staff",
-    description: `╔════════════════════════════════════════════════════════╗
-║                  STAFF CAFETERIA                       ║
-║              Lake Macquarie Council                    ║
-║             15 September 1989, 1015                    ║
-╚════════════════════════════════════════════════════════╝
+    description: 
+	`╔════════════════════════════════════════════════════════╗
+     ║                  STAFF CAFETERIA                       ║
+     ║              Lake Macquarie Council                    ║
+     ║             15 September 1989, 1015                    ║
+     ╚════════════════════════════════════════════════════════╝
 
 Morning tea is in full swing. The smell of Tim Tams and instant coffee fills the air. A radio in the corner plays 2GO.`,
     exits: ["Reception", "Mainframe Room"]
