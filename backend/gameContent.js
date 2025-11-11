@@ -8,15 +8,18 @@ rooms:[
     id: 1,
     name: "Reception",
     character: "Rita",
-    description: 
+    description:
 `╔════════════════════════════════════════════════════════╗
 ║                    RECEPTION                           ║
 ║              Lake Macquarie Council                    ║
 ║             15 September 1989, 0905                    ║
 ╚════════════════════════════════════════════════════════╝
 
-Rita's desk is cluttered with manila folders and a daily planner. 
-A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."`,
+Rita's desk is cluttered with manila folders and a daily planner.
+A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."
+
+An urgent memo sits on the desk: "OPERATION C.H.A.T. - System offline.
+GM demo at 4PM. Collect authorization codes from all department heads."`,
     exits: ["Cafeteria", "Mainframe Room"]
   },
   
@@ -105,16 +108,18 @@ the adjacent office.`,
     id: 7,
     name: "Mail Room",
     character: "C.H.A.T.",
-    description: 
+    description:
 `╔════════════════════════════════════════════════════════╗
 ║                    MAIL ROOM                           ║
 ║              Lake Macquarie Council                    ║
 ║             15 September 1989, 1530                    ║
 ╚════════════════════════════════════════════════════════╝
 
-Mail sorting racks line the walls. A computer terminal displays the 
-C.H.A.T. system interface. A "BETA TEST IN PROGRESS" sign hangs on 
-the door.`,
+Mail sorting racks line the walls. The C.H.A.T. terminal sits dark
+and offline. A "BETA TEST IN PROGRESS" sign hangs on the door.
+
+A note taped to the screen: "System crashed overnight. Requires ALL
+department authorization codes + manual restart protocol."`,
     exits: ["Governance", "General Manager"]
   },
   
@@ -1137,57 +1142,64 @@ dialogue: {
   "Rita": {
     intro: `Rita sits at the reception desk, surrounded by filing cabinets and a green-screen terminal. An IBM Selectric typewriter sits beside a new dot-matrix printer.
 
-Rita: "G'day! You must be the new Computer Services Cadet! Welcome to your first day in the Electronic Data Processing Department.
+Rita: "G'day! You must be the new Computer Services Cadet! Thank goodness you're here - we've got an emergency!
 
-I'm Rita, Data Entry Supervisor. I've been with council for 15 years - started with punch cards, if you can believe that!
+I'm Rita, Data Entry Supervisor. I've been with council for 15 years, and I've never seen the GM this stressed.
 
-Before I give you your security pass, I need to make sure you understand the basics of our new computer systems. The Systems Manager is very particular about this.
+Our new C.H.A.T. system - the Expert System we've been testing - crashed overnight. The General Manager has State Government officials coming at 4 PM for a demonstration!
 
-Don't worry - these are straightforward questions about how we use computers here at council."`,
-    
+The C.H.A.T. system needs a manual restart, but it requires authorization codes from EVERY department head. You'll need to visit each department, prove you understand AI concepts, and collect their codes.
+
+Before I give you my authorization code and your security pass, I need to test your understanding of the basics. Ready?"`,
+
     correct: "Rita: Excellent! That's exactly right. You've got a good understanding of the fundamentals.",
-    
+
     wrong: "Rita: Not quite, love. Have another think about it. The Systems Manager will want you to get this right.",
-    
-    exit: `Rita: "Well done! Here's your security pass. You'll need this to access other departments.
 
-The Staff Cafeteria is just down the hall if you need a cuppa. But your schedule says you should visit the Mainframe Room next to meet the Systems Manager.
+    exit: `Rita: "Perfect! You understand the basics. Here's my authorization code and your security pass.
 
-Good luck!"
+My Code: LEARN-THE-BASICS
 
-[SECURITY PASS obtained]`
+Now, the Systems Manager mentioned something about COFFEE being essential for debugging. The staff in the CAFETERIA might know where he is - he's been in since 6 AM trying to diagnose the C.H.A.T. crash.
+
+You'll need his code next. Good luck!"
+
+[SECURITY PASS obtained]
+[Authorization Code #1: LEARN-THE-BASICS]`
   },
 
   // ROOM 2: CAFETERIA - Council Staff
   "Council Staff": {
     intro: `The cafeteria smells like instant coffee and lamingtons. Several council workers sit at Formica tables during morning tea break. A Thermos jug and tin of Arnott's Assorted biscuits sit on the counter.
 
-DAVE (Planning): "Another new trainee? They're really pushing this computer thing, aren't they?"
+DAVE (Planning): "Did you hear? The C.H.A.T. system's down! The demo's at 4 PM!"
 
-MARGARET (Rates): "I heard they're spending $50,000 on the new mainframe upgrade. That's ratepayers' money!"
+MARGARET (Rates): "I heard they're spending $50,000 on this Expert System. What if it doesn't work?"
 
-FRANK (Assets): "My nephew says these 'Expert Systems' can make decisions on their own. That doesn't sit right with me."
+FRANK (Assets): "My nephew says these systems can make decisions on their own. That doesn't sit right with me."
 
 MARGARET: "Exactly! What happens when the computer makes a mistake? Who takes responsibility?"
 
 They notice you listening.
 
-DAVE: "Since you're the computer trainee, maybe you can settle our debate. How are these systems supposed to help council, exactly?"`,
-    
+DAVE: "You're the computer trainee trying to fix C.H.A.T., right? Maybe you can settle our debate first. How are these Expert Systems supposed to help council, exactly?"`,
+
     correct: "MARGARET: That makes sense. So it's a tool, not a replacement. I suppose that's not so scary.\n\nDAVE: As long as humans are still in charge of the important decisions.",
-    
+
     wrong: "FRANK: Hmm, I'm not sure about that. Have another go at explaining it.",
-    
-    exit: `MARGARET: "You know, you've made me feel better about these computers. Here, have a lamington."
 
-DAVE: "Good luck with your training. If these systems help us serve the community better, I'm all for it. Just don't let the machines take over!"
+    exit: `MARGARET: "You know, you've made me feel better about these computers. Here, have a lamington. And my code."
 
-[They all laugh]
+DAVE: "Good luck fixing C.H.A.T.! If these systems help us serve the community better, I'm all for it."
 
-FRANK: "Oh, before you go - can you take this coffee to the Systems Manager? He's been in the Mainframe Room since 6 AM and probably hasn't eaten."
+MARGARET: "My code: HUMAN-JUDGMENT"
+
+[They laugh]
+
+FRANK: "Oh, the Systems Manager? He's definitely in the MAINFRAME ROOM. Take him this coffee - he's been in there since 6 AM in that freezing cold room where the system thinks."
 
 [COFFEE obtained]
-[Understanding of AI/human partnership gained]`
+[Authorization Code #2: HUMAN-JUDGMENT]`
   },
 
   // ROOM 3: MAINFRAME ROOM - Systems Manager
@@ -1200,28 +1212,32 @@ SYSTEMS MANAGER: "Bloody hell, who left the door open? This room needs to stay a
 
 [He notices the coffee]
 
-SYSTEMS MANAGER: "Oh, is that for me? Champion. I've been debugging this database routine since dawn."
+SYSTEMS MANAGER: "Oh, is that for me? Champion. I've been debugging the C.H.A.T. crash since 6 AM."
 
 [He takes a long sip]
 
-SYSTEMS MANAGER: "Right. You're the new cadet. I'm supposed to teach you about the technical side of our systems.
+SYSTEMS MANAGER: "Right. The C.H.A.T. system needs a cold restart. But we need department authorization codes. My code is: LEARN-FROM-DATA - because that's what AI does.
 
-Fair warning: this gets a bit complex. But if you want to understand how these 'Expert Systems' work, you need to understand the fundamentals.
+C.H.A.T. learns patterns from data, just like our GIS maps show patterns across geography. Speaking of which, the Planning Officer in the MAP ROOM has code #4. She'll want to test you on DATA PRIVACY - that's her big concern.
+
+But first, prove you understand the technical fundamentals of how these systems learn.
 
 Ready?"`,
-    
+
     correct: "SYSTEMS MANAGER: Spot on! You've got a good grasp of the technical concepts. Not bad for a first-day cadet.",
-    
+
     wrong: "SYSTEMS MANAGER: Not quite. Think about the logic behind it. Computer systems are all about clear, logical thinking.",
-    
-    exit: `SYSTEMS MANAGER: "Not bad! You've got a decent grasp of the technical concepts. Here's the System Manual - you'll need it to understand the data structures in other departments.
 
-The Planning Officer in the Map Room has been asking for help understanding how our new GIS databases work. You might be able to help her now.
+    exit: `SYSTEMS MANAGER: "Excellent! You understand how AI learns from patterns in data. Here's my authorization code and the System Manual.
 
-And for god's sake, close the door on your way out!"
+My Code: LEARN-FROM-DATA
+
+The Planning Officer in the MAP ROOM needs to give you her code next. She's working on geographic intelligence systems - cutting-edge stuff. Tell her I sent you, and she'll want to talk about PRIVACY and how we protect sensitive location data.
+
+Now get moving - we've got until 4 PM!"
 
 [SYSTEM MANUAL obtained]
-[Map Room now accessible]`
+[Authorization Code #3: LEARN-FROM-DATA]`
   },
 
   // ROOM 4: MAP ROOM - Planning Officer
@@ -1230,26 +1246,28 @@ And for god's sake, close the door on your way out!"
 
 The PLANNING OFFICER looks up from a stack of development applications.
 
-PLANNING OFFICER: "Oh thank goodness! Are you from the EDP Department? I'm drowning in data and I don't understand half of what this new GIS system can do.
+PLANNING OFFICER: "Oh thank goodness! You're here to collect authorization codes for the C.H.A.T. restart? The Systems Manager called ahead.
 
-We've got 847 development applications from last year alone. The idea is we can use spatial data and the Expert System to help assess them faster.
+I've got 847 development applications from last year alone. The idea is we can use C.H.A.T. to help analyze spatial data and assess applications faster.
 
-But I'm worried about privacy. These systems store addresses, property values, personal information...
+But before I give you my code, I need to know you understand data privacy. These systems will store addresses, property values, personal information...
 
-How do we make sure this data is used responsibly?"`,
-    
-    correct: "PLANNING OFFICER: That's what I thought too. Transparency is important, but so is privacy. It's about finding the balance.",
-    
-    wrong: "PLANNING OFFICER: I don't think that's quite right. Think about the balance between public access and individual privacy.",
-    
-    exit: `PLANNING OFFICER: "You know, you've helped me understand this technology better. It's not about replacing good planning judgement - it's about having better information to support our decisions.
+What information should you NEVER put into an AI system?"`,
 
-Here, take this Planning Report. It shows how we're using data responsibly. The Communications team might find it useful for explaining this to the public.
+    correct: "PLANNING OFFICER: That's exactly right! Privacy first. The code relates to what we must never share.",
 
-Good luck with the rest of your training!"
+    wrong: "PLANNING OFFICER: I don't think that's quite right. Think about what data needs protection in government work.",
+
+    exit: `PLANNING OFFICER: "Perfect! You understand that we must PROTECT-PRIVACY - that's my authorization code.
+
+My Code: PROTECT-PRIVACY
+
+Now, the COMMUNICATIONS OFFICER down the hall is drafting PUBLIC STATEMENTS about our AI use. She'll need to know this too - she's writing about how we'll explain C.H.A.T. to ratepayers. She'll want to test your ability to VERIFY what's real and what's AI-generated.
+
+Go see her in the Communications Department!"
 
 [PLANNING REPORT obtained]
-[Communications Department now accessible]`
+[Authorization Code #4: PROTECT-PRIVACY]`
   },
 
   // ROOM 5: COMMUNICATIONS DEPARTMENT - Communications Officer
@@ -1258,29 +1276,31 @@ Good luck with the rest of your training!"
 
 The COMMUNICATIONS OFFICER is working on a press release using MacWrite.
 
-COMMS OFFICER: "Hi! You're the computer trainee, right? Perfect timing. I need help explaining our new computer systems to the public.
+COMMS OFFICER: "Hi! You're collecting codes for the C.H.A.T. restart? Good - we need that system working for the GM's demo!
 
-Ratepayers are asking questions:
-'Why is council spending money on computers?'
+I'm preparing public statements about C.H.A.T. Ratepayers are asking:
+'Why is council spending money on AI?'
 'Will this affect services?'
 'Is our data safe?'
 
-We need to communicate clearly and honestly about what these systems do and don't do. No jargon, no overselling the technology.
+But here's the thing - we also need to educate staff about AI-generated images. Can you spot the difference between AI-generated and real photographs? That's crucial for our media team.
 
-Can you help me fact-check some claims?"`,
-    
-    correct: "COMMS OFFICER: Exactly! Accurate, clear, and doesn't oversell the technology. The public deserves honesty about what these systems can and can't do.",
-    
+Let me test your verification skills with some images, then you can answer some questions about council AI use."`,
+
+    correct: "COMMS OFFICER: Exactly! You can VERIFY the truth. Accurate, clear, and doesn't oversell the technology. The public deserves honesty.",
+
     wrong: "COMMS OFFICER: That's not quite right. We need to be more accurate and transparent about the technology's real capabilities.",
-    
-    exit: `COMMS OFFICER: "Brilliant! You understand how to communicate about technology honestly. Here's the Media Kit we're preparing - it includes all the key messages.
 
-You should visit the Governance Office next. They're developing the policy framework for how we use these systems.
+    exit: `COMMS OFFICER: "Brilliant! You understand how to VERIFY-TRUTH - that's my authorization code. You can spot AI-generated content and communicate honestly about technology.
 
-That's where the real important work happens!"
+My Code: VERIFY-TRUTH
+
+The GOVERNANCE OFFICER is writing the ACCOUNTABILITY FRAMEWORK. She's down the hall working on policies. She'll want to know you can think critically about AI's limitations and human oversight requirements.
+
+Head to the Governance Office next!"
 
 [MEDIA KIT obtained]
-[Governance Office now accessible]`
+[Authorization Code #5: VERIFY-TRUTH]`
   },
 
   // ROOM 6: GOVERNANCE OFFICE - Governance Officer
@@ -1289,95 +1309,103 @@ That's where the real important work happens!"
 
 The GOVERNANCE OFFICER looks up from a document titled "Computer Systems Usage Policy - DRAFT."
 
-GOVERNANCE OFFICER: "Ah, you must be the new cadet! Excellent timing. I'm finalising our policies for the Expert System.
+GOVERNANCE OFFICER: "Ah, you're collecting codes for C.H.A.T.! Good - I'm finalizing the accountability policy for that system right now.
 
-We need clear rules about:
-- Who can access what data
-- How decisions are reviewed
+AI in local government requires strict oversight. My code represents the most important principle: HUMAN-OVERSIGHT.
+
+Before I give it to you, I need to know you understand AI's limitations. We need clear rules about:
+- Who reviews AI recommendations
+- How decisions affecting citizens are made
 - What happens when systems fail
 - Accountability and responsibility
 
-The technology is new, but good governance principles are timeless.
+The technology is new, but good governance principles are timeless. Plus, I need you to verify more AI-generated images - it's a governance issue when fake content looks real.
 
-Let's test your understanding of responsible system use."`,
-    
-    correct: "GOVERNANCE OFFICER: Perfect! Human judgement informed by system analysis. That's the right balance of technology and accountability.",
-    
-    wrong: "GOVERNANCE OFFICER: Not quite. Think about who's ultimately accountable when decisions affect citizens.",
-    
-    exit: `GOVERNANCE OFFICER: "Excellent work. You understand that good governance isn't about blocking innovation - it's about ensuring innovation serves the public good responsibly.
+Ready?"`,
 
-Here's the final Policy Document. You'll need this for your meeting with the General Manager.
+    correct: "GOVERNANCE OFFICER: Perfect! Human judgment, informed by AI, but always with human accountability. That's the right balance.",
 
-But first, stop by the Mail Room. That's where C.H.A.T. is being tested - our experimental Expert System assistant."
+    wrong: "GOVERNANCE OFFICER: Not quite. Think about who's ultimately accountable when AI-assisted decisions affect citizens.",
+
+    exit: `GOVERNANCE OFFICER: "Excellent! You understand that HUMAN-OVERSIGHT is essential - that's my authorization code.
+
+My Code: HUMAN-OVERSIGHT
+
+Now, one last stop - the MAIL ROOM where C.H.A.T. was being tested when it crashed. That's where you'll need to input ALL the authorization codes to restart the system.
+
+Then report to the GENERAL MANAGER for the final evaluation before the 4 PM demo!"
 
 [POLICY DOCUMENT obtained]
-[Mail Room now accessible]`
+[Authorization Code #6: HUMAN-OVERSIGHT]`
   },
 
   // ROOM 7: MAIL ROOM - C.H.A.T. System
   "C.H.A.T.": {
-    intro: `A computer terminal sits in the corner, connected to the mainframe. A sign reads:
+    intro: `The C.H.A.T. terminal sits dark. A handwritten note taped to the screen:
 
-"C.H.A.T. PILOT PROGRAMME
- Council Helper for Automated Tasks
- 
- BETA TEST - SUPERVISED USE ONLY"
+"SYSTEM OFFLINE - CRASHED AT 0245 HOURS
+ MANUAL RESTART REQUIRED
+ NEEDS: All 6 department authorization codes
+ THEN: Final knowledge assessment"
 
-The screen displays:
+You collected these codes:
+#1: LEARN-THE-BASICS (Rita)
+#2: HUMAN-JUDGMENT (Cafeteria Staff)
+#3: LEARN-FROM-DATA (Systems Manager)
+#4: PROTECT-PRIVACY (Planning Officer)
+#5: VERIFY-TRUTH (Communications Officer)
+#6: HUMAN-OVERSIGHT (Governance Officer)
+
+You press the power button. The screen flickers...
 
 ╔════════════════════════════════════════════════════════╗
-║  C.H.A.T. v0.9 Beta                                    ║
-║  Council Helper for Automated Tasks                    ║
-║                                                        ║
-║  This Expert System provides assistance with:          ║
-║  - Document retrieval                                  ║
-║  - Database queries                                    ║
-║  - Policy lookup                                       ║
-║  - Workflow guidance                                   ║
-║                                                        ║
-║  WARNING: This is experimental technology.             ║
-║  Always verify C.H.A.T.'s suggestions with humans.     ║
+║  C.H.A.T. v0.9 Beta - EMERGENCY RESTART MODE          ║
 ╚════════════════════════════════════════════════════════╝
 
-As you approach, C.H.A.T. boots up:
+C.H.A.T.: "SYSTEM RESTART INITIATED.
 
-C.H.A.T.: "GREETINGS. I AM C.H.A.T.
-           COUNCIL HELPER FOR AUTOMATED TASKS.
+           AUTHORIZATION CODES VERIFIED.
+           ✓ LEARN-THE-BASICS
+           ✓ HUMAN-JUDGMENT
+           ✓ LEARN-FROM-DATA
+           ✓ PROTECT-PRIVACY
+           ✓ VERIFY-TRUTH
+           ✓ HUMAN-OVERSIGHT
 
-           YOU ARE: COMPUTER SERVICES CADET
-           STATUS: IN TRAINING
+           ALL DEPARTMENT PRINCIPLES CONFIRMED.
 
-           BEFORE YOU PROCEED TO THE GENERAL MANAGER,
-           YOU MUST DEMONSTRATE UNDERSTANDING OF
-           RESPONSIBLE AI IMPLEMENTATION.
+           FINAL KNOWLEDGE ASSESSMENT REQUIRED.
+           DEMONSTRATE UNDERSTANDING OF AI STRENGTHS
+           VS HUMAN STRENGTHS.
 
-           I WILL ASK QUESTIONS. ANSWER CAREFULLY.
+           ANSWER CAREFULLY."`,
 
-           READY?"`,
-    
-    correct: "C.H.A.T.: CORRECT.\n\nAI SYSTEMS LIKE ME ARE TOOLS.\nUSE ME FOR EFFICIENCY.\nBUT VERIFY BEFORE CITIZEN IMPACT.\n\nPROCEEDING TO FINAL ASSESSMENT...",
-    
-    wrong: "C.H.A.T.: INCORRECT.\n\nREVIEW RESPONSIBLE AI PRINCIPLES.\nCONSIDER: ACCOUNTABILITY, TRANSPARENCY, HUMAN OVERSIGHT.\n\nTRY AGAIN.",
-    
-    exit: `C.H.A.T.: "ASSESSMENT COMPLETE.
+    correct: "C.H.A.T.: CORRECT.\n\nAI EXCELS AT: PATTERNS, SCALE, SPEED.\nHUMANS EXCEL AT: JUDGMENT, ETHICS, CONTEXT.\n\nBOOTING SYSTEM...",
 
-YOU HAVE DEMONSTRATED:
-✓ UNDERSTANDING OF DATA PROTECTION
-✓ KNOWLEDGE OF SYSTEM CAPABILITIES
-✓ AWARENESS OF PRIVACY CONCERNS
-✓ COMMITMENT TO TRANSPARENCY
-✓ RESPECT FOR HUMAN ACCOUNTABILITY
-✓ RESPONSIBLE AI IMPLEMENTATION
+    wrong: "C.H.A.T.: INCORRECT.\n\nREVIEW: AI CAPABILITIES VS HUMAN CAPABILITIES.\nBOTH ARE ESSENTIAL. NEITHER REPLACES THE OTHER.\n\nTRY AGAIN.",
 
-CERTIFICATION: APPROVED
+    exit: `C.H.A.T.: "SYSTEM RESTART: SUCCESSFUL
 
-PROCEED TO GENERAL MANAGER'S OFFICE FOR FINAL EVALUATION.
+╔════════════════════════════════════════════════════════╗
+║  C.H.A.T. v0.9 Beta - ONLINE                          ║
+║  All systems nominal                                   ║
+╚════════════════════════════════════════════════════════╝
 
-GOOD LUCK, CADET."
+YOU HAVE SUCCESSFULLY:
+✓ Collected all department authorization codes
+✓ Demonstrated understanding of AI fundamentals
+✓ Proven knowledge of data protection
+✓ Shown commitment to human oversight
+✓ Restarted the C.H.A.T. system
 
-[C.H.A.T. CERTIFICATION obtained]
-[General Manager's Office now accessible]`
+SYSTEM STATUS: READY FOR 4 PM DEMONSTRATION
+
+REPORT TO GENERAL MANAGER'S OFFICE FOR FINAL EVALUATION.
+
+OPERATION C.H.A.T.: NEARLY COMPLETE."
+
+[C.H.A.T. SYSTEM ONLINE]
+[Report to General Manager!]`
   },
 
   // ROOM 8: GENERAL MANAGER'S OFFICE - General Manager
@@ -1386,42 +1414,62 @@ GOOD LUCK, CADET."
 
 The GENERAL MANAGER sits behind a large desk covered with reports and budget documents.
 
-GENERAL MANAGER: "Come in, sit down. I've been following your progress through the departments today.
+GENERAL MANAGER: "Excellent work! I heard C.H.A.T. just came back online. The State Government officials will be here in 30 minutes for the demonstration.
 
-I've got councillors asking tough questions about our computer spending. Ratepayers worried about privacy. Staff concerned about their jobs.
+You've collected authorization codes from every department head. You've proven you understand:
+- How AI learns from data
+- The importance of human judgment
+- Privacy protection
+- Verification and truth
+- Human oversight
 
-The Systems Manager says this Expert System technology could revolutionise how we serve the community. The Governance Officer says we need careful controls.
+But before I can clear you for the demonstration, I need to test your comprehensive understanding. These final questions cover everything - the technology, its applications, and its role in responsible government service.
 
-You've been through all the departments. You've learned the technical details and the governance principles.
+The future of how Lake Macquarie Council uses AI depends on people who understand both its power AND its limitations.
 
-Now I need YOUR recommendation.
+Ready for the final assessment?"`,
 
-Should Lake Macquarie Council proceed with full implementation of our Expert System programme?"`,
-    
-    correct: `GENERAL MANAGER: "That's exactly what I needed to hear.
+    correct: `GENERAL MANAGER: "Outstanding! That's exactly the kind of thinking we need.
 
 Innovation with responsibility.
-Technology in service of community.
-Human judgement supported by systems.
+Technology serving community.
+Human judgment guiding AI systems.
 
-That's how Lake Macquarie Council will approach this technology."
+You've not only restarted C.H.A.T. - you've demonstrated the principles that will guide how this council uses AI technology."
 
-[He signs your completion certificate]
+[She checks her watch: 3:45 PM]
 
-GENERAL MANAGER: "Congratulations, Cadet. You've successfully completed the AI Knowledge Challenge.
+GENERAL MANAGER: "The State Government officials arrive in 15 minutes. Thanks to you, we're ready.
 
-The principles you've learned today will serve you well, no matter how technology evolves.
+You've successfully completed OPERATION C.H.A.T. and passed the AI Knowledge Challenge.
 
-Welcome to the future of council operations."`,
-    
-    wrong: "GENERAL MANAGER: Think more carefully about the balance between innovation and responsibility. What would serve the community best?",
-    
+The principles you've learned today - in 1989 or 2025 - will serve you well, no matter how technology evolves."`,
+
+    wrong: "GENERAL MANAGER: Think more carefully about the balance between innovation, responsibility, and community service. What would serve citizens best?",
+
     exit: `
 ╔════════════════════════════════════════════════════════╗
-║          🎊 CHALLENGE COMPLETE - 1989 🎊               ║
+║        🎊 OPERATION C.H.A.T. COMPLETE! 🎊             ║
+║                                                        ║
+║  Authorization Codes Collected: 6/6                   ║
+║  C.H.A.T. System: ONLINE                              ║
+║  Time: 3:50 PM (10 minutes to spare!)                 ║
+║  Mission: SUCCESS                                      ║
 ╚════════════════════════════════════════════════════════╝
 
-[Returning to 2025...]`
+[Returning to 2025...]
+
+The disk stops spinning. The screen fades.
+
+You and Sarah look at each other.
+
+"That was incredible!" she says. "They were thinking about
+AI responsibility back in 1989..."
+
+"And we're still working on the same principles today,"
+you reply.
+
+Some things never change. And maybe they shouldn't.`
   }
 }
 };
