@@ -362,6 +362,12 @@ pre.room-description {
   box-shadow: 0 0 10px rgba(255, 170, 0, 0.1);
 }
 
+.border-box-red {
+  border-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.03);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.1);
+}
+
 /* ============================================
    BUTTONS - LARGE & VISIBLE
    ============================================ */
