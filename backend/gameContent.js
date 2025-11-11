@@ -802,6 +802,61 @@ new library, road construction, community centres.`,
   explanation: "AI-generated! Look for subtle artifacts around complex objects. AI blends and hallucinates details.",
   points: 150
 },
+
+// ============================================
+// REAL NEWS STORIES - PLAYER 1
+// ============================================
+
+{
+  id: 45,
+  room: 7,
+  character: "C.H.A.T.",
+  type: "news",
+  question: "INTERNATIONAL NEWS (2024): Research by the BBC and European Broadcasting Union tested AI chatbots like ChatGPT, Gemini, and Copilot on news questions. What did they find?",
+  options: [
+    "AI got every news question correct",
+    "AI responses contained errors nearly 50% of the time",
+    "AI refused to answer news questions",
+    "AI only worked with text, not news"
+  ],
+  correct: 1,
+  explanation: "TRUE STORY! BBC research found AI assistants misrepresented news content in nearly half their responses. This shows why verifying AI-generated information is critical, especially for news and current events.",
+  points: 200
+},
+
+{
+  id: 46,
+  room: 7,
+  character: "C.H.A.T.",
+  type: "news",
+  question: "AUSTRALIAN NEWS (2024): The Australian Government proposed new AI regulations. What approach did they announce?",
+  options: [
+    "Ban all AI use in government",
+    "Mandatory guardrails for high-risk AI applications",
+    "No regulation needed - voluntary only",
+    "AI can only be used by tech companies"
+  ],
+  correct: 1,
+  explanation: "TRUE STORY! In September 2024, Australia proposed mandatory regulation for high-risk AI uses while keeping voluntary standards for lower-risk applications. Minister Ed Husic mentioned the possibility of an 'Australian AI Act' similar to Europe's approach.",
+  points: 200
+},
+
+{
+  id: 47,
+  room: 7,
+  character: "C.H.A.T.",
+  type: "news",
+  question: "LOCAL NEWS (2024): Newcastle and Lake Macquarie councils started an AI trial. What are they using AI for?",
+  options: [
+    "Replacing council workers",
+    "Speeding up development application processing",
+    "Predicting future population growth",
+    "Automating all council decisions"
+  ],
+  correct: 1,
+  explanation: "TRUE STORY! In 2024, Newcastle, Lake Macquarie, and Cessnock councils received NSW Government grants to trial AI technology that helps process development applications (DAs) faster. The goal is to reduce administrative workload for planners while improving DA quality - not to replace human decision-making.",
+  points: 200
+},
     ],
 
     player2: [
@@ -1119,13 +1174,62 @@ new library, road construction, community centres.`,
         correct: 1,
         explanation: "🏆 Exactly! For government AI: humans make final decisions, explain how AI was used, maintain accountability, test for bias, protect privacy, and serve all citizens fairly. Technical excellence + ethical responsibility!",
         points: 250
+      },
+
+// ============================================
+// REAL NEWS STORIES - PLAYER 2 (Technical)
+// ============================================
+
+      {
+        id: 121,
+        room: 7,
+        character: "C.H.A.T.",
+        type: "news",
+        question: "INTERNATIONAL NEWS (2024): BBC/EBU research evaluated multiple LLMs (ChatGPT, Gemini, Perplexity, Copilot) on news content accuracy. What percentage of responses contained at least one issue?",
+        options: [
+          "Less than 10%",
+          "Approximately 25%",
+          "Nearly 50%",
+          "Over 75%"
+        ],
+        correct: 2,
+        explanation: "TRUE STORY! The research found AI assistants misrepresented news content in nearly 50% of queries. This highlights critical challenges: knowledge cutoffs, hallucination risks, and the need for robust verification systems when using LLMs for information retrieval.",
+        points: 250
+      },
+
+      {
+        id: 122,
+        room: 7,
+        character: "C.H.A.T.",
+        type: "news",
+        question: "AUSTRALIAN NEWS (2024): Australia's proposed AI regulatory framework includes what key technical requirement for high-risk AI systems?",
+        options: [
+          "All AI must use open-source models only",
+          "Mandatory transparency for automated decision-making",
+          "Ban on transformer architectures",
+          "AI can only run on Australian servers"
+        ],
+        correct: 1,
+        explanation: "TRUE STORY! The Privacy and Other Legislation Amendment Bill 2024 (passed November 2024) introduced enhanced transparency requirements for automated decision-making. The proposed framework requires mandatory guardrails for high-risk AI while maintaining voluntary standards for lower-risk applications.",
+        points: 250
+      },
+
+      {
+        id: 123,
+        room: 7,
+        character: "C.H.A.T.",
+        type: "news",
+        question: "LOCAL NEWS (2024): Newcastle and Lake Macquarie councils' AI trial for DA processing is part of which broader NSW Government initiative?",
+        options: [
+          "The AI Replacement Program",
+          "The AI in NSW Planning package",
+          "The Council Automation Act",
+          "The Smart Cities Initiative"
+        ],
+        correct: 1,
+        explanation: "TRUE STORY! The councils received grants from the NSW Government's 'AI in NSW Planning' package to test technologies that improve DA quality and accuracy. The initiative focuses on reducing administrative workload while maintaining human oversight of planning decisions - a practical example of augmentation vs automation in government services.",
+        points: 250
       }
-    ],
-    
-    player2: [
-      // Player 2 (technical) questions
-      // Add your advanced/technical questions here
-      // For now, this is empty but properly structured
     ]
   },
 
