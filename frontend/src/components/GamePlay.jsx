@@ -26,6 +26,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   const [attempts, setAttempts] = useState(0);
   const [showChat, setShowChat] = useState(false);
   const [showAccessCode, setShowAccessCode] = useState(false);
+  const [pointsEarned, setPointsEarned] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [showContinueButton, setShowContinueButton] = useState(false);
 
   const currentRoom = gameContent.rooms.find(r => r.id === progress.currentRoom);
   const character = currentRoom ? gameContent.dialogue[currentRoom.character] : null;
@@ -68,6 +71,16 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     return () => clearInterval(interval);
   }, [saveProgress]);
 
+  // Timer - update elapsed time every second
+  useEffect(() => {
+    if (gamePhase === 'playing') {
+      const timer = setInterval(() => {
+        setElapsedTime(Math.floor((Date.now() - progress.startTime) / 1000));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [gamePhase, progress.startTime]);
+
   // ============================================
   // EXISTING GAME FUNCTIONS
   // ============================================
@@ -87,15 +100,16 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
     if (correct) {
       const points = Math.max(currentQuestion.points - (attempts * 25), 25);
+      setPointsEarned(points); // Track points earned for display
       const newScore = progress.score + points;
-      
+
       const newQuestionsAnswered = [
         ...progress.questionsAnswered,
-        { 
-          id: currentQuestion.id, 
-          correct: true, 
+        {
+          id: currentQuestion.id,
+          correct: true,
           attempts: attempts + 1,
-          points 
+          points
         }
       ];
 
@@ -105,31 +119,46 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
         questionsAnswered: newQuestionsAnswered
       });
 
-      // Auto advance after showing result
+      // Show continue button after brief delay
       setTimeout(() => {
-        setShowResult(false);
-        setSelectedAnswer(null);
-        setCurrentQuestion(null);
-        setAttempts(0);
-        
-        // Check if room complete
-        const remaining = roomQuestions.filter(
-          q => !newQuestionsAnswered.find(qa => qa.id === q.id)
-        );
-        
-        if (remaining.length <= 1) {
-          // Room complete - check if game complete
-          if (progress.currentRoom === 8) {
-            completeGame();
-          }
-        }
-      }, 3000);
+        setShowContinueButton(true);
+      }, 1000);
+
+      // Auto advance after showing result (fallback if user doesn't click)
+      setTimeout(() => {
+        handleContinueAfterCorrect(newQuestionsAnswered);
+      }, 8000); // Extended to 8 seconds
     } else {
+      setPointsEarned(-25); // Show penalty
       setAttempts(attempts + 1);
+
+      // For wrong answers, auto-clear after longer duration
       setTimeout(() => {
         setShowResult(false);
         setSelectedAnswer(null);
-      }, 2000);
+        setPointsEarned(0);
+      }, 4000); // Extended to 4 seconds
+    }
+  };
+
+  const handleContinueAfterCorrect = (newQuestionsAnswered) => {
+    setShowResult(false);
+    setSelectedAnswer(null);
+    setCurrentQuestion(null);
+    setAttempts(0);
+    setPointsEarned(0);
+    setShowContinueButton(false);
+
+    // Check if room complete
+    const remaining = roomQuestions.filter(
+      q => !newQuestionsAnswered.find(qa => qa.id === q.id)
+    );
+
+    if (remaining.length <= 1) {
+      // Room complete - check if game complete
+      if (progress.currentRoom === 8) {
+        completeGame();
+      }
     }
   };
 
@@ -396,25 +425,37 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     const answeredQuestions = progress.questionsAnswered.length;
     const progressPercent = (answeredQuestions / totalQuestions) * 100;
 
+    // Format elapsed time as MM:SS
+    const minutes = Math.floor(elapsedTime / 60);
+    const seconds = elapsedTime % 60;
+    const timeDisplay = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
     return (
       <div>
         {/* Header with stats */}
         <div className="border-box border-box-amber">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <div>
-              <span className="retro-font">SCORE: {progress.score}</span>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', alignItems: 'center' }}>
+            <div style={{ textAlign: 'left' }}>
+              <div className="retro-font" style={{ fontSize: '24px', color: '#fbbf24' }}>
+                {progress.score}
+              </div>
+              <div style={{ fontSize: '12px' }}>SCORE</div>
             </div>
-            <div>
-              <span className="retro-font">ROOM: {currentRoom.name}</span>
+            <div style={{ textAlign: 'center' }}>
+              <div className="retro-font" style={{ fontSize: '24px', color: '#10b981' }}>
+                {timeDisplay}
+              </div>
+              <div style={{ fontSize: '12px' }}>TIME</div>
             </div>
-            <div>
-              <button 
-                className="retro-button" 
+            <div style={{ textAlign: 'right' }}>
+              <button
+                className="retro-button"
                 style={{ padding: '5px 10px', fontSize: '10px' }}
                 onClick={() => setShowAccessCode(!showAccessCode)}
               >
                 CODE
               </button>
+              <div style={{ fontSize: '12px', marginTop: '5px' }}>{currentRoom.name}</div>
             </div>
           </div>
         </div>
@@ -486,14 +527,46 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               </ul>
 
               {showResult && (
-                <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`}>
-                  <p className="retro-font">
-                    {isCorrect ? character?.correct : character?.wrong}
-                  </p>
-                  {isCorrect && (
-                    <p className="mt-2">{currentQuestion.explanation}</p>
+                <>
+                  {/* Large Result Banner */}
+                  <div className={`border-box mt-2 text-center ${isCorrect ? 'border-box-amber' : 'border-box-red'}`}
+                       style={{ padding: '20px', backgroundColor: isCorrect ? 'rgba(251, 191, 36, 0.1)' : 'rgba(239, 68, 68, 0.1)' }}>
+                    <div className="retro-font" style={{ fontSize: '32px', color: isCorrect ? '#fbbf24' : '#ef4444' }}>
+                      {isCorrect ? '✓ CORRECT!' : '✗ INCORRECT'}
+                    </div>
+                    <div className="retro-font" style={{ fontSize: '24px', color: isCorrect ? '#10b981' : '#ef4444', marginTop: '10px' }}>
+                      {pointsEarned > 0 ? `+${pointsEarned} POINTS` : `${pointsEarned} POINTS`}
+                    </div>
+                    {!isCorrect && attempts < 3 && (
+                      <div style={{ marginTop: '10px', fontSize: '14px' }}>
+                        Try again! (Attempt {attempts + 1}/3)
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Character Response */}
+                  <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`}>
+                    <p className="retro-font" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                      {isCorrect ? character?.correct : character?.wrong}
+                    </p>
+                    {isCorrect && (
+                      <p className="mt-2" style={{ fontSize: '14px' }}>{currentQuestion.explanation}</p>
+                    )}
+                  </div>
+
+                  {/* Continue Button (only for correct answers) */}
+                  {isCorrect && showContinueButton && (
+                    <div className="mt-2 text-center">
+                      <button
+                        className="retro-button retro-button-amber"
+                        style={{ fontSize: '16px', padding: '10px 20px' }}
+                        onClick={() => handleContinueAfterCorrect(progress.questionsAnswered)}
+                      >
+                        CONTINUE →
+                      </button>
+                    </div>
                   )}
-                </div>
+                </>
               )}
 
               {!showResult && (
