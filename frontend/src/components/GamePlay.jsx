@@ -292,29 +292,33 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           </div>
           
           <div className="memo border-box mt-2">
-            <p className="retro-font text-amber">INTERNAL MEMORANDUM</p>
+            <p className="retro-font text-amber">URGENT MEMORANDUM</p>
             <hr />
-            <p><strong>TO:</strong> All Council Staff</p>
+            <p><strong>TO:</strong> Computer Services Cadet (NEW HIRE)</p>
             <p><strong>FROM:</strong> Data Processing Manager</p>
-            <p><strong>DATE:</strong> 15 September 1989</p>
-            <p><strong>RE:</strong> New Computer Quiz Challenge</p>
+            <p><strong>DATE:</strong> 15 September 1989, 0830 HOURS</p>
+            <p><strong>RE:</strong> OPERATION C.H.A.T. - EMERGENCY</p>
+            <p className="text-amber"><strong>PRIORITY: URGENT</strong></p>
             <hr />
-            
-            <p className="mt-2">Council has invested in new <strong>Expert System</strong> technology for our IBM System/36 mainframe. This represents the cutting edge of artificial intelligence.</p>
-            
-            <p className="mt-2">To help staff understand these systems, we've created an interactive quiz challenge. Navigate through council departments, answer questions, and learn about:</p>
-            
+
+            <p className="mt-2">Welcome to your first day. Unfortunately, we have a crisis:</p>
+
+            <p className="mt-2">Our new <strong>C.H.A.T.</strong> (Cognitive Heuristic Assistant Technology) Expert System crashed at 0245 hours. State Government officials arrive at <strong>4:00 PM TODAY</strong> for a demonstration.</p>
+
+            <p className="mt-2"><strong>YOUR MISSION:</strong></p>
             <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
-              <li>Knowledge bases and inference engines</li>
-              <li>Rule-based decision making</li>
-              <li>Data accuracy and validation</li>
-              <li>Responsible technology implementation</li>
+              <li>Visit ALL department heads</li>
+              <li>Prove you understand AI principles</li>
+              <li>Collect their authorization codes</li>
+              <li>Restart the C.H.A.T. system</li>
             </ul>
-            
-            <p className="mt-2">Top scores will be recognised at the quarterly staff meeting!</p>
-            
-            <p className="mt-3"><strong>Good luck!</strong></p>
-            
+
+            <p className="mt-2">Each department head will test your knowledge before giving you their code. You'll need <strong>all 6 codes</strong> to restart C.H.A.T.</p>
+
+            <p className="mt-2"><strong>Time until demo: 7 hours, 30 minutes</strong></p>
+
+            <p className="mt-3"><strong>Start at RECEPTION. Good luck, Cadet!</strong></p>
+
             <p className="mt-2">— M. Stevens, Data Processing</p>
           </div>
           
@@ -343,17 +347,19 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <div className="text-center">
               <h2 className="retro-font mt-2">LAKE MACQUARIE CITY COUNCIL</h2>
               <p>120 King Street, Newcastle</p>
-              
+
               <p className="mt-3 retro-font text-amber">15 SEPTEMBER 1989</p>
               <p className="retro-font text-amber">0900 HOURS</p>
-              
+
               <p className="mt-3">You're playing as a <strong>Computer Services Cadet</strong> on your first day.</p>
-              
-              <p className="mt-2">Your challenge: Navigate through council departments, meeting staff and answering questions about the new "Expert System" technology.</p>
-              
+
+              <p className="mt-2"><strong className="text-amber">YOUR MISSION:</strong> The C.H.A.T. Expert System crashed! Collect authorization codes from all 6 department heads to restart it before the 4 PM demonstration.</p>
+
+              <p className="mt-2">Each department will test your knowledge of AI principles. Answer correctly to earn their authorization code.</p>
+
               <p className="mt-2">Get questions right to score points. Move fast to beat the leaderboard!</p>
-              
-              <p className="mt-3 text-amber">Start at RECEPTION to begin your quest.</p>
+
+              <p className="mt-3 text-amber">Start at RECEPTION to begin OPERATION C.H.A.T.</p>
             </div>
           </div>
           
