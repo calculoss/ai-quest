@@ -23,27 +23,26 @@ html {
 }
 
 body {
-  background-color: #000000;
-  color: #00ff00;
+  background-color: #0a0a0a;
+  color: #00ff41; /* Brighter phosphor green */
   font-family: 'Courier New', Courier, monospace;
-  font-size: clamp(14px, 1vw + 0.5rem, 18px); /* Responsive font size */
+  font-size: clamp(14px, 1vw + 0.5rem, 18px);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* CRITICAL: Allow vertical scrolling, prevent horizontal */
   overflow-x: hidden;
   overflow-y: auto;
-  /* NO fixed height - let content determine height */
   min-height: 100vh;
   height: auto;
   padding: 0;
   margin: 0;
-
-  /* 1980s CRT EFFECT */
   position: relative;
+
+  /* Subtle vignette for CRT edge darkening */
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
 }
 
-/* CRT Scanline Effect */
+/* CRT Scanline Effect - MORE VISIBLE */
 body::before {
   content: "";
   position: fixed;
@@ -53,10 +52,10 @@ body::before {
   height: 100%;
   background: repeating-linear-gradient(
     0deg,
-    rgba(0, 0, 0, 0.15),
-    rgba(0, 0, 0, 0.15) 1px,
+    rgba(0, 0, 0, 0.3), /* Stronger scanlines */
+    rgba(0, 0, 0, 0.3) 1px,
     transparent 1px,
-    transparent 2px
+    transparent 3px /* Wider spacing */
   );
   pointer-events: none;
   z-index: 9999;
@@ -65,10 +64,10 @@ body::before {
 
 @keyframes scanlines {
   0% { transform: translateY(0px); }
-  100% { transform: translateY(2px); }
+  100% { transform: translateY(3px); }
 }
 
-/* CRT Screen Flicker */
+/* CRT Screen Flicker - MORE VISIBLE */
 body::after {
   content: "";
   position: fixed;
@@ -76,16 +75,16 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(18, 16, 16, 0.1);
+  background: rgba(0, 255, 65, 0.03); /* Green tint */
   opacity: 0;
   pointer-events: none;
   z-index: 9998;
-  animation: flicker 0.15s infinite alternate;
+  animation: flicker 0.1s infinite alternate;
 }
 
 @keyframes flicker {
-  0% { opacity: 0.02; }
-  100% { opacity: 0.05; }
+  0% { opacity: 0.05; }
+  100% { opacity: 0.15; } /* Much more visible */
 }
 
 .App {
@@ -123,7 +122,7 @@ body::after {
 }
 
 /* ============================================
-   TYPOGRAPHY - LARGER & READABLE
+   TYPOGRAPHY - 1980s PHOSPHOR GLOW
    ============================================ */
 
 .retro-font {
@@ -131,34 +130,47 @@ body::after {
   font-weight: bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  /* Phosphor glow effect */
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.7),
+               0 0 10px rgba(0, 255, 65, 0.4),
+               0 0 15px rgba(0, 255, 65, 0.2);
 }
 
 .text-green {
-  color: var(--terminal-green);
+  color: var(--retro-green);
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
 .text-amber {
   color: var(--terminal-amber);
+  text-shadow: 0 0 5px rgba(255, 170, 0, 0.5),
+               0 0 10px rgba(255, 170, 0, 0.3);
 }
 
 .text-purple {
   color: var(--terminal-purple);
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
 }
 
 .text-cyan {
   color: var(--terminal-cyan);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 1rem;
+  /* Subtle glow on headings */
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
 }
 
 p {
   margin-bottom: 1rem;
   font-size: 18px;
   line-height: 1.6;
+  /* Very subtle glow on body text */
+  text-shadow: 0 0 3px rgba(0, 255, 65, 0.2);
 }
 
 /* ============================================
@@ -474,13 +486,13 @@ pre.room-description {
 }
 
 /* ============================================
-   BUTTONS - LARGE & VISIBLE
+   BUTTONS - 1980s ARCADE STYLE
    ============================================ */
 
 .retro-button {
-  background-color: transparent;
-  color: var(--terminal-green);
-  border: 3px solid var(--terminal-green);
+  background-color: rgba(0, 255, 65, 0.05);
+  color: var(--retro-green);
+  border: 3px solid var(--retro-green);
   padding: 18px 32px;
   font-family: 'Courier New', Courier, monospace;
   font-size: 18px;
@@ -495,33 +507,58 @@ pre.room-description {
   max-width: 450px;
   min-height: 70px;
   position: relative;
+  /* Dramatic glow - arcade style */
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3),
+              0 0 20px rgba(0, 255, 65, 0.2),
+              inset 0 0 10px rgba(0, 255, 65, 0.1);
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.8),
+               0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 .retro-button:hover:not(:disabled) {
-  background-color: var(--terminal-green);
-  color: var(--terminal-bg);
-  box-shadow: 0 0 20px var(--terminal-green);
+  background-color: rgba(0, 255, 65, 0.2);
+  color: #ffffff;
+  /* Intensify glow on hover */
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.6),
+              0 0 40px rgba(0, 255, 65, 0.4),
+              0 0 60px rgba(0, 255, 65, 0.2),
+              inset 0 0 20px rgba(0, 255, 65, 0.2);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 1),
+               0 0 20px rgba(0, 255, 65, 0.8);
   transform: translateY(-2px);
 }
 
 .retro-button:active:not(:disabled) {
   transform: translateY(0);
+  background-color: rgba(0, 255, 65, 0.3);
 }
 
 .retro-button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .retro-button-amber {
   color: var(--terminal-amber);
   border-color: var(--terminal-amber);
+  background-color: rgba(255, 170, 0, 0.05);
+  box-shadow: 0 0 10px rgba(255, 170, 0, 0.3),
+              0 0 20px rgba(255, 170, 0, 0.2),
+              inset 0 0 10px rgba(255, 170, 0, 0.1);
+  text-shadow: 0 0 5px rgba(255, 170, 0, 0.8),
+               0 0 10px rgba(255, 170, 0, 0.5);
 }
 
 .retro-button-amber:hover:not(:disabled) {
-  background-color: var(--terminal-amber);
-  color: var(--terminal-bg);
-  box-shadow: 0 0 20px var(--terminal-amber);
+  background-color: rgba(255, 170, 0, 0.2);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.6),
+              0 0 40px rgba(255, 170, 0, 0.4),
+              0 0 60px rgba(255, 170, 0, 0.2),
+              inset 0 0 20px rgba(255, 170, 0, 0.2);
+  text-shadow: 0 0 10px rgba(255, 170, 0, 1),
+               0 0 20px rgba(255, 170, 0, 0.8);
 }
 
 .retro-button-purple {
