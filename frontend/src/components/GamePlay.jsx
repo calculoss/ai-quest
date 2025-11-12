@@ -122,6 +122,13 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
       // Show continue button after brief delay
       setTimeout(() => {
         setShowContinueButton(true);
+        // Auto-scroll to continue button after it appears
+        setTimeout(() => {
+          const continueButton = document.querySelector('.continue-button-scroll-target');
+          if (continueButton) {
+            continueButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }, 100);
       }, 1000);
 
       // Auto advance after showing result (fallback if user doesn't click)
@@ -556,7 +563,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
                   {/* Continue Button (only for correct answers) */}
                   {isCorrect && showContinueButton && (
-                    <div className="mt-2 text-center">
+                    <div className="mt-2 text-center continue-button-scroll-target">
                       <button
                         className="retro-button retro-button-amber"
                         style={{ fontSize: '16px', padding: '10px 20px' }}

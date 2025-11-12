@@ -1,6 +1,6 @@
 /* ============================================
-   AI KNOWLEDGE CHALLENGE - FIXED SCROLLING VERSION
-   All content visible, proper scrolling, readable text
+   AI KNOWLEDGE CHALLENGE - 1980s RETRO GAMING AESTHETIC
+   Neuromancer / Leisure Suit Larry inspired
    ============================================ */
 
 /* ============================================
@@ -19,13 +19,14 @@ html {
   overflow-x: hidden;
   height: auto;
   min-height: 100%;
+  font-size: 16px; /* Base for rem calculations */
 }
 
 body {
   background-color: #000000;
   color: #00ff00;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 18px; /* Larger base size for readability */
+  font-size: clamp(14px, 1vw + 0.5rem, 18px); /* Responsive font size */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -37,21 +38,71 @@ body {
   height: auto;
   padding: 0;
   margin: 0;
+
+  /* 1980s CRT EFFECT */
+  position: relative;
+}
+
+/* CRT Scanline Effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(2px); }
+}
+
+/* CRT Screen Flicker */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9998;
+  animation: flicker 0.15s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.02; }
+  100% { opacity: 0.05; }
 }
 
 .App {
   /* NO fixed height - critical for scrolling */
   min-height: 100vh;
   height: auto;
-  padding: 20px;
+  padding: clamp(10px, 2vw, 20px); /* Responsive padding */
   max-width: 1000px;
   margin: 0 auto;
   /* Ensure content can expand */
   display: block;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* ============================================
-   COLOR VARIABLES
+   COLOR VARIABLES - 1980s PALETTE
    ============================================ */
 
 :root {
@@ -62,6 +113,13 @@ body {
   --terminal-bg: #000000;
   --terminal-bg-light: #0a0a0a;
   --terminal-bg-lighter: #1a1a1a;
+
+  /* 1980s Gaming Colors */
+  --retro-green: #00ff41;
+  --retro-amber: #ffaa00;
+  --retro-magenta: #ff00ff;
+  --retro-cyan: #00ffff;
+  --retro-red: #ff3366;
 }
 
 /* ============================================
@@ -345,27 +403,74 @@ pre.room-description {
 }
 
 /* ============================================
-   BORDER BOXES
+   BORDER BOXES - 1980s RETRO STYLE
    ============================================ */
 
 .border-box {
   border: 3px solid var(--terminal-green);
-  padding: 20px;
-  margin: 20px 0;
+  padding: clamp(10px, 2vw, 20px); /* Responsive padding */
+  margin: clamp(10px, 2vh, 20px) 0;
   background-color: rgba(0, 255, 0, 0.03);
-  box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2),
+              inset 0 0 20px rgba(0, 255, 0, 0.05); /* Retro glow */
+  /* Prevent overflow */
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  /* Retro terminal effect */
+  position: relative;
+}
+
+.border-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 255, 0, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 3px
+  );
+  pointer-events: none;
 }
 
 .border-box-amber {
   border-color: var(--terminal-amber);
   background-color: rgba(255, 170, 0, 0.03);
-  box-shadow: 0 0 10px rgba(255, 170, 0, 0.1);
+  box-shadow: 0 0 20px rgba(255, 170, 0, 0.2),
+              inset 0 0 20px rgba(255, 170, 0, 0.05);
+}
+
+.border-box-amber::before {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 170, 0, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(255, 170, 0, 0.03) 3px
+  );
 }
 
 .border-box-red {
   border-color: #ef4444;
   background-color: rgba(239, 68, 68, 0.03);
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.1);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.2),
+              inset 0 0 20px rgba(239, 68, 68, 0.05);
+}
+
+.border-box-red::before {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(239, 68, 68, 0.03) 0px,
+    transparent 1px,
+    transparent 2px,
+    rgba(239, 68, 68, 0.03) 3px
+  );
 }
 
 /* ============================================
