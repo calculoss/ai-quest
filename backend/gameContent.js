@@ -804,7 +804,8 @@ new library, road construction, community centres.`,
 },
 
 // ============================================
-// REAL NEWS STORIES - PLAYER 1
+// REAL VS FAKE NEWS - PLAYER 1
+// (AI-related headlines - identify real or AI-generated fake)
 // ============================================
 
 {
@@ -812,15 +813,13 @@ new library, road construction, community centres.`,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
-  question: "INTERNATIONAL NEWS (2024): Research by the BBC and European Broadcasting Union tested AI chatbots like ChatGPT, Gemini, and Copilot on news questions. What did they find?",
+  question: "INTERNATIONAL: 'BBC research finds AI chatbots give wrong answers nearly half the time when asked about news stories.' Real news or AI-generated fake?",
   options: [
-    "AI got every news question correct",
-    "AI responses contained errors nearly 50% of the time",
-    "AI refused to answer news questions",
-    "AI only worked with text, not news"
+    "Real news story (2024)",
+    "AI-generated fake news"
   ],
-  correct: 1,
-  explanation: "TRUE STORY! BBC research found AI assistants misrepresented news content in nearly half their responses. This shows why verifying AI-generated information is critical, especially for news and current events.",
+  correct: 0,
+  explanation: "REAL! In 2024, BBC and European Broadcasting Union research tested ChatGPT, Gemini, Copilot, and Perplexity. They found AI assistants misrepresented news content in nearly 50% of queries - highlighting critical issues with using AI for fact-finding without verification.",
   points: 200
 },
 
@@ -829,15 +828,13 @@ new library, road construction, community centres.`,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
-  question: "AUSTRALIAN NEWS (2024): The Australian Government proposed new AI regulations. What approach did they announce?",
+  question: "AUSTRALIA: 'Australian Government proposes mandatory guardrails for high-risk AI, Minister says Australian AI Act possible.' Real news or AI-generated fake?",
   options: [
-    "Ban all AI use in government",
-    "Mandatory guardrails for high-risk AI applications",
-    "No regulation needed - voluntary only",
-    "AI can only be used by tech companies"
+    "Real news story (2024)",
+    "AI-generated fake news"
   ],
-  correct: 1,
-  explanation: "TRUE STORY! In September 2024, Australia proposed mandatory regulation for high-risk AI uses while keeping voluntary standards for lower-risk applications. Minister Ed Husic mentioned the possibility of an 'Australian AI Act' similar to Europe's approach.",
+  correct: 0,
+  explanation: "REAL! In September 2024, Australia proposed mandatory regulation for high-risk AI applications. Minister Ed Husic announced the possibility of an 'Australian AI Act' similar to Europe's approach, balancing innovation with safety.",
   points: 200
 },
 
@@ -846,15 +843,13 @@ new library, road construction, community centres.`,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
-  question: "LOCAL NEWS (2024): Newcastle and Lake Macquarie councils started an AI trial. What are they using AI for?",
+  question: "LOCAL: 'Newcastle and Lake Macquarie councils trial AI system to automatically approve development applications without human review.' Real news or AI-generated fake?",
   options: [
-    "Replacing council workers",
-    "Speeding up development application processing",
-    "Predicting future population growth",
-    "Automating all council decisions"
+    "Real news story (2024)",
+    "AI-generated fake news"
   ],
   correct: 1,
-  explanation: "TRUE STORY! In 2024, Newcastle, Lake Macquarie, and Cessnock councils received NSW Government grants to trial AI technology that helps process development applications (DAs) faster. The goal is to reduce administrative workload for planners while improving DA quality - not to replace human decision-making.",
+  explanation: "FAKE! This is AI-generated misinformation. In reality, Newcastle and Lake Macquarie DID trial AI in 2024, but only to ASSIST with processing DAs faster - NOT to automatically approve them. Human planners still make all final decisions. This fake twists a real story to sound alarming!",
   points: 200
 },
     ],
@@ -1177,7 +1172,8 @@ new library, road construction, community centres.`,
       },
 
 // ============================================
-// REAL NEWS STORIES - PLAYER 2 (Technical)
+// REAL VS FAKE NEWS - PLAYER 2 (Technical)
+// (AI-related headlines with technical depth)
 // ============================================
 
       {
@@ -1185,15 +1181,13 @@ new library, road construction, community centres.`,
         room: 7,
         character: "C.H.A.T.",
         type: "news",
-        question: "INTERNATIONAL NEWS (2024): BBC/EBU research evaluated multiple LLMs (ChatGPT, Gemini, Perplexity, Copilot) on news content accuracy. What percentage of responses contained at least one issue?",
+        question: "INTERNATIONAL: 'Research finds leading LLMs hallucinate facts in nearly 50% of news-related queries, raising concerns for RAG systems.' Real news or AI-generated fake?",
         options: [
-          "Less than 10%",
-          "Approximately 25%",
-          "Nearly 50%",
-          "Over 75%"
+          "Real news story (2024)",
+          "AI-generated fake news"
         ],
-        correct: 2,
-        explanation: "TRUE STORY! The research found AI assistants misrepresented news content in nearly 50% of queries. This highlights critical challenges: knowledge cutoffs, hallucination risks, and the need for robust verification systems when using LLMs for information retrieval.",
+        correct: 0,
+        explanation: "REAL! BBC/EBU 2024 research evaluated ChatGPT, Gemini, Perplexity, and Copilot - finding ~50% error rates on news queries. This has critical implications for RAG (Retrieval Augmented Generation) systems and highlights why retrieval quality, verification pipelines, and fallback mechanisms are essential in production LLM applications.",
         points: 250
       },
 
@@ -1202,15 +1196,13 @@ new library, road construction, community centres.`,
         room: 7,
         character: "C.H.A.T.",
         type: "news",
-        question: "AUSTRALIAN NEWS (2024): Australia's proposed AI regulatory framework includes what key technical requirement for high-risk AI systems?",
+        question: "AUSTRALIA: 'Privacy and Other Legislation Amendment Bill 2024 requires explainable AI and transparency for all automated decision-making systems.' Real news or AI-generated fake?",
         options: [
-          "All AI must use open-source models only",
-          "Mandatory transparency for automated decision-making",
-          "Ban on transformer architectures",
-          "AI can only run on Australian servers"
+          "Real news story (2024)",
+          "AI-generated fake news"
         ],
-        correct: 1,
-        explanation: "TRUE STORY! The Privacy and Other Legislation Amendment Bill 2024 (passed November 2024) introduced enhanced transparency requirements for automated decision-making. The proposed framework requires mandatory guardrails for high-risk AI while maintaining voluntary standards for lower-risk applications.",
+        correct: 0,
+        explanation: "REAL! Passed in November 2024, the Bill introduced enhanced transparency requirements for automated decision-making. The proposed AI framework requires mandatory guardrails for HIGH-RISK applications while maintaining voluntary standards for lower-risk uses - a risk-based regulatory approach similar to the EU AI Act.",
         points: 250
       },
 
@@ -1219,15 +1211,13 @@ new library, road construction, community centres.`,
         room: 7,
         character: "C.H.A.T.",
         type: "news",
-        question: "LOCAL NEWS (2024): Newcastle and Lake Macquarie councils' AI trial for DA processing is part of which broader NSW Government initiative?",
+        question: "LOCAL: 'Newcastle council deploys GPT-4 to automatically classify DA complexity and route applications, achieving 94% accuracy in pilot.' Real news or AI-generated fake?",
         options: [
-          "The AI Replacement Program",
-          "The AI in NSW Planning package",
-          "The Council Automation Act",
-          "The Smart Cities Initiative"
+          "Real news story (2024)",
+          "AI-generated fake news"
         ],
         correct: 1,
-        explanation: "TRUE STORY! The councils received grants from the NSW Government's 'AI in NSW Planning' package to test technologies that improve DA quality and accuracy. The initiative focuses on reducing administrative workload while maintaining human oversight of planning decisions - a practical example of augmentation vs automation in government services.",
+        explanation: "FAKE! This sounds plausible but is AI-generated misinformation. Newcastle/Lake Macquarie councils DID receive NSW Planning grants to trial AI for DAs, but the real initiative focuses on improving APPLICATION QUALITY (checking submitted info) NOT classification/routing. The fake includes realistic-sounding metrics (94% accuracy, GPT-4) to appear credible!",
         points: 250
       },
 
