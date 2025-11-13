@@ -233,7 +233,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <div className="box-label border-box border-box-amber mt-2 mb-2">
               <p className="retro-font">DATA PROCESSING DEPT - 1989</p>
-              <p className="retro-font">STAFF QUIZ GAME</p>
+              <p className="retro-font">OPERATION C.H.A.T. - STAFF TRAINING</p>
             </div>
             
             <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
@@ -242,17 +242,17 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <div className="disk-label border-box mt-2 mb-2">
               <p className="retro-font text-amber">LAKE MACQUARIE CITY COUNCIL</p>
-              <p>AI KNOWLEDGE CHALLENGE</p>
+              <p>C.H.A.T. RESTART PROTOCOL</p>
               <p>Electronic Data Processing Dept</p>
               <p>Version 1.2 - September 1989</p>
-              <p className="mt-2">⚠️ DO NOT ERASE - GAME DATA</p>
+              <p className="mt-2">⚠️ DO NOT ERASE - TRAINING DATA</p>
             </div>
             
             <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
             
             <p><strong>You:</strong> "1989? That's before most people even had computers at home."</p>
             
-            <p className="mt-2"><strong>Sarah:</strong> "Wonder what the quiz was about?"</p>
+            <p className="mt-2"><strong>Sarah:</strong> "Wonder what this training was for?"</p>
           </div>
           
           <div className="text-center mt-3">
@@ -287,7 +287,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               <p>         3 File(s)     57,155 bytes</p>
               <p>                      302,592 bytes free</p>
               <p className="mt-2">A:\&gt;AIQUEST</p>
-              <p className="mt-1">Loading AI Knowledge Challenge...</p>
+              <p className="mt-1">Loading C.H.A.T. Restart Protocol...</p>
             </div>
             
             <div className="loading-bar">
@@ -357,11 +357,11 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           </div>
           
           <div className="text-center mt-3">
-            <button 
+            <button
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('entering')}
             >
-              [Load the quiz] →
+              [Begin Mission] →
             </button>
           </div>
         </div>
@@ -374,43 +374,23 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
       <div className="intro-sequence entering">
         <div className="intro-content">
           <div className="intro-header">
-            <h1 className="retro-font text-green">LOADING SIMULATION...</h1>
+            <h1 className="retro-font text-green">INITIALIZING...</h1>
           </div>
-          
-          <div className="border-box mt-3">
-            <div className="text-center">
-              <h2 className="retro-font mt-2">LAKE MACQUARIE CITY COUNCIL</h2>
-              <p>120 King Street, Newcastle</p>
 
-              <p className="mt-3 retro-font text-amber">15 SEPTEMBER 1989</p>
-              <p className="retro-font text-amber">0900 HOURS</p>
-
-              <p className="mt-3">You're playing as a <strong>Computer Services Cadet</strong> on your first day.</p>
-
-              <p className="mt-2"><strong className="text-amber">YOUR MISSION:</strong> The C.H.A.T. Expert System crashed! Collect authorization codes from all 6 department heads to restart it before the 4 PM demonstration.</p>
-
-              <p className="mt-2">Each department will test your knowledge of AI principles. Answer correctly to earn their authorization code.</p>
-
-              <p className="mt-2">Get questions right to score points. Move fast to beat the leaderboard!</p>
-
-              <p className="mt-3 text-amber">Start at RECEPTION to begin OPERATION C.H.A.T.</p>
-            </div>
-          </div>
-          
           <div className="border-box mt-3 note-2025">
             <p className="retro-font text-amber">NOTE FROM 2025:</p>
             <hr className="mt-1 mb-1" style={{ borderColor: '#00ff00' }} />
-            <p>This 1989 quiz asks about "Expert Systems" - the AI of that era.</p>
-            <p className="mt-2">After each question, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles haven't changed.</p>
-            <p className="mt-2"><strong>Ready to see how much (or how little) has changed? Let's go!</strong></p>
+            <p>You're about to experience a 1989 training program about "Expert Systems" - the cutting-edge AI of that era.</p>
+            <p className="mt-2">After each task, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles remain surprisingly relevant.</p>
+            <p className="mt-2"><strong className="text-amber">Ready to travel back to 1989? Let's begin...</strong></p>
           </div>
-          
+
           <div className="text-center mt-3">
-            <button 
+            <button
               className="retro-button retro-button-amber"
               onClick={() => setGamePhase('playing')}
             >
-              [Press ENTER to start the quiz]
+              [Press ENTER to begin]
             </button>
           </div>
         </div>
@@ -437,44 +417,44 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
     return (
       <div>
-        {/* Header with stats - FIXED RESPONSIVE */}
-        <div className="border-box border-box-amber" style={{ padding: 'clamp(8px, 2vw, 12px)', margin: '0 0 clamp(10px, 2vh, 15px) 0' }}>
+        {/* Header with stats - ULTRA COMPACT */}
+        <div className="border-box border-box-amber" style={{ padding: 'clamp(6px, 1.5vw, 10px)', margin: '0 0 clamp(8px, 1.5vh, 12px) 0', overflow: 'hidden' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(70px, 1fr))',
-            gap: 'clamp(8px, 2vw, 12px)',
+            gridTemplateColumns: '1fr 1fr 1fr',
+            gap: 'clamp(4px, 1vw, 8px)',
             alignItems: 'center',
-            justifyItems: 'center',
-            width: '100%'
+            width: '100%',
+            maxWidth: '100%'
           }}>
-            <div style={{ textAlign: 'center', width: '100%' }}>
-              <div className="retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 22px)', color: '#fbbf24', wordBreak: 'keep-all' }}>
+            <div style={{ textAlign: 'center', minWidth: 0 }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(14px, 3vw, 20px)', color: '#fbbf24' }}>
                 {progress.score}
               </div>
-              <div style={{ fontSize: 'clamp(9px, 1.8vw, 11px)' }}>SCORE</div>
+              <div style={{ fontSize: 'clamp(8px, 1.6vw, 10px)' }}>SCORE</div>
             </div>
-            <div style={{ textAlign: 'center', width: '100%' }}>
-              <div className="retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 22px)', color: '#10b981', wordBreak: 'keep-all' }}>
+            <div style={{ textAlign: 'center', minWidth: 0 }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(14px, 3vw, 20px)', color: '#10b981' }}>
                 {timeDisplay}
               </div>
-              <div style={{ fontSize: 'clamp(9px, 1.8vw, 11px)' }}>TIME</div>
+              <div style={{ fontSize: 'clamp(8px, 1.6vw, 10px)' }}>TIME</div>
             </div>
-            <div style={{ textAlign: 'center', width: '100%' }}>
+            <div style={{ textAlign: 'center', minWidth: 0 }}>
               <button
                 className="retro-button"
                 style={{
-                  padding: '4px 8px',
-                  fontSize: 'clamp(7px, 1.4vw, 9px)',
-                  minHeight: '25px',
+                  padding: '3px 6px',
+                  fontSize: 'clamp(7px, 1.3vw, 9px)',
+                  minHeight: '22px',
                   width: 'auto',
-                  maxWidth: '60px',
+                  maxWidth: '55px',
                   margin: '0 auto'
                 }}
                 onClick={() => setShowAccessCode(!showAccessCode)}
               >
                 CODE
               </button>
-              <div style={{ fontSize: 'clamp(8px, 1.6vw, 10px)', marginTop: '3px', wordBreak: 'break-word' }}>
+              <div style={{ fontSize: 'clamp(7px, 1.4vw, 9px)', marginTop: '2px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                 {currentRoom.name}
               </div>
             </div>
@@ -499,17 +479,17 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           QUEST PROGRESS: {answeredQuestions}/{totalQuestions}
         </p>
 
-        {/* Room description - CENTERED */}
-        <div className="border-box mt-2" style={{ textAlign: 'center' }}>
-          <p className="retro-font text-amber mb-2">{currentRoom.name}</p>
-          <pre className="room-description" style={{ display: 'inline-block', textAlign: 'left' }}>{currentRoom.description}</pre>
+        {/* Room description - COMPACT */}
+        <div className="border-box mt-2" style={{ padding: 'clamp(8px, 1.5vw, 12px)', textAlign: 'center' }}>
+          <p className="retro-font text-amber" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', marginBottom: 'clamp(4px, 0.8vh, 8px)' }}>{currentRoom.name}</p>
+          <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', lineHeight: '1.4', color: '#10b981' }}>{currentRoom.character}</p>
         </div>
 
         {/* Current question or navigation */}
         {currentQuestion ? (
           <div className="mt-2">
-            <div className="border-box">
-              <p className="retro-font mb-2">{currentRoom.character} ASKS:</p>
+            <div className="border-box" style={{ padding: 'clamp(12px, 2.5vw, 18px)' }}>
+              <p className="retro-font mb-2" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', color: '#fbbf24' }}>{currentRoom.character} ASKS:</p>
               
               {/* Display image if this is an image question */}
               {currentQuestion.type === 'image' && currentQuestion.imagePath && (
@@ -527,7 +507,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                 </div>
               )}
               
-              <p className="mb-2">{currentQuestion.question}</p>
+              <p className="mb-2" style={{ fontSize: 'clamp(14px, 2.6vw, 18px)', lineHeight: '1.6' }}>{currentQuestion.question}</p>
               
               <ul className="option-list mt-2">
                 {currentQuestion.options.map((option, index) => (
