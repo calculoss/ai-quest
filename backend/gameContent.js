@@ -632,12 +632,102 @@ new library, road construction, community centres.`,
 },
 
 // ============================================
+// FUN AI TRIVIA - PLAYER 1
+// (Accessible, engaging questions for general audience)
+// ============================================
+
+{
+  id: 45,
+  room: 2,
+  character: "Council Staff",
+  type: "trivia",
+  question: "AI IN MOVIES: In the 1968 film '2001: A Space Odyssey', what was the name of the AI that famously said 'I'm sorry Dave, I'm afraid I can't do that'?",
+  options: [
+    "HAL 9000",
+    "Skynet",
+    "WOPR",
+    "Mother"
+  ],
+  correct: 0,
+  explanation: "HAL 9000! This iconic AI character from Stanley Kubrick's film has influenced how we think about AI for over 50 years. The character's calm, polite tone while refusing commands became legendary in pop culture.",
+  points: 150
+},
+
+{
+  id: 46,
+  room: 3,
+  character: "Systems Manager",
+  type: "trivia",
+  question: "AI ACHIEVEMENTS: Which game did AI first beat a world champion at?",
+  options: [
+    "Go (2016)",
+    "Chess (1997)",
+    "Poker (2017)",
+    "Scrabble (2022)"
+  ],
+  correct: 1,
+  explanation: "Chess in 1997! IBM's Deep Blue defeated world champion Garry Kasparov. Many thought this was 'game over' for chess, but instead it became MORE popular. Humans and AI playing together (called 'centaur chess') actually play the best games!",
+  points: 150
+},
+
+{
+  id: 47,
+  room: 4,
+  character: "Planning Officer",
+  type: "trivia",
+  question: "VOICE ASSISTANTS: When Apple released Siri in 2011, which iPhone was it first available on?",
+  options: [
+    "iPhone 3GS",
+    "iPhone 4",
+    "iPhone 4S",
+    "iPhone 5"
+  ],
+  correct: 2,
+  explanation: "iPhone 4S! The 'S' actually stood for 'Siri'. This was the first mass-market voice assistant millions of people carried in their pockets. Today we take talking to our phones for granted, but in 2011 it felt like science fiction!",
+  points: 150
+},
+
+{
+  id: 48,
+  room: 5,
+  character: "Communications Officer",
+  type: "trivia",
+  question: "AI ART: In 2022, an AI-generated artwork won first place at the Colorado State Fair's art competition. This sparked controversy because...",
+  options: [
+    "The colors were too bright",
+    "It was created by AI, not a human artist",
+    "It copied another artist's work",
+    "The frame was too expensive"
+  ],
+  correct: 1,
+  explanation: "It was AI-generated! The artwork 'Théâtre D'opéra Spatial' was created using Midjourney AI. This sparked huge debates: Is AI art really 'art'? Should AI compete with human artists? These questions are still being debated today!",
+  points: 200
+},
+
+{
+  id: 49,
+  room: 6,
+  character: "Governance Officer",
+  type: "trivia",
+  question: "EVERYDAY AI: Netflix's recommendation system (the one that suggests shows you might like) saves the company approximately how much per year by reducing customer churn?",
+  options: [
+    "$1 million",
+    "$50 million",
+    "$500 million",
+    "$1 billion"
+  ],
+  correct: 3,
+  explanation: "About $1 BILLION per year! Netflix estimates their AI recommendation system is worth this much because it keeps people subscribed. This is AI working in the background - you might not even realize it's there, but it's making decisions about what you see every day.",
+  points: 200
+},
+
+// ============================================
 // REAL VS FAKE NEWS - PLAYER 1
 // (AI-related headlines - identify real or AI-generated fake)
 // ============================================
 
 {
-  id: 45,
+  id: 50,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
@@ -652,7 +742,7 @@ new library, road construction, community centres.`,
 },
 
 {
-  id: 46,
+  id: 51,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
@@ -667,7 +757,7 @@ new library, road construction, community centres.`,
 },
 
 {
-  id: 47,
+  id: 52,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
