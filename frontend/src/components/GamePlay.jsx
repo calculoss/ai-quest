@@ -567,27 +567,22 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
                   {/* Character Response & Explanation - ALWAYS SHOW EXPLANATION */}
                   <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`} style={{ padding: 'clamp(15px, 3vw, 20px)' }}>
-                    <p className="retro-font" style={{
-                      fontSize: 'clamp(14px, 2.5vw, 18px)',
-                      fontWeight: 'bold',
-                      marginBottom: '15px'
-                    }}>
-                      {isCorrect ? character?.correct : character?.wrong}
-                    </p>
+                    {/* REMOVED character-specific dialogue - it was mismatched with questions */}
+                    {/* Now just show the actual explanation which is question-specific */}
 
-                    {/* ALWAYS show explanation - for both correct and wrong answers */}
                     <div style={{
-                      marginTop: '15px',
+                      marginTop: '0',
                       padding: '15px',
-                      backgroundColor: 'rgba(0, 255, 65, 0.05)',
+                      backgroundColor: isCorrect ? 'rgba(251, 191, 36, 0.05)' : 'rgba(239, 68, 68, 0.05)',
                       borderRadius: '5px',
-                      border: '2px solid rgba(0, 255, 65, 0.3)'
+                      border: isCorrect ? '2px solid rgba(251, 191, 36, 0.3)' : '2px solid rgba(239, 68, 68, 0.3)'
                     }}>
                       <p style={{
                         fontSize: 'clamp(16px, 2.8vw, 20px)',
                         lineHeight: '1.8',
-                        color: '#00ff41',
-                        textShadow: '0 0 5px rgba(0, 255, 65, 0.3)'
+                        color: isCorrect ? '#fbbf24' : '#ef4444',
+                        textShadow: isCorrect ? '0 0 5px rgba(251, 191, 36, 0.3)' : '0 0 5px rgba(239, 68, 68, 0.3)',
+                        fontWeight: 'bold'
                       }}>
                         {currentQuestion.explanation}
                       </p>
@@ -630,17 +625,70 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           </div>
         ) : (
           <div className="mt-2">
-            <div className="border-box text-center">
-              <p className="retro-font text-amber mb-2">AREA CLEARED!</p>
-              <p className="mb-2">Choose your next destination:</p>
-              
+            {/* QUEST PROGRESSION - Story beats */}
+            <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
+              <p className="retro-font text-amber" style={{ fontSize: '24px', marginBottom: '15px' }}>
+                ✓ AREA CLEARED!
+              </p>
+
+              {/* Quest Progress Indicator */}
+              <div style={{
+                padding: '15px',
+                backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                borderRadius: '5px',
+                border: '2px solid rgba(251, 191, 36, 0.3)',
+                marginBottom: '15px'
+              }}>
+                <p className="retro-font" style={{ fontSize: '18px', color: '#10b981' }}>
+                  AUTHORIZATION CODE #{progress.currentRoom} COLLECTED
+                </p>
+                <p style={{ marginTop: '10px', fontSize: '16px' }}>
+                  {progress.currentRoom < 8
+                    ? `${8 - progress.currentRoom} department${8 - progress.currentRoom > 1 ? 's' : ''} remaining...`
+                    : 'All departments visited!'}
+                </p>
+                {progress.currentRoom < 8 && (
+                  <p style={{ marginTop: '10px', fontSize: '14px', fontStyle: 'italic', color: '#fbbf24' }}>
+                    ⏰ GM's demo at 4PM - Keep moving!
+                  </p>
+                )}
+              </div>
+
+              {/* Story-specific messages based on room */}
+              <div style={{ marginBottom: '15px', fontSize: '16px', lineHeight: '1.6' }}>
+                {progress.currentRoom === 1 && (
+                  <p>Rita gives you a thumbs up. "Good start! Now head to the other departments and collect their codes. The clock is ticking!"</p>
+                )}
+                {progress.currentRoom === 2 && (
+                  <p>The council staff member nods approvingly. "You know your stuff! Keep going - the Systems team will want to see you next."</p>
+                )}
+                {progress.currentRoom === 3 && (
+                  <p>The Systems Manager makes a note in their logbook. "Excellent. The Planning Officer in the Map Room is waiting for you."</p>
+                )}
+                {progress.currentRoom === 4 && (
+                  <p>The Planning Officer smiles. "Perfect! Communications will need to brief you on public messaging about C.H.A.T. Head there next."</p>
+                )}
+                {progress.currentRoom === 5 && (
+                  <p>The Communications Officer looks relieved. "Great work! Governance needs to sign off on the ethics. They're just down the hall."</p>
+                )}
+                {progress.currentRoom === 6 && (
+                  <p>The Governance Officer makes a final note. "You understand the responsibilities. Almost there - just need C.H.A.T.'s authorization and the GM's approval."</p>
+                )}
+                {progress.currentRoom === 7 && (
+                  <p>C.H.A.T.'s screen flickers: "AUTHORIZATION VERIFIED. ONLY GENERAL MANAGER CODE REQUIRED. PROCEED TO EXECUTIVE OFFICE."</p>
+                )}
+              </div>
+
+              <p className="retro-font mb-2" style={{ fontSize: '16px' }}>CHOOSE YOUR PATH:</p>
+
               {currentRoom.exits.map((exit, index) => (
                 <button
                   key={index}
-                  className="retro-button mt-2"
+                  className="retro-button retro-button-amber mt-2"
+                  style={{ fontSize: '16px' }}
                   onClick={() => handleMoveRoom(exit)}
                 >
-                  → {exit}
+                  → PROCEED TO {exit.toUpperCase()}
                 </button>
               ))}
             </div>
