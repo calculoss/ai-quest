@@ -58,7 +58,7 @@ body::before {
     transparent 3px /* Wider spacing */
   );
   pointer-events: none;
-  z-index: 9999;
+  z-index: 9998; /* Lower than images */
   animation: scanlines 8s linear infinite;
 }
 
@@ -78,7 +78,7 @@ body::after {
   background: rgba(0, 255, 65, 0.03); /* Green tint */
   opacity: 0;
   pointer-events: none;
-  z-index: 9998;
+  z-index: 9997; /* Lower than images */
   animation: flicker 0.1s infinite alternate;
 }
 
@@ -686,7 +686,7 @@ pre.room-description {
 }
 
 /* ============================================
-   IMAGE QUESTIONS
+   IMAGE QUESTIONS - NO CRT DISTORTION
    ============================================ */
 
 .question-image-container {
@@ -696,6 +696,11 @@ pre.room-description {
   border: 4px solid var(--terminal-green);
   max-width: 700px;
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  /* CRITICAL: Place above CRT effects */
+  position: relative;
+  z-index: 9999;
+  /* Disable pseudo-elements that might inherit CRT effects */
+  isolation: isolate;
 }
 
 .question-image {
@@ -705,10 +710,15 @@ pre.room-description {
   display: block;
   margin: 0 auto;
   border: 2px solid var(--terminal-green);
-  /* Crystal clear - no filters */
+  /* Crystal clear - no filters or distortion */
   image-rendering: auto;
   image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
+  /* CRITICAL: Place above CRT effects */
+  position: relative;
+  z-index: 10000;
+  /* Ensure NO scanlines or flicker on images */
+  background: #000000;
 }
 
 .image-error {

@@ -129,22 +129,20 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             continueButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         }, 100);
-      }, 1000);
+      }, 1500); // Give time to read feedback first
 
-      // Auto advance after showing result (fallback if user doesn't click)
-      setTimeout(() => {
-        handleContinueAfterCorrect(newQuestionsAnswered);
-      }, 8000); // Extended to 8 seconds
+      // NO auto-advance - user must click CONTINUE
+      // This ensures they have time to read the explanation
     } else {
       setPointsEarned(-25); // Show penalty
       setAttempts(attempts + 1);
 
-      // For wrong answers, auto-clear after longer duration
+      // For wrong answers, give MUCH more time to read feedback
       setTimeout(() => {
         setShowResult(false);
         setSelectedAnswer(null);
         setPointsEarned(0);
-      }, 4000); // Extended to 4 seconds
+      }, 10000); // Extended to 10 seconds so they can read what went wrong
     }
   };
 
@@ -440,29 +438,41 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     return (
       <div>
         {/* Header with stats */}
-        <div className="border-box border-box-amber">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', alignItems: 'center' }}>
-            <div style={{ textAlign: 'left' }}>
-              <div className="retro-font" style={{ fontSize: '24px', color: '#fbbf24' }}>
+        <div className="border-box border-box-amber" style={{ padding: 'clamp(10px, 2vw, 15px)' }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '15px'
+          }}>
+            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#fbbf24' }}>
                 {progress.score}
               </div>
-              <div style={{ fontSize: '12px' }}>SCORE</div>
+              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)' }}>SCORE</div>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div className="retro-font" style={{ fontSize: '24px', color: '#10b981' }}>
+            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#10b981' }}>
                 {timeDisplay}
               </div>
-              <div style={{ fontSize: '12px' }}>TIME</div>
+              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)' }}>TIME</div>
             </div>
-            <div style={{ textAlign: 'right' }}>
+            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
               <button
                 className="retro-button"
-                style={{ padding: '5px 10px', fontSize: '10px' }}
+                style={{
+                  padding: '5px 10px',
+                  fontSize: 'clamp(8px, 1.5vw, 10px)',
+                  minHeight: '30px',
+                  width: 'auto',
+                  margin: '0 auto'
+                }}
                 onClick={() => setShowAccessCode(!showAccessCode)}
               >
                 CODE
               </button>
-              <div style={{ fontSize: '12px', marginTop: '5px' }}>{currentRoom.name}</div>
+              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)', marginTop: '5px' }}>{currentRoom.name}</div>
             </div>
           </div>
         </div>
