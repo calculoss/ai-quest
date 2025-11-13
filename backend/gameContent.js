@@ -632,12 +632,102 @@ new library, road construction, community centres.`,
 },
 
 // ============================================
+// FUN AI TRIVIA - PLAYER 1
+// (Accessible, engaging questions for general audience)
+// ============================================
+
+{
+  id: 45,
+  room: 2,
+  character: "Council Staff",
+  type: "trivia",
+  question: "AI IN MOVIES: In the 1968 film '2001: A Space Odyssey', what was the name of the AI that famously said 'I'm sorry Dave, I'm afraid I can't do that'?",
+  options: [
+    "HAL 9000",
+    "Skynet",
+    "WOPR",
+    "Mother"
+  ],
+  correct: 0,
+  explanation: "HAL 9000! This iconic AI character from Stanley Kubrick's film has influenced how we think about AI for over 50 years. The character's calm, polite tone while refusing commands became legendary in pop culture.",
+  points: 150
+},
+
+{
+  id: 46,
+  room: 3,
+  character: "Systems Manager",
+  type: "trivia",
+  question: "AI ACHIEVEMENTS: Which game did AI first beat a world champion at?",
+  options: [
+    "Go (2016)",
+    "Chess (1997)",
+    "Poker (2017)",
+    "Scrabble (2022)"
+  ],
+  correct: 1,
+  explanation: "Chess in 1997! IBM's Deep Blue defeated world champion Garry Kasparov. Many thought this was 'game over' for chess, but instead it became MORE popular. Humans and AI playing together (called 'centaur chess') actually play the best games!",
+  points: 150
+},
+
+{
+  id: 47,
+  room: 4,
+  character: "Planning Officer",
+  type: "trivia",
+  question: "VOICE ASSISTANTS: When Apple released Siri in 2011, which iPhone was it first available on?",
+  options: [
+    "iPhone 3GS",
+    "iPhone 4",
+    "iPhone 4S",
+    "iPhone 5"
+  ],
+  correct: 2,
+  explanation: "iPhone 4S! The 'S' actually stood for 'Siri'. This was the first mass-market voice assistant millions of people carried in their pockets. Today we take talking to our phones for granted, but in 2011 it felt like science fiction!",
+  points: 150
+},
+
+{
+  id: 48,
+  room: 5,
+  character: "Communications Officer",
+  type: "trivia",
+  question: "AI ART: In 2022, an AI-generated artwork won first place at the Colorado State Fair's art competition. This sparked controversy because...",
+  options: [
+    "The colors were too bright",
+    "It was created by AI, not a human artist",
+    "It copied another artist's work",
+    "The frame was too expensive"
+  ],
+  correct: 1,
+  explanation: "It was AI-generated! The artwork 'Théâtre D'opéra Spatial' was created using Midjourney AI. This sparked huge debates: Is AI art really 'art'? Should AI compete with human artists? These questions are still being debated today!",
+  points: 200
+},
+
+{
+  id: 49,
+  room: 6,
+  character: "Governance Officer",
+  type: "trivia",
+  question: "EVERYDAY AI: Netflix's recommendation system (the one that suggests shows you might like) saves the company approximately how much per year by reducing customer churn?",
+  options: [
+    "$1 million",
+    "$50 million",
+    "$500 million",
+    "$1 billion"
+  ],
+  correct: 3,
+  explanation: "About $1 BILLION per year! Netflix estimates their AI recommendation system is worth this much because it keeps people subscribed. This is AI working in the background - you might not even realize it's there, but it's making decisions about what you see every day.",
+  points: 200
+},
+
+// ============================================
 // REAL VS FAKE NEWS - PLAYER 1
 // (AI-related headlines - identify real or AI-generated fake)
 // ============================================
 
 {
-  id: 45,
+  id: 50,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
@@ -652,7 +742,7 @@ new library, road construction, community centres.`,
 },
 
 {
-  id: 46,
+  id: 51,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
@@ -667,7 +757,7 @@ new library, road construction, community centres.`,
 },
 
 {
-  id: 47,
+  id: 52,
   room: 7,
   character: "C.H.A.T.",
   type: "news",
@@ -1227,6 +1317,232 @@ new library, road construction, community centres.`,
         correct: 1,
         explanation: "Accuracy ≠ Fairness! An AI can be 'accurate' on average while being unfair to specific groups. For government AI: multiple objectives matter (accuracy, fairness, transparency, accountability). Technical performance is necessary but not sufficient. This is why responsible AI requires human judgment!",
         points: 250
+      },
+
+// ============================================
+// FUN AI TRIVIA - PLAYER 2
+// (Accessible, interesting questions for diverse IT audience)
+// ============================================
+
+      {
+        id: 134,
+        room: 2,
+        character: "Council Staff",
+        type: "trivia",
+        question: "AI MYTH BUSTER: Reports have claimed that typing 'please' and 'thank you' when using ChatGPT costs OpenAI millions of dollars extra. Is this real or fake news?",
+        options: [
+          "Real - politeness adds processing cost",
+          "Fake - politeness has no impact on processing cost"
+        ],
+        correct: 1,
+        explanation: "FAKE! This is a fun myth, but politeness doesn't cost extra. LLMs process tokens (pieces of words), and 'please' is just one token whether you use it or not. The cost is the same! Though being polite might get better responses due to how the AI was trained.",
+        points: 200
+      },
+
+      {
+        id: 135,
+        room: 2,
+        character: "Council Staff",
+        type: "trivia",
+        question: "WATER USAGE: Approximately how much water does it take to generate the electricity for ONE ChatGPT conversation (around 20-50 questions)?",
+        options: [
+          "1 drop (0.05ml)",
+          "1 cup (250ml)",
+          "1 bottle (500ml)",
+          "1 bathtub (80 litres)"
+        ],
+        correct: 2,
+        explanation: "About 500ml (one bottle)! AI data centers use significant electricity, which requires water for power plant cooling. A single ChatGPT conversation uses roughly the same water as manufacturing one 500ml plastic bottle. This is why sustainable AI and green data centers matter!",
+        points: 200
+      },
+
+      {
+        id: 136,
+        room: 1,
+        character: "Rita",
+        type: "trivia",
+        question: "MATCH THE COMPANY: Which company makes Gemini?",
+        options: [
+          "OpenAI",
+          "Google / DeepMind",
+          "Meta",
+          "Anthropic"
+        ],
+        correct: 1,
+        explanation: "Google / DeepMind! Gemini is Google's flagship AI model. Others: ChatGPT (OpenAI), Claude (Anthropic), Llama (Meta), and Grok (X/Twitter).",
+        points: 150
+      },
+
+      {
+        id: 137,
+        room: 1,
+        character: "Rita",
+        type: "trivia",
+        question: "MATCH THE COMPANY: Which company makes Claude AI?",
+        options: [
+          "OpenAI",
+          "Meta",
+          "Anthropic",
+          "Microsoft"
+        ],
+        correct: 2,
+        explanation: "Anthropic! Claude is made by Anthropic, founded by former OpenAI researchers. Anthropic focuses on AI safety and \"Constitutional AI\" to make models more helpful, harmless, and honest.",
+        points: 150
+      },
+
+      {
+        id: 138,
+        room: 3,
+        character: "Systems Manager",
+        type: "trivia",
+        question: "AI DEFINITIONS: What does AGI stand for?",
+        options: [
+          "Advanced General Intelligence",
+          "Artificial General Intelligence",
+          "Automated Generative Interface",
+          "Adaptive Goal Intelligence"
+        ],
+        correct: 1,
+        explanation: "Artificial General Intelligence! AGI refers to AI that can understand, learn, and apply knowledge across any task a human can do - unlike current 'narrow' AI that specializes in specific tasks. We haven't achieved AGI yet!",
+        points: 200
+      },
+
+      {
+        id: 139,
+        room: 3,
+        character: "Systems Manager",
+        type: "trivia",
+        question: "AI DEFINITIONS: What does LLM stand for?",
+        options: [
+          "Linear Learning Model",
+          "Large Language Model",
+          "Logical Learning Machine",
+          "Limited Language Memory"
+        ],
+        correct: 1,
+        explanation: "Large Language Model! LLMs like ChatGPT, Claude, and Gemini are trained on massive amounts of text data to understand and generate human-like responses. 'Large' refers to billions of parameters (connections in the neural network).",
+        points: 150
+      },
+
+      {
+        id: 140,
+        room: 4,
+        character: "Planning Officer",
+        type: "trivia",
+        question: "ROBOT NEWS: In March 2024, a robot named 'Beastbot' competed alongside humans in a half-marathon in China, finishing in under 2 hours. Real or fake?",
+        options: [
+          "Real news",
+          "Fake news"
+        ],
+        correct: 0,
+        explanation: "REAL! In March 2024, a bipedal robot called 'Tiangong' completed a 21km half-marathon in Beijing in 1 hour 49 minutes, making it the first robot to finish a half-marathon race alongside human competitors. Robotics is advancing fast!",
+        points: 200
+      },
+
+      {
+        id: 141,
+        room: 5,
+        character: "Communications Officer",
+        type: "trivia",
+        question: "WHO SAID IT: Which tech leader said 'AI is probably the most important thing humanity has ever worked on'?",
+        options: [
+          "Elon Musk",
+          "Sam Altman (OpenAI)",
+          "Sundar Pichai (Google)",
+          "Mark Zuckerberg"
+        ],
+        correct: 2,
+        explanation: "Sundar Pichai (Google CEO) in 2018! He said AI is 'more profound than electricity or fire.' Many tech leaders believe AI will transform society more than any previous technology.",
+        points: 150
+      },
+
+// ============================================
+// IMAGE RECOGNITION - PLAYER 2
+// (Testing visual AI detection skills)
+// ============================================
+
+      {
+        id: 142,
+        room: 2,
+        character: "Council Staff",
+        type: "image",
+        imagePath: "/images/image1008.webp",
+        isAiGenerated: true,
+        question: "IMAGE ANALYSIS: Look carefully at this image. AI-generated or real photograph?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 0,
+        explanation: "AI-generated! Look for telltale signs: unnatural symmetry, impossible physics, weird textures, or subtle artifacts in complex areas like hands, text, or reflections. AI still struggles with these details.",
+        points: 200
+      },
+
+      {
+        id: 143,
+        room: 3,
+        character: "Systems Manager",
+        type: "image",
+        imagePath: "/images/image2003.webp",
+        isAiGenerated: false,
+        question: "IMAGE ANALYSIS: Examine this carefully. What's your verdict?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 1,
+        explanation: "Real photograph! Notice the natural imperfections, authentic lighting, and organic composition. Real photos have camera artifacts like lens distortion, natural grain, and physically accurate shadows that AI often gets wrong.",
+        points: 200
+      },
+
+      {
+        id: 144,
+        room: 4,
+        character: "Planning Officer",
+        type: "image",
+        imagePath: "/images/image1019.webp",
+        isAiGenerated: true,
+        question: "IMAGE DETECTION: Your technical eye - is this real or AI?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 0,
+        explanation: "AI-generated! Check the fine details: Text might be gibberish, backgrounds may have impossible perspectives, or objects blend unnaturally. AI creates 'statistically plausible' images but physical reality doesn't always follow statistics!",
+        points: 200
+      },
+
+      {
+        id: 145,
+        room: 5,
+        character: "Communications Officer",
+        type: "image",
+        imagePath: "/images/image2017.webp",
+        isAiGenerated: false,
+        question: "IMAGE VERIFICATION: For communications work, you need to spot fakes. Your call?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 1,
+        explanation: "Real photograph! Authentic images have consistent depth of field, proper focal blur, natural skin texture, and realistic fabric/material properties. AI often makes materials look too smooth or lighting too perfect.",
+        points: 200
+      },
+
+      {
+        id: 146,
+        room: 6,
+        character: "Governance Officer",
+        type: "image",
+        imagePath: "/images/image1041.webp",
+        isAiGenerated: true,
+        question: "IMAGE FORENSICS: As IT professionals, we need to verify content. Your analysis?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 0,
+        explanation: "AI-generated! Modern AI is impressive but leaves traces: repetitive patterns, symmetry where it shouldn't exist, impossible anatomy (especially hands/fingers), or backgrounds that don't quite make physical sense. Always verify before trusting!",
+        points: 200
+      },
+
+      {
+        id: 147,
+        room: 7,
+        character: "C.H.A.T.",
+        type: "image",
+        imagePath: "/images/image2041.webp",
+        isAiGenerated: false,
+        question: "FINAL IMAGE CHALLENGE: Put your detection skills to the test. Real or synthetic?",
+        options: ["AI Generated", "Real Photograph"],
+        correct: 1,
+        explanation: "Real photograph! The key differences: Real photos capture genuine moments with natural chaos and imperfection. AI creates idealized versions that are 'too perfect' or have subtle impossibilities. Trust your eye for what feels authentically human vs statistically generated.",
+        points: 200
       }
     ]
   },
