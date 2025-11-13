@@ -437,42 +437,46 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
     return (
       <div>
-        {/* Header with stats */}
-        <div className="border-box border-box-amber" style={{ padding: 'clamp(10px, 2vw, 15px)' }}>
+        {/* Header with stats - FIXED RESPONSIVE */}
+        <div className="border-box border-box-amber" style={{ padding: 'clamp(8px, 2vw, 12px)', margin: '0 0 clamp(10px, 2vh, 15px) 0' }}>
           <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(70px, 1fr))',
+            gap: 'clamp(8px, 2vw, 12px)',
             alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '15px'
+            justifyItems: 'center',
+            width: '100%'
           }}>
-            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
-              <div className="retro-font" style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#fbbf24' }}>
+            <div style={{ textAlign: 'center', width: '100%' }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 22px)', color: '#fbbf24', wordBreak: 'keep-all' }}>
                 {progress.score}
               </div>
-              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)' }}>SCORE</div>
+              <div style={{ fontSize: 'clamp(9px, 1.8vw, 11px)' }}>SCORE</div>
             </div>
-            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
-              <div className="retro-font" style={{ fontSize: 'clamp(18px, 4vw, 24px)', color: '#10b981' }}>
+            <div style={{ textAlign: 'center', width: '100%' }}>
+              <div className="retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 22px)', color: '#10b981', wordBreak: 'keep-all' }}>
                 {timeDisplay}
               </div>
-              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)' }}>TIME</div>
+              <div style={{ fontSize: 'clamp(9px, 1.8vw, 11px)' }}>TIME</div>
             </div>
-            <div style={{ flex: '1 1 auto', minWidth: '80px', textAlign: 'center' }}>
+            <div style={{ textAlign: 'center', width: '100%' }}>
               <button
                 className="retro-button"
                 style={{
-                  padding: '5px 10px',
-                  fontSize: 'clamp(8px, 1.5vw, 10px)',
-                  minHeight: '30px',
+                  padding: '4px 8px',
+                  fontSize: 'clamp(7px, 1.4vw, 9px)',
+                  minHeight: '25px',
                   width: 'auto',
+                  maxWidth: '60px',
                   margin: '0 auto'
                 }}
                 onClick={() => setShowAccessCode(!showAccessCode)}
               >
                 CODE
               </button>
-              <div style={{ fontSize: 'clamp(10px, 2vw, 12px)', marginTop: '5px' }}>{currentRoom.name}</div>
+              <div style={{ fontSize: 'clamp(8px, 1.6vw, 10px)', marginTop: '3px', wordBreak: 'break-word' }}>
+                {currentRoom.name}
+              </div>
             </div>
           </div>
         </div>
@@ -495,10 +499,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           QUEST PROGRESS: {answeredQuestions}/{totalQuestions}
         </p>
 
-        {/* Room description - CRITICAL FIX HERE */}
-        <div className="border-box mt-2">
+        {/* Room description - CENTERED */}
+        <div className="border-box mt-2" style={{ textAlign: 'center' }}>
           <p className="retro-font text-amber mb-2">{currentRoom.name}</p>
-          <pre className="room-description">{currentRoom.description}</pre>
+          <pre className="room-description" style={{ display: 'inline-block', textAlign: 'left' }}>{currentRoom.description}</pre>
         </div>
 
         {/* Current question or navigation */}
@@ -561,14 +565,33 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                     )}
                   </div>
 
-                  {/* Character Response */}
-                  <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`}>
-                    <p className="retro-font" style={{ fontSize: '16px', fontWeight: 'bold' }}>
+                  {/* Character Response & Explanation - ALWAYS SHOW EXPLANATION */}
+                  <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`} style={{ padding: 'clamp(15px, 3vw, 20px)' }}>
+                    <p className="retro-font" style={{
+                      fontSize: 'clamp(14px, 2.5vw, 18px)',
+                      fontWeight: 'bold',
+                      marginBottom: '15px'
+                    }}>
                       {isCorrect ? character?.correct : character?.wrong}
                     </p>
-                    {isCorrect && (
-                      <p className="mt-2" style={{ fontSize: '14px' }}>{currentQuestion.explanation}</p>
-                    )}
+
+                    {/* ALWAYS show explanation - for both correct and wrong answers */}
+                    <div style={{
+                      marginTop: '15px',
+                      padding: '15px',
+                      backgroundColor: 'rgba(0, 255, 65, 0.05)',
+                      borderRadius: '5px',
+                      border: '2px solid rgba(0, 255, 65, 0.3)'
+                    }}>
+                      <p style={{
+                        fontSize: 'clamp(16px, 2.8vw, 20px)',
+                        lineHeight: '1.8',
+                        color: '#00ff41',
+                        textShadow: '0 0 5px rgba(0, 255, 65, 0.3)'
+                      }}>
+                        {currentQuestion.explanation}
+                      </p>
+                    </div>
                   </div>
 
                   {/* Continue Button (only for correct answers) */}
