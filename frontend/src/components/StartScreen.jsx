@@ -1,9 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import soundManager from '../utils/soundManager';
 
 function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
   const [showLoad, setShowLoad] = useState(false);
   const [email, setEmail] = useState('');
   const [accessCode, setAccessCode] = useState('');
+
+  // Play intro theme when screen loads
+  useEffect(() => {
+    // Small delay to ensure audio context is ready
+    const timer = setTimeout(() => {
+      soundManager.play('intro');
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleLoad = (e) => {
     e.preventDefault();
@@ -36,15 +47,33 @@ function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
 
       {!showLoad ? (
         <div className="mt-3">
-          <button className="retro-button retro-button-amber" onClick={onStart}>
+          <button
+            className="retro-button retro-button-amber"
+            onClick={() => {
+              soundManager.play('click');
+              onStart();
+            }}
+          >
             PRESS START
           </button>
           <br />
-          <button className="retro-button mt-2" onClick={() => setShowLoad(true)}>
+          <button
+            className="retro-button mt-2"
+            onClick={() => {
+              soundManager.play('click');
+              setShowLoad(true);
+            }}
+          >
             CONTINUE QUEST
           </button>
           <br />
-          <button className="retro-button mt-2" onClick={onViewLeaderboard}>
+          <button
+            className="retro-button mt-2"
+            onClick={() => {
+              soundManager.play('click');
+              onViewLeaderboard();
+            }}
+          >
             HIGH SCORES
           </button>
         </div>
