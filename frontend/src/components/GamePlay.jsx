@@ -29,6 +29,8 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   const [pointsEarned, setPointsEarned] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [showContinueButton, setShowContinueButton] = useState(false);
+  const [konamiKeys, setKonamiKeys] = useState([]);
+  const [showKonamiMessage, setShowKonamiMessage] = useState(false);
 
   const currentRoom = gameContent.rooms.find(r => r.id === progress.currentRoom);
   const character = currentRoom ? gameContent.dialogue[currentRoom.character] : null;
@@ -80,6 +82,33 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
       return () => clearInterval(timer);
     }
   }, [gamePhase, progress.startTime]);
+
+  // Konami Code Easter Egg: ↑↑↓↓←→←→BA
+  useEffect(() => {
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+    const handleKeyPress = (e) => {
+      const key = e.key.toLowerCase() === 'arrowup' || e.key.toLowerCase() === 'arrowdown' ||
+                   e.key.toLowerCase() === 'arrowleft' || e.key.toLowerCase() === 'arrowright'
+                   ? e.key : e.key.toLowerCase();
+
+      setKonamiKeys(prev => {
+        const newKeys = [...prev, key].slice(-10); // Keep last 10 keys
+
+        // Check if the sequence matches the Konami code
+        if (newKeys.length === 10 && newKeys.every((k, i) => k.toLowerCase() === konamiCode[i].toLowerCase())) {
+          setShowKonamiMessage(true);
+          setTimeout(() => setShowKonamiMessage(false), 10000); // Hide after 10 seconds
+          return []; // Reset
+        }
+
+        return newKeys;
+      });
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
 
   // ============================================
   // EXISTING GAME FUNCTIONS
@@ -417,6 +446,36 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
     return (
       <div>
+        {/* KONAMI CODE EASTER EGG MESSAGE */}
+        {showKonamiMessage && (
+          <div style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 99999,
+            background: 'linear-gradient(135deg, rgba(0,0,0,0.95), rgba(16,185,129,0.2))',
+            border: '4px solid #fbbf24',
+            padding: '30px',
+            maxWidth: '500px',
+            boxShadow: '0 0 50px rgba(251, 191, 36, 0.5)',
+            animation: 'pulse 2s infinite'
+          }}>
+            <p className="retro-font text-amber" style={{ fontSize: '20px', marginBottom: '15px', textAlign: 'center' }}>
+              🎮 KONAMI CODE DETECTED 🎮
+            </p>
+            <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#10b981', textAlign: 'center' }}>
+              Your level of geek transcends the expectation of this organisation.
+            </p>
+            <p style={{ fontSize: '13px', lineHeight: '1.7', marginTop: '15px', color: '#fbbf24', textAlign: 'center' }}>
+              <strong>WARNING:</strong> You are not supposed to know this. Please keep this to yourself as if you were to mention it to any normal person they may think you are crazy.
+            </p>
+            <p style={{ fontSize: '11px', marginTop: '15px', textAlign: 'center', color: '#666' }}>
+              (Message will self-destruct in 10 seconds...)
+            </p>
+          </div>
+        )}
+
         {/* Header with stats - ULTRA COMPACT */}
         <div className="border-box border-box-amber" style={{ padding: 'clamp(6px, 1.5vw, 10px)', margin: '0 0 clamp(8px, 1.5vh, 12px) 0', overflow: 'hidden' }}>
           <div style={{
