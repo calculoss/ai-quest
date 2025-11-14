@@ -49,14 +49,44 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'AI Quest Server Running!' });
 });
 
-// Get game content (rooms, questions for a mode)
+// Helper function to shuffle array (Fisher-Yates algorithm)
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Get game content (rooms, questions for a mode) with randomization
 app.get('/api/content/:mode', (req, res) => {
   const { mode } = req.params;
-  const questions = mode === 'player1' ? gameContent.questions.player1 : gameContent.questions.player2;
-  
+  const allQuestions = mode === 'player1' ? gameContent.questions.player1 : gameContent.questions.player2;
+
+  // Separate image questions from others
+  const imageQuestions = allQuestions.filter(q => q.type === 'image');
+  const nonImageQuestions = allQuestions.filter(q => q.type !== 'image');
+
+  // Randomize non-image questions
+  const shuffledNonImage = shuffleArray(nonImageQuestions);
+
+  // Select subset based on mode
+  let selectedNonImage;
+  if (mode === 'player1') {
+    // Player 1: Keep all 12 images + 18 random from 28 non-image = 30 total
+    selectedNonImage = shuffledNonImage.slice(0, 18);
+  } else {
+    // Player 2: Keep all 6 images + 24 random from 41 non-image = 30 total
+    selectedNonImage = shuffledNonImage.slice(0, 24);
+  }
+
+  // Combine and shuffle all selected questions
+  const finalQuestions = shuffleArray([...imageQuestions, ...selectedNonImage]);
+
   res.json({
     rooms: gameContent.rooms,
-    questions: questions,
+    questions: finalQuestions,
     dialogue: gameContent.dialogue
   });
 });
