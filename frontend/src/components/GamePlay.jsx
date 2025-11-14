@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import ChatModal from './ChatModal';
+import soundManager from '../utils/soundManager';
 
 const API_URL = process.env.REACT_APP_API_URL || '/api';
 
@@ -31,6 +32,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   const [showContinueButton, setShowContinueButton] = useState(false);
   const [konamiKeys, setKonamiKeys] = useState([]);
   const [showKonamiMessage, setShowKonamiMessage] = useState(false);
+  const [soundMuted, setSoundMuted] = useState(soundManager.getState().isMuted);
+  const [soundTheme, setSoundTheme] = useState(soundManager.getState().theme);
+  const [showSoundSettings, setShowSoundSettings] = useState(false);
 
   const currentRoom = gameContent.rooms.find(r => r.id === progress.currentRoom);
   const character = currentRoom ? gameContent.dialogue[currentRoom.character] : null;
@@ -126,6 +130,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     const correct = selectedAnswer === currentQuestion.correct;
     setIsCorrect(correct);
     setShowResult(true);
+
+    // Play sound effect
+    soundManager.play(correct ? 'correct' : 'wrong');
 
     if (correct) {
       const points = Math.max(currentQuestion.points - (attempts * 25), 25);
@@ -417,7 +424,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           <div className="text-center mt-3">
             <button
               className="retro-button retro-button-amber"
-              onClick={() => setGamePhase('playing')}
+              onClick={() => {
+                soundManager.play('startup');
+                setGamePhase('playing');
+              }}
             >
               [Press ENTER to begin]
             </button>
@@ -529,6 +539,56 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <p style={{ fontSize: '16px' }}>Write this down to continue later!</p>
           </div>
         )}
+
+        {/* Sound Settings Panel */}
+        <div className="border-box mt-1" style={{ padding: 'clamp(6px, 1.5vw, 10px)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
+            <button
+              className="retro-button"
+              style={{ fontSize: 'clamp(10px, 2vw, 12px)', padding: '5px 10px' }}
+              onClick={() => {
+                soundManager.play('click');
+                const newMuted = soundManager.toggleMute();
+                setSoundMuted(newMuted);
+              }}
+            >
+              {soundMuted ? '🔇 UNMUTE' : '🔊 MUTE'}
+            </button>
+            <button
+              className="retro-button"
+              style={{ fontSize: 'clamp(10px, 2vw, 12px)', padding: '5px 10px' }}
+              onClick={() => {
+                soundManager.play('click');
+                setShowSoundSettings(!showSoundSettings);
+              }}
+            >
+              🎵 SOUND
+            </button>
+          </div>
+
+          {/* Sound Theme Selector */}
+          {showSoundSettings && (
+            <div style={{ marginTop: '10px', textAlign: 'center' }}>
+              <p style={{ fontSize: 'clamp(10px, 2vw, 12px)', marginBottom: '5px' }}>SOUND THEME:</p>
+              <div style={{ display: 'flex', gap: '5px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                {['classic', 'mario', 'retro'].map(theme => (
+                  <button
+                    key={theme}
+                    className={`retro-button ${soundTheme === theme ? 'retro-button-amber' : ''}`}
+                    style={{ fontSize: 'clamp(9px, 1.8vw, 11px)', padding: '4px 8px' }}
+                    onClick={() => {
+                      soundManager.play('click');
+                      soundManager.setTheme(theme);
+                      setSoundTheme(theme);
+                    }}
+                  >
+                    {theme.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Progress bar */}
         <div className="progress-bar mt-2">
