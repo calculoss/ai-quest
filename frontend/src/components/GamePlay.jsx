@@ -694,7 +694,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                       <button
                         className="retro-button retro-button-amber"
                         style={{ fontSize: '16px', padding: '10px 20px' }}
-                        onClick={() => handleContinueAfterCorrect(progress.questionsAnswered)}
+                        onClick={() => {
+                          soundManager.play('click');
+                          handleContinueAfterCorrect(progress.questionsAnswered);
+                        }}
                       >
                         CONTINUE →
                       </button>
@@ -707,14 +710,20 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                 <div className="mt-2 text-center">
                   <button
                     className="retro-button retro-button-amber"
-                    onClick={handleSubmitAnswer}
+                    onClick={() => {
+                      soundManager.play('click');
+                      handleSubmitAnswer();
+                    }}
                     disabled={selectedAnswer === null}
                   >
                     SUBMIT ANSWER
                   </button>
                   <button
                     className="retro-button mt-2"
-                    onClick={() => setShowChat(true)}
+                    onClick={() => {
+                      soundManager.play('click');
+                      setShowChat(true);
+                    }}
                   >
                     TALK TO C.H.A.T. 🤖
                   </button>
