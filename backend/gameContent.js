@@ -305,6 +305,25 @@ new library, road construction, community centres.`,
         points: 150
       },
 
+      // BRAIN TEASER - Room 5 (Special Challenge)
+      {
+        id: 20,
+        room: 5,
+        character: "Communications Officer",
+        type: "brain_teaser",
+        question: "🧠 BRAIN TEASER: You're on a game show with 3 doors. Behind one is a prize, behind the others are goats. You pick Door 1. The host (who knows what's behind each door) opens Door 3, revealing a goat. The host asks: 'Do you want to switch to Door 2?' Should you switch?",
+        options: [
+          "No - stay with Door 1 (50/50 odds either way)",
+          "Yes - switch to Door 2 (doubles your chances)",
+          "Doesn't matter - equal probability",
+          "Pick randomly - it's all luck"
+        ],
+        correct: 1,
+        explanation: "YES, switch! This is the famous Monty Hall Problem. When you first picked, you had 1/3 chance of being right and 2/3 chance of being wrong. The host's action doesn't change that - it just concentrates the 2/3 probability onto the other door. Switching gives you 2/3 chance of winning! This demonstrates how probability and decision-making can be counterintuitive - just like interpreting AI outputs requires careful thinking.",
+        brain_teaser_hint: "🤔 Hmm, not quite! This puzzle has stumped many people. Think about the probabilities when you first chose... The answer will be revealed at the end of the game!",
+        points: 200
+      },
+
       // ETHICS OFFICE - Room 6 (Medium-Hard)
       {
         id: 11,
@@ -931,6 +950,25 @@ new library, road construction, community centres.`,
         correct: 1,
         explanation: "Production RAG requires balancing search quality (recall) with response time (latency). Approximate nearest neighbor (ANN) algorithms trade some accuracy for speed. Choose based on your SLAs and user expectations!",
         points: 200
+      },
+
+      // BRAIN TEASER - Room 5 (Special Challenge)
+      {
+        id: 148,
+        room: 5,
+        character: "Communications Officer",
+        type: "brain_teaser",
+        question: "🧠 BRAIN TEASER: Three AI systems need to coordinate a decision, but one might be compromised and sending false data. Each system can only communicate by passing messages. How many rounds of message exchange are needed to guarantee consensus among the honest systems?",
+        options: [
+          "1 round - they just vote",
+          "2 rounds - confirm and verify",
+          "3+ rounds - depends on assumptions about failures",
+          "Impossible - can't guarantee consensus with a faulty node"
+        ],
+        correct: 2,
+        explanation: "This is the Byzantine Generals Problem! With 3 nodes and 1 potentially faulty, you need at least 2 rounds of communication (and in general, for n nodes with f faults, you need n > 3f nodes and multiple rounds). This fundamental problem in distributed systems inspired blockchain consensus algorithms and is crucial for understanding how multiple AI agents or systems can reliably coordinate decisions. The exact answer depends on the type of failures assumed (crash vs Byzantine), but simple majority voting in 1 round isn't sufficient!",
+        brain_teaser_hint: "🤔 Interesting guess! This is a classic distributed systems problem. The answer relates to the Byzantine Generals Problem and blockchain consensus. The full explanation will be revealed at the end!",
+        points: 250
       },
 
       // ETHICS OFFICE - Room 6 (Hard)

@@ -163,6 +163,7 @@ function App() {
               <CompletionScreen
                 playerData={playerData}
                 progress={progress}
+                gameContent={gameContent}
                 onViewLeaderboard={handleViewLeaderboard}
                 onPlayAgain={handleBackToStart}
               />

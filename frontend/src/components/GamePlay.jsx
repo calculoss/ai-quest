@@ -682,6 +682,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                   <div className={`border-box mt-2 ${isCorrect ? 'border-box-amber' : ''}`} style={{ padding: 'clamp(15px, 3vw, 20px)' }}>
                     {/* REMOVED character-specific dialogue - it was mismatched with questions */}
                     {/* Now just show the actual explanation which is question-specific */}
+                    {/* BRAIN TEASER: Show hint instead of answer when wrong */}
 
                     <div style={{
                       marginTop: '0',
@@ -697,7 +698,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                         textShadow: isCorrect ? '0 0 5px rgba(251, 191, 36, 0.3)' : '0 0 5px rgba(239, 68, 68, 0.3)',
                         fontWeight: 'bold'
                       }}>
-                        {currentQuestion.explanation}
+                        {/* Brain teaser: show hint if wrong, explanation if correct */}
+                        {currentQuestion.type === 'brain_teaser' && !isCorrect
+                          ? currentQuestion.brain_teaser_hint
+                          : currentQuestion.explanation}
                       </p>
                     </div>
                   </div>
