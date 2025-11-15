@@ -273,15 +273,26 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             </div>
             
             <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
-            
-            <p className="mt-2">The disk labels read:</p>
-            
-            <div className="disk-label border-box mt-2 mb-2">
-              <p className="retro-font text-amber">LAKE MACQUARIE CITY COUNCIL</p>
-              <p>C.H.A.T. RESTART PROTOCOL</p>
-              <p>Electronic Data Processing Dept</p>
-              <p>Version 1.2 - September 1989</p>
-              <p className="mt-2">⚠️ DO NOT ERASE - TRAINING DATA</p>
+
+            <p className="mt-2">You pull out one of the disks. The label reads:</p>
+
+            <div className="mt-3 mb-3" style={{
+              maxWidth: '500px',
+              margin: '20px auto',
+              border: '2px solid #10b981',
+              boxShadow: '0 0 15px rgba(16, 185, 129, 0.3)',
+              background: '#000',
+              padding: '10px'
+            }}>
+              <img
+                src="/images/disc.png"
+                alt="5.25 inch floppy disk - C.H.A.T. Restart Protocol"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
             </div>
             
             <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
