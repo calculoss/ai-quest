@@ -18,7 +18,7 @@ rooms:[
 Rita's desk is cluttered with manila folders and a daily planner.
 A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."
 
-An urgent memo sits on the desk: "OPERATION C.H.A.T. - System offline.
+An urgent memo sits on the desk: "C.H.A.T. SYSTEM - Offline.
 GM demo at 4PM. Collect authorization codes from all department heads."`,
     exits: ["Cafeteria", "Mainframe Room"]
   },
@@ -1820,7 +1820,7 @@ SYSTEM STATUS: READY FOR 4 PM DEMONSTRATION
 
 REPORT TO GENERAL MANAGER'S OFFICE FOR FINAL EVALUATION.
 
-OPERATION C.H.A.T.: NEARLY COMPLETE."
+MISSION: NEARLY COMPLETE."
 
 [C.H.A.T. SYSTEM ONLINE]
 [Report to General Manager!]`
@@ -1859,7 +1859,7 @@ You've not only restarted C.H.A.T. - you've demonstrated the principles that wil
 
 GENERAL MANAGER: "The State Government officials arrive in 15 minutes. Thanks to you, we're ready.
 
-You've successfully completed OPERATION C.H.A.T. and passed the AI Knowledge Challenge.
+You've successfully completed your mission and passed the AI Knowledge Challenge.
 
 The principles you've learned today - in 1989 or 2025 - will serve you well, no matter how technology evolves."`,
 
@@ -1867,7 +1867,7 @@ The principles you've learned today - in 1989 or 2025 - will serve you well, no 
 
     exit: `
 ╔════════════════════════════════════════════════════════╗
-║        🎊 OPERATION C.H.A.T. COMPLETE! 🎊             ║
+║           🎊 MISSION COMPLETE! 🎊                     ║
 ║                                                        ║
 ║  Authorization Codes Collected: 6/6                   ║
 ║  C.H.A.T. System: ONLINE                              ║
