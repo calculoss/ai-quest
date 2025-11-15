@@ -21,7 +21,7 @@ function ModeSelect({ onSelect }) {
           <p className="retro-font mb-2">ENTER EMAIL ADDRESS:</p>
           <input
             type="email"
-            placeholder="your.email@council.nsw.gov.au"
+            placeholder=""
             className="retro-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
