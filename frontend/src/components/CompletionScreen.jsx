@@ -246,26 +246,38 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
           Expand your AI knowledge with these resources:
         </p>
 
-        <div style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.8' }}>
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '10px' }}>🎧 Podcasts:</p>
+        <div style={{ fontSize: 'clamp(14px, 2.8vw, 18px)', lineHeight: '1.8' }}>
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '10px' }}>🎧 AI Podcasts:</p>
           <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li><a href="https://lexfridman.com/ai/" target="_blank" rel="noopener noreferrer" className="text-amber">Lex Fridman Podcast</a> - Deep AI conversations</li>
-            <li><a href="https://twimlai.com/" target="_blank" rel="noopener noreferrer" className="text-amber">TWiML AI Podcast</a> - Machine learning insights</li>
-            <li><a href="https://www.youtube.com/@AIPodcast" target="_blank" rel="noopener noreferrer" className="text-amber">The AI Podcast (NVIDIA)</a> - Industry leaders</li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="https://www.eye-on.ai/" target="_blank" rel="noopener noreferrer" className="text-amber">Eye on AI</a> - News and insights on the AI sector, hosted by Craig S. Smith
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="https://sloanreview.mit.edu/audio/me-myself-and-ai/" target="_blank" rel="noopener noreferrer" className="text-amber">Me, Myself and AI</a> - MIT Sloan & BCG explore how companies achieve wins with AI
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="https://blogs.nvidia.com/ai-podcast/" target="_blank" rel="noopener noreferrer" className="text-amber">The AI Podcast (NVIDIA)</a> - Bi-weekly interviews creating an oral history of AI
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="https://www.technologyreview.com/2023/10/23/1082161/podcast-in-machines-we-trust/" target="_blank" rel="noopener noreferrer" className="text-amber">In Machines We Trust</a> - Award-winning MIT series examining AI's impact on daily life
+            </li>
+            <li style={{ marginBottom: '8px' }}>
+              <a href="https://www.deepmind.com/the-podcast" target="_blank" rel="noopener noreferrer" className="text-amber">DeepMind: The Podcast</a> - Multi-award winning series on how AI is transforming our world
+            </li>
           </ul>
 
           <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px' }}>🌐 Online Learning:</p>
           <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li><a href="https://www.deeplearning.ai/" target="_blank" rel="noopener noreferrer" className="text-amber">DeepLearning.AI</a> - Free courses by Andrew Ng</li>
-            <li><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener noreferrer" className="text-amber">AI For Everyone</a> - Non-technical intro</li>
-            <li><a href="https://www.anthropic.com/index/introducing-claude" target="_blank" rel="noopener noreferrer" className="text-amber">Anthropic Claude Docs</a> - Learn about the AI that powers this game</li>
+            <li style={{ marginBottom: '8px' }}><a href="https://www.deeplearning.ai/" target="_blank" rel="noopener noreferrer" className="text-amber">DeepLearning.AI</a> - Free courses by Andrew Ng</li>
+            <li style={{ marginBottom: '8px' }}><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener noreferrer" className="text-amber">AI For Everyone</a> - Non-technical intro</li>
+            <li style={{ marginBottom: '8px' }}><a href="https://www.anthropic.com/index/introducing-claude" target="_blank" rel="noopener noreferrer" className="text-amber">Anthropic Claude Docs</a> - Learn about the AI that powers this game</li>
           </ul>
 
           <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px' }}>💬 Water Cooler Moments:</p>
           <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li>Did you know? A single ChatGPT query uses ~500ml of water for cooling!</li>
-            <li>AI "hallucinations" happen because models predict plausible text, not truth</li>
-            <li>The term "neural network" comes from biological neurons in your brain</li>
+            <li style={{ marginBottom: '8px' }}>Did you know? A single ChatGPT query uses ~500ml of water for cooling!</li>
+            <li style={{ marginBottom: '8px' }}>AI "hallucinations" happen because models predict plausible text, not truth</li>
+            <li style={{ marginBottom: '8px' }}>The term "neural network" comes from biological neurons in your brain</li>
           </ul>
         </div>
       </div>
