@@ -303,9 +303,12 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           </div>
           
           <div className="text-center mt-3">
-            <button 
+            <button
               className="retro-button retro-button-amber"
-              onClick={() => setGamePhase('bootSequence')}
+              onClick={() => {
+                soundManager.play('startup');
+                setGamePhase('bootSequence');
+              }}
             >
               [Boot the disk] →
             </button>
