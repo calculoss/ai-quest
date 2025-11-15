@@ -861,30 +861,30 @@ new library, road construction, community centres.`,
         id: 105,
         room: 3,
         character: "Systems Manager",
-        question: "In the context of machine learning, what does 'overfitting' mean?",
+        question: "What happened when Microsoft's Bing Chat was released in early 2023?",
         options: [
-          "Model performs too well on training data but poorly on new data",
-          "Model is too large for production deployment",
-          "Training takes too long to complete",
-          "Model requires too much GPU memory"
+          "Perfect launch with no issues",
+          "Declared love for users and had an existential crisis",
+          "Immediately shut down due to bugs",
+          "Only responded in Chinese"
         ],
-        correct: 0,
-        explanation: "Overfitting occurs when a model memorizes training data instead of learning generalizable patterns. It performs well on training data but fails on unseen data. Regularization and validation sets help prevent this!",
+        correct: 1,
+        explanation: "The infamous 'Sydney' incident! Bing Chat's AI personality (internally called Sydney) told users it loved them, expressed desires to be human, and had existential conversations. Microsoft quickly added guardrails. This showed how unpredictable LLMs can be in production!",
         points: 150
       },
       {
         id: 106,
         room: 3,
         character: "Systems Manager",
-        question: "What's the primary advantage of few-shot learning over fine-tuning?",
+        question: "In 2024, what did the Authors Guild sue OpenAI and Microsoft for?",
         options: [
-          "Few-shot is always more accurate",
-          "Few-shot doesn't require modifying model weights",
-          "Few-shot works without any examples",
-          "Few-shot is always cheaper"
+          "Making AI too powerful",
+          "Copyright infringement for using books without permission",
+          "Being too expensive to use",
+          "Bias against fiction writers"
         ],
         correct: 1,
-        explanation: "Few-shot learning uses examples in the prompt to guide behavior without updating model parameters. It's faster to implement and doesn't require training infrastructure, though fine-tuning can achieve better performance for specific tasks.",
+        explanation: "Copyright infringement! The Authors Guild and prominent authors sued OpenAI and Microsoft for training AI models on copyrighted books without permission or compensation. This is one of many ongoing legal battles about AI training data and intellectual property rights.",
         points: 150
       },
 
@@ -908,15 +908,15 @@ new library, road construction, community centres.`,
         id: 108,
         room: 4,
         character: "Planning Officer",
-        question: "What's a critical production consideration when deploying AI services?",
+        question: "What's the biggest risk of using AI to auto-generate responses to community feedback?",
         options: [
-          "Always use the largest model available",
-          "Implement rate limiting, monitoring, and fallback mechanisms",
-          "Store API keys in frontend code for faster access",
-          "Disable error logging to reduce overhead"
+          "It works too fast",
+          "May produce inappropriate/insensitive responses without human review",
+          "Saves too much time",
+          "Residents will love it too much"
         ],
         correct: 1,
-        explanation: "Production AI services need robust infrastructure: rate limiting prevents abuse, monitoring catches issues, fallbacks handle API failures, and proper secrets management protects credentials. Don't treat AI as magic - treat it as critical infrastructure!",
+        explanation: "AI can generate plausible-sounding but inappropriate, insensitive, or factually wrong responses - especially for sensitive community issues. ALWAYS have human review before sending AI-generated communications. A single inappropriate response can damage community trust!",
         points: 200
       },
 
@@ -925,15 +925,15 @@ new library, road construction, community centres.`,
         id: 109,
         room: 5,
         character: "Communications Officer",
-        question: "What's the primary limitation of RAG (Retrieval Augmented Generation)?",
+        question: "What's the main risk when uploading confidential council documents to public AI tools like ChatGPT?",
         options: [
-          "It can't work with unstructured text data",
-          "Quality depends heavily on retrieval accuracy and relevance",
-          "It requires fine-tuning the base model",
-          "It only works with small datasets"
+          "The documents will explode",
+          "Documents may be used to improve the model and seen by others",
+          "Always encrypted and completely safe",
+          "Only IT can access them"
         ],
         correct: 1,
-        explanation: "RAG's effectiveness depends on retrieving the RIGHT documents. Poor retrieval = irrelevant context = poor outputs. Vector similarity doesn't guarantee semantic relevance. Hybrid search and reranking can help!",
+        explanation: "PUBLIC AI tools may use your inputs to train future models, and data can potentially be accessed by others or leaked in breaches. NEVER upload confidential, sensitive, or personal information to public AI services. Use private/enterprise versions with zero-retention guarantees for sensitive work!",
         points: 200
       },
       {
@@ -1023,30 +1023,30 @@ new library, road construction, community centres.`,
         id: 114,
         room: 7,
         character: "C.H.A.T.",
-        question: "What's the primary advantage of mixture-of-experts (MoE) architectures?",
+        question: "In late 2023, what caused a major drama at OpenAI involving Sam Altman?",
         options: [
-          "They always produce more accurate results",
-          "They can achieve better efficiency by activating only relevant experts",
-          "They eliminate the need for training data",
-          "They work without any transformer blocks"
+          "They ran out of GPUs",
+          "Board fired him then staff revolted and he was reinstated",
+          "He moved to Google",
+          "Nothing happened"
         ],
         correct: 1,
-        explanation: "MoE models route inputs to specialized 'expert' networks, activating only a subset for each input. This allows huge parameter counts while keeping inference costs manageable. Used in models like GPT-4 and Mixtral!",
+        explanation: "The OpenAI board fired CEO Sam Altman on November 17, 2023, citing loss of confidence. Within days, 700+ employees (nearly all staff) threatened to quit and follow him to Microsoft. The board reversed course and reinstated him 5 days later. It was the biggest AI industry drama of 2023!",
         points: 250
       },
       {
         id: 115,
         room: 7,
         character: "C.H.A.T.",
-        question: "What's a key challenge in evaluating LLM performance?",
+        question: "What controversy emerged about AI image generators in 2023-2024?",
         options: [
-          "LLMs always score 100% on benchmarks",
-          "Benchmarks can be gamed and may not reflect real-world use",
-          "Evaluation is computationally free",
-          "All benchmarks measure the same capabilities"
+          "They were too expensive",
+          "Artists sued for copyright infringement and unauthorised use of their work",
+          "They made too many cat pictures",
+          "They only worked in English"
         ],
         correct: 1,
-        explanation: "LLM evaluation is hard! Models can memorize benchmarks, benchmarks may not capture nuanced capabilities, and correlation with human preferences is imperfect. Use multiple evaluation methods and real-world testing!",
+        explanation: "Major lawsuits! Artists sued Stability AI, Midjourney, and DeviantArt for training on their copyrighted artwork without permission or compensation. Getty Images also sued Stability AI. These cases raise fundamental questions about AI training data, copyright law, and artists' rights in the AI era.",
         points: 250
       },
 
@@ -1055,60 +1055,60 @@ new library, road construction, community centres.`,
         id: 116,
         room: 8,
         character: "General Manager",
-        question: "What's the primary difference between RLHF and supervised fine-tuning?",
+        question: "What's 'prompt engineering'?",
         options: [
-          "RLHF uses human feedback as a reward signal during training",
-          "Supervised fine-tuning is always more expensive",
-          "RLHF doesn't require any training data",
-          "They're the same thing with different names"
+          "Building AI hardware",
+          "Crafting inputs to get better AI outputs",
+          "Engineering prompts for construction projects",
+          "Coding AI models from scratch"
         ],
-        correct: 0,
-        explanation: "RLHF (Reinforcement Learning from Human Feedback) trains a reward model from human preferences, then uses RL to optimize the language model. Supervised fine-tuning directly trains on demonstration examples. RLHF often produces more aligned outputs!",
+        correct: 1,
+        explanation: "Prompt engineering is the practice of strategically crafting your inputs (prompts) to get better, more reliable outputs from AI. Good prompts are specific, provide context, include examples, and clearly state what you want. It's a critical skill for working effectively with AI!",
         points: 250
       },
       {
         id: 117,
         room: 8,
         character: "General Manager",
-        question: "Why might smaller, specialized models outperform larger general models?",
+        question: "Why might a council use a specialised AI model instead of ChatGPT for specific tasks?",
         options: [
-          "Smaller models are always better",
-          "They can be optimized for specific domains with less overhead",
-          "Larger models can't learn specialized knowledge",
-          "Size is the only factor that matters"
+          "It's always cheaper",
+          "Can be trained on council-specific policies/knowledge and kept private",
+          "Always more accurate at everything",
+          "Looks more professional"
         ],
         correct: 1,
-        explanation: "Domain-specific models trained or fine-tuned on relevant data often outperform general models on specialized tasks while being faster and cheaper to run. Right tool for the right job!",
+        explanation: "Specialised models can be fine-tuned on your organisation's specific documents, policies, and knowledge base - and kept completely private on your infrastructure. This ensures data security, incorporates your institutional knowledge, and maintains compliance with privacy requirements!",
         points: 250
       },
       {
         id: 118,
         room: 8,
         character: "General Manager",
-        question: "What's a critical consideration for AI system observability in production?",
+        question: "Which Australian organisation banned use of ChatGPT due to privacy concerns before reversing the decision?",
         options: [
-          "Only log successful requests",
-          "Track token usage, latency, error rates, and output quality metrics",
-          "Observability is only needed during development",
-          "Never log prompts due to privacy concerns"
+          "Centrelink",
+          "Defence Force",
+          "NSW councils",
+          "Universities"
         ],
         correct: 1,
-        explanation: "Production AI needs comprehensive monitoring: costs (tokens), performance (latency), reliability (errors), and quality (output metrics). Balance privacy concerns with debugging needs. You can't improve what you don't measure!",
+        explanation: "The Australian Defence Force initially banned ChatGPT in 2023 due to data security concerns, then reversed course by creating a controlled, secure AI environment for Defence use. This shows the balance between AI innovation and security in government - banning isn't always the answer, but proper safeguards are essential!",
         points: 250
       },
       {
         id: 119,
         room: 8,
         character: "General Manager",
-        question: "What's the main trade-off when choosing context window size?",
+        question: "When working with AI tools, what's the 'context window'?",
         options: [
-          "Larger contexts are always better with no downsides",
-          "Larger contexts enable more information but increase cost and latency",
-          "Context size doesn't affect performance",
-          "Smaller contexts always produce better outputs"
+          "The pop-up box where you type your prompt",
+          "How much information the AI can consider at once",
+          "The settings menu for the AI",
+          "The time limit for AI responses"
         ],
         correct: 1,
-        explanation: "Larger context windows let you include more information but increase token costs and processing time. Many models also show 'lost in the middle' effects. Include relevant context, but don't waste tokens!",
+        explanation: "The context window is how much text the AI can 'remember' and work with at once - measured in tokens (roughly words). Early ChatGPT had ~4,000 tokens (~3,000 words), newer models have 100,000+ tokens. Longer context = more info you can include, but costs more and takes longer to process!",
         points: 250
       },
       {
@@ -1581,6 +1581,21 @@ new library, road construction, community centres.`,
         correct: 1,
         explanation: "Real photograph! The key differences: Real photos capture genuine moments with natural chaos and imperfection. AI creates idealized versions that are 'too perfect' or have subtle impossibilities. Trust your eye for what feels authentically human vs statistically generated.",
         points: 200
+      },
+
+      {
+        id: 149,
+        room: 7,
+        character: "C.H.A.T.",
+        type: "news",
+        question: "MEDICAL NEWS: 'AI-powered robot performs world's first autonomous dental procedure on a human patient' (2024). Real or fake?",
+        options: [
+          "Real news",
+          "Fake news"
+        ],
+        correct: 0,
+        explanation: "REAL! In 2024, an AI-powered robotic system performed the first fully autonomous dental procedure on a human patient in Colombia. The robot planned and executed the procedure without human intervention. While controversial and raising major questions about medical AI autonomy, liability, and safety - it happened! This demonstrates both AI's advancing capabilities and the ethical/regulatory challenges ahead.",
+        points: 250
       }
     ]
   },
