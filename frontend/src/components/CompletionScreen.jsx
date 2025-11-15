@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import soundManager from '../utils/soundManager';
 
 function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain }) {
   const certificateRef = useRef(null);
@@ -6,6 +7,16 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
   const totalQuestions = 30; // Randomized selection: 30 questions per game
   const correctAnswers = progress.questionsAnswered.length;
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+
+  // Play victory theme when screen loads
+  useEffect(() => {
+    // Small delay for dramatic effect
+    const timer = setTimeout(() => {
+      soundManager.play('victory');
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const modeLabel = playerData.mode === 'player1' ? 'READY PLAYER 1' : 'READY PLAYER 2';
   const modeEmoji = playerData.mode === 'player1' ? '🎮' : '💻';
@@ -251,11 +262,25 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
       </div>
 
       <div className="mt-3">
-        <button className="retro-button retro-button-amber" onClick={onViewLeaderboard} style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', padding: '10px 20px' }}>
+        <button
+          className="retro-button retro-button-amber"
+          onClick={() => {
+            soundManager.play('click');
+            onViewLeaderboard();
+          }}
+          style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', padding: '10px 20px' }}
+        >
           VIEW HIGH SCORES
         </button>
         <br />
-        <button className="retro-button mt-2" onClick={onPlayAgain} style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', padding: '10px 20px' }}>
+        <button
+          className="retro-button mt-2"
+          onClick={() => {
+            soundManager.play('click');
+            onPlayAgain();
+          }}
+          style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', padding: '10px 20px' }}
+        >
           {playerData.mode === 'player1' ? 'TRY PLAYER 2 MODE' : 'PLAY AGAIN'}
         </button>
       </div>
