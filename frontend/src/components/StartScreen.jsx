@@ -26,18 +26,20 @@ function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
   return (
     <div className="text-center">
       <div className="mt-3">
-        <pre className="text-amber" style={{ fontSize: '14px', lineHeight: '1.2' }}>
-{`████████████████████████████████
-█                              █
-█   ▄▀▀▀▄ ▀█▀  ▄▀▀▄ █  █ █▀▀  █
-█   █▄▄█▄  █   █  █ █  █ █▄▄  █
-█   █   █ ▄█▄  ▀▄▄█ ▀▄▄▀ █▄▄  █
-█                              █
-█      THE NEURAL NETWORK      █
-█         ADVENTURE             █
-█                              █
-████████████████████████████████`}
-        </pre>
+        <h1 className="retro-font text-amber" style={{
+          fontSize: 'clamp(32px, 8vw, 48px)',
+          lineHeight: '1.2',
+          marginBottom: '10px',
+          textShadow: '0 0 20px rgba(251, 191, 36, 0.5)'
+        }}>
+          OPERATION C.H.A.T.
+        </h1>
+        <p className="text-green retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 24px)', marginTop: '10px' }}>
+          AI QUEST 1989
+        </p>
+        <p style={{ fontSize: 'clamp(12px, 2.5vw, 16px)', marginTop: '15px', color: '#10b981' }}>
+          Lake Macquarie City Council
+        </p>
       </div>
 
       <div className="border-box mt-3">
