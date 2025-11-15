@@ -277,7 +277,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <p className="mt-2">You pull out one of the disks. The label reads:</p>
 
             <div className="mt-3 mb-3" style={{
-              maxWidth: '800px',
+              maxWidth: '1100px',
               margin: '20px auto',
               border: '3px solid #10b981',
               boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)',
