@@ -34,7 +34,7 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
 
   // Copy shareable message to clipboard
   const copyShareMessage = () => {
-    const message = `🎮 I scored ${progress.score} points in Operation C.H.A.T. - Lake Macquarie's AI Challenge!\n⏱️ Time: ${playerData.completionTime}\n🎯 Accuracy: ${percentage}%\n\nCan you beat my score? 🚀`;
+    const message = `🎮 I scored ${progress.score} points in BASEMENT ARCHIVES: 1989 - Lake Macquarie's AI Challenge!\n⏱️ Time: ${playerData.completionTime}\n🎯 Accuracy: ${percentage}%\n\nCan you beat my score? 🚀`;
     navigator.clipboard.writeText(message);
     alert('Message copied! Paste it in Teams/Slack to challenge your colleagues!');
   };
@@ -48,8 +48,8 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
       </div>
 
       <div className="border-box border-box-amber mt-3">
-        <h2 className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(18px, 3.5vw, 24px)' }}>🎉 C.H.A.T. SYSTEM RESTARTED! 🎉</h2>
-        <p className="mt-2" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}>Operation C.H.A.T. Successfully Completed!</p>
+        <h2 className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(18px, 3.5vw, 24px)' }}>🎉 ARCHIVES RESTORED! 🎉</h2>
+        <p className="mt-2" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}>BASEMENT ARCHIVES: 1989 Successfully Completed!</p>
         <p className="mt-1" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}>{modeEmoji} {modeLabel} Mode</p>
       </div>
 
@@ -287,7 +287,7 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
 
       <div className="mt-3">
         <p style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}>
-          Thanks for participating in Operation C.H.A.T.!
+          Thanks for participating in BASEMENT ARCHIVES: 1989!
         </p>
         <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginTop: '10px' }}>
           Keep exploring AI responsibly! 🤖

@@ -25,20 +25,48 @@ function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
 
   return (
     <div className="text-center">
+      {/* 1979 Council Building Image */}
+      <div className="mt-3" style={{
+        maxWidth: '600px',
+        margin: '0 auto 20px',
+        border: '3px solid #10b981',
+        boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)',
+        background: '#000'
+      }}>
+        <img
+          src="/images/Admin_Outside.jpeg"
+          alt="Lake Macquarie City Council Admin Building - 1979"
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            filter: 'sepia(0.3) contrast(1.1)',
+            opacity: '0.95'
+          }}
+        />
+      </div>
+
       <div className="mt-3">
         <h1 className="retro-font text-amber" style={{
-          fontSize: 'clamp(32px, 8vw, 48px)',
+          fontSize: 'clamp(28px, 7vw, 42px)',
           lineHeight: '1.2',
-          marginBottom: '10px',
-          textShadow: '0 0 20px rgba(251, 191, 36, 0.5)'
+          marginBottom: '5px',
+          textShadow: '0 0 20px rgba(251, 191, 36, 0.5)',
+          letterSpacing: '2px'
         }}>
-          OPERATION C.H.A.T.
+          BASEMENT ARCHIVES
         </h1>
-        <p className="text-green retro-font" style={{ fontSize: 'clamp(16px, 3.5vw, 24px)', marginTop: '10px' }}>
-          AI QUEST 1989
+        <p className="text-green retro-font" style={{ fontSize: 'clamp(24px, 5vw, 36px)', marginTop: '5px', fontWeight: 'bold' }}>
+          1989
         </p>
-        <p style={{ fontSize: 'clamp(12px, 2.5vw, 16px)', marginTop: '15px', color: '#10b981' }}>
+        <p className="text-green retro-font" style={{ fontSize: 'clamp(14px, 3vw, 20px)', marginTop: '10px' }}>
+          AI QUEST
+        </p>
+        <p style={{ fontSize: 'clamp(12px, 2.5vw, 16px)', marginTop: '10px', color: '#10b981' }}>
           Lake Macquarie City Council
+        </p>
+        <p style={{ fontSize: 'clamp(10px, 2vw, 14px)', marginTop: '5px', color: '#059669' }}>
+          126-138 Main Rd, Speers Point NSW 2284
         </p>
       </div>
 

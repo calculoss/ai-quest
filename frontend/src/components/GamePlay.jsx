@@ -269,7 +269,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             
             <div className="box-label border-box border-box-amber mt-2 mb-2">
               <p className="retro-font">DATA PROCESSING DEPT - 1989</p>
-              <p className="retro-font">OPERATION C.H.A.T. - STAFF TRAINING</p>
+              <p className="retro-font">BASEMENT ARCHIVES: 1989 - STAFF TRAINING</p>
             </div>
             
             <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
@@ -367,7 +367,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <p><strong>TO:</strong> Computer Services Cadet (NEW HIRE)</p>
             <p><strong>FROM:</strong> Data Processing Manager</p>
             <p><strong>DATE:</strong> 15 September 1989, 0830 HOURS</p>
-            <p><strong>RE:</strong> OPERATION C.H.A.T. - EMERGENCY</p>
+            <p><strong>RE:</strong> C.H.A.T. SYSTEM - EMERGENCY</p>
             <p className="text-amber"><strong>PRIORITY: URGENT</strong></p>
             <hr />
 
