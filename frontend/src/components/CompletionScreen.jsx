@@ -1,12 +1,21 @@
 import React, { useRef, useEffect } from 'react';
 import soundManager from '../utils/soundManager';
 
-function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain }) {
+function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard, onPlayAgain }) {
   const certificateRef = useRef(null);
 
   const totalQuestions = 30; // Randomized selection: 30 questions per game
   const correctAnswers = progress.questionsAnswered.length;
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
+
+  // Find brain teaser questions that were answered incorrectly
+  const missedBrainTeasers = gameContent?.questions
+    ?.filter(q => q.type === 'brain_teaser')
+    .map(brainTeaser => {
+      const answered = progress.questionsAnswered.find(qa => qa.id === brainTeaser.id);
+      return answered && !answered.correct ? brainTeaser : null;
+    })
+    .filter(Boolean) || [];
 
   // Play victory theme when screen loads
   useEffect(() => {
@@ -260,6 +269,41 @@ function CompletionScreen({ playerData, progress, onViewLeaderboard, onPlayAgain
           </ul>
         </div>
       </div>
+
+      {/* BRAIN TEASER REVEALS - Show answers for missed brain teasers */}
+      {missedBrainTeasers.length > 0 && (
+        <div className="border-box border-box-amber mt-2" style={{
+          background: 'linear-gradient(135deg, rgba(251,191,36,0.1), rgba(16,185,129,0.1))',
+          padding: '20px',
+          textAlign: 'left'
+        }}>
+          <p className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(16px, 3vw, 22px)', textAlign: 'center' }}>
+            🧠 BRAIN TEASER REVEAL
+          </p>
+          <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '15px', textAlign: 'center' }}>
+            Here's the answer to the brain teaser you missed:
+          </p>
+          {missedBrainTeasers.map((brainTeaser, index) => (
+            <div key={brainTeaser.id} style={{
+              background: 'rgba(0,0,0,0.3)',
+              padding: '15px',
+              borderRadius: '5px',
+              border: '2px solid rgba(251, 191, 36, 0.3)',
+              marginTop: index > 0 ? '15px' : '0'
+            }}>
+              <p className="text-green" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', fontWeight: 'bold', marginBottom: '10px' }}>
+                {brainTeaser.question}
+              </p>
+              <p className="text-amber" style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '10px' }}>
+                ✓ Correct Answer: {brainTeaser.options[brainTeaser.correct]}
+              </p>
+              <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', lineHeight: '1.6', color: '#10b981' }}>
+                {brainTeaser.explanation}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="mt-3">
         <button
