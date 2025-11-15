@@ -57,11 +57,9 @@ function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
           BASEMENT ARCHIVES
         </h1>
         <p className="text-green retro-font" style={{ fontSize: 'clamp(24px, 5vw, 36px)', marginTop: '5px', fontWeight: 'bold' }}>
-          1989
+          AI QUEST 1989
         </p>
-        <p className="text-green retro-font" style={{ fontSize: 'clamp(14px, 3vw, 20px)', marginTop: '10px' }}>
-          AI QUEST
-        </p>
+        
         <p style={{ fontSize: 'clamp(12px, 2.5vw, 16px)', marginTop: '10px', color: '#10b981' }}>
           Lake Macquarie City Council
         </p>
@@ -146,9 +144,6 @@ function StartScreen({ onStart, onLoad, onViewLeaderboard }) {
 
       <div className="mt-3">
         <p style={{ fontSize: '16px' }}>© 2024 SYNAPSE SYSTEMS INC.</p>
-        <p style={{ fontSize: '14px', marginTop: '10px' }}>
-          A NSW LOCAL GOVERNMENT PROJECT
-        </p>
       </div>
     </div>
   );
