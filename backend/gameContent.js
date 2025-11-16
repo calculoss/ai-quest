@@ -1382,15 +1382,15 @@ new library, road construction, community centres.`,
         room: 2,
         character: "Council Staff",
         type: "trivia",
-        question: "WATER USAGE: Approximately how much water does it take to generate the electricity for ONE ChatGPT conversation (around 20-50 questions)?",
+        question: "AI ARCHITECTURE: What revolutionary mechanism introduced in the 'Attention is All You Need' paper (2017) became the foundation for modern large language models?",
         options: [
-          "1 drop (0.05ml)",
-          "1 cup (250ml)",
-          "1 bottle (500ml)",
-          "1 bathtub (80 litres)"
+          "Convolutional Neural Networks",
+          "Recurrent Neural Networks",
+          "Transformer Architecture with Self-Attention",
+          "Generative Adversarial Networks"
         ],
         correct: 2,
-        explanation: "About 500ml (one bottle)! AI data centers use significant electricity, which requires water for power plant cooling. A single ChatGPT conversation uses roughly the same water as manufacturing one 500ml plastic bottle. This is why sustainable AI and green data centers matter!",
+        explanation: "The Transformer architecture with self-attention! This breakthrough allowed models to process entire sequences in parallel and understand long-range dependencies. It's the foundation for GPT, BERT, Claude, and virtually all modern LLMs. The 'attention mechanism' lets the model focus on relevant parts of the input, revolutionizing NLP.",
         points: 200
       },
 
