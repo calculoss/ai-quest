@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import ChatModal from './ChatModal';
 import soundManager from '../utils/soundManager';
 
 const API_URL = process.env.REACT_APP_API_URL || '/api';
@@ -25,7 +24,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   const [showResult, setShowResult] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [attempts, setAttempts] = useState(0);
-  const [showChat, setShowChat] = useState(false);
   const [showAccessCode, setShowAccessCode] = useState(false);
   const [pointsEarned, setPointsEarned] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
@@ -736,15 +734,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                   >
                     SUBMIT ANSWER
                   </button>
-                  <button
-                    className="retro-button mt-2"
-                    onClick={() => {
-                      soundManager.play('click');
-                      setShowChat(true);
-                    }}
-                  >
-                    TALK TO C.H.A.T. 🤖
-                  </button>
                 </div>
               )}
             </div>
@@ -819,17 +808,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               ))}
             </div>
           </div>
-        )}
-
-        {/* C.H.A.T. Modal */}
-        {showChat && currentQuestion && (
-          <ChatModal
-            questionId={currentQuestion.id}
-            questionText={currentQuestion.question}
-            userAnswer={selectedAnswer !== null ? currentQuestion.options[selectedAnswer] : null}
-            mode={playerData.mode}
-            onClose={() => setShowChat(false)}
-          />
         )}
       </div>
     );

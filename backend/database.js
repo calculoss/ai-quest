@@ -41,6 +41,7 @@ const initDatabase = async () => {
       CREATE TABLE IF NOT EXISTS leaderboard (
         id SERIAL PRIMARY KEY,
         player_id INTEGER REFERENCES players(id) ON DELETE CASCADE,
+        email VARCHAR(255),
         initials VARCHAR(3) NOT NULL,
         mode VARCHAR(20) NOT NULL,
         completion_time INTEGER NOT NULL,
@@ -50,6 +51,19 @@ const initDatabase = async () => {
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UNIQUE(player_id, mode)
       )
+    `);
+
+    // Add email column if it doesn't exist (migration for existing databases)
+    await client.query(`
+      DO $$
+      BEGIN
+        IF NOT EXISTS (
+          SELECT 1 FROM information_schema.columns
+          WHERE table_name = 'leaderboard' AND column_name = 'email'
+        ) THEN
+          ALTER TABLE leaderboard ADD COLUMN email VARCHAR(255);
+        END IF;
+      END $$;
     `);
 
     // Claude API cache (to reduce API costs)

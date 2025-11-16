@@ -4,7 +4,6 @@ const cors = require('cors');
 const crypto = require('crypto');
 const { pool, initDatabase } = require('./database');
 const gameContent = require('./gameContent');
-const ClaudeService = require('./claudeService');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,9 +17,6 @@ app.use(cors({
   credentials: true
 }));
 app.use(express.json());
-
-// Initialize Claude service
-const claudeService = new ClaudeService(process.env.CLAUDE_API_KEY);
 
 // Utility: Generate 4-digit code from email
 function generateAccessCode(email) {
@@ -64,25 +60,26 @@ app.get('/api/content/:mode', (req, res) => {
   const { mode } = req.params;
   const allQuestions = mode === 'player1' ? gameContent.questions.player1 : gameContent.questions.player2;
 
-  // Separate image questions from others
+  // Separate question types: brain teasers are MANDATORY, images are kept, others are randomized
+  const brainTeasers = allQuestions.filter(q => q.type === 'brain_teaser');
   const imageQuestions = allQuestions.filter(q => q.type === 'image');
-  const nonImageQuestions = allQuestions.filter(q => q.type !== 'image');
+  const regularQuestions = allQuestions.filter(q => q.type !== 'image' && q.type !== 'brain_teaser');
 
-  // Randomize non-image questions
-  const shuffledNonImage = shuffleArray(nonImageQuestions);
+  // Randomize regular questions
+  const shuffledRegular = shuffleArray(regularQuestions);
 
-  // Select subset based on mode
-  let selectedNonImage;
+  // Select subset based on mode (accounting for mandatory brain teaser)
+  let selectedRegular;
   if (mode === 'player1') {
-    // Player 1: Keep all 12 images + 18 random from 28 non-image = 30 total
-    selectedNonImage = shuffledNonImage.slice(0, 18);
+    // Player 1: Keep all 12 images + 1 brain teaser + 17 random regular = 30 total
+    selectedRegular = shuffledRegular.slice(0, 17);
   } else {
-    // Player 2: Keep all 6 images + 24 random from 41 non-image = 30 total
-    selectedNonImage = shuffledNonImage.slice(0, 24);
+    // Player 2: Keep all 6 images + 1 brain teaser + 23 random regular = 30 total
+    selectedRegular = shuffledRegular.slice(0, 23);
   }
 
-  // Combine and shuffle all selected questions
-  const finalQuestions = shuffleArray([...imageQuestions, ...selectedNonImage]);
+  // Combine and shuffle all selected questions (brain teaser is ALWAYS included)
+  const finalQuestions = shuffleArray([...brainTeasers, ...imageQuestions, ...selectedRegular]);
 
   res.json({
     rooms: gameContent.rooms,
@@ -221,26 +218,28 @@ app.post('/api/complete', async (req, res) => {
       [completionCode, completionTime, playerId]
     );
 
-    // Get player mode
-    const modeResult = await pool.query(
-      'SELECT mode FROM players WHERE id = $1',
+    // Get player mode and email
+    const playerResult = await pool.query(
+      'SELECT mode, email FROM players WHERE id = $1',
       [playerId]
     );
-    const mode = modeResult.rows[0].mode;
+    const mode = playerResult.rows[0].mode;
+    const email = playerResult.rows[0].email;
 
     // Add to leaderboard (if top score or new completion)
     try {
       await pool.query(
-        `INSERT INTO leaderboard (player_id, initials, mode, completion_time, score, completion_code)
-         VALUES ($1, $2, $3, $4, $5, $6)
-         ON CONFLICT (player_id, mode) 
-         DO UPDATE SET 
+        `INSERT INTO leaderboard (player_id, email, initials, mode, completion_time, score, completion_code)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)
+         ON CONFLICT (player_id, mode)
+         DO UPDATE SET
            completion_time = EXCLUDED.completion_time,
            score = EXCLUDED.score,
-           initials = EXCLUDED.initials
-         WHERE EXCLUDED.score > leaderboard.score OR 
+           initials = EXCLUDED.initials,
+           email = EXCLUDED.email
+         WHERE EXCLUDED.score > leaderboard.score OR
                (EXCLUDED.score = leaderboard.score AND EXCLUDED.completion_time < leaderboard.completion_time)`,
-        [playerId, initials.toUpperCase().substring(0, 3), mode, completionTime, score, completionCode]
+        [playerId, email, initials.toUpperCase().substring(0, 3), mode, completionTime, score, completionCode]
       );
     } catch (err) {
       console.log('Leaderboard update skipped or failed:', err.message);
@@ -274,34 +273,6 @@ app.get('/api/leaderboard/:mode', async (req, res) => {
   } catch (error) {
     console.error('Leaderboard error:', error);
     res.status(500).json({ error: 'Failed to fetch leaderboard' });
-  }
-});
-
-// C.H.A.T. assistance
-app.post('/api/chat', async (req, res) => {
-  const { questionId, userInput, mode, questionText, userAnswer } = req.body;
-  
-  if (!process.env.CLAUDE_API_KEY) {
-    return res.json({ 
-      response: "C.H.A.T. is offline! (Claude API key not configured)" 
-    });
-  }
-
-  try {
-    const response = await claudeService.getChatHelp(
-      questionId, 
-      userInput, 
-      mode, 
-      questionText, 
-      userAnswer
-    );
-    
-    res.json({ response });
-  } catch (error) {
-    console.error('Chat error:', error);
-    res.status(500).json({ 
-      response: "System malfunction! Try again in a moment..." 
-    });
   }
 });
 
@@ -382,17 +353,44 @@ app.post('/api/admin/claim', async (req, res) => {
   }
 });
 
+// Admin: Get top scorers with emails
+app.get('/api/admin/leaderboard/:mode', async (req, res) => {
+  const { mode } = req.params;
+  const { adminKey } = req.query;
+
+  if (adminKey !== process.env.ADMIN_KEY) {
+    return res.status(403).json({ error: 'Unauthorized' });
+  }
+
+  try {
+    const result = await pool.query(
+      `SELECT email, initials, completion_time, score, completion_code,
+              prize_claimed, created_at
+       FROM leaderboard
+       WHERE mode = $1
+       ORDER BY score DESC, completion_time ASC
+       LIMIT 20`,
+      [mode]
+    );
+
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Admin leaderboard error:', error);
+    res.status(500).json({ error: 'Failed to fetch admin leaderboard' });
+  }
+});
+
 // Admin: Get statistics
 app.get('/api/admin/stats', async (req, res) => {
   const { adminKey } = req.query;
-  
+
   if (adminKey !== process.env.ADMIN_KEY) {
     return res.status(403).json({ error: 'Unauthorized' });
   }
 
   try {
     const stats = await pool.query(`
-      SELECT 
+      SELECT
         COUNT(DISTINCT p.id) as total_players,
         COUNT(DISTINCT CASE WHEN gp.completed THEN p.id END) as completions,
         AVG(CASE WHEN gp.completed THEN gp.completion_time END) as avg_time,
