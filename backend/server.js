@@ -55,6 +55,33 @@ function shuffleArray(array) {
   return shuffled;
 }
 
+// Helper function to shuffle question options and update correct index
+function shuffleQuestionOptions(question) {
+  // Don't shuffle if there are no options (shouldn't happen, but safety check)
+  if (!question.options || question.options.length === 0) {
+    return question;
+  }
+
+  // Create array of indices
+  const indices = question.options.map((_, i) => i);
+
+  // Shuffle the indices
+  const shuffledIndices = shuffleArray(indices);
+
+  // Reorder options according to shuffled indices
+  const shuffledOptions = shuffledIndices.map(i => question.options[i]);
+
+  // Find where the correct answer ended up
+  const newCorrectIndex = shuffledIndices.indexOf(question.correct);
+
+  // Return question with shuffled options
+  return {
+    ...question,
+    options: shuffledOptions,
+    correct: newCorrectIndex
+  };
+}
+
 // Get game content (rooms, questions for a mode) with randomization
 app.get('/api/content/:mode', (req, res) => {
   const { mode } = req.params;
@@ -78,8 +105,14 @@ app.get('/api/content/:mode', (req, res) => {
     selectedRegular = shuffledRegular.slice(0, 23);
   }
 
-  // Combine and shuffle all selected questions (brain teaser is ALWAYS included)
-  const finalQuestions = shuffleArray([...brainTeasers, ...imageQuestions, ...selectedRegular]);
+  // Combine all selected questions
+  const selectedQuestions = [...brainTeasers, ...imageQuestions, ...selectedRegular];
+
+  // Shuffle the options for each question to prevent answer pattern exploitation
+  const questionsWithShuffledOptions = selectedQuestions.map(q => shuffleQuestionOptions(q));
+
+  // Shuffle the question order
+  const finalQuestions = shuffleArray(questionsWithShuffledOptions);
 
   res.json({
     rooms: gameContent.rooms,
