@@ -140,7 +140,7 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
           {playerData.completionCode}
         </div>
         <p className="mt-2" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)' }}>
-          📧 Email this code to your coordinator to claim your prize!
+          💾 Save this code for your records!
         </p>
       </div>
 

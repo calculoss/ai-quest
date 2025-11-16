@@ -319,7 +319,7 @@ new library, road construction, community centres.`,
           "Pick randomly - it's all luck"
         ],
         correct: 1,
-        explanation: "YES, switch! This is the famous Monty Hall Problem. When you first picked, you had 1/3 chance of being right and 2/3 chance of being wrong. The host's action doesn't change that - it just concentrates the 2/3 probability onto the other door. Switching gives you 2/3 chance of winning! This demonstrates how probability and decision-making can be counterintuitive - just like interpreting AI outputs requires careful thinking.",
+        explanation: "✓ YES, ALWAYS SWITCH! This is the famous Monty Hall Problem, and here's why it works:\n\n📊 THE MATHS: When you first picked Door 1, you had a 1/3 (33%) chance of being right and a 2/3 (67%) chance of being wrong. The host ALWAYS opens a door with a goat - this isn't random! The host's knowledge changes everything.\n\n🎯 THE KEY INSIGHT: If your original pick was wrong (67% likely), the host eliminates the other wrong door, leaving the prize behind the remaining door. If your original pick was right (33% likely), switching loses. So switching wins 67% of the time!\n\n🧠 WHY IT MATTERS FOR AI: This puzzle shows how our intuitions about probability can be wrong. When working with AI systems, we need to think carefully about conditional probabilities and how new information changes our understanding - just like the host's action changes the odds here. Many people (even mathematicians!) initially get this wrong because our brains aren't wired for probability.",
         brain_teaser_hint: "🤔 Hmm, not quite! This puzzle has stumped many people. Think about the probabilities when you first chose... The answer will be revealed at the end of the game!",
         points: 200
       },
@@ -492,7 +492,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Look closely at the hands - notice any extra or missing fingers? AI often struggles with hand anatomy.",
+  explanation: "AI-generated! Common tells include subtle inconsistencies in fine details, unnatural symmetry or patterns, overly smooth textures, or elements that don't quite follow real-world physics. AI image generators create statistically probable pixels but can struggle with complex spatial relationships and authentic imperfections.",
   points: 150
 },
 
@@ -506,7 +506,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Check the background - see any repeated patterns or inconsistent details? Classic AI tells.",
+  explanation: "AI-generated! Look for signs like repeated patterns in backgrounds, details that seem 'off' when examined closely, inconsistent lighting or shadows, or elements that appear to blend unnaturally. While AI is impressive, it can create subtle visual artifacts that trained eyes can spot.",
   points: 150
 },
 
@@ -520,7 +520,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Notice the unnatural smoothness and overly perfect features? AI creates an uncanny valley effect.",
+  explanation: "AI-generated! Watch for overly smooth or perfect surfaces, unnatural colour consistency, or a general sense of 'too perfect' composition. AI can create beautiful images but sometimes lacks the authentic randomness and natural imperfections found in real photographs.",
   points: 150
 },
 
@@ -534,7 +534,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Look at any text in the image - is it gibberish or distorted? AI can't handle text properly yet.",
+  explanation: "AI-generated! Key giveaways include distorted text or symbols, anatomical oddities in complex subjects, impossible reflections or perspectives, and areas that blur together when they should be distinct. AI 'hallucinates' visual details that seem plausible at first glance but don't hold up under scrutiny.",
   points: 150
 },
 
@@ -548,7 +548,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 1,
-  explanation: "Real photograph! The skin texture, natural lighting, and authentic details are consistent with camera capture.",
+  explanation: "Real photograph! Authentic photos show consistent physics (light, shadows, reflections), natural textures and surface details, genuine depth of field from camera optics, and the kind of random imperfections that occur in real-world scenes. Real photos capture actual moments in time, not statistical predictions.",
   points: 150
 },
 
@@ -562,7 +562,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 1,
-  explanation: "Real photograph! Notice how all elements fit together naturally - real photos have authentic coherence.",
+  explanation: "Real photograph! Look for natural coherence where all elements make sense together, authentic wear and tear or environmental effects, proper perspective and scale relationships, and realistic material properties. Real photos have a truthfulness that AI struggles to fully replicate.",
   points: 150
 },
 
@@ -576,7 +576,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 1,
-  explanation: "Real photograph! The imperfections and genuine moments captured show this is real photography, not AI.",
+  explanation: "Real photograph! Genuine photos often contain happy accidents, motion blur or focus imperfections, authentic lighting conditions with all their quirks, and candid moments that feel unrehearsed. These natural imperfections are actually signs of authenticity.",
   points: 150
 },
 
@@ -590,7 +590,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 1,
-  explanation: "Real photograph! Camera sensor characteristics and optical properties visible in the image prove authenticity.",
+  explanation: "Real photograph! Real camera sensors and lenses create specific optical characteristics like chromatic aberration, lens flare, grain or noise patterns, and compression artifacts. These technical 'fingerprints' from actual imaging hardware are hard for AI to convincingly fake.",
   points: 150
 },
 
@@ -604,7 +604,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Check reflections and mirrors - do they make physical sense? AI struggles with accurate reflections.",
+  explanation: "AI-generated! AI can struggle with complex physics like reflections, water behaviour, transparent materials, or proper perspective. Look for spatial relationships that seem slightly off, details that contradict each other, or elements that appear to defy physics in subtle ways.",
   points: 150
 },
 
@@ -618,7 +618,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! For portraits, look at eyes and teeth - unnatural patterns reveal synthetic generation.",
+  explanation: "AI-generated! Sometimes AI images have an uncanny quality - they look almost right but something feels off. This can manifest as unusual colour grading, suspicious consistency across the frame, or details that blur under close examination. Trust your instincts when something seems too perfect or slightly wrong.",
   points: 150
 },
 
@@ -632,7 +632,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Look closely at the hands - notice any extra or missing fingers? AI often struggles with hand anatomy.",
+  explanation: "AI-generated! While AI image generation has improved dramatically, telltale signs include areas of unnatural smoothness, details that morph when examined closely, impossible geometry or anatomy, and an overall sense of artificial perfection. The more you look, the more you notice what's not quite right.",
   points: 150
 },
 
@@ -646,7 +646,7 @@ new library, road construction, community centres.`,
   question: "Take a look at this image. Is it AI-generated or a real photograph?",
   options: ["AI Generated", "Real Photograph"],
   correct: 0,
-  explanation: "AI-generated! Check the background - see any repeated patterns or inconsistent details? Classic AI tells.",
+  explanation: "AI-generated! Background areas often reveal AI generation through repetitive textures, objects that blend together strangely, or details that lose coherence at the edges. AI tends to focus detail in the centre and get progressively vaguer toward the periphery in unnatural ways.",
   points: 150
 },
 
@@ -966,7 +966,7 @@ new library, road construction, community centres.`,
           "Impossible - can't guarantee consensus with a faulty node"
         ],
         correct: 2,
-        explanation: "This is the Byzantine Generals Problem! With 3 nodes and 1 potentially faulty, you need at least 2 rounds of communication (and in general, for n nodes with f faults, you need n > 3f nodes and multiple rounds). This fundamental problem in distributed systems inspired blockchain consensus algorithms and is crucial for understanding how multiple AI agents or systems can reliably coordinate decisions. The exact answer depends on the type of failures assumed (crash vs Byzantine), but simple majority voting in 1 round isn't sufficient!",
+        explanation: "✓ IT DEPENDS ON THE FAILURE MODEL! This is the famous Byzantine Generals Problem.\n\n🏛️ THE PROBLEM: Named after Byzantine generals who must coordinate an attack but might have traitors among them. In computing, this means systems that might send conflicting or malicious messages to different parties.\n\n📐 THE MATHEMATICS: For n total nodes with f potentially faulty ones:\n• You need n > 3f nodes (so 3 nodes can tolerate 0 Byzantine faults!)\n• With crash failures (nodes just stop): 2f+1 nodes and 2 rounds\n• With Byzantine failures (nodes lie): 3f+1 nodes and f+1 rounds\n• One round of voting ISN'T enough - a faulty node can send different values to different recipients\n\n⛓️ REAL-WORLD APPLICATION: This problem is the foundation of blockchain consensus (like Bitcoin's proof-of-work) and critical for multi-agent AI systems. When AI systems need to coordinate decisions - like autonomous vehicles at an intersection or distributed ML training - they face this same challenge!\n\n💡 THE LESSON: Building reliable systems from unreliable components requires careful protocol design. The specific answer depends on your assumptions about how things can fail.",
         brain_teaser_hint: "🤔 Interesting guess! This is a classic distributed systems problem. The answer relates to the Byzantine Generals Problem and blockchain consensus. The full explanation will be revealed at the end!",
         points: 250
       },
@@ -1509,7 +1509,7 @@ new library, road construction, community centres.`,
         question: "IMAGE ANALYSIS: Look carefully at this image. AI-generated or real photograph?",
         options: ["AI Generated", "Real Photograph"],
         correct: 0,
-        explanation: "AI-generated! Look for telltale signs: unnatural symmetry, impossible physics, weird textures, or subtle artifacts in complex areas like hands, text, or reflections. AI still struggles with these details.",
+        explanation: "AI-generated! Telltale signs include unnatural symmetry or repetition, impossible physics (reflections, shadows, perspectives), unusual texture patterns, or subtle artifacts in complex details. AI generates statistically plausible pixels but can violate physical laws or create details that don't withstand close inspection.",
         points: 200
       },
 
@@ -1523,7 +1523,7 @@ new library, road construction, community centres.`,
         question: "IMAGE ANALYSIS: Examine this carefully. What's your verdict?",
         options: ["AI Generated", "Real Photograph"],
         correct: 1,
-        explanation: "Real photograph! Notice the natural imperfections, authentic lighting, and organic composition. Real photos have camera artifacts like lens distortion, natural grain, and physically accurate shadows that AI often gets wrong.",
+        explanation: "Real photograph! Authentic images exhibit natural imperfections, camera-specific optical characteristics (lens distortion, chromatic aberration, depth of field), consistent physics throughout the scene, and genuine material properties. Real photos capture actual light as it existed, not algorithmically predicted patterns.",
         points: 200
       },
 
@@ -1537,7 +1537,7 @@ new library, road construction, community centres.`,
         question: "IMAGE DETECTION: Your technical eye - is this real or AI?",
         options: ["AI Generated", "Real Photograph"],
         correct: 0,
-        explanation: "AI-generated! Check the fine details: Text might be gibberish, backgrounds may have impossible perspectives, or objects blend unnaturally. AI creates 'statistically plausible' images but physical reality doesn't always follow statistics!",
+        explanation: "AI-generated! Examine fine details closely: text or symbols may be nonsensical, perspective and geometry might violate Euclidean space, edges and transitions can blend unnaturally, or overall composition feels algorithmically perfect rather than organically captured. AI optimizes for visual appeal, not physical accuracy.",
         points: 200
       },
 
@@ -1551,7 +1551,7 @@ new library, road construction, community centres.`,
         question: "IMAGE VERIFICATION: For communications work, you need to spot fakes. Your call?",
         options: ["AI Generated", "Real Photograph"],
         correct: 1,
-        explanation: "Real photograph! Authentic images have consistent depth of field, proper focal blur, natural skin texture, and realistic fabric/material properties. AI often makes materials look too smooth or lighting too perfect.",
+        explanation: "Real photograph! Genuine images display consistent optical depth of field, physically accurate focal blur gradients, authentic material surface properties and weathering, realistic interaction between light sources and environments. Real photos contain the beautiful chaos of reality rather than algorithmic smoothness.",
         points: 200
       },
 
@@ -1565,7 +1565,7 @@ new library, road construction, community centres.`,
         question: "IMAGE FORENSICS: As IT professionals, we need to verify content. Your analysis?",
         options: ["AI Generated", "Real Photograph"],
         correct: 0,
-        explanation: "AI-generated! Modern AI is impressive but leaves traces: repetitive patterns, symmetry where it shouldn't exist, impossible anatomy (especially hands/fingers), or backgrounds that don't quite make physical sense. Always verify before trusting!",
+        explanation: "AI-generated! Forensic indicators include: repetitive texture patterns suggesting algorithmic generation, suspicious bilateral symmetry, physically impossible spatial relationships, inconsistent lighting or shadow behaviour, and the 'uncanny valley' feeling of near-perfection. Modern generative models are impressive but still leave detectable signatures.",
         points: 200
       },
 
@@ -1579,7 +1579,7 @@ new library, road construction, community centres.`,
         question: "FINAL IMAGE CHALLENGE: Put your detection skills to the test. Real or synthetic?",
         options: ["AI Generated", "Real Photograph"],
         correct: 1,
-        explanation: "Real photograph! The key differences: Real photos capture genuine moments with natural chaos and imperfection. AI creates idealized versions that are 'too perfect' or have subtle impossibilities. Trust your eye for what feels authentically human vs statistically generated.",
+        explanation: "Real photograph! Authentic images capture genuine moments with natural entropy and stochastic variation. They exhibit camera-sensor noise characteristics, optical aberrations inherent to physical lenses, and the beautiful imperfections of reality. AI generates idealized statistical distributions that can feel 'too clean' or contain subtle physical impossibilities. Developing this intuition is crucial for content verification.",
         points: 200
       },
 
