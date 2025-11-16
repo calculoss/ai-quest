@@ -222,7 +222,7 @@ new library, road construction, community centres.`,
           "It reads books the same way humans do"
         ],
         correct: 1,
-        explanation: "AI learns by analyzing huge amounts of training data and finding patterns - like how you learned to recognize cats by seeing many examples! It doesn't have real-time internet access or read like we do.",
+        explanation: "AI learns by analysing huge amounts of training data and finding patterns - like how you learned to recognise cats by seeing many examples! It doesn't have real-time internet access or read like we do.",
         points: 150
       },
       {
@@ -246,15 +246,15 @@ new library, road construction, community centres.`,
         id: 7,
         room: 4,
         character: "Planning Officer",
-        question: "What information should you NEVER put into any AI tool?",
+        question: "According to Council's traffic light system, which information is RED ZONE and should NEVER go into external AI tools without removing personal details first?",
         options: [
-          "Questions about your work projects",
-          "Citizens' personal details or confidential data",
-          "Requests to help write documents",
-          "Public information from your council website"
+          "Public information from Council's website",
+          "Personal information that could identify individuals",
+          "Internal business documents",
+          "Questions about general work tasks"
         ],
         correct: 1,
-        explanation: "Crucial for council work! Never input personal information, confidential data, or anything covered by privacy laws. Assume AI providers might see what you type. When in doubt, leave it out!",
+        explanation: "RED ZONE! Personal information that could identify individuals or cause harm if disclosed must never go into external AI tools. This includes names, addresses, contact details, or anything that could identify residents. Even with Copilot, personal details must be removed. When in doubt, default to the most restrictive approach and ask your supervisor.",
         points: 150
       },
       {
@@ -278,15 +278,15 @@ new library, road construction, community centres.`,
         id: 9,
         room: 5,
         character: "Communications Officer",
-        question: "What's one way councils around Australia are using AI?",
+        question: "How are Australian councils practically using AI to improve community services right now?",
         options: [
-          "Analyzing community survey responses and feedback",
-          "Making final decisions on development applications",
-          "Replacing elected councillors",
-          "Predicting lottery numbers for revenue"
+          "Summarising community feedback and identifying trends in service requests",
+          "Making final decisions on development applications without human review",
+          "Automatically approving or rejecting building permits",
+          "Replacing staff in customer service roles"
         ],
         correct: 0,
-        explanation: "Many councils use AI to analyze community feedback quickly, spot trends in service requests, and improve customer service. AI assists - humans decide!",
+        explanation: "Councils are using AI as a tool to help staff work smarter! Common uses include summarising community consultation feedback, spotting patterns in service requests (like pot hole locations), and helping draft responses to common queries. The key principle: AI assists and augments human work - it doesn't replace human judgment or decision-making, especially for matters affecting residents.",
         points: 150
       },
       {
@@ -314,7 +314,7 @@ new library, road construction, community centres.`,
         question: "🧠 BRAIN TEASER: You're on a game show with 3 doors. Behind one is a prize, behind the others are goats. You pick Door 1. The host (who knows what's behind each door) opens Door 3, revealing a goat. The host asks: 'Do you want to switch to Door 2?' Should you switch?",
         options: [
           "No - stay with Door 1 (50/50 odds either way)",
-          "Yes - switch to Door 2 (doubles your chances)",
+          "Yes - switch to Door 2 (gives you 2/3 chance of winning)",
           "Doesn't matter - equal probability",
           "Pick randomly - it's all luck"
         ],
@@ -391,15 +391,15 @@ new library, road construction, community centres.`,
         id: 15,
         room: 7,
         character: "C.H.A.T.",
-        question: "What should you check before using AI-generated images in council materials?",
+        question: "Before publishing any AI-assisted content in council communications, what's the most important step?",
         options: [
-          "Copyright, licensing, and accuracy",
-          "Only if it looks aesthetically pleasing",
-          "Just that it loads properly",
-          "Your manager's birthday"
+          "Verify all facts, check for bias, and ensure it meets Council's tone and style",
+          "Just run a spell-check and it's good to go",
+          "Post it immediately while the content is fresh",
+          "Only check if someone complains"
         ],
         correct: 0,
-        explanation: "Important! AI-generated images can have licensing restrictions, may contain errors, or might depict things that don't exist. Always check rights, accuracy, and appropriateness before publishing.",
+        explanation: "Critical! AI outputs must go through quality assurance: verify factual accuracy (ask AI to cite sources, then personally verify them), review for bias, ensure it meets Council's brand and inclusive language guidelines, and apply critical thinking. You must be confident enough to put your name to it. Never publish AI output without professional review and sign-off.",
         points: 200
       },
 
@@ -461,7 +461,7 @@ new library, road construction, community centres.`,
           "AI is only for big companies"
         ],
         correct: 1,
-        explanation: "Great question! Traditional automation follows rigid 'if-this-then-that' rules. AI can learn from data, recognize patterns, and handle situations it wasn't explicitly programmed for. Both are useful!",
+        explanation: "Great question! Traditional automation follows rigid 'if-this-then-that' rules. AI can learn from data, recognise patterns, and handle situations it wasn't explicitly programmed for. Both are useful!",
         points: 250
       },
       {
@@ -713,7 +713,7 @@ new library, road construction, community centres.`,
   type: "trivia",
   question: "AI ART: In 2022, an AI-generated artwork won first place at the Colorado State Fair's art competition. This sparked controversy because...",
   options: [
-    "The colors were too bright",
+    "The colours were too bright",
     "It was created by AI, not a human artist",
     "It copied another artist's work",
     "The frame was too expensive"
@@ -1719,7 +1719,7 @@ The PLANNING OFFICER looks up from a stack of development applications.
 
 PLANNING OFFICER: "Oh thank goodness! You're here to collect authorization codes for the C.H.A.T. restart? The Systems Manager called ahead.
 
-I've got 847 development applications from last year alone. The idea is we can use C.H.A.T. to help analyze spatial data and assess applications faster.
+I've got 847 development applications from last year alone. The idea is we can use C.H.A.T. to help analyse spatial data and assess applications faster.
 
 But before I give you my code, I need to know you understand data privacy. These systems will store addresses, property values, personal information...
 
