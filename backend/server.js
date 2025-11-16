@@ -291,7 +291,7 @@ app.post('/api/complete', async (req, res) => {
 // Get leaderboard
 app.get('/api/leaderboard/:mode', async (req, res) => {
   const { mode } = req.params;
-  
+
   try {
     const result = await pool.query(
       `SELECT initials, completion_time, score, created_at
@@ -306,6 +306,54 @@ app.get('/api/leaderboard/:mode', async (req, res) => {
   } catch (error) {
     console.error('Leaderboard error:', error);
     res.status(500).json({ error: 'Failed to fetch leaderboard' });
+  }
+});
+
+// Get player's rank
+app.get('/api/player-rank/:playerId', async (req, res) => {
+  const { playerId } = req.params;
+
+  try {
+    // Get player's mode and score
+    const playerResult = await pool.query(
+      `SELECT p.mode, l.score, l.completion_time
+       FROM players p
+       LEFT JOIN leaderboard l ON p.id = l.player_id AND p.mode = l.mode
+       WHERE p.id = $1`,
+      [playerId]
+    );
+
+    if (playerResult.rows.length === 0 || !playerResult.rows[0].score) {
+      return res.json({ rank: null, total: 0 });
+    }
+
+    const { mode, score, completion_time } = playerResult.rows[0];
+
+    // Count total players in this mode
+    const totalResult = await pool.query(
+      `SELECT COUNT(*) as total
+       FROM leaderboard
+       WHERE mode = $1`,
+      [mode]
+    );
+
+    const total = parseInt(totalResult.rows[0].total);
+
+    // Calculate rank (better scores or same score but faster time)
+    const rankResult = await pool.query(
+      `SELECT COUNT(*) + 1 as rank
+       FROM leaderboard
+       WHERE mode = $1
+       AND (score > $2 OR (score = $2 AND completion_time < $3))`,
+      [mode, score, completion_time]
+    );
+
+    const rank = parseInt(rankResult.rows[0].rank);
+
+    res.json({ rank, total, mode });
+  } catch (error) {
+    console.error('Player rank error:', error);
+    res.status(500).json({ error: 'Failed to fetch player rank' });
   }
 });
 

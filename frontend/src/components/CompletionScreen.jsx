@@ -1,8 +1,11 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import soundManager from '../utils/soundManager';
+
+const API_URL = process.env.REACT_APP_API_URL || '/api';
 
 function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard, onPlayAgain }) {
   const certificateRef = useRef(null);
+  const [playerRank, setPlayerRank] = useState(null);
 
   const totalQuestions = 30; // Randomized selection: 30 questions per game
   const correctAnswers = progress.questionsAnswered.length;
@@ -26,6 +29,23 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
 
     return () => clearTimeout(timer);
   }, []);
+
+  // Fetch player rank
+  useEffect(() => {
+    const fetchRank = async () => {
+      try {
+        const response = await fetch(`${API_URL}/player-rank/${playerData.playerId}`);
+        const data = await response.json();
+        setPlayerRank(data);
+      } catch (error) {
+        console.error('Failed to fetch player rank:', error);
+      }
+    };
+
+    if (playerData.playerId) {
+      fetchRank();
+    }
+  }, [playerData.playerId]);
 
   const modeLabel = playerData.mode === 'player1' ? 'READY PLAYER 1' : 'READY PLAYER 2';
   const modeEmoji = playerData.mode === 'player1' ? '🎮' : '💻';
@@ -171,6 +191,21 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
             <p className="text-amber">{progress.score}</p>
           </div>
         </div>
+
+        {/* Player Ranking */}
+        {playerRank && playerRank.rank && (
+          <div style={{
+            marginTop: '15px',
+            padding: '10px',
+            background: 'rgba(16, 185, 129, 0.1)',
+            borderRadius: '5px',
+            border: '2px solid rgba(16, 185, 129, 0.3)'
+          }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', color: '#10b981' }}>
+              🏅 YOUR RANK: <span className="text-amber" style={{ fontWeight: 'bold' }}>#{playerRank.rank}</span> out of {playerRank.total} players in {playerRank.mode === 'player1' ? 'Player 1' : 'Player 2'} mode
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="border-box mt-2">
@@ -239,46 +274,93 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
 
       {/* LEARNING HUB */}
       <div className="border-box mt-2" style={{ textAlign: 'left' }}>
-        <p className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(16px, 3vw, 20px)', textAlign: 'center' }}>
-          📚 WANT TO LEARN MORE?
+        <p className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(18px, 3.5vw, 22px)', textAlign: 'center' }}>
+          Keep Learning: Your AI Journey Continues
         </p>
-        <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '10px' }}>
-          Expand your AI knowledge with these resources:
+        <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '15px', textAlign: 'center' }}>
+          The best way to understand AI? Get stuck in and try it yourself. Here are some resources to keep you informed, inspired, and experimenting in your own time.
         </p>
 
-        <div style={{ fontSize: 'clamp(14px, 2.8vw, 18px)', lineHeight: '1.8' }}>
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '10px' }}>🎧 AI Podcasts:</p>
-          <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li style={{ marginBottom: '8px' }}>
-              <a href="https://www.eye-on.ai/" target="_blank" rel="noopener noreferrer" className="text-amber">Eye on AI</a> - News and insights on the AI sector, hosted by Craig S. Smith
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <a href="https://sloanreview.mit.edu/audio/me-myself-and-ai/" target="_blank" rel="noopener noreferrer" className="text-amber">Me, Myself and AI</a> - MIT Sloan & BCG explore how companies achieve wins with AI
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <a href="https://blogs.nvidia.com/ai-podcast/" target="_blank" rel="noopener noreferrer" className="text-amber">The AI Podcast (NVIDIA)</a> - Bi-weekly interviews creating an oral history of AI
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <a href="https://www.technologyreview.com/2023/10/23/1082161/podcast-in-machines-we-trust/" target="_blank" rel="noopener noreferrer" className="text-amber">In Machines We Trust</a> - Award-winning MIT series examining AI's impact on daily life
-            </li>
-            <li style={{ marginBottom: '8px' }}>
-              <a href="https://www.deepmind.com/the-podcast" target="_blank" rel="noopener noreferrer" className="text-amber">DeepMind: The Podcast</a> - Multi-award winning series on how AI is transforming our world
-            </li>
-          </ul>
+        <div style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', lineHeight: '1.7' }}>
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>🎧 Podcasts: Different Perspectives on AI</p>
+          <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginTop: '8px', marginBottom: '10px', fontStyle: 'italic' }}>
+            Technical Level Guide: 🟢 Accessible | 🟡 Mixed | 🔴 Technical
+          </p>
 
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px' }}>🌐 Online Learning:</p>
-          <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li style={{ marginBottom: '8px' }}><a href="https://www.deeplearning.ai/" target="_blank" rel="noopener noreferrer" className="text-amber">DeepLearning.AI</a> - Free courses by Andrew Ng</li>
-            <li style={{ marginBottom: '8px' }}><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" rel="noopener noreferrer" className="text-amber">AI For Everyone</a> - Non-technical intro</li>
-            <li style={{ marginBottom: '8px' }}><a href="https://www.anthropic.com/index/introducing-claude" target="_blank" rel="noopener noreferrer" className="text-amber">Anthropic Claude Docs</a> - Learn about the AI that powers this game</li>
-          </ul>
+          <div style={{ marginLeft: '10px' }}>
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">Lenny's Podcast</strong> 🟡
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Product, growth, and technology insights</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <strong>Great episode:</strong> <a href="https://open.spotify.com/episode/2dhEd0KW8FjXDSB91LgSKl?si=f611c41a740e485e" target="_blank" rel="noopener noreferrer" className="text-green">Benjamin Mann (Anthropic Co-founder)</a>
+            </p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Real talk about AI safety, where we're heading, and what it means for jobs and society. Fascinating insights from someone building Claude. You don't need to be technical, though there are technical aspects discussed.</p>
 
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px' }}>💬 Water Cooler Moments:</p>
-          <ul style={{ marginLeft: '20px', marginTop: '5px' }}>
-            <li style={{ marginBottom: '8px' }}>Did you know? A single ChatGPT query uses ~500ml of water for cooling!</li>
-            <li style={{ marginBottom: '8px' }}>AI "hallucinations" happen because models predict plausible text, not truth</li>
-            <li style={{ marginBottom: '8px' }}>The term "neural network" comes from biological neurons in your brain</li>
-          </ul>
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">Dwarkesh Podcast</strong> 🟡
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Deep conversations with AI industry leaders</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <a href="https://dwarkeshpatel.substack.com/" target="_blank" rel="noopener noreferrer" className="text-green">dwarkeshpatel.substack.com</a>
+            </p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Get inside the minds of the people shaping AI. Fascinating insights into what these leaders are actually thinking about the future.</p>
+
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">Me, Myself, and AI</strong> 🟢
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>MIT Sloan Review</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <a href="https://sloanreview.mit.edu/audio/" target="_blank" rel="noopener noreferrer" className="text-green">MIT Sloan Review Audio Series</a>
+            </p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Practical perspectives on AI in business and everyday life. Very accessible.</p>
+
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">Lex Fridman</strong> 🟡
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Long-form conversations with leading thinkers</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <strong>Recommended:</strong> Sundar Pichai episode
+            </p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>In-depth discussions with tech leaders. Thoughtful and wide-ranging.</p>
+          </div>
+
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>📺 YouTube: Stay Current</p>
+          <div style={{ marginLeft: '10px' }}>
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">AI News & Strategy Daily</strong> 🔴
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Nate B Jones</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <a href="https://www.youtube.com/@NateBJones" target="_blank" rel="noopener noreferrer" className="text-green">Watch on YouTube</a>
+            </p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Daily technical commentary on model updates, new features, and how to use them. Great if you're comfortable with tech and want to stay right up to date.</p>
+          </div>
+
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>🛠️ Hands-On Learning</p>
+          <div style={{ marginLeft: '10px' }}>
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">Claude Use Cases</strong> 🟢
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Real examples you can try yourself</p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+              <a href="https://claude.ai/resources/use-cases" target="_blank" rel="noopener noreferrer" className="text-green">claude.ai/resources/use-cases</a>
+            </p>
+
+            <p style={{ marginTop: '12px', marginBottom: '4px' }}>
+              <strong className="text-amber">LinkedIn Learning</strong> 🟢-🔴
+            </p>
+            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>We have corporate access - explore AI courses at your own pace</p>
+            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>(Range of courses from beginner to advanced)</p>
+          </div>
+
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '20px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>💡 The Bottom Line</p>
+          <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.7', marginTop: '10px' }}>
+            Don't just read about AI - experiment with it. The best way to understand what's possible is to try things yourself. Set aside some time, pick a use case that interests you, and have a go.
+          </p>
+          <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.7', marginTop: '10px' }}>
+            The AI landscape changes quickly, but that's what makes it exciting. Stay curious, stay informed, and most importantly - stay hands-on.
+          </p>
         </div>
       </div>
 
