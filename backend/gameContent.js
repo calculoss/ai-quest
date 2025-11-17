@@ -440,7 +440,7 @@ new library, road construction, community centres.`,
         character: "General Manager",
         question: "How might AI help council planners in 5 years?",
         options: [
-          "Replace all human planners entirely",
+          "Handle all planning tasks with no human oversight needed",
           "Analyze trends, simulate scenarios, draft reports faster",
           "Make final DA decisions automatically",
           "Eliminate the need for community consultation"
@@ -511,34 +511,6 @@ new library, road construction, community centres.`,
 },
 
  {
-  id: 23,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1029.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! Watch for overly smooth or perfect surfaces, unnatural colour consistency, or a general sense of 'too perfect' composition. AI can create beautiful images but sometimes lacks the authentic randomness and natural imperfections found in real photographs.",
-  points: 150
-},
-
- {
-  id: 24,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1028.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! Key giveaways include distorted text or symbols, anatomical oddities in complex subjects, impossible reflections or perspectives, and areas that blur together when they should be distinct. AI 'hallucinates' visual details that seem plausible at first glance but don't hold up under scrutiny.",
-  points: 150
-},
-
- {
   id: 25,
   room: 5,
   character: "Communications Officer",
@@ -549,104 +521,6 @@ new library, road construction, community centres.`,
   options: ["AI Generated", "Real Photograph"],
   correct: 1,
   explanation: "Real photograph! Authentic photos show consistent physics (light, shadows, reflections), natural textures and surface details, genuine depth of field from camera optics, and the kind of random imperfections that occur in real-world scenes. Real photos capture actual moments in time, not statistical predictions.",
-  points: 150
-},
-
- {
-  id: 26,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image2000.webp",
-  isAiGenerated: false,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 1,
-  explanation: "Real photograph! Look for natural coherence where all elements make sense together, authentic wear and tear or environmental effects, proper perspective and scale relationships, and realistic material properties. Real photos have a truthfulness that AI struggles to fully replicate.",
-  points: 150
-},
-
- {
-  id: 27,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image2038.webp",
-  isAiGenerated: false,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 1,
-  explanation: "Real photograph! Genuine photos often contain happy accidents, motion blur or focus imperfections, authentic lighting conditions with all their quirks, and candid moments that feel unrehearsed. These natural imperfections are actually signs of authenticity.",
-  points: 150
-},
-
- {
-  id: 28,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image2007.webp",
-  isAiGenerated: false,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 1,
-  explanation: "Real photograph! Real camera sensors and lenses create specific optical characteristics like chromatic aberration, lens flare, grain or noise patterns, and compression artifacts. These technical 'fingerprints' from actual imaging hardware are hard for AI to convincingly fake.",
-  points: 150
-},
-
- {
-  id: 29,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1049.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! AI can struggle with complex physics like reflections, water behaviour, transparent materials, or proper perspective. Look for spatial relationships that seem slightly off, details that contradict each other, or elements that appear to defy physics in subtle ways.",
-  points: 150
-},
-
- {
-  id: 30,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1024.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! Sometimes AI images have an uncanny quality - they look almost right but something feels off. This can manifest as unusual colour grading, suspicious consistency across the frame, or details that blur under close examination. Trust your instincts when something seems too perfect or slightly wrong.",
-  points: 150
-},
-
- {
-  id: 31,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1061.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! While AI image generation has improved dramatically, telltale signs include areas of unnatural smoothness, details that morph when examined closely, impossible geometry or anatomy, and an overall sense of artificial perfection. The more you look, the more you notice what's not quite right.",
-  points: 150
-},
-
-{
-  id: 32,
-  room: 5,
-  character: "Communications Officer",
-  type: "image",
-  imagePath: "/images/image1015.webp",
-  isAiGenerated: true,
-  question: "Take a look at this image. Is it AI-generated or a real photograph?",
-  options: ["AI Generated", "Real Photograph"],
-  correct: 0,
-  explanation: "AI-generated! Background areas often reveal AI generation through repetitive textures, objects that blend together strangely, or details that lose coherence at the edges. AI tends to focus detail in the centre and get progressively vaguer toward the periphery in unnatural ways.",
   points: 150
 },
 
@@ -1538,48 +1412,6 @@ new library, road construction, community centres.`,
         options: ["AI Generated", "Real Photograph"],
         correct: 0,
         explanation: "AI-generated! Examine fine details closely: text or symbols may be nonsensical, perspective and geometry might violate Euclidean space, edges and transitions can blend unnaturally, or overall composition feels algorithmically perfect rather than organically captured. AI optimizes for visual appeal, not physical accuracy.",
-        points: 200
-      },
-
-      {
-        id: 145,
-        room: 5,
-        character: "Communications Officer",
-        type: "image",
-        imagePath: "/images/image2017.webp",
-        isAiGenerated: false,
-        question: "IMAGE VERIFICATION: For communications work, you need to spot fakes. Your call?",
-        options: ["AI Generated", "Real Photograph"],
-        correct: 1,
-        explanation: "Real photograph! Genuine images display consistent optical depth of field, physically accurate focal blur gradients, authentic material surface properties and weathering, realistic interaction between light sources and environments. Real photos contain the beautiful chaos of reality rather than algorithmic smoothness.",
-        points: 200
-      },
-
-      {
-        id: 146,
-        room: 6,
-        character: "Governance Officer",
-        type: "image",
-        imagePath: "/images/image1041.webp",
-        isAiGenerated: true,
-        question: "IMAGE FORENSICS: As IT professionals, we need to verify content. Your analysis?",
-        options: ["AI Generated", "Real Photograph"],
-        correct: 0,
-        explanation: "AI-generated! Forensic indicators include: repetitive texture patterns suggesting algorithmic generation, suspicious bilateral symmetry, physically impossible spatial relationships, inconsistent lighting or shadow behaviour, and the 'uncanny valley' feeling of near-perfection. Modern generative models are impressive but still leave detectable signatures.",
-        points: 200
-      },
-
-      {
-        id: 147,
-        room: 7,
-        character: "C.H.A.T.",
-        type: "image",
-        imagePath: "/images/image2041.webp",
-        isAiGenerated: false,
-        question: "FINAL IMAGE CHALLENGE: Put your detection skills to the test. Real or synthetic?",
-        options: ["AI Generated", "Real Photograph"],
-        correct: 1,
-        explanation: "Real photograph! Authentic images capture genuine moments with natural entropy and stochastic variation. They exhibit camera-sensor noise characteristics, optical aberrations inherent to physical lenses, and the beautiful imperfections of reality. AI generates idealized statistical distributions that can feel 'too clean' or contain subtle physical impossibilities. Developing this intuition is crucial for content verification.",
         points: 200
       },
 
