@@ -230,6 +230,45 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
         </p>
       </div>
 
+      {/* 1980s ADMIN BUILDING PHOTO - Easter Egg */}
+      <div className="border-box mt-2" style={{
+        padding: '15px',
+        background: 'linear-gradient(135deg, rgba(0,0,0,0.3), rgba(16,185,129,0.05))',
+        cursor: 'pointer'
+      }}
+        onClick={() => {
+          const imagePath = playerData.mode === 'player1'
+            ? '/images/admin_int_one.jpg'
+            : '/images/admin_int_two.jpg';
+          window.open(imagePath, '_blank');
+        }}
+        title="Click to view full size"
+      >
+        <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '10px', textAlign: 'center', color: '#10b981' }}>
+          Lake Macquarie Council Administration Building - 1989
+        </p>
+        <img
+          src={playerData.mode === 'player1' ? '/images/admin_int_one.jpg' : '/images/admin_int_two.jpg'}
+          alt="Lake Macquarie Council Administration Building interior from 1989"
+          style={{
+            width: '100%',
+            maxWidth: '600px',
+            height: 'auto',
+            display: 'block',
+            margin: '0 auto',
+            border: '2px solid rgba(16, 185, 129, 0.3)',
+            borderRadius: '3px'
+          }}
+          onError={(e) => {
+            console.error('1980s admin building image failed to load');
+            e.target.parentElement.style.display = 'none';
+          }}
+        />
+        <p style={{ fontSize: 'clamp(9px, 1.8vw, 11px)', marginTop: '8px', textAlign: 'center', color: '#666', fontStyle: 'italic' }}>
+          Click image to view full size
+        </p>
+      </div>
+
       {/* THE META MOMENT 🤯 */}
       <div className="border-box border-box-amber mt-2" style={{
         background: 'linear-gradient(135deg, rgba(251,191,36,0.1), rgba(16,185,129,0.1))',
