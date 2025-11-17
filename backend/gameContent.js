@@ -278,15 +278,15 @@ new library, road construction, community centres.`,
         id: 9,
         room: 5,
         character: "Communications Officer",
-        question: "How are Australian councils practically using AI to improve community services right now?",
+        question: "What's the smartest way to think about AI in local government work?",
         options: [
-          "Summarising community feedback and identifying trends in service requests",
-          "Making final decisions on development applications without human review",
-          "Automatically approving or rejecting building permits",
-          "Replacing staff in customer service roles"
+          "AI is a tool to assist human decision-making, not replace it",
+          "AI should make all routine decisions automatically",
+          "AI is too risky for government to use",
+          "AI is only useful for large tech companies"
         ],
         correct: 0,
-        explanation: "Councils are using AI as a tool to help staff work smarter! Common uses include summarising community consultation feedback, spotting patterns in service requests (like pot hole locations), and helping draft responses to common queries. The key principle: AI assists and augments human work - it doesn't replace human judgment or decision-making, especially for matters affecting residents.",
+        explanation: "AI is a powerful tool that augments human capability! It can help analyse data, spot patterns, draft content, and handle repetitive tasks - freeing up staff to focus on complex problems requiring human judgment, ethics, and community connection. The key is using AI to make humans more effective, not to replace the human element in serving our community.",
         points: 150
       },
       {
