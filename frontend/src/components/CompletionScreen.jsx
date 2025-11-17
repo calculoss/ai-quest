@@ -230,7 +230,7 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
         </p>
       </div>
 
-      {/* 1980s ADMIN BUILDING PHOTO - Easter Egg */}
+      {/* 1970s ADMIN BUILDING PHOTO - Easter Egg */}
       <div className="border-box mt-2" style={{
         padding: '15px',
         background: 'linear-gradient(135deg, rgba(0,0,0,0.3), rgba(16,185,129,0.05))',
@@ -245,11 +245,11 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
         title="Click to view full size"
       >
         <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '10px', textAlign: 'center', color: '#10b981' }}>
-          Lake Macquarie Council Administration Building - 1989
+          Lake Macquarie Council Administration Building - 1979
         </p>
         <img
           src={playerData.mode === 'player1' ? '/images/admin_int_one.jpg' : '/images/admin_int_two.jpg'}
-          alt="Lake Macquarie Council Administration Building interior from 1989"
+          alt="Lake Macquarie Council Administration Building interior from 1979"
           style={{
             width: '100%',
             maxWidth: '600px',
@@ -260,7 +260,7 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
             borderRadius: '3px'
           }}
           onError={(e) => {
-            console.error('1980s admin building image failed to load');
+            console.error('1970s admin building image failed to load');
             e.target.parentElement.style.display = 'none';
           }}
         />
@@ -313,16 +313,16 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
 
       {/* LEARNING HUB */}
       <div className="border-box mt-2" style={{ textAlign: 'left' }}>
-        <p className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(18px, 3.5vw, 22px)', textAlign: 'center' }}>
+        <p className="retro-font text-amber mb-2" style={{ fontSize: 'clamp(20px, 4vw, 26px)', textAlign: 'center' }}>
           Keep Learning: Your AI Journey Continues
         </p>
-        <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '15px', textAlign: 'center' }}>
+        <p style={{ fontSize: 'clamp(15px, 2.8vw, 18px)', marginBottom: '15px', textAlign: 'center' }}>
           The best way to understand AI? Get stuck in and try it yourself. Here are some resources to keep you informed, inspired, and experimenting in your own time.
         </p>
 
-        <div style={{ fontSize: 'clamp(12px, 2.2vw, 16px)', lineHeight: '1.7' }}>
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>🎧 Podcasts: Different Perspectives on AI</p>
-          <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginTop: '8px', marginBottom: '10px', fontStyle: 'italic' }}>
+        <div style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', lineHeight: '1.7' }}>
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(16px, 3vw, 20px)' }}>🎧 Podcasts: Different Perspectives on AI</p>
+          <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginTop: '8px', marginBottom: '10px', fontStyle: 'italic' }}>
             Technical Level Guide: 🟢 Accessible | 🟡 Mixed | 🔴 Technical
           </p>
 
@@ -330,74 +330,74 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">Lenny's Podcast</strong> 🟡
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Product, growth, and technology insights</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>Product, growth, and technology insights</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <strong>Great episode:</strong> <a href="https://open.spotify.com/episode/2dhEd0KW8FjXDSB91LgSKl?si=f611c41a740e485e" target="_blank" rel="noopener noreferrer" className="text-green">Benjamin Mann (Anthropic Co-founder)</a>
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Real talk about AI safety, where we're heading, and what it means for jobs and society. Fascinating insights from someone building Claude. You don't need to be technical, though there are technical aspects discussed.</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>Real talk about AI safety, where we're heading, and what it means for jobs and society. Fascinating insights from someone building Claude. You don't need to be technical, though there are technical aspects discussed.</p>
 
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">Dwarkesh Podcast</strong> 🟡
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Deep conversations with AI industry leaders</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>Deep conversations with AI industry leaders</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <a href="https://dwarkeshpatel.substack.com/" target="_blank" rel="noopener noreferrer" className="text-green">dwarkeshpatel.substack.com</a>
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Get inside the minds of the people shaping AI. Fascinating insights into what these leaders are actually thinking about the future.</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>Get inside the minds of the people shaping AI. Fascinating insights into what these leaders are actually thinking about the future.</p>
 
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">Me, Myself, and AI</strong> 🟢
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>MIT Sloan Review</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>MIT Sloan Review</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <a href="https://sloanreview.mit.edu/audio/" target="_blank" rel="noopener noreferrer" className="text-green">MIT Sloan Review Audio Series</a>
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Practical perspectives on AI in business and everyday life. Very accessible.</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>Practical perspectives on AI in business and everyday life. Very accessible.</p>
 
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">Lex Fridman</strong> 🟡
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Long-form conversations with leading thinkers</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>Long-form conversations with leading thinkers</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <strong>Recommended:</strong> Sundar Pichai episode
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>In-depth discussions with tech leaders. Thoughtful and wide-ranging.</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>In-depth discussions with tech leaders. Thoughtful and wide-ranging.</p>
           </div>
 
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>📺 YouTube: Stay Current</p>
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(16px, 3vw, 20px)' }}>📺 YouTube: Stay Current</p>
           <div style={{ marginLeft: '10px' }}>
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">AI News & Strategy Daily</strong> 🔴
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Nate B Jones</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>Nate B Jones</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <a href="https://www.youtube.com/@NateBJones" target="_blank" rel="noopener noreferrer" className="text-green">Watch on YouTube</a>
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>Daily technical commentary on model updates, new features, and how to use them. Great if you're comfortable with tech and want to stay right up to date.</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>Daily technical commentary on model updates, new features, and how to use them. Great if you're comfortable with tech and want to stay right up to date.</p>
           </div>
 
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>🛠️ Hands-On Learning</p>
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '15px', fontSize: 'clamp(16px, 3vw, 20px)' }}>🛠️ Hands-On Learning</p>
           <div style={{ marginLeft: '10px' }}>
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">Claude Use Cases</strong> 🟢
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>Real examples you can try yourself</p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>Real examples you can try yourself</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>
               <a href="https://claude.ai/resources/use-cases" target="_blank" rel="noopener noreferrer" className="text-green">claude.ai/resources/use-cases</a>
             </p>
 
             <p style={{ marginTop: '12px', marginBottom: '4px' }}>
               <strong className="text-amber">LinkedIn Learning</strong> 🟢-🔴
             </p>
-            <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginBottom: '4px' }}>We have corporate access - explore AI courses at your own pace</p>
-            <p style={{ fontSize: 'clamp(10px, 1.9vw, 13px)', lineHeight: '1.5', color: '#aaa' }}>(Range of courses from beginner to advanced)</p>
+            <p style={{ fontSize: 'clamp(13px, 2.3vw, 16px)', marginBottom: '4px' }}>We have corporate access - explore AI courses at your own pace</p>
+            <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.5', color: '#aaa' }}>(Range of courses from beginner to advanced)</p>
           </div>
 
-          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '20px', fontSize: 'clamp(14px, 2.5vw, 18px)' }}>💡 The Bottom Line</p>
-          <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.7', marginTop: '10px' }}>
-            Don't just read about AI - experiment with it. The best way to understand what's possible is to try things yourself. Set aside some time, pick a use case that interests you, and have a go.
+          <p className="text-green" style={{ fontWeight: 'bold', marginTop: '20px', fontSize: 'clamp(16px, 3vw, 20px)' }}>💡 The Bottom Line</p>
+          <p style={{ fontSize: 'clamp(14px, 2.6vw, 17px)', lineHeight: '1.7', marginTop: '10px' }}>
+            Don't just read about AI - experiment with it. The best way to understand what's possible is to try things yourself in your own time. Pick a use case that interests you and have a go.
           </p>
-          <p style={{ fontSize: 'clamp(12px, 2.2vw, 15px)', lineHeight: '1.7', marginTop: '10px' }}>
+          <p style={{ fontSize: 'clamp(14px, 2.6vw, 17px)', lineHeight: '1.7', marginTop: '10px' }}>
             The AI landscape changes quickly, but that's what makes it exciting. Stay curious, stay informed, and most importantly - stay hands-on.
           </p>
         </div>
