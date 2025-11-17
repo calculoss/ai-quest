@@ -99,8 +99,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
         // Check if the sequence matches the Konami code
         if (newKeys.length === 10 && newKeys.every((k, i) => k.toLowerCase() === konamiCode[i].toLowerCase())) {
+          soundManager.play('konami'); // Play epic retro sound
           setShowKonamiMessage(true);
-          setTimeout(() => setShowKonamiMessage(false), 10000); // Hide after 10 seconds
+          setTimeout(() => setShowKonamiMessage(false), 15000); // Hide after 15 seconds
           return []; // Reset
         }
 
@@ -430,6 +431,9 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <hr className="mt-1 mb-1" style={{ borderColor: '#00ff00' }} />
             <p>You're about to experience a 1989 training program about "Expert Systems" - the cutting-edge AI of that era.</p>
             <p className="mt-2">After each task, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles remain surprisingly relevant.</p>
+            <p className="mt-2" style={{ fontSize: '12px', fontStyle: 'italic', color: '#888' }}>
+              <em>Tip: Like the classic arcade games of 1989 (Contra, Gradius), this training program may contain hidden sequences for those who remember the old ways...</em>
+            </p>
             <p className="mt-2"><strong className="text-amber">Ready to travel back to 1989? Let's begin...</strong></p>
           </div>
 
@@ -476,24 +480,116 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             left: '50%',
             transform: 'translate(-50%, -50%)',
             zIndex: 99999,
-            background: 'linear-gradient(135deg, rgba(0,0,0,0.95), rgba(16,185,129,0.2))',
-            border: '4px solid #fbbf24',
-            padding: '30px',
-            maxWidth: '500px',
-            boxShadow: '0 0 50px rgba(251, 191, 36, 0.5)',
-            animation: 'pulse 2s infinite'
+            background: 'linear-gradient(135deg, #000000, #1a1a1a)',
+            border: '6px double #fbbf24',
+            borderRadius: '15px',
+            padding: '40px',
+            maxWidth: '700px',
+            width: '90vw',
+            boxShadow: '0 0 100px rgba(251, 191, 36, 0.8), 0 0 50px rgba(16, 185, 129, 0.5), inset 0 0 30px rgba(251, 191, 36, 0.1)',
+            animation: 'konamiBurst 0.5s ease-out'
           }}>
-            <p className="retro-font text-amber" style={{ fontSize: '20px', marginBottom: '15px', textAlign: 'center' }}>
-              🎮 KONAMI CODE DETECTED 🎮
+            <style>{`
+              @keyframes konamiBurst {
+                0% {
+                  transform: translate(-50%, -50%) scale(0.5);
+                  opacity: 0;
+                }
+                50% {
+                  transform: translate(-50%, -50%) scale(1.1);
+                }
+                100% {
+                  transform: translate(-50%, -50%) scale(1);
+                  opacity: 1;
+                }
+              }
+              @keyframes konamiGlow {
+                0%, 100% {
+                  text-shadow: 0 0 10px #fbbf24, 0 0 20px #fbbf24, 0 0 30px #fbbf24;
+                }
+                50% {
+                  text-shadow: 0 0 20px #fbbf24, 0 0 30px #fbbf24, 0 0 40px #fbbf24, 0 0 50px #ff0000;
+                }
+              }
+            `}</style>
+            <div style={{
+              textAlign: 'center',
+              borderBottom: '3px solid #fbbf24',
+              paddingBottom: '20px',
+              marginBottom: '25px'
+            }}>
+              <p className="retro-font" style={{
+                fontSize: 'clamp(24px, 5vw, 36px)',
+                color: '#fbbf24',
+                marginBottom: '10px',
+                animation: 'konamiGlow 2s infinite',
+                letterSpacing: '3px'
+              }}>
+                ⬆⬆⬇⬇⬅➡⬅➡🅱🅰
+              </p>
+              <p className="retro-font" style={{
+                fontSize: 'clamp(18px, 4vw, 28px)',
+                color: '#ff0000',
+                textShadow: '0 0 10px #ff0000, 0 0 20px #ff0000'
+              }}>
+                🎮 KONAMI CODE ACTIVATED 🎮
+              </p>
+            </div>
+
+            <p className="retro-font" style={{
+              fontSize: 'clamp(16px, 3.5vw, 22px)',
+              lineHeight: '1.6',
+              color: '#10b981',
+              textAlign: 'center',
+              marginBottom: '20px',
+              textShadow: '0 0 5px #10b981'
+            }}>
+              ⚡ ACHIEVEMENT UNLOCKED ⚡
             </p>
-            <p style={{ fontSize: '14px', lineHeight: '1.7', color: '#10b981', textAlign: 'center' }}>
-              Your level of geek transcends the expectation of this organisation.
+
+            <p style={{
+              fontSize: 'clamp(14px, 3vw, 18px)',
+              lineHeight: '1.8',
+              color: '#ffffff',
+              textAlign: 'center',
+              marginBottom: '20px'
+            }}>
+              You have discovered the sacred sequence known only to the ancient order of 1980s gamers. Your power level is <span style={{color: '#fbbf24', fontWeight: 'bold'}}>OVER 9000</span>.
             </p>
-            <p style={{ fontSize: '13px', lineHeight: '1.7', marginTop: '15px', color: '#fbbf24', textAlign: 'center' }}>
-              <strong>WARNING:</strong> You are not supposed to know this. Please keep this to yourself as if you were to mention it to any normal person they may think you are crazy.
-            </p>
-            <p style={{ fontSize: '11px', marginTop: '15px', textAlign: 'center', color: '#666' }}>
-              (Message will self-destruct in 10 seconds...)
+
+            <div style={{
+              background: 'rgba(251, 191, 36, 0.1)',
+              border: '2px solid #fbbf24',
+              borderRadius: '8px',
+              padding: '15px',
+              marginTop: '20px'
+            }}>
+              <p className="retro-font" style={{
+                fontSize: 'clamp(12px, 2.5vw, 16px)',
+                color: '#fbbf24',
+                textAlign: 'center',
+                marginBottom: '8px'
+              }}>
+                ⚠️ CLASSIFIED INFORMATION ⚠️
+              </p>
+              <p style={{
+                fontSize: 'clamp(11px, 2.2vw, 14px)',
+                lineHeight: '1.6',
+                color: '#cccccc',
+                textAlign: 'center'
+              }}>
+                The existence of this code is not to be spoken of in polite company. Those who lack the ancient gaming knowledge must not learn of this power.
+              </p>
+            </div>
+
+            <p style={{
+              fontSize: 'clamp(10px, 2vw, 13px)',
+              marginTop: '25px',
+              textAlign: 'center',
+              color: '#666',
+              fontStyle: 'italic'
+            }}>
+              (This sacred message will self-destruct in 15 seconds...)
             </p>
           </div>
         )}

@@ -44,6 +44,9 @@ class SoundManager {
       case 'victory':
         this.playVictoryTheme();
         break;
+      case 'konami':
+        this.playKonamiSound();
+        break;
       default:
         break;
     }
@@ -322,6 +325,77 @@ class SoundManager {
 
     osc.start(now);
     osc.stop(now + 0.3);
+  }
+
+  // Konami code easter egg - Doom-style power-up sound
+  playKonamiSound() {
+    const ctx = this.audioContext;
+    const now = ctx.currentTime;
+
+    // Classic Doom power-up: chunky square wave with dramatic rising tones
+    const powerUpSequence = [
+      { freq: 220, duration: 0.08 },   // A3
+      { freq: 277.18, duration: 0.08 }, // C#4
+      { freq: 329.63, duration: 0.08 }, // E4
+      { freq: 440, duration: 0.1 },     // A4
+      { freq: 554.37, duration: 0.1 },  // C#5
+      { freq: 659.25, duration: 0.12 }, // E5
+      { freq: 880, duration: 0.15 },    // A5 (sustained)
+      { freq: 1108.73, duration: 0.2 }  // C#6 (final power chord)
+    ];
+
+    let time = 0;
+    powerUpSequence.forEach((note) => {
+      // Main oscillator - chunky square wave
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.frequency.value = note.freq;
+      osc.type = 'square';
+
+      gain.gain.setValueAtTime(0.3, now + time);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + time + note.duration);
+
+      osc.start(now + time);
+      osc.stop(now + time + note.duration);
+
+      // Add harmonic layer for that classic power-up richness
+      const harmonic = ctx.createOscillator();
+      const harmonicGain = ctx.createGain();
+
+      harmonic.connect(harmonicGain);
+      harmonicGain.connect(ctx.destination);
+
+      harmonic.frequency.value = note.freq * 2; // Octave up
+      harmonic.type = 'square';
+
+      harmonicGain.gain.setValueAtTime(0.15, now + time);
+      harmonicGain.gain.exponentialRampToValueAtTime(0.01, now + time + note.duration);
+
+      harmonic.start(now + time);
+      harmonic.stop(now + time + note.duration);
+
+      time += note.duration;
+    });
+
+    // Final power chord sustain with slight vibrato
+    const finalChord = ctx.createOscillator();
+    const finalGain = ctx.createGain();
+
+    finalChord.connect(finalGain);
+    finalGain.connect(ctx.destination);
+
+    finalChord.frequency.value = 880; // A5
+    finalChord.type = 'square';
+
+    finalGain.gain.setValueAtTime(0.25, now + time);
+    finalGain.gain.exponentialRampToValueAtTime(0.01, now + time + 0.4);
+
+    finalChord.start(now + time);
+    finalChord.stop(now + time + 0.4);
   }
 
   // Toggle mute
