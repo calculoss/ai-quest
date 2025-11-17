@@ -349,7 +349,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               <p><span>Initializing system</span> <span className="text-green">[OK]</span></p>
               <p><span>Loading question database</span> <span className="text-green">[OK]</span></p>
               <p><span>Checking integrity</span> <span className="text-green">[OK]</span></p>
-              <p><span>Loading KONAMI.SYS</span> <span className="text-green">[OK]</span></p>
+              <p><span>Loading KONAMI_CODE.SYS</span> <span className="text-green">[OK]</span></p>
               <p><span>Ready to launch</span> <span className="text-green">[OK]</span></p>
             </div>
           </div>
