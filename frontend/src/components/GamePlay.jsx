@@ -36,12 +36,19 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
   const currentRoom = gameContent.rooms.find(r => r.id === progress.currentRoom);
   const character = currentRoom ? gameContent.dialogue[currentRoom.character] : null;
-  
+
+  // Get questions for current player mode
+  const playerQuestions = gameContent.questions[playerData.mode] || [];
+
   // Get questions for current room that haven't been answered
-  const roomQuestions = gameContent.questions.filter(
-    q => q.room === progress.currentRoom && 
+  const roomQuestions = playerQuestions.filter(
+    q => q.room === progress.currentRoom &&
          !progress.questionsAnswered.find(qa => qa.id === q.id)
   );
+
+  // Check if this room has been fully completed (had questions and all are answered)
+  const roomTotalQuestions = playerQuestions.filter(q => q.room === progress.currentRoom);
+  const roomIsCleared = roomTotalQuestions.length > 0 && roomQuestions.length === 0;
 
   const saveProgress = useCallback(async () => {
     try {
@@ -832,7 +839,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               )}
             </div>
           </div>
-        ) : roomQuestions.length === 0 ? (
+        ) : roomIsCleared ? (
           <div className="mt-2">
             {/* QUEST PROGRESSION - Story beats */}
             <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
@@ -890,6 +897,28 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
 
               <p className="retro-font mb-2" style={{ fontSize: '16px' }}>CHOOSE YOUR PATH:</p>
 
+              {currentRoom.exits.map((exit, index) => (
+                <button
+                  key={index}
+                  className="retro-button retro-button-amber mt-2"
+                  style={{ fontSize: '16px' }}
+                  onClick={() => handleMoveRoom(exit)}
+                >
+                  → PROCEED TO {exit.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+        ) : roomTotalQuestions.length === 0 ? (
+          <div className="mt-2">
+            <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
+              <p className="retro-font text-amber" style={{ fontSize: '20px', marginBottom: '15px' }}>
+                Nothing to do here...
+              </p>
+              <p style={{ fontSize: '16px', marginBottom: '15px' }}>
+                This area doesn't require your attention. Move to another department.
+              </p>
+              <p className="retro-font mb-2" style={{ fontSize: '16px' }}>CHOOSE YOUR PATH:</p>
               {currentRoom.exits.map((exit, index) => (
                 <button
                   key={index}
