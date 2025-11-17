@@ -715,7 +715,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           <div className="mt-2">
             <div className="border-box" style={{ padding: 'clamp(12px, 2.5vw, 18px)' }}>
               <p className="retro-font mb-2" style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', color: '#fbbf24' }}>{currentRoom.character} ASKS:</p>
-              
+
               {/* Display image if this is an image question */}
               {currentQuestion.type === 'image' && currentQuestion.imagePath && (
                 <div className="question-image-container">
@@ -832,7 +832,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               )}
             </div>
           </div>
-        ) : (
+        ) : roomQuestions.length === 0 ? (
           <div className="mt-2">
             {/* QUEST PROGRESSION - Story beats */}
             <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
@@ -900,6 +900,12 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                   → PROCEED TO {exit.toUpperCase()}
                 </button>
               ))}
+            </div>
+          </div>
+        ) : (
+          <div className="mt-2">
+            <div className="border-box text-center" style={{ padding: '20px' }}>
+              <p className="retro-font text-green" style={{ fontSize: '18px' }}>Loading...</p>
             </div>
           </div>
         )}

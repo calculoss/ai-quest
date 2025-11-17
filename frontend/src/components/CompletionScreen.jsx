@@ -7,8 +7,13 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
   const certificateRef = useRef(null);
   const [playerRank, setPlayerRank] = useState(null);
 
-  const totalQuestions = 30; // Randomized selection: 30 questions per game
-  const correctAnswers = progress.questionsAnswered.length;
+  // Calculate total questions for this player mode
+  const playerQuestions = gameContent?.questions?.[playerData.mode] || [];
+  const totalQuestions = playerQuestions.length;
+
+  // Count questions answered correctly (on first try means attempts = 1)
+  const correctAnswers = progress.questionsAnswered.filter(qa => qa.correct && qa.attempts === 1).length;
+  const totalAnswered = progress.questionsAnswered.length;
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
 
   // Find brain teaser questions that were answered incorrectly
@@ -63,7 +68,7 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
 
   // Copy shareable message to clipboard
   const copyShareMessage = () => {
-    const message = `🎮 I scored ${progress.score} points in BASEMENT ARCHIVES: 1989 - Lake Macquarie's AI Challenge!\n⏱️ Time: ${playerData.completionTime}\n🎯 Accuracy: ${percentage}%\n\nCan you beat my score? 🚀`;
+    const message = `🎮 I scored ${progress.score} points in BASEMENT ARCHIVES: 1989 - Lake Macquarie's AI Challenge!\n⏱️ Time: ${playerData.completionTime}\n✅ Correct: ${correctAnswers}/${totalQuestions}\n🎯 Accuracy: ${percentage}%\n\nCan you beat my score? 🚀`;
     navigator.clipboard.writeText(message);
     alert('Message copied! Paste it in Teams/Slack to challenge your colleagues!');
   };
@@ -118,6 +123,9 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
           </div>
           <div>
             <p>🎯 Accuracy: <span className="text-amber">{percentage}%</span></p>
+          </div>
+          <div style={{ gridColumn: '1 / -1' }}>
+            <p>✅ Questions Correct: <span className="text-amber">{correctAnswers}/{totalQuestions}</span></p>
           </div>
         </div>
         <p style={{ fontSize: 'clamp(11px, 2vw, 14px)', marginTop: '15px', color: '#10b981' }}>
