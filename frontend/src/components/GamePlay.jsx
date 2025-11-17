@@ -349,6 +349,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               <p><span>Initializing system</span> <span className="text-green">[OK]</span></p>
               <p><span>Loading question database</span> <span className="text-green">[OK]</span></p>
               <p><span>Checking integrity</span> <span className="text-green">[OK]</span></p>
+              <p><span>Loading KONAMI.SYS</span> <span className="text-green">[OK]</span></p>
               <p><span>Ready to launch</span> <span className="text-green">[OK]</span></p>
             </div>
           </div>
@@ -431,9 +432,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <hr className="mt-1 mb-1" style={{ borderColor: '#00ff00' }} />
             <p>You're about to experience a 1989 training program about "Expert Systems" - the cutting-edge AI of that era.</p>
             <p className="mt-2">After each task, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles remain surprisingly relevant.</p>
-            <p className="mt-2" style={{ fontSize: '12px', fontStyle: 'italic', color: '#888' }}>
-              <em>Tip: Like the classic arcade games of 1989 (Contra, Gradius), this training program may contain hidden sequences for those who remember the old ways...</em>
-            </p>
             <p className="mt-2"><strong className="text-amber">Ready to travel back to 1989? Let's begin...</strong></p>
           </div>
 
