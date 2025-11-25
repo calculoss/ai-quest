@@ -17,13 +17,13 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
   const percentage = Math.round((correctAnswers / totalQuestions) * 100);
 
   // Find brain teaser questions that were answered incorrectly
-  const missedBrainTeasers = gameContent?.questions
-    ?.filter(q => q.type === 'brain_teaser')
+  const missedBrainTeasers = playerQuestions
+    .filter(q => q.type === 'brain_teaser')
     .map(brainTeaser => {
       const answered = progress.questionsAnswered.find(qa => qa.id === brainTeaser.id);
       return answered && !answered.correct ? brainTeaser : null;
     })
-    .filter(Boolean) || [];
+    .filter(Boolean);
 
   // Play victory theme when screen loads
   useEffect(() => {
