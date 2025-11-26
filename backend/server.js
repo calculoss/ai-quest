@@ -8,12 +8,29 @@ const gameContent = require('./gameContent');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Build CORS allowed origins from environment variable
+const allowedOrigins = [
+  'http://localhost:3000', // For local development
+  'http://localhost:3001', // For local development
+];
+
+// Add production frontend URL if provided
+if (process.env.FRONTEND_URL) {
+  allowedOrigins.push(process.env.FRONTEND_URL);
+  // Also allow without https:// prefix in case of misconfiguration
+  if (!process.env.FRONTEND_URL.startsWith('http')) {
+    allowedOrigins.push(`https://${process.env.FRONTEND_URL}`);
+  }
+}
+
+// Fallback to hardcoded URL if FRONTEND_URL not set (backwards compatibility)
+if (!process.env.FRONTEND_URL) {
+  allowedOrigins.push('https://stunning-forgiveness-production-1b7c.up.railway.app');
+}
+
 // Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:3000', // For local development
-    'https://stunning-forgiveness-production-1b7c.up.railway.app' // Your frontend URL
-  ],
+  origin: allowedOrigins,
   credentials: true
 }));
 app.use(express.json());
