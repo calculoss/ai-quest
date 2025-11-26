@@ -38,7 +38,10 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   const character = currentRoom ? gameContent.dialogue[currentRoom.character] : null;
 
   // Get questions for current player mode
-  const playerQuestions = gameContent.questions[playerData.mode] || [];
+  // Backend sends questions as a flat array already filtered by mode
+  const playerQuestions = Array.isArray(gameContent.questions)
+    ? gameContent.questions
+    : (gameContent.questions[playerData.mode] || []);
 
   // Get questions for current room that haven't been answered
   const roomQuestions = playerQuestions.filter(
@@ -466,7 +469,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     if (!currentRoom) return <div className="loading"></div>;
 
     // Calculate progress percentage
-    const totalQuestions = gameContent.questions.length;
+    const totalQuestions = playerQuestions.length;
     const answeredQuestions = progress.questionsAnswered.length;
     const progressPercent = (answeredQuestions / totalQuestions) * 100;
 
