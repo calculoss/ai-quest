@@ -204,7 +204,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
       q => !newQuestionsAnswered.find(qa => qa.id === q.id)
     );
 
-    if (remaining.length <= 1) {
+    if (remaining.length === 0) {
       // Room complete - check if game complete
       if (progress.currentRoom === 8) {
         completeGame();
@@ -729,8 +729,8 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               {/* Display image if this is an image question */}
               {currentQuestion.type === 'image' && currentQuestion.imagePath && (
                 <div className="question-image-container">
-                  <img 
-                    src={currentQuestion.imagePath}
+                  <img
+                    src={`${process.env.PUBLIC_URL || ''}${currentQuestion.imagePath}`}
                     alt="Question image - Is it AI-generated or real?"
                     className="question-image"
                     onError={(e) => {
