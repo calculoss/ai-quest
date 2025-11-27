@@ -19,7 +19,7 @@ Rita's desk is cluttered with manila folders and a daily planner.
 A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."
 
 An urgent memo sits on the desk: "C.H.A.T. SYSTEM - Offline.
-GM demo at 4PM. Collect authorization codes from all department heads."`,
+GM demo at 4PM. Collect authorisation codes from all department managers."`,
     exits: ["Cafeteria", "Mainframe Room"]
   },
   
@@ -82,8 +82,8 @@ in the corner running early GIS software - very cutting-edge for 1989.`,
 ║             15 September 1989, 1400                    ║
 ╚════════════════════════════════════════════════════════╝
 
-Macintosh computers hum quietly. PageMaker templates are open on 
-screen. Draft newsletters are pinned to a corkboard.`,
+IBM computers hum quietly. Lotus Word Pro is open on 
+screens. Draft newsletters are pinned to a corkboard.`,
     exits: ["Map Room", "Governance"]
   },
   
@@ -119,7 +119,7 @@ Mail sorting racks line the walls. The C.H.A.T. terminal sits dark
 and offline. A "BETA TEST IN PROGRESS" sign hangs on the door.
 
 A note taped to the screen: "System crashed overnight. Requires ALL
-department authorization codes + manual restart protocol."`,
+department authorisation codes + manual restart protocol."`,
     exits: ["Governance", "General Manager"]
   },
   
@@ -134,8 +134,7 @@ department authorization codes + manual restart protocol."`,
 ║             15 September 1989, 1600                    ║
 ╚════════════════════════════════════════════════════════╝
 
-The executive suite. A large mahogany desk. Windows overlook King 
-Street Newcastle. Photos of council projects line the walls - the 
+The executive suite. A large mahogany desk. Windows overlook Lakeview Street and the very blue collar suburb of Boolaroo, every second house has a Hills Hoist groaning under the weight of King Gee work clothes. Photos of council projects line the walls - the 
 new library, road construction, community centres.`,
     exits: []
   }
@@ -246,15 +245,15 @@ new library, road construction, community centres.`,
         id: 7,
         room: 4,
         character: "Planning Officer",
-        question: "According to Council's traffic light system, which information is RED ZONE and should NEVER go into external AI tools without removing personal details first?",
+        question: "Which information should NEVER go into external AI tools without removing personal details first?",
         options: [
           "Public information from Council's website",
           "Personal information that could identify individuals",
-          "Internal business documents",
+          "Ideas for a new project",
           "Questions about general work tasks"
         ],
         correct: 1,
-        explanation: "RED ZONE! Personal information that could identify individuals or cause harm if disclosed must never go into external AI tools. This includes names, addresses, contact details, or anything that could identify residents. Even with Copilot, personal details must be removed. When in doubt, default to the most restrictive approach and ask your supervisor.",
+        explanation: "Personal information that could identify individuals or cause harm if disclosed must never go into external AI tools. This includes names, addresses, contact details, or anything that could identify residents. When in doubt, default to the most restrictive approach and ask your supervisor.",
         points: 150
       },
       {
@@ -298,8 +297,8 @@ new library, road construction, community centres.`,
         type: "brain_teaser",
         question: "🧠 BRAIN TEASER: You're on a game show with 3 doors. Behind one is a prize, behind the others are goats. You pick Door 1. The host (who knows what's behind each door) opens Door 3, revealing a goat. The host asks: 'Do you want to switch to Door 2?' Should you switch?",
         options: [
-          "No - stay with Door 1 (50/50 odds either way)",
-          "Yes - switch to Door 2 (gives you 2/3 chance of winning)",
+          "No - stay with Door 1",
+          "Yes - switch to Door 2",
           "Doesn't matter - equal probability",
           "Pick randomly - it's all luck"
         ],
@@ -369,7 +368,7 @@ new library, road construction, community centres.`,
           "Only check if someone complains"
         ],
         correct: 0,
-        explanation: "Critical! AI outputs must go through quality assurance: verify factual accuracy (ask AI to cite sources, then personally verify them), review for bias, ensure it meets Council's brand and inclusive language guidelines, and apply critical thinking. You must be confident enough to put your name to it. Never publish AI output without professional review and sign-off.",
+        explanation: "Critical! AI outputs must go through quality assurance: verify factual accuracy (ask AI to cite sources, then personally verify them), review for bias, ensure it meets Council's brand and writing guidelines, and apply critical thinking. You must be confident enough to put your name to it. Never publish AI output without professional review and sign-off.",
         points: 200
       },
 
@@ -481,22 +480,22 @@ new library, road construction, community centres.`,
           "It increases token costs"
         ],
         correct: 1,
-        explanation: "Prompt injection can trick AI into ignoring safety instructions or revealing sensitive information. Input sanitization and validation are essential!",
+        explanation: "Prompt injection can trick AI into ignoring safety instructions or revealing sensitive information. Input sanitisation and validation are essential!",
         points: 150
       },
       {
         id: 104,
         room: 2,
         character: "Council Staff",
-        question: "Which statement about temperature parameters in LLM APIs is correct?",
-        options: [
-          "Higher temperature = more deterministic outputs",
-          "Temperature controls the model's confidence threshold",
-          "Higher temperature = more random/creative outputs",
-          "Temperature only affects response speed"
-        ],
-        correct: 2,
-        explanation: "Temperature controls randomness in sampling. Higher values (0.7-1.0) produce creative/varied outputs. Lower values (0.0-0.3) produce focused, deterministic responses.",
+		question: "What does the Turing Test actually measure?",
+		options: [
+		  "An AI's processing speed compared to humans",
+		  "Whether an AI can convince a human it's human through conversation",
+		  "How accurately an AI can solve mathematical problems",
+		  "An AI's ability to learn from experience"
+		],
+		correct: 1,
+		explanation: "Proposed by Alan Turing in 1950, the test evaluates whether a machine can exhibit intelligent behaviour indistinguishable from a human in conversation."
         points: 150
       },
 
@@ -520,18 +519,19 @@ new library, road construction, community centres.`,
       // SERVER ROOM - Room 4 (Hard)
       {
         id: 107,
-        room: 4,
-        character: "Planning Officer",
-        question: "Which best describes PII handling when using LLM APIs?",
-        options: [
-          "All major providers automatically strip PII before processing",
-          "Assume zero data retention only if explicitly documented",
-          "PII is safe if sent over HTTPS",
-          "Only GPT-4 can handle PII securely"
-        ],
-        correct: 1,
-        explanation: "Never assume PII is handled securely! Check each provider's data retention policies, compliance certifications, and terms of service. For sensitive data, consider on-premise solutions or zero-retention guarantees.",
-        points: 200
+	    room: 4,
+	    character: "Planning Officer",
+	    question: "An AI passes the Turing Test, writes poetry, and diagnoses diseases. But philosopher John Searle argues it still doesn't 'understand' anything. What's his famous thought experiment called?",
+	    options: [
+		  "The Trolley Problem",
+		  "The Chinese Room",
+		  "Schrödinger's Computer",
+		  "The Black Box Paradox"
+		],
+		correct: 1,
+		explanation: "The Chinese Room! Searle imagined a person in a room following a rulebook to respond to Chinese characters they don't understand. They can give perfect responses, but have no comprehension. His argument: AI might process language perfectly without truly 'understanding' meaning - it's just sophisticated pattern matching. This challenges whether AI can ever truly 'think' or just simulate thinking really well. Still one of philosophy's biggest debates about AI!",
+		points: 200
+		
       },
 
       // MARKETING DEPT - Room 5 (Hard)
@@ -552,18 +552,19 @@ new library, road construction, community centres.`,
       },
       {
         id: 110,
-        room: 5,
-        character: "Communications Officer",
-        question: "Which vector database consideration is most critical for production RAG systems?",
-        options: [
-          "Using the highest dimensional embeddings possible",
-          "Balancing recall vs latency for your use case",
-          "Always using exact nearest neighbor search",
-          "Maximizing the number of returned results"
-        ],
-        correct: 1,
-        explanation: "Production RAG requires balancing search quality (recall) with response time (latency). Approximate nearest neighbor (ANN) algorithms trade some accuracy for speed. Choose based on your SLAs and user expectations!",
-        points: 200
+	    room: 5,
+	    character: "Communications Officer",
+	    question: "You ask an AI to write a speech. It produces something brilliant. You ask it to 'make it better.' It produces something worse. What's the most likely explanation?",
+	    options: [
+		  "The AI learned from your acceptance of the first version and adjusted its approach",
+		  "AI doesn't have a concept of 'better' - it just generates a different statistical variation",
+		  "The first draft used up the most relevant training data, leaving lower-quality patterns",
+		  "Your prompt was too vague, so the AI defaulted to safe, generic improvements"
+		],
+		correct: 1,
+		explanation: "Here's the fundamental insight: AI doesn't understand quality, improvement, or 'better' - these are human concepts. It generates statistically probable text based on patterns. When you say 'make it better,' it produces a variation, not an improvement. There's no evaluation happening - just pattern generation. The first output might hit gold by chance, the second might miss. This is why critical human judgment is essential - you can't assume iteration improves AI output the way human revision does!",
+		points: 200
+		
       },
 
       // BRAIN TEASER - Room 5 (Special Challenge)
@@ -587,51 +588,52 @@ new library, road construction, community centres.`,
 
       // ETHICS OFFICE - Room 6 (Hard)
       {
-        id: 111,
-        room: 6,
-        character: "Governance Officer",
-        question: "What's a key technical challenge in detecting AI-generated content?",
-        options: [
-          "AI always leaves obvious artifacts",
-          "Watermarking can be removed and detectors have high false positive rates",
-          "All AI content is easily detectable by humans",
-          "Blockchain solves this problem completely"
-        ],
-        correct: 1,
-        explanation: "AI detection is an arms race. Watermarks can be attacked, statistical detectors have false positives, and paraphrasing defeats many methods. No perfect technical solution exists yet. Focus on transparency and disclosure instead!",
-        points: 200
-      },
+	    id: 111,
+	    room: 6,
+	    character: "Governance Officer",
+	    question: "An AI system used by a council denies someone a service. The person asks 'Why was I denied?' The AI team says 'The model is too complex to explain.' From a governance perspective, what's the problem?",
+	    options: [
+		  "Nothing - AI decisions don't need explanations if they're accurate",
+		  "Lack of transparency violates principles of administrative fairness and accountability",
+		  "The AI team just needs better documentation",
+		  "Only legal decisions require explanations, not administrative ones"
+	    ],
+	    correct: 1,
+	    explanation: "Critical governance issue! In public administration, people have a right to understand decisions that affect them. 'The AI is too complex' isn't acceptable - it's called the 'black box problem.' If you can't explain a decision, you can't justify it, appeal it, or ensure it's fair. This is why many jurisdictions require 'explainable AI' for government services. You must be able to tell someone WHY a decision was made, not just THAT it was made.",
+	    points: 200
+	  },
       {
         id: 112,
-        room: 6,
-        character: "Governance Officer",
-        question: "What's 'alignment' in the context of AI safety?",
-        options: [
-          "Ensuring GPU clusters are properly configured",
-          "Making AI systems behave according to human values and intentions",
-          "Aligning model outputs with training data",
-          "Synchronizing multiple AI models"
-        ],
-        correct: 1,
-        explanation: "Alignment is the challenge of ensuring AI systems pursue objectives that align with human values, even as they become more capable. It's one of the most important open problems in AI safety!",
-        points: 200
+	    room: 6,
+	    character: "Governance Officer",
+	    question: "Under Australian Privacy Principles, if council uses AI to make decisions about individuals, what must you be able to do?",
+	    options: [
+		  "Disclose it in your general privacy policy - that's sufficient notification",
+		  "Explain how the decision was made if someone asks",
+		  "Only provide explanations for decisions that significantly affect someone's rights",
+		  "Provide transparency where 'reasonably practicable' - complexity can be a valid limitation"
+	    ],
+	    correct: 1,
+	    explanation: "Clear legal requirement! APP 1.3 requires transparency about automated decision-making. People have the right to know if AI is being used to make decisions about them and how those decisions are made. A general privacy policy isn't enough - you need to be able to explain specific decisions. 'Too complex' isn't a valid excuse. And it applies to all automated decisions affecting individuals, not just 'significant' ones. This isn't optional - it's mandated by the Privacy Act.",
+	    points: 200
+		
       },
 
       // EXECUTIVE HALLWAY - Room 7 (Very Hard)
       {
         id: 114,
-        room: 7,
-        character: "C.H.A.T.",
-        question: "In late 2023, what caused a major drama at OpenAI involving Sam Altman?",
-        options: [
-          "They ran out of GPUs",
-          "Board fired him then staff revolted and he was reinstated",
-          "He moved to Google",
-          "Nothing happened"
-        ],
-        correct: 1,
-        explanation: "The OpenAI board fired CEO Sam Altman on November 17, 2023, citing loss of confidence. Within days, 700+ employees (nearly all staff) threatened to quit and follow him to Microsoft. The board reversed course and reinstated him 5 days later. It was the biggest AI industry drama of 2023!",
-        points: 250
+	    room: 7,
+	    character: "C.H.A.T.",
+	    question: "A study found that doctors using AI diagnostic tools became less accurate over time, even though the AI itself was highly accurate. Why?",
+	    options: [
+		  "The doctors became lazy and stopped thinking",
+		  "The doctors over-relied on AI and lost their diagnostic skills and intuition",
+		  "The AI was actually getting worse, not better",
+		  "The doctors were using the AI incorrectly"
+	    ],
+	    correct: 1,
+	    explanation: "This is 'automation complacency' or 'deskilling.' When highly accurate AI handles complex tasks, humans stop actively engaging their expertise. Doctors stopped questioning diagnoses, lost practice with edge cases, and their independent judgment atrophied. The paradox: AI assistance made them worse doctors. This applies everywhere - from pilots relying on autopilot to analysts trusting AI recommendations. The lesson: AI should augment human expertise, not replace active thinking.",
+	    points: 250
       },
       {
         id: 115,
@@ -747,17 +749,17 @@ Rita: "G'day! You must be the new Computer Services Cadet! Thank goodness you're
 
 I'm Rita, Data Entry Supervisor. I've been with council for 15 years, and I've never seen the GM this stressed.
 
-Our new C.H.A.T. system - the Expert System we've been testing - crashed overnight. The General Manager has State Government officials coming at 4 PM for a demonstration!
+Our new C.H.A.T. system crashed overnight. The General Manager has State Government officials coming at 4 PM for a demonstration!
 
-The C.H.A.T. system needs a manual restart, but it requires authorization codes from EVERY department head. You'll need to visit each department, prove you understand AI concepts, and collect their codes.
+C.H.A.T. needs a manual restart, but it requires authorisation codes from EVERY department manager. You'll need to visit each department and collect their codes.
 
-Before I give you my authorization code and your security pass, I need to test your understanding of the basics. Ready?"`,
+Before I give you my authorisation code and your security pass, I need to test your understand where this new technology they are calling AI is headed. Ready?"`,
 
     correct: "Rita: Excellent! That's exactly right. You've got a good understanding of the fundamentals.",
 
     wrong: "Rita: Not quite, love. Have another think about it. The Systems Manager will want you to get this right.",
 
-    exit: `Rita: "Perfect! You understand the basics. Here's my authorization code and your security pass.
+    exit: `Rita: "Perfect! You understand the basics. Here's my authorisation code and your security pass.
 
 My Code: LEARN-THE-BASICS
 
@@ -771,11 +773,11 @@ You'll need his code next. Good luck!"
 
   // ROOM 2: CAFETERIA - Council Staff
   "Council Staff": {
-    intro: `The cafeteria smells like instant coffee and lamingtons. Several council workers sit at Formica tables during morning tea break. A Thermos jug and tin of Arnott's Assorted biscuits sit on the counter.
+    intro: `The cafeteria smells like instant coffee and lamingtons. Several council workers sit enjoyinh their morning tea break. A steaming pot of tea and a tin of Arnott's Assorted sit on the counter.
 
 DAVE (Planning): "Did you hear? The C.H.A.T. system's down! The demo's at 4 PM!"
 
-MARGARET (Rates): "I heard they're spending $50,000 on this Expert System. What if it doesn't work?"
+MARGARET (Rates): "I heard they're spending bucketloads on this Expert System. What if it doesn't work?"
 
 FRANK (Assets): "My nephew says these systems can make decisions on their own. That doesn't sit right with me."
 
@@ -783,7 +785,7 @@ MARGARET: "Exactly! What happens when the computer makes a mistake? Who takes re
 
 They notice you listening.
 
-DAVE: "You're the computer trainee trying to fix C.H.A.T., right? Maybe you can settle our debate first. How are these Expert Systems supposed to help council, exactly?"`,
+DAVE: "You're the computer cadet trying to fix C.H.A.T., right? Maybe you can settle our debate first. How are these Expert Systems supposed to help council, exactly?"`,
 
     correct: "MARGARET: That makes sense. So it's a tool, not a replacement. I suppose that's not so scary.\n\nDAVE: As long as humans are still in charge of the important decisions.",
 
@@ -817,7 +819,7 @@ SYSTEMS MANAGER: "Oh, is that for me? Champion. I've been debugging the C.H.A.T.
 
 [He takes a long sip]
 
-SYSTEMS MANAGER: "Right. The C.H.A.T. system needs a cold restart. But we need department authorization codes. My code is: LEARN-FROM-DATA - because that's what AI does.
+SYSTEMS MANAGER: "Right. The C.H.A.T. system needs a cold restart. But we need department authorisation codes. My code is: LEARN-FROM-DATA - because that's what AI does.
 
 C.H.A.T. learns patterns from data, just like our GIS maps show patterns across geography. Speaking of which, the Planning Officer in the MAP ROOM has code #4. She'll want to test you on DATA PRIVACY - that's her big concern.
 
@@ -847,7 +849,7 @@ Now get moving - we've got until 4 PM!"
 
 The PLANNING OFFICER looks up from a stack of development applications.
 
-PLANNING OFFICER: "Oh thank goodness! You're here to collect authorization codes for the C.H.A.T. restart? The Systems Manager called ahead.
+PLANNING OFFICER: "Oh thank goodness! You're here to collect authorisation codes for the C.H.A.T. restart? The Systems Manager called ahead.
 
 I've got 847 development applications from last year alone. The idea is we can use C.H.A.T. to help analyse spatial data and assess applications faster.
 
@@ -863,7 +865,7 @@ What information should you NEVER put into an AI system?"`,
 
 My Code: PROTECT-PRIVACY
 
-Now, the COMMUNICATIONS OFFICER down the hall is drafting PUBLIC STATEMENTS about our AI use. She'll need to know this too - she's writing about how we'll explain C.H.A.T. to ratepayers. She'll want to test your ability to VERIFY what's real and what's AI-generated.
+Now, the COMMUNICATIONS OFFICER down the hall is drafting PUBLIC STATEMENTS about our this new system. She'll need to know this too - she's writing about how we'll explain C.H.A.T. to ratepayers. She'll want to test your ability to VERIFY what's real and what's AI-generated.
 
 Go see her in the Communications Department!"
 
@@ -873,7 +875,7 @@ Go see her in the Communications Department!"
 
   // ROOM 5: COMMUNICATIONS DEPARTMENT - Communications Officer
   "Communications Officer": {
-    intro: `Desktop publishing equipment fills the room - early Mac computers with enormous CRT monitors. Layouts for the council newsletter are spread across desks.
+    intro: `Desktop publishing equipment fills the room - early IBM computers with enormous CRT monitors. Layouts for the council newsletter are spread across desks.
 
 The COMMUNICATIONS OFFICER is working on a press release using MacWrite.
 
