@@ -845,36 +845,36 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
         ) : roomIsCleared ? (
           <div className="mt-2">
             {/* QUEST PROGRESSION - Story beats */}
-            <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
-              <p className="retro-font text-amber" style={{ fontSize: '24px', marginBottom: '15px' }}>
+            <div className="border-box border-box-amber mb-2" style={{ padding: '25px' }}>
+              <p className="retro-font text-amber" style={{ fontSize: 'clamp(26px, 5vw, 32px)', marginBottom: '20px' }}>
                 ✓ AREA CLEARED!
               </p>
 
               {/* Quest Progress Indicator */}
               <div style={{
-                padding: '15px',
-                backgroundColor: 'rgba(251, 191, 36, 0.1)',
+                padding: '20px',
+                backgroundColor: 'rgba(251, 191, 36, 0.15)',
                 borderRadius: '5px',
-                border: '2px solid rgba(251, 191, 36, 0.3)',
-                marginBottom: '15px'
+                border: '2px solid rgba(251, 191, 36, 0.4)',
+                marginBottom: '20px'
               }}>
-                <p className="retro-font" style={{ fontSize: '18px', color: '#10b981' }}>
+                <p className="retro-font" style={{ fontSize: 'clamp(20px, 4vw, 24px)', color: '#10b981', fontWeight: 'bold' }}>
                   AUTHORIZATION CODE #{progress.currentRoom} COLLECTED
                 </p>
-                <p style={{ marginTop: '10px', fontSize: '16px' }}>
+                <p style={{ marginTop: '15px', fontSize: 'clamp(16px, 3vw, 20px)' }}>
                   {progress.currentRoom < 8
                     ? `${8 - progress.currentRoom} department${8 - progress.currentRoom > 1 ? 's' : ''} remaining...`
                     : 'All departments visited!'}
                 </p>
                 {progress.currentRoom < 8 && (
-                  <p style={{ marginTop: '10px', fontSize: '14px', fontStyle: 'italic', color: '#fbbf24' }}>
+                  <p style={{ marginTop: '15px', fontSize: 'clamp(15px, 2.8vw, 18px)', fontStyle: 'italic', color: '#fbbf24', fontWeight: 'bold' }}>
                     ⏰ GM's demo at 4PM - Keep moving!
                   </p>
                 )}
               </div>
 
               {/* Story-specific messages based on room */}
-              <div style={{ marginBottom: '15px', fontSize: '16px', lineHeight: '1.6' }}>
+              <div style={{ marginBottom: '20px', fontSize: 'clamp(15px, 2.8vw, 18px)', lineHeight: '1.7' }}>
                 {progress.currentRoom === 1 && (
                   <p>Rita gives you a thumbs up. "Good start! Now head to the other departments and collect their codes. The clock is ticking!"</p>
                 )}
@@ -898,13 +898,13 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
                 )}
               </div>
 
-              <p className="retro-font mb-2" style={{ fontSize: '16px' }}>CHOOSE YOUR PATH:</p>
+              <p className="retro-font mb-2" style={{ fontSize: 'clamp(16px, 3vw, 20px)' }}>CHOOSE YOUR PATH:</p>
 
               {currentRoom.exits.map((exit, index) => (
                 <button
                   key={index}
                   className="retro-button retro-button-amber mt-2"
-                  style={{ fontSize: '16px' }}
+                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', padding: '10px 20px' }}
                   onClick={() => handleMoveRoom(exit)}
                 >
                   → PROCEED TO {exit.toUpperCase()}
@@ -914,19 +914,19 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
           </div>
         ) : roomTotalQuestions.length === 0 ? (
           <div className="mt-2">
-            <div className="border-box border-box-amber mb-2" style={{ padding: '20px' }}>
-              <p className="retro-font text-amber" style={{ fontSize: '20px', marginBottom: '15px' }}>
+            <div className="border-box border-box-amber mb-2" style={{ padding: '25px' }}>
+              <p className="retro-font text-amber" style={{ fontSize: 'clamp(22px, 4vw, 26px)', marginBottom: '20px' }}>
                 Nothing to do here...
               </p>
-              <p style={{ fontSize: '16px', marginBottom: '15px' }}>
+              <p style={{ fontSize: 'clamp(16px, 3vw, 20px)', marginBottom: '20px', lineHeight: '1.7' }}>
                 This area doesn't require your attention. Move to another department.
               </p>
-              <p className="retro-font mb-2" style={{ fontSize: '16px' }}>CHOOSE YOUR PATH:</p>
+              <p className="retro-font mb-2" style={{ fontSize: 'clamp(16px, 3vw, 20px)' }}>CHOOSE YOUR PATH:</p>
               {currentRoom.exits.map((exit, index) => (
                 <button
                   key={index}
                   className="retro-button retro-button-amber mt-2"
-                  style={{ fontSize: '16px' }}
+                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', padding: '10px 20px' }}
                   onClick={() => handleMoveRoom(exit)}
                 >
                   → PROCEED TO {exit.toUpperCase()}
