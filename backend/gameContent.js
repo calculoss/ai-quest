@@ -495,7 +495,7 @@ new library, road construction, community centres.`,
 		  "An AI's ability to learn from experience"
 		],
 		correct: 1,
-		explanation: "Proposed by Alan Turing in 1950, the test evaluates whether a machine can exhibit intelligent behaviour indistinguishable from a human in conversation."
+		explanation: "Proposed by Alan Turing in 1950, the test evaluates whether a machine can exhibit intelligent behaviour indistinguishable from a human in conversation.",
         points: 150
       },
 
