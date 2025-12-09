@@ -19,7 +19,7 @@ Rita's desk is cluttered with manila folders and a daily planner.
 A sign on the wall reads "COMPUTER SERVICES - Authorised Personnel Only."
 
 An urgent memo sits on the desk: "C.H.A.T. SYSTEM - Offline.
-GM demo at 4PM. Collect authorisation codes from all department managers."`,
+GM demo at 4PM. Collect authorisation codes from all department heads."`,
     exits: ["Cafeteria", "Mainframe Room"]
   },
   
@@ -726,7 +726,7 @@ new library, road construction, community centres.`,
         question: "IMAGE DETECTION: Your technical eye - is this real or AI?",
         options: ["AI Generated", "Real Photograph"],
         correct: 0,
-        explanation: "AI-generated! Examine fine details closely: text or symbols may be nonsensical, perspective and geometry might violate Euclidean space, edges and transitions can blend unnaturally, or overall composition feels algorithmically perfect rather than organically captured. AI optimizes for visual appeal, not physical accuracy.",
+        explanation: "AI-generated! Examine fine details closely: text or symbols may be nonsensical, perspective and geometry might violate Euclidean space, edges and transitions can blend unnaturally, or overall composition feels algorithmically perfect rather than organically captured. AI optimises for visual appeal, not physical accuracy.",
         points: 200
       }
     ]
@@ -751,9 +751,9 @@ I'm Rita, Data Entry Supervisor. I've been with council for 15 years, and I've n
 
 Our new C.H.A.T. system crashed overnight. The General Manager has State Government officials coming at 4 PM for a demonstration!
 
-C.H.A.T. needs a manual restart, but it requires authorisation codes from EVERY department manager. You'll need to visit each department and collect their codes.
+The C.H.A.T. system needs a manual restart, but it requires authorisation codes from EVERY department head. You'll need to visit each department, prove you understand AI concepts, and collect their codes.
 
-Before I give you my authorisation code and your security pass, I need to test your understand where this new technology they are calling AI is headed. Ready?"`,
+Before I give you my authorisation code and your security pass, I need to test your understanding of the basics. Ready?"`,
 
     correct: "Rita: Excellent! That's exactly right. You've got a good understanding of the fundamentals.",
 
@@ -831,7 +831,7 @@ Ready?"`,
 
     wrong: "SYSTEMS MANAGER: Not quite. Think about the logic behind it. Computer systems are all about clear, logical thinking.",
 
-    exit: `SYSTEMS MANAGER: "Excellent! You understand how AI learns from patterns in data. Here's my authorization code and the System Manual.
+    exit: `SYSTEMS MANAGER: "Excellent! You understand how AI learns from patterns in data. Here's my authorisation code and the System Manual.
 
 My Code: LEARN-FROM-DATA
 
@@ -861,7 +861,7 @@ What information should you NEVER put into an AI system?"`,
 
     wrong: "PLANNING OFFICER: I don't think that's quite right. Think about what data needs protection in government work.",
 
-    exit: `PLANNING OFFICER: "Perfect! You understand that we must PROTECT-PRIVACY - that's my authorization code.
+    exit: `PLANNING OFFICER: "Perfect! You understand that we must PROTECT-PRIVACY - that's my authorisation code.
 
 My Code: PROTECT-PRIVACY
 
@@ -894,7 +894,7 @@ Let me test your verification skills with some images, then you can answer some 
 
     wrong: "COMMS OFFICER: That's not quite right. We need to be more accurate and transparent about the technology's real capabilities.",
 
-    exit: `COMMS OFFICER: "Brilliant! You understand how to VERIFY-TRUTH - that's my authorization code. You can spot AI-generated content and communicate honestly about technology.
+    exit: `COMMS OFFICER: "Brilliant! You understand how to VERIFY-TRUTH - that's my authorisation code. You can spot AI-generated content and communicate honestly about technology.
 
 My Code: VERIFY-TRUTH
 
@@ -930,11 +930,11 @@ Ready?"`,
 
     wrong: "GOVERNANCE OFFICER: Not quite. Think about who's ultimately accountable when AI-assisted decisions affect citizens.",
 
-    exit: `GOVERNANCE OFFICER: "Excellent! You understand that HUMAN-OVERSIGHT is essential - that's my authorization code.
+    exit: `GOVERNANCE OFFICER: "Excellent! You understand that HUMAN-OVERSIGHT is essential - that's my authorisation code.
 
 My Code: HUMAN-OVERSIGHT
 
-Now, one last stop - the MAIL ROOM where C.H.A.T. was being tested when it crashed. That's where you'll need to input ALL the authorization codes to restart the system.
+Now, one last stop - the MAIL ROOM where C.H.A.T. was being tested when it crashed. That's where you'll need to input ALL the authorisation codes to restart the system.
 
 Then report to the GENERAL MANAGER for the final evaluation before the 4 PM demo!"
 
@@ -948,7 +948,7 @@ Then report to the GENERAL MANAGER for the final evaluation before the 4 PM demo
 
 "SYSTEM OFFLINE - CRASHED AT 0245 HOURS
  MANUAL RESTART REQUIRED
- NEEDS: All 6 department authorization codes
+ NEEDS: All 6 department authorisation codes
  THEN: Final knowledge assessment"
 
 You collected these codes:
@@ -995,7 +995,7 @@ C.H.A.T.: "SYSTEM RESTART INITIATED.
 ╚════════════════════════════════════════════════════════╝
 
 YOU HAVE SUCCESSFULLY:
-✓ Collected all department authorization codes
+✓ Collected all department authorisation codes
 ✓ Demonstrated understanding of AI fundamentals
 ✓ Proven knowledge of data protection
 ✓ Shown commitment to human oversight
@@ -1019,7 +1019,7 @@ The GENERAL MANAGER sits behind a large desk covered with reports and budget doc
 
 GENERAL MANAGER: "Excellent work! I heard C.H.A.T. just came back online. The State Government officials will be here in 30 minutes for the demonstration.
 
-You've collected authorization codes from every department head. You've proven you understand:
+You've collected authorisation codes from every department head. You've proven you understand:
 - How AI learns from data
 - The importance of human judgment
 - Privacy protection

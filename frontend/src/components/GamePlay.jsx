@@ -440,7 +440,7 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
             <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
               <li>Visit ALL department heads</li>
               <li>Prove you understand AI principles</li>
-              <li>Collect their authorization codes</li>
+              <li>Collect their authorisation codes</li>
               <li>Restart the C.H.A.T. system</li>
             </ul>
 
