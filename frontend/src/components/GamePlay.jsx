@@ -8,8 +8,15 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   // STATE DECLARATIONS
   // ============================================
   
-  // Game phase state - always start with playing (intro removed)
-  const [gamePhase, setGamePhase] = useState('playing');
+  // Game phase state - start with discovery for new games
+  const [gamePhase, setGamePhase] = useState(() => {
+    // If this is a new game (no questions answered, at start), show intro
+    // Otherwise skip straight to playing
+    if (progress.questionsAnswered.length === 0 && progress.currentRoom === 1) {
+      return 'discovery';
+    }
+    return 'playing';
+  });
 
   // Room transition state
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -283,6 +290,183 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     } catch (error) {
       console.error('Failed to complete game:', error);
     }
+  };
+
+  // ============================================
+  // INTRO SEQUENCE RENDER FUNCTIONS
+  // ============================================
+
+  const renderDiscovery = () => {
+    return (
+      <div className="intro-sequence discovery">
+        <div className="intro-content">
+          <div className="intro-header">
+            <h1 className="retro-font">LAKE MACQUARIE CITY COUNCIL</h1>
+            <h2>Records Management</h2>
+            <p className="date">November 8, 2025</p>
+          </div>
+
+          <div className="story-text">
+            <p>You're helping digitise old council records in the basement archives. Decades of files, dusty boxes, obsolete equipment.</p>
+
+            <p className="mt-2">Your colleague Sarah calls out: <span className="text-amber">"Check this out!"</span></p>
+
+            <p className="mt-2">She's holding a cardboard box marked:</p>
+
+            <div className="box-label border-box border-box-amber mt-2 mb-2">
+              <p className="retro-font">DATA PROCESSING DEPT - 1989</p>
+              <p className="retro-font">BASEMENT ARCHIVES: 1989 - STAFF TRAINING</p>
+            </div>
+
+            <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
+
+            <p className="mt-2">You pull out one of the disks. The label reads:</p>
+
+            <div className="mt-3 mb-3" style={{
+              maxWidth: '1100px',
+              margin: '20px auto',
+              border: '3px solid #10b981',
+              boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)',
+              background: '#000',
+              padding: '15px'
+            }}>
+              <img
+                src="/images/disc.png"
+                alt="5.25 inch floppy disk - C.H.A.T. Restart Protocol"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
+            </div>
+
+            <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
+
+            <p><strong>You:</strong> "1989? That's before most people even had computers at home."</p>
+
+            <p className="mt-2"><strong>Sarah:</strong> "Wonder what this training was for?"</p>
+          </div>
+
+          <div className="text-center mt-3">
+            <button
+              className="retro-button retro-button-amber"
+              onClick={() => {
+                soundManager.play('startup');
+                setGamePhase('bootSequence');
+              }}
+            >
+              [Boot the disk] →
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderBootSequence = () => {
+    return (
+      <div className="intro-sequence boot">
+        <div className="intro-content">
+          <div className="story-text">
+            <p>You boot up the old disk reader...</p>
+
+            <div className="dos-screen border-box mt-3 mb-3">
+              <p>IBM Personal Computer DOS</p>
+              <p>Version 3.30 (C) Copyright IBM Corp 1981-1987</p>
+              <p className="mt-2">A:\&gt;DIR</p>
+              <p className="mt-1">Volume in drive A is AIQUEST89</p>
+              <p>Directory of A:\</p>
+              <p className="mt-1">AIQUEST  EXE    43,288   15-09-89   3:45p</p>
+              <p>QUESTIONS DAT    12,044   15-09-89   3:45p</p>
+              <p>README   TXT     1,823   15-09-89   3:46p</p>
+              <p>         3 File(s)     57,155 bytes</p>
+              <p>                      302,592 bytes free</p>
+              <p className="mt-2">A:\&gt;AIQUEST</p>
+              <p className="mt-1">Loading C.H.A.T. Restart Protocol...</p>
+            </div>
+
+            <div className="loading-bar">
+              <div className="loading-progress">
+                <div className="progress-fill" style={{ width: '100%' }}></div>
+              </div>
+            </div>
+
+            <div className="loading-checklist mt-2">
+              <p><span>Initializing system</span> <span className="text-green">[OK]</span></p>
+              <p><span>Loading question database</span> <span className="text-green">[OK]</span></p>
+              <p><span>Checking integrity</span> <span className="text-green">[OK]</span></p>
+              <p><span>Loading KONAMI_CODE.SYS</span> <span className="text-green">[OK]</span></p>
+              <p><span>Ready to launch</span> <span className="text-green">[OK]</span></p>
+            </div>
+          </div>
+
+          <div className="text-center mt-3">
+            <button
+              className="retro-button retro-button-amber"
+              onClick={() => setGamePhase('message')}
+            >
+              [Continue] →
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  const renderMessage1989 = () => {
+    return (
+      <div className="intro-sequence message">
+        <div className="intro-content">
+          <div className="intro-header">
+            <h1 className="retro-font text-amber">MESSAGE FROM 1989</h1>
+          </div>
+
+          <div className="memo border-box mt-2">
+            <p className="retro-font text-amber">URGENT MEMORANDUM</p>
+            <hr />
+            <p><strong>TO:</strong> Computer Services Cadet (NEW HIRE)</p>
+            <p><strong>FROM:</strong> Data Processing Manager</p>
+            <p><strong>DATE:</strong> 15 September 1989, 0830 HOURS</p>
+            <p><strong>RE:</strong> C.H.A.T. SYSTEM - EMERGENCY</p>
+            <p className="text-amber"><strong>PRIORITY: URGENT</strong></p>
+            <hr />
+
+            <p className="mt-2">Welcome to your first day. Unfortunately, we have a crisis:</p>
+
+            <p className="mt-2">Our new <strong>C.H.A.T.</strong> (Cognitive Heuristic Assistant Technology) Expert System crashed at 0245 hours. State Government officials arrive at <strong>4:00 PM TODAY</strong> for a demonstration.</p>
+
+            <p className="mt-2"><strong>YOUR MISSION:</strong></p>
+            <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
+              <li>Visit ALL department heads</li>
+              <li>Prove you understand AI principles</li>
+              <li>Collect their authorization codes</li>
+              <li>Restart the C.H.A.T. system</li>
+            </ul>
+
+            <p className="mt-2">Each department head will test your knowledge before giving you their code. You'll need <strong>all 6 codes</strong> to restart C.H.A.T.</p>
+
+            <p className="mt-2"><strong>Time until demo: 7 hours, 30 minutes</strong></p>
+
+            <p className="mt-3"><strong>Start at RECEPTION. Good luck, Cadet!</strong></p>
+
+            <p className="mt-2">— M. Stevens, Data Processing</p>
+          </div>
+
+          <div className="text-center mt-3">
+            <button
+              className="retro-button retro-button-amber"
+              onClick={() => {
+                soundManager.play('startup');
+                setGamePhase('playing');
+              }}
+            >
+              [Begin Mission] →
+            </button>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   // ============================================
@@ -696,7 +880,12 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   // MAIN COMPONENT RETURN
   // ============================================
 
-  // Always render the main game (intro removed)
+  // Phase routing - show intro phases for new games
+  if (gamePhase === 'discovery') return renderDiscovery();
+  if (gamePhase === 'bootSequence') return renderBootSequence();
+  if (gamePhase === 'message') return renderMessage1989();
+
+  // Otherwise render the main game
   return renderGame();
 }
 
