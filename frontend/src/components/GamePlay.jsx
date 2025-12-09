@@ -8,15 +8,12 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   // STATE DECLARATIONS
   // ============================================
   
-  // New state for intro sequence
-  const [gamePhase, setGamePhase] = useState(() => {
-    // If this is a new game (no questions answered, at start), show intro
-    // Otherwise skip straight to playing
-    if (progress.questionsAnswered.length === 0 && progress.currentRoom === 1) {
-      return 'discovery';
-    }
-    return 'playing';
-  });
+  // Game phase state - always start with playing (intro removed)
+  const [gamePhase, setGamePhase] = useState('playing');
+
+  // Room transition state
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [transitionMessage, setTransitionMessage] = useState('');
   
   // Existing state
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -205,9 +202,42 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     );
 
     if (remaining.length === 0) {
-      // Room complete - check if game complete
-      if (progress.currentRoom === 8) {
+      // Room complete - auto-advance to next room or complete game
+      const allQuestions = playerQuestions;
+      const allAnswered = newQuestionsAnswered;
+
+      // Check if all questions in game are answered
+      if (allAnswered.length >= allQuestions.length) {
         completeGame();
+        return;
+      }
+
+      // Find next room with unanswered questions
+      const nextRoomWithQuestions = gameContent.rooms.find(room => {
+        const roomHasQuestions = allQuestions.some(q =>
+          q.room === room.id && !allAnswered.find(qa => qa.id === q.id)
+        );
+        return roomHasQuestions && room.id !== progress.currentRoom;
+      });
+
+      if (nextRoomWithQuestions) {
+        // Show brief transition
+        const character = gameContent.dialogue[currentRoom.character];
+        const encouragement = character?.roomComplete || `"Good work! Keep going!"`;
+
+        setIsTransitioning(true);
+        setTransitionMessage(`${currentRoom.character}: ${encouragement}`);
+
+        // Auto-advance after 2 seconds
+        setTimeout(() => {
+          setProgress({
+            ...progress,
+            currentRoom: nextRoomWithQuestions.id,
+            questionsAnswered: newQuestionsAnswered
+          });
+          setIsTransitioning(false);
+          saveProgress();
+        }, 2000);
       }
     }
   };
@@ -253,212 +283,6 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
     } catch (error) {
       console.error('Failed to complete game:', error);
     }
-  };
-
-  // ============================================
-  // NEW INTRO SEQUENCE RENDER FUNCTIONS
-  // ============================================
-
-  const renderDiscovery = () => {
-    return (
-      <div className="intro-sequence discovery">
-        <div className="intro-content">
-          <div className="intro-header">
-            <h1 className="retro-font">LAKE MACQUARIE CITY COUNCIL</h1>
-            <h2>Records Management</h2>
-            <p className="date">November 8, 2025</p>
-          </div>
-          
-          <div className="story-text">
-            <p>You're helping digitise old council records in the basement archives. Decades of files, dusty boxes, obsolete equipment.</p>
-            
-            <p className="mt-2">Your colleague Sarah calls out: <span className="text-amber">"Check this out!"</span></p>
-            
-            <p className="mt-2">She's holding a cardboard box marked:</p>
-            
-            <div className="box-label border-box border-box-amber mt-2 mb-2">
-              <p className="retro-font">DATA PROCESSING DEPT - 1989</p>
-              <p className="retro-font">BASEMENT ARCHIVES: 1989 - STAFF TRAINING</p>
-            </div>
-            
-            <p>Inside: Dot matrix printouts, a yellowed manual, and three 5.25" floppy disks in paper sleeves.</p>
-
-            <p className="mt-2">You pull out one of the disks. The label reads:</p>
-
-            <div className="mt-3 mb-3" style={{
-              maxWidth: '1100px',
-              margin: '20px auto',
-              border: '3px solid #10b981',
-              boxShadow: '0 0 20px rgba(16, 185, 129, 0.4)',
-              background: '#000',
-              padding: '15px'
-            }}>
-              <img
-                src="/images/disc.png"
-                alt="5.25 inch floppy disk - C.H.A.T. Restart Protocol"
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block'
-                }}
-              />
-            </div>
-            
-            <p className="mt-2"><strong>Sarah:</strong> "No way these still work. When did we even have a 'Data Processing Department'?"</p>
-            
-            <p><strong>You:</strong> "1989? That's before most people even had computers at home."</p>
-            
-            <p className="mt-2"><strong>Sarah:</strong> "Wonder what this training was for?"</p>
-          </div>
-          
-          <div className="text-center mt-3">
-            <button
-              className="retro-button retro-button-amber"
-              onClick={() => {
-                soundManager.play('startup');
-                setGamePhase('bootSequence');
-              }}
-            >
-              [Boot the disk] →
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderBootSequence = () => {
-    return (
-      <div className="intro-sequence boot">
-        <div className="intro-content">
-          <div className="story-text">
-            <p>You boot up the old disk reader...</p>
-            
-            <div className="dos-screen border-box mt-3 mb-3">
-              <p>IBM Personal Computer DOS</p>
-              <p>Version 3.30 (C) Copyright IBM Corp 1981-1987</p>
-              <p className="mt-2">A:\&gt;DIR</p>
-              <p className="mt-1">Volume in drive A is AIQUEST89</p>
-              <p>Directory of A:\</p>
-              <p className="mt-1">AIQUEST  EXE    43,288   15-09-89   3:45p</p>
-              <p>QUESTIONS DAT    12,044   15-09-89   3:45p</p>
-              <p>README   TXT     1,823   15-09-89   3:46p</p>
-              <p>         3 File(s)     57,155 bytes</p>
-              <p>                      302,592 bytes free</p>
-              <p className="mt-2">A:\&gt;AIQUEST</p>
-              <p className="mt-1">Loading C.H.A.T. Restart Protocol...</p>
-            </div>
-            
-            <div className="loading-bar">
-              <div className="loading-progress">
-                <div className="progress-fill" style={{ width: '100%' }}></div>
-              </div>
-            </div>
-            
-            <div className="loading-checklist mt-2">
-              <p><span>Initializing system</span> <span className="text-green">[OK]</span></p>
-              <p><span>Loading question database</span> <span className="text-green">[OK]</span></p>
-              <p><span>Checking integrity</span> <span className="text-green">[OK]</span></p>
-              <p><span>Loading KONAMI_CODE.SYS</span> <span className="text-green">[OK]</span></p>
-              <p><span>Ready to launch</span> <span className="text-green">[OK]</span></p>
-            </div>
-          </div>
-          
-          <div className="text-center mt-3">
-            <button 
-              className="retro-button retro-button-amber"
-              onClick={() => setGamePhase('message')}
-            >
-              [Continue] →
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderMessage1989 = () => {
-    return (
-      <div className="intro-sequence message">
-        <div className="intro-content">
-          <div className="intro-header">
-            <h1 className="retro-font text-amber">MESSAGE FROM 1989</h1>
-          </div>
-          
-          <div className="memo border-box mt-2">
-            <p className="retro-font text-amber">URGENT MEMORANDUM</p>
-            <hr />
-            <p><strong>TO:</strong> Computer Services Cadet (NEW HIRE)</p>
-            <p><strong>FROM:</strong> Data Processing Manager</p>
-            <p><strong>DATE:</strong> 15 September 1989, 0830 HOURS</p>
-            <p><strong>RE:</strong> C.H.A.T. SYSTEM - EMERGENCY</p>
-            <p className="text-amber"><strong>PRIORITY: URGENT</strong></p>
-            <hr />
-
-            <p className="mt-2">Welcome to your first day. Unfortunately, we have a crisis:</p>
-
-            <p className="mt-2">Our new <strong>C.H.A.T.</strong> (Cognitive Heuristic Assistant Technology) Expert System crashed at 0245 hours. State Government officials arrive at <strong>4:00 PM TODAY</strong> for a demonstration.</p>
-
-            <p className="mt-2"><strong>YOUR MISSION:</strong></p>
-            <ul style={{ marginLeft: '30px', marginTop: '10px' }}>
-              <li>Visit ALL department heads</li>
-              <li>Prove you understand AI principles</li>
-              <li>Collect their authorization codes</li>
-              <li>Restart the C.H.A.T. system</li>
-            </ul>
-
-            <p className="mt-2">Each department head will test your knowledge before giving you their code. You'll need <strong>all 6 codes</strong> to restart C.H.A.T.</p>
-
-            <p className="mt-2"><strong>Time until demo: 7 hours, 30 minutes</strong></p>
-
-            <p className="mt-3"><strong>Start at RECEPTION. Good luck, Cadet!</strong></p>
-
-            <p className="mt-2">— M. Stevens, Data Processing</p>
-          </div>
-          
-          <div className="text-center mt-3">
-            <button
-              className="retro-button retro-button-amber"
-              onClick={() => setGamePhase('entering')}
-            >
-              [Begin Mission] →
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderEnteringSimulation = () => {
-    return (
-      <div className="intro-sequence entering">
-        <div className="intro-content">
-          <div className="intro-header">
-            <h1 className="retro-font text-green">INITIALIZING...</h1>
-          </div>
-
-          <div className="border-box mt-3 note-2025">
-            <p className="retro-font text-amber">NOTE FROM 2025:</p>
-            <hr className="mt-1 mb-1" style={{ borderColor: '#00ff00' }} />
-            <p>You're about to experience a 1989 training program about "Expert Systems" - the cutting-edge AI of that era.</p>
-            <p className="mt-2">After each task, you'll see how those 1989 concepts connect to modern AI. The technology evolved, but the fundamental principles remain surprisingly relevant.</p>
-            <p className="mt-2"><strong className="text-amber">Ready to travel back to 1989? Let's begin...</strong></p>
-          </div>
-
-          <div className="text-center mt-3">
-            <button
-              className="retro-button retro-button-amber"
-              onClick={() => {
-                soundManager.play('startup');
-                setGamePhase('playing');
-              }}
-            >
-              [Press ENTER to begin]
-            </button>
-          </div>
-        </div>
-      </div>
-    );
   };
 
   // ============================================
@@ -842,96 +666,19 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
               )}
             </div>
           </div>
-        ) : roomIsCleared ? (
+        ) : isTransitioning ? (
           <div className="mt-2">
-            {/* QUEST PROGRESSION - Story beats */}
-            <div className="border-box border-box-amber mb-2" style={{ padding: '25px' }}>
-              <p className="retro-font text-amber" style={{ fontSize: 'clamp(26px, 5vw, 32px)', marginBottom: '20px' }}>
+            {/* Brief transition message */}
+            <div className="border-box border-box-amber" style={{ padding: '25px', textAlign: 'center' }}>
+              <p className="retro-font text-amber" style={{ fontSize: 'clamp(22px, 4vw, 28px)', marginBottom: '15px' }}>
                 ✓ AREA CLEARED!
               </p>
-
-              {/* Quest Progress Indicator */}
-              <div style={{
-                padding: '20px',
-                backgroundColor: 'rgba(251, 191, 36, 0.15)',
-                borderRadius: '5px',
-                border: '2px solid rgba(251, 191, 36, 0.4)',
-                marginBottom: '20px'
-              }}>
-                <p className="retro-font" style={{ fontSize: 'clamp(20px, 4vw, 24px)', color: '#10b981', fontWeight: 'bold' }}>
-                  AUTHORIZATION CODE #{progress.currentRoom} COLLECTED
-                </p>
-                <p style={{ marginTop: '15px', fontSize: 'clamp(16px, 3vw, 20px)' }}>
-                  {progress.currentRoom < 8
-                    ? `${8 - progress.currentRoom} department${8 - progress.currentRoom > 1 ? 's' : ''} remaining...`
-                    : 'All departments visited!'}
-                </p>
-                {progress.currentRoom < 8 && (
-                  <p style={{ marginTop: '15px', fontSize: 'clamp(15px, 2.8vw, 18px)', fontStyle: 'italic', color: '#fbbf24', fontWeight: 'bold' }}>
-                    ⏰ GM's demo at 4PM - Keep moving!
-                  </p>
-                )}
-              </div>
-
-              {/* Story-specific messages based on room */}
-              <div style={{ marginBottom: '20px', fontSize: 'clamp(15px, 2.8vw, 18px)', lineHeight: '1.7' }}>
-                {progress.currentRoom === 1 && (
-                  <p>Rita gives you a thumbs up. "Good start! Now head to the other departments and collect their codes. The clock is ticking!"</p>
-                )}
-                {progress.currentRoom === 2 && (
-                  <p>The council staff member nods approvingly. "You know your stuff! Keep going - the Systems team will want to see you next."</p>
-                )}
-                {progress.currentRoom === 3 && (
-                  <p>The Systems Manager makes a note in their logbook. "Excellent. The Planning Officer in the Map Room is waiting for you."</p>
-                )}
-                {progress.currentRoom === 4 && (
-                  <p>The Planning Officer smiles. "Perfect! Communications will need to brief you on public messaging about C.H.A.T. Head there next."</p>
-                )}
-                {progress.currentRoom === 5 && (
-                  <p>The Communications Officer looks relieved. "Great work! Governance needs to sign off on the ethics. They're just down the hall."</p>
-                )}
-                {progress.currentRoom === 6 && (
-                  <p>The Governance Officer makes a final note. "You understand the responsibilities. Almost there - just need C.H.A.T.'s authorization and the GM's approval."</p>
-                )}
-                {progress.currentRoom === 7 && (
-                  <p>C.H.A.T.'s screen flickers: "AUTHORIZATION VERIFIED. ONLY GENERAL MANAGER CODE REQUIRED. PROCEED TO EXECUTIVE OFFICE."</p>
-                )}
-              </div>
-
-              <p className="retro-font mb-2" style={{ fontSize: 'clamp(16px, 3vw, 20px)' }}>CHOOSE YOUR PATH:</p>
-
-              {currentRoom.exits.map((exit, index) => (
-                <button
-                  key={index}
-                  className="retro-button retro-button-amber mt-2"
-                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', padding: '10px 20px' }}
-                  onClick={() => handleMoveRoom(exit)}
-                >
-                  → PROCEED TO {exit.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-        ) : roomTotalQuestions.length === 0 ? (
-          <div className="mt-2">
-            <div className="border-box border-box-amber mb-2" style={{ padding: '25px' }}>
-              <p className="retro-font text-amber" style={{ fontSize: 'clamp(22px, 4vw, 26px)', marginBottom: '20px' }}>
-                Nothing to do here...
+              <p style={{ fontSize: 'clamp(16px, 3vw, 20px)', lineHeight: '1.7', color: '#10b981' }}>
+                {transitionMessage}
               </p>
-              <p style={{ fontSize: 'clamp(16px, 3vw, 20px)', marginBottom: '20px', lineHeight: '1.7' }}>
-                This area doesn't require your attention. Move to another department.
+              <p style={{ marginTop: '15px', fontSize: 'clamp(15px, 2.8vw, 18px)', fontStyle: 'italic', color: '#fbbf24' }}>
+                Moving to next department...
               </p>
-              <p className="retro-font mb-2" style={{ fontSize: 'clamp(16px, 3vw, 20px)' }}>CHOOSE YOUR PATH:</p>
-              {currentRoom.exits.map((exit, index) => (
-                <button
-                  key={index}
-                  className="retro-button retro-button-amber mt-2"
-                  style={{ fontSize: 'clamp(14px, 2.5vw, 18px)', padding: '10px 20px' }}
-                  onClick={() => handleMoveRoom(exit)}
-                >
-                  → PROCEED TO {exit.toUpperCase()}
-                </button>
-              ))}
             </div>
           </div>
         ) : (
@@ -948,14 +695,8 @@ function GamePlay({ playerData, gameContent, progress, setProgress, onComplete }
   // ============================================
   // MAIN COMPONENT RETURN
   // ============================================
-  
-  // Phase routing - check intro phases first
-  if (gamePhase === 'discovery') return renderDiscovery();
-  if (gamePhase === 'bootSequence') return renderBootSequence();
-  if (gamePhase === 'message') return renderMessage1989();
-  if (gamePhase === 'entering') return renderEnteringSimulation();
-  
-  // Otherwise render the main game
+
+  // Always render the main game (intro removed)
   return renderGame();
 }
 
