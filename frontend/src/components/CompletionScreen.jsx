@@ -8,7 +8,10 @@ function CompletionScreen({ playerData, progress, gameContent, onViewLeaderboard
   const [playerRank, setPlayerRank] = useState(null);
 
   // Calculate total questions for this player mode
-  const playerQuestions = gameContent?.questions?.[playerData.mode] || [];
+  // Backend sends questions as a flat array already filtered by mode
+  const playerQuestions = Array.isArray(gameContent.questions)
+    ? gameContent.questions
+    : (gameContent.questions[playerData.mode] || []);
   const totalQuestions = playerQuestions.length;
 
   // Count questions answered correctly (on first try means attempts = 1)
