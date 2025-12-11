@@ -314,7 +314,7 @@ app.get('/api/leaderboard/:mode', async (req, res) => {
       `SELECT initials, completion_time, score, created_at
        FROM leaderboard
        WHERE mode = $1
-       ORDER BY completion_time ASC, score DESC
+       ORDER BY score DESC, completion_time ASC
        LIMIT 10`,
       [mode]
     );
